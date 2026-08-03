@@ -94,6 +94,14 @@ function Nav({ principal }: { principal: Principal }) {
         </div>
       ) : null}
 
+      {isAuthenticated(principal) ? (
+        <div>
+          <p className="overline mb-1.5 px-2">External Affairs</p>
+          <NavLink href="/dispatch">Dispatch &amp; delivery</NavLink>
+          <NavLink href="/standing">The standing packet</NavLink>
+        </div>
+      ) : null}
+
       <div>
         <p className="overline mb-1.5 px-2">Reference</p>
         <NavLink href="/doctrine">Manuals &amp; doctrine</NavLink>

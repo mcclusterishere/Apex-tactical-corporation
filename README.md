@@ -32,7 +32,7 @@ a diary. A register anyone can check is an instrument.
 | **People & Offices** | Roll of Citizens · Offices and Commissions · Vital and Sacramental Records · Ordinations · Households and Residency · Assistance and Benefits |
 | **Property & Territory** | Lands and Real Property · Chattels, Vehicles and Equipment · Sacred Sites and Places of Cultural Significance |
 | **Rights & Enforcement** | Intellectual Property Portfolio · Traditional Knowledge and Cultural Expressions · Enforcement Docket · Notices and Proof of Service · Encroachments and Infringements |
-| **External Relations** | Government-to-Government Contact · Compacts, Treaties and Memoranda · Public Records Requests |
+| **External Relations** | Government-to-Government Contact · Public Bodies and Officials · Public Safety and Emergency Services Liaison · Recognitions and External Acknowledgements · Compacts, Treaties and Memoranda · Public Records Requests |
 | **Evidence & Custody** | Evidence Vault and Chain of Custody · Incidents and Safeguarding |
 | **Stewardship & Finance** | Contributions, Grants and Disbursements · Data Subject Requests |
 | **Identity & Credentials** | Credentials Issued |
@@ -73,6 +73,54 @@ a diary. A register anyone can check is an instrument.
   process that answers a health check but cannot seal a secret is worse than a
   dead one — traffic gets routed to it and the failure surfaces one officer at a
   time. That is not hypothetical; it is the bug this check was written for.
+
+### Dealing with outside government
+
+The hardest problem here is not technical. An outside public office triages
+incoming correspondence into three piles, and what moves a letter into the one
+that gets answered is **institutional form and a legally cognizable request** —
+not an assertion of status.
+
+So this system is built to make Apex Kingdom formidable in the way that actually
+works, and structurally incapable of the way that does not:
+
+- **Letterhead and dispatch.** Any correspondence entry renders as a formal
+  letter — seal, fixed return address, reference number, subject line, named
+  signatory holding a named office, a date by which a reply is sought, and a
+  verification footer telling the recipient where to check the Kingdom's record
+  **without the Kingdom's cooperation**. Every other institution's letterhead
+  asks to be believed; this one invites the reader to test it.
+- **Dispatch and delivery** (`/dispatch`). What went out, by what method, whether
+  it arrived, and whether anyone answered — ranked by what each method actually
+  *proves* if the recipient later says they never received it. "They ignore us"
+  is an impression no tribunal can act on. Nine dated letters, six unanswered,
+  each with proof of delivery, is a fact, and it is the foundation of an
+  equal-terms argument under RLUIPA.
+- **The standing packet** (`/standing`). The dossier that answers the
+  forty-second question every recipient actually asks: is this a real
+  institution, or a private person with a theory. The page reports honestly what
+  the Kingdom can produce *today*, from the registers, and assembles a different
+  subset for a police department, a land-use authority, a legislator, an agency,
+  or a grantmaker.
+- **Public Bodies and Officials.** Who to write to, at what address, with what
+  title, what happened last time, and — the field that earns its keep — which
+  specific legal hook applies to *that* body.
+- **Public Safety and Emergency Services Liaison.** The legitimate interactions
+  with police, enumerated and made easy: reporting a crime as complainant,
+  reporting a bias-motivated incident so it is classified for NIBRS, requesting a
+  report under Connecticut FOIA, notifying of an assembly, requesting extra
+  patrol, mandated-reporter referrals under Conn. Gen. Stat. § 17a-101 et seq.,
+  and responding to lawful process. The register cannot express anything else.
+
+**The Kingdom issues no badge, patch, warrant card, plate, or identification that
+could be mistaken for law enforcement; commissions no officer with police
+powers; and directs no process at any officer or agency.** That is not timidity.
+Criminal impersonation is Conn. Gen. Stat. §§ 53a-130 and 53a-130a; federal
+insignia and identification documents are 18 U.S.C. §§ 701, 912 and 1028; a lien
+against a federal officer is a felony under § 1521. One embroidered patch turns a
+department that was prepared to help into one that forwards the file to its own
+legal division, and the real protections the Kingdom holds — RLUIPA, RFRA, church
+autonomy, the ministerial exception — go with it.
 
 ### What an adversarial audit found
 

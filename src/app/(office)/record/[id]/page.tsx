@@ -11,6 +11,7 @@ import { parseJson } from "@/lib/canonical";
 import { getRecordProof } from "@/lib/chain";
 import { recordAccess } from "@/lib/audit";
 import { recordDigest } from "@/lib/records";
+import { correspondenceShape } from "@/lib/correspondence";
 import {
   PageHeader,
   Panel,
@@ -152,6 +153,11 @@ export default async function RecordPage({ params }: { params: Promise<{ id: str
     (record.relationsFrom.length - visibleRelationsFrom.length) +
     (record.relationsTo.length - visibleRelationsTo.length);
 
+  // Correspondence registers can render an entry as a formal letter for
+  // dispatch. Offering that on a deed or a roll entry would produce a document
+  // that looks official and says nothing.
+  const isCorrespondence = correspondenceShape(record.registry) !== undefined;
+
   const visibleAttachments = record.attachments.filter((attachment) =>
     canView(principal.clearance, attachment.classification),
   );
@@ -199,6 +205,9 @@ export default async function RecordPage({ params }: { params: Promise<{ id: str
         actions={
           <>
             <ButtonLink href={`/record/${record.id}/certificate`}>Certified copy</ButtonLink>
+            {isCorrespondence ? (
+              <ButtonLink href={`/record/${record.id}/letter`}>Produce letter</ButtonLink>
+            ) : null}
             {mayAmend ? (
               <ButtonLink href={`/record/${record.id}/edit`} tone="primary">
                 Amend

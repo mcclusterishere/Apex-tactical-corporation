@@ -40,6 +40,8 @@ import infringements from "@/registries/infringements";
 import governmentContacts from "@/registries/government-contacts";
 import agreements from "@/registries/agreements";
 import recordsRequests from "@/registries/records-requests";
+import publicBodies from "@/registries/public-bodies";
+import publicSafety from "@/registries/public-safety";
 
 // Evidence & Custody
 import evidence from "@/registries/evidence";
@@ -93,8 +95,10 @@ export const REGISTRIES: readonly RegistryDef[] = [
   infringements,
 
   governmentContacts,
+  publicBodies,
   agreements,
   recordsRequests,
+  publicSafety,
 
   evidence,
   incidents,
