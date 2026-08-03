@@ -88,13 +88,18 @@ export default async function RegistryPage({
         title={registry.title}
         lede={registry.description}
         actions={
-          mayWrite ? (
-            <ButtonLink href={`/registry/${registry.slug}/new`} tone="primary">
-              Record a new {registry.recordLabel.toLowerCase()}
-            </ButtonLink>
-          ) : isAuthenticated(principal) ? null : (
-            <ButtonLink href="/sign-in">Sign in to record</ButtonLink>
-          )
+          <>
+            {isAuthenticated(principal) ? (
+              <ButtonLink href={`/api/registry/${registry.slug}/export`}>Export CSV</ButtonLink>
+            ) : null}
+            {mayWrite ? (
+              <ButtonLink href={`/registry/${registry.slug}/new`} tone="primary">
+                Record a new {registry.recordLabel.toLowerCase()}
+              </ButtonLink>
+            ) : !isAuthenticated(principal) ? (
+              <ButtonLink href="/sign-in">Sign in to record</ButtonLink>
+            ) : null}
+          </>
         }
       />
 

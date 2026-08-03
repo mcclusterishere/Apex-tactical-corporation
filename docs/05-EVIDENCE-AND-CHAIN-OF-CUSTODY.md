@@ -24,7 +24,7 @@ the certification of a qualified person, and Fed. R. Evid. 902(14) does the same
 for data copied from a device, storage medium, or file where the copy is
 authenticated by a process of digital identification — which means hashing.
 Together they allow a large body of digital exhibits to be authenticated by
-certificate rather than by a witness on a stand. That is what the
+certificate rather than by a witness on a stand, which is what the
 content-addressed vault and the hash chain exist to support.
 
 **Hearsay is a separate problem and survives authentication.** An item may be
@@ -32,8 +32,7 @@ perfectly authenticated and still inadmissible for the truth of what it says.
 Note how often the truth of the contents is not what is offered: in an
 infringement matter the page is offered not to prove anything it asserts but
 because publishing it was the act complained of, which is not hearsay at all. Be
-clear in every matter file about *why* an item is offered, because that decides
-whether an exception is needed.
+clear in every matter file about *why* an item is offered.
 
 **The business-records exception.** Fed. R. Evid. 803(6) admits a record made at
 or near the time by, or from information transmitted by, someone with knowledge;
@@ -44,13 +43,11 @@ under Rule 902(11) or (12) — unless the opponent shows a lack of trustworthine
 A properly kept register satisfies every element by design: entries made the day
 the thing happens, by an officer with knowledge, as the ordinary practice of the
 office, in a system recording who entered what and when. Same-day entry is not
-fussiness; it is the element the exception turns on.
-
-One caution. Records created because litigation is anticipated do not carry the
-trustworthiness the exception assumes, and have not since *Palmer v. Hoffman*,
-318 U.S. 109 (1943). Routine entries qualify; a narrative memorandum written for
-the lawsuit does not, and must never be filed into the register as though it
-were.
+fussiness; it is the element the exception turns on. But records created because
+litigation is anticipated do not carry the trustworthiness the exception assumes,
+and have not since *Palmer v. Hoffman*, 318 U.S. 109 (1943). Routine entries
+qualify; a memorandum written for the lawsuit does not, and must never be filed
+into the register as though it were.
 
 ## 2. Collection, by type
 
@@ -59,7 +56,7 @@ fragile evidence the Kingdom will handle, and it disappears the moment the other
 side reads your letter.
 
 1. **A full-page capture showing the URL and the system clock.** Full page, not
-   the visible window. Print-to-PDF from the browser preserves the URL and date in
+   the visible window; print-to-PDF from the browser preserves the URL and date in
    the header and footer. Where the page is long or dynamic, record the screen
    while scrolling through it.
 2. **An independent archival capture.** Submit the URL to the Internet Archive's
@@ -76,8 +73,8 @@ side reads your letter.
    if it is honest, and nothing at all if it is polished.
 
 Capture what vanishes with the page: the account handle and its numeric
-identifier, the post permalink, the profile page, the domain registration record,
-and the response headers where anyone technical is at hand.
+identifier, the post permalink, the profile page, and the domain registration
+record.
 
 **Correspondence.** Export the original message with full headers as a file. A
 screenshot of an email is a picture of an email; the headers are where the
@@ -92,18 +89,16 @@ location and direction of each frame, and take wide establishing shots first.
 
 **Witness accounts.** Taken as soon as possible, in the witness's own words,
 first person, signed and dated. Do not draft it for them and do not tidy their
-phrasing. A statement that sounds like the Kingdom wrote it will be impeached as
+phrasing; a statement that sounds like the Kingdom wrote it will be impeached as
 a statement the Kingdom wrote.
 
 ## 3. Originals and working copies
 
 **The original is never annotated.** Not a highlight, not a marginal note, not a
 redaction, not a page number, not a stamp. It is received, hashed, deposited in
-the vault, and thereafter touched only to be produced.
-
-All work happens on a working copy, generated from the vault and marked as such
-on its face. Annotate, excerpt, and paginate it as freely as the matter requires;
-if it is lost or ruined, another is generated at no cost.
+the vault, and thereafter touched only to be produced. All work happens on a
+working copy, generated from the vault and marked as such on its face; if it is
+lost or ruined, another is generated at no cost.
 
 Fed. R. Evid. 1002 requires the original to prove the content of a writing,
 recording, or photograph, but Rule 1003 admits a duplicate to the same extent
@@ -137,10 +132,10 @@ where it has to name a person.
 ## 5. Hashing and digital signatures, plainly
 
 A **SHA-256 digest** is a fixed-length fingerprint — sixty-four characters —
-computed from a file's contents. The same file always produces the same digest.
-Changing one byte produces a completely different one. Constructing a different
-file with the same digest is, with present knowledge and present machines,
-infeasible.
+computed from a file's contents. The same file always produces the same digest,
+changing one byte produces a completely different one, and constructing a
+different file with the same digest is, with present knowledge and present
+machines, infeasible.
 
 **What a digest proves:** that the file in front of you is byte-for-byte
 identical to the file whose digest was recorded. That is integrity, and it is
@@ -157,8 +152,8 @@ holder of a private key so that anyone with the matching public key can confirm
 the signature came from that key and the file has not changed since. Its value
 equals the value of the key custody behind it: a key three people can reach
 proves nothing about which of the three signed. A signature does not date itself
-either — fixing it in time requires a timestamp from a trusted authority under a
-standard such as RFC 3161, or an anchor.
+either — that requires a timestamp from a trusted authority under a standard such
+as RFC 3161, or an anchor.
 
 ## 6. External anchoring
 
@@ -176,8 +171,7 @@ operation is cheap and why skipping it is indefensible.
 Acceptable anchors, ascending in strength: a certified letter containing the head
 hash, sent to counsel and left unopened; publication of the head in the gazette
 with a documented distribution list; a timestamp from an RFC 3161 authority; a
-public commit or post carrying the head; a notarised declaration of it. Two are
-better than one.
+public commit or post carrying the head; a notarised declaration of it.
 
 Anchor monthly at minimum, and **immediately** after collecting evidence
 connected to any matter the Kingdom may pursue or have to defend. Ten minutes on
@@ -192,16 +186,16 @@ the Kingdom has decided to do anything at all.
 
 Triggers include sending a demand letter, which fixes the Kingdom's own duty as
 surely as the recipient's; receiving a demand, claim, or preservation notice; a
-serious injury on the Kingdom's premises or at its event; a subpoena or
-government inquiry; a member or former member threatening suit; an internal
-complaint of misconduct; and discovery of an infringement the Kingdom intends to
-pursue. From that moment nothing in scope may be deleted, overwritten, or allowed
-to expire — including things that delete themselves.
+serious injury on the Kingdom's premises; a subpoena or government inquiry; a
+member threatening suit; an internal complaint of misconduct; and discovery of an
+infringement the Kingdom intends to pursue. From that moment nothing in scope may
+be deleted, overwritten, or allowed to expire — including things that delete
+themselves.
 
 ## 8. Spoliation, in concrete terms
 
-Spoliation is the loss or destruction of evidence a party had a duty to preserve.
-It almost never looks like shredding. It looks like the retention rule that
+Spoliation is the loss or destruction of evidence a party had a duty to preserve,
+and it almost never looks like shredding. It looks like the retention rule that
 quietly deletes at ninety days and was never switched off; the phone traded in at
 upgrade; the officer who cleaned out an inbox; the security recording that
 overwrote itself on a fourteen-day loop while everyone was deciding what to do.
@@ -218,11 +212,8 @@ The adverse-inference instruction, in plain terms, is a judge telling a jury the
 may assume the missing evidence would have hurt the party that lost it. It turns
 a factual dispute into a credibility verdict, and the party it is given against
 loses. Connecticut also recognises intentional spoliation as an independent tort,
-*Rizzuto v. Davidson Ladders, Inc.*, 280 Conn. 225 (2007).
-
-The point to internalise: the sanction is almost always worse than the evidence
-would have been. Organisations lose cases they would have won on the facts
-because of a deletion nobody intended and one email would have prevented.
+*Rizzuto v. Davidson Ladders, Inc.*, 280 Conn. 225 (2007). The sanction is almost
+always worse than the evidence would have been.
 
 ## 9. Legal holds
 
@@ -231,23 +222,20 @@ merits. There is no cost to a hold that proves unnecessary and no recovery from
 one issued a month late.
 
 **Issue broadly.** Define scope by subject matter, not by what seems relevant
-today. Name every custodian who might hold anything — officers, clerks, whoever
-ran the event, whoever administers the accounts — and address systems as well as
-people: email, messaging applications, phones, cloud storage, the register
+today. Name every custodian who might hold anything, and address systems as well
+as people: email, messaging applications, phones, cloud storage, the register
 itself, physical files, camera systems and their retention loops.
 
 **Say what to do, operationally.** Suspend automatic deletion. Do not delete,
 edit, or reorganise anything in scope. Do not replace or wipe devices. If in
 doubt, keep it and ask. Acknowledge receipt in writing.
 
-**Reissue periodically.** A hold issued once is forgotten within a quarter, and
-staff turnover finishes the job.
+**Reissue periodically**, because a hold issued once is forgotten within a
+quarter and staff turnover finishes the job.
 
 **Document the release.** When the matter ends, release in writing with the date,
 the reason, and the officer releasing it. An undocumented release looks identical
-to an unauthorised deletion. Every hold in this system carries the matter, the
-reason, the issuing officer, and the release, and held records cannot be voided
-while the hold stands.
+to an unauthorised deletion.
 
 ## 10. The first hour
 

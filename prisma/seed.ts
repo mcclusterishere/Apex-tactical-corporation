@@ -167,18 +167,29 @@ const SEED_RECORDS: SeedRecord[] = [
     status: "IN_FORCE",
     effectiveDate: "2010-10-30",
     data: {
+      instrumentTitle: "Charter of Apex Kingdom",
       instrumentType: "CHARTER",
-      citation: "Charter of Apex Kingdom (2025)",
-      promulgatingAuthority: "Matthew McCluster, Founder and Sovereign Head",
+      citationDesignation: "Charter of Apex Kingdom (2025)",
+      subjectMatter:
+        "Constitution of the Kingdom as a combined tribal government, ecclesiastical body, and charitable trust; membership and beneficiary status; sovereignty and jurisdiction; powers; territory; external relations; leadership and succession; amendment; adoption.",
+      promulgatingAuthority: "Matthew McCluster",
+      promulgatingOffice: "Founder and Sovereign Head of Apex Kingdom",
+      charterArticle: "Art. IX (Adoption and Effective Date)",
       dateExecuted: "2025-05-29",
       dateEffective: "2010-10-30",
-      notarised: true,
-      notary: "Joyiesha F. Smoak, Notary Public, State of Connecticut, I.D. SNPC 0185844",
+      datePromulgated: "2025-05-29",
+      retroactiveEffect: true,
+      retroactiveBasis:
+        "Art. IX declares the Charter effective nunc pro tunc to 30 October 2010, stated to be the foundational date of the Kingdom as an entity, so as to affirm acts taken and offices held since that date.",
+      attestation: "BOTH",
+      notaryName: "Joyiesha F. Smoak, Notary Public, State of Connecticut, I.D. SNPC 0185844, commission expires 28 February 2027",
       witnesses: "Stephanie Arevalo",
-      summary:
-        "The supreme governing instrument of Apex Kingdom. Nine articles constituting the Kingdom as a combined tribal government, ecclesiastical body, and charitable trust; defining membership and beneficiary status; asserting sovereignty and jurisdiction; enumerating twelve powers; reserving territorial and land claims; declaring external relations and non-interference; vesting supreme authority in the Founder with a succession plan; reserving the amendment power; and adopting the whole nunc pro tunc to 30 October 2010.",
+      sealAffixed: false,
+      originalCustody:
+        "NOT YET RECORDED — enter where the wet-ink original is kept and attach a scan to this record.",
+      bindingScope: ["SOVEREIGN", "OFFICERS", "MEMBERS_COVENANT"],
       notes:
-        "EXECUTED 29 MAY 2025; DECLARED EFFECTIVE 30 OCTOBER 2010. Always describe it in exactly those terms. The retroactive effective date is an ordinary declaration of the community's founding and is defensible; presenting the document as though it were written in 2010 is not. Attach the executed, witnessed, and notarised original to this record.",
+        "EXECUTED 29 MAY 2025; DECLARED EFFECTIVE 30 OCTOBER 2010. Describe it in exactly those terms every time. An openly retroactive declaration of the community's founding date is ordinary and defensible; a document presented as though it had been written in 2010 does not survive cross-examination. Attach the executed, witnessed, and notarised original to this record, and store the wet-ink original offsite with a duplicate.",
     },
   },
   {
@@ -191,19 +202,26 @@ const SEED_RECORDS: SeedRecord[] = [
     data: {
       counterpartBody: "Connecticut General Assembly",
       level: "STATE",
-      agencyOffice: "Office of the President Pro Tempore; Office of the Speaker of the House",
-      official:
+      agencyOffice:
+        "Office of the President Pro Tempore; Office of the Speaker of the House; Office of the Secretary of the State",
+      officialName:
         "Introduced by Sen. Herron Gaston (23rd), Sen. Sujata Gadkar-Wilcox (22nd), Sen. Tony Hwang (28th), Rep. Andre F. Baker Jr. (124th), Rep. Christopher Rosario (128th), Rep. Cristin McCarthy Vahey (133rd), Rep. Steven J. Stafstrom (129th), Rep. Antonio Felipe (130th), Rep. Fred Gee Jr. (126th)",
+      officialTitle: "Members of the Connecticut General Assembly",
       direction: "INCOMING",
-      mode: "OTHER",
-      date: "2025-10-05",
-      subject: "Official Citation recognising Apex Kingdom",
-      summary:
-        "Citation issued at the State Capitol, Hartford, congratulating Apex Kingdom and recognising it for advancing cultural heritage, civic education, and community empowerment. Signed by the President Pro Tempore, the Speaker of the House, and the Secretary of the State, under seal.",
-      outcome:
-        "Received. A ceremonial legislative honour, genuinely creditable as recognition of community contribution and of standing with the Bridgeport delegation.",
+      mode: "LETTER",
+      contactDate: "2025-10-05",
+      subject: "Official Citation, Connecticut General Assembly",
+      summaryOfContact:
+        "Citation issued at the State Capitol, Hartford, congratulating Apex Kingdom and recognising it for advancing cultural heritage, civic education, and community empowerment. Signed by the President Pro Tempore, the Speaker of the House, and the Secretary of the State, under the seal of the State.",
+      copyOnFile: false,
+      responseReceived: true,
+      responseDate: "2025-10-05",
+      responseOutstanding: false,
+      outcome: "ACKNOWLEDGED_ONLY",
+      outcomeDetail:
+        "A ceremonial legislative honour. Nothing was granted or determined; the Assembly acknowledged the Kingdom's contribution. That is a genuine mark of standing with the Bridgeport delegation and should be described as exactly that.",
       notes:
-        "IMPORTANT — how to present this. A General Assembly citation is a ceremonial courtesy issued routinely by legislators for anniversaries, retirements, community service, and business openings. It is real, it is signed and sealed, and it evidences a genuine relationship with nine state legislators. It is NOT state recognition of tribal status, confers no legal status, and creates no government-to-government relationship. Present it as what it is — recognition of community contribution. Officials who deal with citations every week will know immediately if it is characterised as anything more, and the cost of that in credibility is far greater than anything the overstatement could gain. The nine legislators who signed it are the most valuable thing this record contains: that is a working relationship worth maintaining.",
+        "HOW TO PRESENT THIS. A General Assembly citation is a ceremonial courtesy, issued routinely for anniversaries, retirements, community service, and business openings. It is real, it is signed and sealed, and it evidences a working relationship with nine state legislators — which is the most valuable thing in this record. It is NOT state recognition of tribal status, it confers no legal status, and it creates no government-to-government relationship. Present it as recognition of contribution to cultural heritage and civic education, which is what it says. Every official the Kingdom writes to knows what a citation is, because their own office issues them; overstating it costs far more credibility than it could ever gain. Attach a scan and record where the original is kept.",
     },
   },
 ];
