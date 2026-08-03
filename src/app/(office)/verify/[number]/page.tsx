@@ -180,9 +180,20 @@ export default async function VerifyRecordPage({
       {record.voidedAt ? (
         <div className="mb-6">
           <Caution title={`This record was voided on ${formatDate(record.voidedAt)}`}>
-            {record.voidReason ?? "No reason was recorded."} A certified copy issued before that
-            date remains a true copy of what the register said at the time, but the entry no longer
-            stands.
+            {/*
+              The void reason is free text an officer wrote, and it routinely
+              says more than the record's own fields — who complained, what was
+              found, why the entry was withdrawn. Printing it on a page that has
+              just declined to show the record's contents gives away through the
+              back door exactly what the classification withheld at the front.
+              The FACT of voiding is properly public: it is what stops a stale
+              certified copy being relied on.
+            */}
+            {mayReadContents
+              ? (record.voidReason ?? "No reason was recorded.")
+              : "The reason is recorded in the register and is not public."}{" "}
+            A certified copy issued before that date remains a true copy of what the register said
+            at the time, but the entry no longer stands.
           </Caution>
         </div>
       ) : null}

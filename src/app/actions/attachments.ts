@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/db";
 import { getPrincipal, assertMfa } from "@/lib/auth";
 import { isClassification } from "@/lib/classification";
-import { assertCanMutate, assertNotHeld, assertPasswordChanged, AccessError } from "@/lib/access";
+import { assertCanMutate, assertPasswordChanged, AccessError } from "@/lib/access";
 import { storeFile, MAX_UPLOAD_BYTES } from "@/lib/storage";
 import { appendToChainTx } from "@/lib/chain";
 import { recordAudit } from "@/lib/audit";

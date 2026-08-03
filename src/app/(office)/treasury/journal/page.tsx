@@ -5,7 +5,7 @@ import { getPrincipal, isAuthenticated } from "@/lib/auth";
 import { can } from "@/lib/authz";
 import { formatCents } from "@/lib/treasury";
 import { PageHeader, Panel, EmptyState, ButtonLink } from "@/components/ui";
-import { formatDate, formatTimestamp } from "@/lib/format";
+import { formatDate, formatTimestamp, oneParam } from "@/lib/format";
 import { ReverseJournalForm } from "@/components/SecurityForms";
 import { reverseJournalAction } from "@/app/actions/treasury";
 
@@ -17,7 +17,7 @@ const PAGE_SIZE = 40;
 export default async function JournalPage({
   searchParams,
 }: {
-  searchParams: Promise<{ page?: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const principal = await getPrincipal();
   const mayKeep = can(principal.role, "registry:financial") || principal.role === "SOVEREIGN";
@@ -33,7 +33,7 @@ export default async function JournalPage({
     );
   }
 
-  const { page: pageRaw } = await searchParams;
+  const pageRaw = oneParam((await searchParams).page);
   const page = Math.max(1, Number(pageRaw) || 1);
 
   const [entries, total] = await Promise.all([

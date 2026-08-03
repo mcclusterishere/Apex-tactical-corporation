@@ -220,7 +220,20 @@ model LedgerEntry {
   // CUSTODY_EVENT | INSTRUMENT_PROMULGATED | NOTICE_SERVED | CHAIN_ANCHORED | GENESIS
   eventType   String
   recordId    String?
-  record      Record?  @relation(fields: [recordId], references: [id], onDelete: SetNull)
+  // Restrict, deliberately. Two reasons, and both are the point of this table.
+  //
+  // First, nothing should be able to modify a committed ledger row, and
+  // `SetNull` is a modification — a plain `DELETE FROM Record` would quietly
+  // null out this column on every entry that referenced it. The chain would
+  // still verify, because recordId is not part of the entry hash, so the
+  // deletion would leave no trace at all.
+  //
+  // Second, there is no such thing as a legitimate record deletion here.
+  // Records are voided or superseded and stay on file; that is the whole
+  // premise. `Restrict` makes the database enforce what the doctrine says, so
+  // an accidental cascade from some future migration fails loudly instead of
+  // taking the register's history with it.
+  record      Record?  @relation(fields: [recordId], references: [id], onDelete: Restrict)
   // Canonicalised JSON of the payload that was committed.
   payload     String
   // SHA-256 of the canonical payload alone.

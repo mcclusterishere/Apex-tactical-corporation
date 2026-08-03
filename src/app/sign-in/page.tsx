@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { getPrincipal, isAuthenticated } from "@/lib/auth";
 import { SignInForm } from "@/components/SignInForm";
 import { Seal } from "@/components/Seal";
+import { oneParam } from "@/lib/format";
 
 export const metadata: Metadata = { title: "Sign in" };
 export const dynamic = "force-dynamic";
@@ -11,11 +12,11 @@ export const dynamic = "force-dynamic";
 export default async function SignInPage({
   searchParams,
 }: {
-  searchParams: Promise<{ next?: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const principal = await getPrincipal();
   if (isAuthenticated(principal)) redirect("/");
-  const { next } = await searchParams;
+  const next = oneParam((await searchParams).next);
 
   return (
     <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-5 py-12">

@@ -5,6 +5,7 @@ import { validateRecordData, deriveTitle } from "@/lib/validation";
 import { getRegistry } from "@/registries";
 import type { RegistryDef } from "@/registries/types";
 import type { Principal } from "@/lib/auth";
+import { canView } from "@/lib/classification";
 import { recordAudit } from "@/lib/audit";
 
 /**
@@ -173,12 +174,62 @@ export async function amendRecord(principal: Principal, input: AmendRecordInput)
     });
   }
 
-  const validated = validateRecordData(registry, input.data);
+  /**
+   * A held record cannot be voided through the amend form.
+   *
+   * `voidRecord` refuses while a hold is live, which is the whole point of a
+   * hold — once litigation is anticipated, destroying or suppressing a record is
+   * spoliation, and courts answer it with an adverse-inference instruction that
+   * loses cases the underlying facts would have won.
+   *
+   * The amend form takes an arbitrary status from the register's own list, and
+   * every register declares VOID. Without this, the hold could be walked around
+   * by selecting VOID in a dropdown instead of pressing the button that refuses
+   * — the record leaves every list view, and the ledger records it as an
+   * amendment rather than as the voiding it actually was.
+   *
+   * Ordinary amendment of a held record stays permitted, deliberately: a hold
+   * preserves the record, it does not freeze the register, and the amendment is
+   * committed to the chain with the previous state intact.
+   */
+  if (input.status === "VOID" && existing.status !== "VOID" && existing.holds.length > 0) {
+    const matters = existing.holds.map((hold) => hold.matter).join(", ");
+    throw new RecordError(
+      `This record is under legal hold (${matters}) and cannot be marked void. ` +
+        "Release the hold first, and record why it was released.",
+      { status: "Refused while a legal hold is in force." },
+    );
+  }
+
+  const before = parseJson<Record<string, unknown>>(existing.data, {});
+
+  /**
+   * Fields above the amender's clearance are carried forward untouched.
+   *
+   * The edit form does not render them, so an honest amender never sees them.
+   * This is the other half: whatever arrives in the payload for such a field is
+   * discarded and the stored value wins. Without it, a hand-written POST could
+   * overwrite — or blank — sealed material the sender was never shown, and a
+   * form that merely omits the field would silently erase it on every save.
+   *
+   * Note the direction of the guard. It is keyed on what the principal may
+   * READ, because a field one cannot read is a field one cannot knowingly
+   * amend; changing it would be writing blind over evidence.
+   */
+  const guarded: Record<string, unknown> = { ...input.data };
+  const withheld: string[] = [];
+  for (const field of registry.fields) {
+    if (!field.classification || canView(principal.clearance, field.classification)) continue;
+    withheld.push(field.key);
+    if (before[field.key] === undefined) delete guarded[field.key];
+    else guarded[field.key] = before[field.key];
+  }
+
+  const validated = validateRecordData(registry, guarded);
   if (!validated.ok) {
     throw new RecordError("The amendment has problems that must be corrected.", validated.errors);
   }
 
-  const before = parseJson<Record<string, unknown>>(existing.data, {});
   const after = validated.data;
 
   // Record only what actually moved. A diff of every field on every save buries
@@ -195,11 +246,28 @@ export async function amendRecord(principal: Principal, input: AmendRecordInput)
 
   const title =
     input.title?.trim() || deriveTitle(registry, after, existing.title);
+  /*
+   * A blank effective date clears it; it does not mean "leave it alone".
+   *
+   * The form always submits the field, so `null` here is an officer who deleted
+   * the value on purpose. Falling back to the existing date made the date
+   * one-way — once set, unsettable — and the form reported success while
+   * silently keeping a date the officer had just removed. That is the worst
+   * shape a bug can take in a register: the screen says one thing and the record
+   * says another.
+   *
+   * `undefined` still means "not supplied", which is what callers other than
+   * the form pass.
+   */
   const effectiveDate =
-    input.effectiveDate && /^\d{4}-\d{2}-\d{2}$/.test(input.effectiveDate)
-      ? new Date(`${input.effectiveDate}T00:00:00Z`)
-      : existing.effectiveDate;
+    input.effectiveDate === undefined
+      ? existing.effectiveDate
+      : input.effectiveDate && /^\d{4}-\d{2}-\d{2}$/.test(input.effectiveDate)
+        ? new Date(`${input.effectiveDate}T00:00:00Z`)
+        : null;
 
+  const effectiveDateChanged =
+    (effectiveDate?.getTime() ?? null) !== (existing.effectiveDate?.getTime() ?? null);
   const titleChanged = title !== existing.title;
   const statusChanged = (input.status ?? existing.status) !== existing.status;
   const classificationChanged =
@@ -243,6 +311,20 @@ export async function amendRecord(principal: Principal, input: AmendRecordInput)
         statusTo: statusChanged ? record.status : undefined,
         classificationFrom: classificationChanged ? existing.classification : undefined,
         classificationTo: classificationChanged ? record.classification : undefined,
+        // The effective date decides when an instrument BINDS, which is the
+        // question most likely to be litigated about it. Leaving it out of the
+        // chain left the one field with legal consequence as the only one that
+        // could be altered without the ledger noticing.
+        effectiveDateFrom: effectiveDateChanged
+          ? (existing.effectiveDate?.toISOString().slice(0, 10) ?? null)
+          : undefined,
+        effectiveDateTo: effectiveDateChanged
+          ? (record.effectiveDate?.toISOString().slice(0, 10) ?? null)
+          : undefined,
+        // Recorded so an auditor can see that this amendment was made without
+        // sight of part of the record. Omitted entirely when nothing was
+        // withheld, so ordinary amendments commit exactly as they always have.
+        withheldFields: withheld.length > 0 ? (withheld as string[]) : undefined,
         changed: changed as Record<string, never>,
         /**
          * The full post-amendment state is committed as well as the diff. A

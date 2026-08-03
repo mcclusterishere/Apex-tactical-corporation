@@ -1,10 +1,9 @@
-import { redirect } from "next/navigation";
 import type { Metadata } from "next";
 import { checkCredential, CREDENTIAL_DISCLAIMER } from "@/lib/credentials";
 import { PageHeader, Panel, Field, Caution, EmptyState } from "@/components/ui";
 import { CredentialLookupForm } from "@/components/CredentialForms";
 import { Seal } from "@/components/Seal";
-import { formatDate } from "@/lib/format";
+import { formatDate, oneParam } from "@/lib/format";
 
 export const metadata: Metadata = { title: "Check a credential" };
 export const dynamic = "force-dynamic";
@@ -22,9 +21,9 @@ const STATUS_COPY: Record<string, { label: string; tone: "good" | "bad" | "warn"
 export default async function VerifyCredentialPage({
   searchParams,
 }: {
-  searchParams: Promise<{ code?: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const { code } = await searchParams;
+  const code = oneParam((await searchParams).code);
   const trimmed = code?.trim();
 
   if (!trimmed) {

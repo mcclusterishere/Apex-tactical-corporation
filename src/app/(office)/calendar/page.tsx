@@ -8,7 +8,7 @@ import { getRegistry } from "@/registries";
 import { PageHeader, Panel, Stat, EmptyState, Caution } from "@/components/ui";
 import { CompleteDeadlineForm } from "@/components/RecordActions";
 import { completeDeadlineAction } from "@/app/actions/records";
-import { formatDate, daysUntil, describeDueIn } from "@/lib/format";
+import { formatDate, daysUntil, describeDueIn, oneParam } from "@/lib/format";
 
 export const metadata: Metadata = { title: "Deadlines" };
 export const dynamic = "force-dynamic";
@@ -25,10 +25,10 @@ export const dynamic = "force-dynamic";
 export default async function CalendarPage({
   searchParams,
 }: {
-  searchParams: Promise<{ show?: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const principal = await getPrincipal();
-  const { show } = await searchParams;
+  const show = oneParam((await searchParams).show);
   const includeDone = show === "all";
 
   const deadlines = await prisma.deadline.findMany({

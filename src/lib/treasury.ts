@@ -1,6 +1,5 @@
 import { prisma } from "@/lib/db";
 import { appendToChainTx } from "@/lib/chain";
-import { recordAudit } from "@/lib/audit";
 import type { Principal } from "@/lib/auth";
 
 /**
@@ -39,6 +38,15 @@ export class TreasuryError extends Error {
     this.name = "TreasuryError";
   }
 }
+
+/**
+ * Above this, a single officer should not be able to move money alone.
+ *
+ * Deliberately low for an institution of this size. It is not a statement about
+ * trust; it is a statement about what an attacker holding one officer's session
+ * can do before anyone notices.
+ */
+export const DUAL_CONTROL_THRESHOLD_CENTS = 100_000; // $1,000
 
 export const ACCOUNT_TYPES = [
   "ASSET",

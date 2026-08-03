@@ -394,10 +394,55 @@ async function main() {
     console.log(
       `  Last  #${anchor.sequence} via ${anchor.method} on ${anchor.anchoredAt.toISOString().slice(0, 10)}`,
     );
-    if (behind > 0) {
+
+    /*
+     * A head BELOW the last anchor is the serious case, and the arithmetic above
+     * reads it as the reassuring one: `behind` goes negative, the `> 0` test
+     * fails, and the script prints "OK — the head is covered by an anchor".
+     *
+     * It is the opposite of covered. The anchor is a published, externally
+     * dated claim that the ledger reached position N. If the ledger now ends
+     * before N, entries that were anchored have been removed — the one form of
+     * tampering an anchor is specifically supposed to make undeniable, because
+     * truncation leaves a perfectly self-consistent chain that verifies. This is
+     * the check that catches it, so it must be checked explicitly.
+     *
+     * The stored hash is re-checked too: an anchor naming a position whose hash
+     * no longer matches means history was rewritten below the anchor point.
+     */
+    const anchoredEntry = await prisma.ledgerEntry.findFirst({
+      where: { sequence: anchor.sequence },
+      select: { entryHash: true },
+    });
+
+    if (behind < 0) {
+      console.error(
+        `  FAIL  the ledger ends at #${head?.sequence ?? 0}, BELOW the anchored position #${anchor.sequence}.`,
+      );
+      console.error(
+        `        ${-behind} anchored entr${-behind === 1 ? "y has" : "ies have"} been removed. The anchor is external, dated, and`,
+      );
+      console.error(
+        "        outside the Kingdom's control: it proves those entries existed. Preserve this database.",
+      );
+      failures += 1;
+    } else if (!anchoredEntry) {
+      console.error(
+        `  FAIL  no entry exists at anchored position #${anchor.sequence}, though the ledger extends past it.`,
+      );
+      failures += 1;
+    } else if (anchoredEntry.entryHash !== anchor.headHash) {
+      console.error(
+        `  FAIL  entry #${anchor.sequence} now hashes to ${anchoredEntry.entryHash.slice(0, 16)}…`,
+      );
+      console.error(
+        `        but the published anchor records ${anchor.headHash.slice(0, 16)}…. History below the anchor was rewritten.`,
+      );
+      failures += 1;
+    } else if (behind > 0) {
       console.log(`  WARN  ${behind} entries recorded since the last anchor are not yet covered.`);
     } else {
-      console.log("  OK    the head is covered by an anchor");
+      console.log("  OK    the head is covered by an anchor, and matches its published hash");
     }
   }
 

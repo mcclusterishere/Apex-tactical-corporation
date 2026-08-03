@@ -37,6 +37,28 @@ const csp = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
 
+  experimental: {
+    serverActions: {
+      /**
+       * Attachments arrive through a Server Action, and Next caps a Server
+       * Action body at 1 MB by default.
+       *
+       * `MAX_UPLOAD_BYTES` in src/lib/storage.ts is 32 MB and the upload form
+       * says so, but with the default in force anything over 1 MB was rejected
+       * by the framework before the application ever saw it — so the stated
+       * limit was unreachable and the failure arrived as a generic error with no
+       * indication that size was the problem. Scanned exhibits, photographs of a
+       * site, and recorded correspondence are routinely larger than 1 MB, which
+       * is to say the evidence vault could not hold most evidence.
+       *
+       * Kept slightly above the application's own limit so that an oversized
+       * upload is refused by `storage.ts` — which can say what the limit is and
+       * what was sent — rather than by the framework.
+       */
+      bodySizeLimit: "36mb",
+    },
+  },
+
   async headers() {
     return [
       {

@@ -13,6 +13,7 @@ import { recordAudit } from "@/lib/audit";
 import { FieldValue } from "@/components/FieldValue";
 import { Seal } from "@/components/Seal";
 import { formatDate, formatTimestamp } from "@/lib/format";
+import { publicUrl } from "@/lib/origin";
 
 export const dynamic = "force-dynamic";
 
@@ -65,6 +66,7 @@ export default async function CertificatePage({ params }: { params: Promise<{ id
   const proof = await getRecordProof(record.id);
   const digest = recordDigest(record);
   const issuedAt = new Date();
+  const verifyAt = await publicUrl(`/verify/${record.recordNumber}`);
 
   // An inclusion proof against a published root is what lets the recipient
   // check this extract without asking the Kingdom for anything, and without
@@ -246,7 +248,11 @@ export default async function CertificatePage({ params }: { params: Promise<{ id
             ) : null}
             <div>
               <dt className="overline">Confirm this extract</dt>
-              <dd className="tabular text-sm">/verify/{record.recordNumber}</dd>
+              <dd className="tabular break-all text-sm">{verifyAt}</dd>
+              <dd className="muted mt-1 text-xs">
+                No account and no cooperation from the Kingdom is required. The page recomputes
+                this extract&rsquo;s digest and its position in the ledger from the record itself.
+              </dd>
             </div>
           </dl>
         </section>

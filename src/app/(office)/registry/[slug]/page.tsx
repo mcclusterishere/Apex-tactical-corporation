@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/db";
 import { getPrincipal, isAuthenticated } from "@/lib/auth";
 import { canWriteRegistry } from "@/lib/authz";
-import { canReadRecord } from "@/lib/access";
 import { getRegistry } from "@/registries";
 import { visibleClassificationsIn, filterSearchLeaks } from "@/lib/queries";
 import { parseJson } from "@/lib/canonical";
@@ -18,7 +17,7 @@ import {
 } from "@/components/ui";
 import { FieldValue } from "@/components/FieldValue";
 import { Markdown } from "@/components/Markdown";
-import { formatDateShort } from "@/lib/format";
+import { formatDateShort, oneParam } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
 
@@ -39,10 +38,13 @@ export default async function RegistryPage({
   searchParams,
 }: {
   params: Promise<{ slug: string }>;
-  searchParams: Promise<{ q?: string; status?: string; page?: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { slug } = await params;
-  const { q, status, page: pageRaw } = await searchParams;
+  const query_ = await searchParams;
+  const q = oneParam(query_.q);
+  const status = oneParam(query_.status);
+  const pageRaw = oneParam(query_.page);
   const registry = getRegistry(slug);
   if (!registry) notFound();
 

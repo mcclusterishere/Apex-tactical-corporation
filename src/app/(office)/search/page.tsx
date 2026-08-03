@@ -5,7 +5,7 @@ import { getPrincipal } from "@/lib/auth";
 import { visibleClassifications, filterSearchLeaks } from "@/lib/queries";
 import { getRegistry, REGISTRIES } from "@/registries";
 import { PageHeader, Panel, StatusBadge, ClassificationBadge, EmptyState } from "@/components/ui";
-import { formatDateShort } from "@/lib/format";
+import { formatDateShort, oneParam } from "@/lib/format";
 
 export const metadata: Metadata = { title: "Search the registers" };
 export const dynamic = "force-dynamic";
@@ -13,10 +13,12 @@ export const dynamic = "force-dynamic";
 export default async function SearchPage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string; registry?: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const principal = await getPrincipal();
-  const { q, registry: registryFilter } = await searchParams;
+  const params = await searchParams;
+  const q = oneParam(params.q);
+  const registryFilter = oneParam(params.registry);
   const query = q?.trim() ?? "";
 
   const candidates =

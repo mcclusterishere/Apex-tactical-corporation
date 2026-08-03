@@ -5,7 +5,7 @@ import { getPrincipal } from "@/lib/auth";
 import { can } from "@/lib/authz";
 import { canReadRecord } from "@/lib/access";
 import { PageHeader, Panel, EmptyState, Caution } from "@/components/ui";
-import { formatTimestamp } from "@/lib/format";
+import { formatTimestamp, oneParam } from "@/lib/format";
 
 export const metadata: Metadata = { title: "Audit log" };
 export const dynamic = "force-dynamic";
@@ -15,7 +15,7 @@ const PAGE_SIZE = 100;
 export default async function AuditPage({
   searchParams,
 }: {
-  searchParams: Promise<{ page?: string; actor?: string; action?: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const principal = await getPrincipal();
   if (!can(principal.role, "audit:read")) {
@@ -30,7 +30,10 @@ export default async function AuditPage({
     );
   }
 
-  const { page: pageRaw, actor, action } = await searchParams;
+  const params = await searchParams;
+  const pageRaw = oneParam(params.page);
+  const actor = oneParam(params.actor);
+  const action = oneParam(params.action);
   const page = Math.max(1, Number(pageRaw) || 1);
 
   const where = {

@@ -53,6 +53,41 @@ export async function recordAnchorAction(
     };
   }
 
+  /**
+   * Anchor the head the officer actually published, not the head as it stands
+   * now.
+   *
+   * These are not the same. The officer reads a head hash off this page, prints
+   * it, mails it, gets the timestamp token — that takes minutes at best and days
+   * for certified mail. Meanwhile the register keeps moving. Reading
+   * `getChainHead()` at submit time would record the anchor against entries that
+   * were never in the published document, and the anchor's whole value is the
+   * claim "every entry at or below this position existed by this date". Anchor
+   * the wrong head and that claim is false — which is worse than not anchoring,
+   * because it is a false statement about evidence.
+   *
+   * So the hash comes from the form, and it must be a hash this ledger actually
+   * produced.
+   */
+  const publishedHash = String(formData.get("headHash") ?? "").trim();
+  if (!/^[0-9a-f]{64}$/.test(publishedHash)) {
+    return { ok: false, message: "The head hash is missing or malformed. Reload and try again." };
+  }
+
+  const anchored = await prisma.ledgerEntry.findUnique({
+    where: { entryHash: publishedHash },
+    select: { sequence: true, entryHash: true },
+  });
+  if (!anchored) {
+    return {
+      ok: false,
+      message:
+        "No entry in this ledger bears that hash. Either the published head came from a " +
+        "different database, or the ledger has been altered since it was read. Do not record " +
+        "this anchor — run `npm run chain:verify` first.",
+    };
+  }
+
   const head = await getChainHead();
   if (!head) {
     return { ok: false, message: "The ledger is empty; there is nothing to anchor." };
@@ -61,8 +96,8 @@ export async function recordAnchorAction(
   try {
     const anchor = await prisma.chainAnchor.create({
       data: {
-        sequence: head.sequence,
-        headHash: head.entryHash,
+        sequence: anchored.sequence,
+        headHash: anchored.entryHash,
         method,
         externalRef,
         externalNote: externalNote || null,
@@ -75,8 +110,13 @@ export async function recordAnchorAction(
       actorLabel: `${principal.displayName} (${principal.role})`,
       payload: {
         anchorId: anchor.id,
-        sequence: head.sequence,
-        headHash: head.entryHash,
+        sequence: anchored.sequence,
+        headHash: anchored.entryHash,
+        // How far the ledger had already moved past the published head when the
+        // anchor was recorded. Zero is the ideal; a large number means the
+        // anchoring routine is running late and those entries are still resting
+        // on the Kingdom's own word.
+        entriesAppendedSincePublication: head.sequence - anchored.sequence,
         method,
         externalRef,
         externalNote: externalNote || null,
@@ -86,7 +126,7 @@ export async function recordAnchorAction(
     await recordAudit(
       principal,
       "chain.anchor",
-      `#${head.sequence}`,
+      `#${anchored.sequence}`,
       `${method} ref ${externalRef}`,
     );
   } catch (error) {
@@ -98,6 +138,12 @@ export async function recordAnchorAction(
   revalidatePath("/");
   return {
     ok: true,
-    message: `Anchor recorded at position #${head.sequence}. Every entry at or below that position is now provably older than today.`,
+    message:
+      `Anchor recorded at position #${anchored.sequence}. Every entry at or below that position ` +
+      `is now provably older than today.` +
+      (head.sequence > anchored.sequence
+        ? ` ${head.sequence - anchored.sequence} entr${head.sequence - anchored.sequence === 1 ? "y has" : "ies have"} been ` +
+          `committed since that head was published and ${head.sequence - anchored.sequence === 1 ? "is" : "are"} not covered — anchor again to reach the current head.`
+        : ""),
   };
 }

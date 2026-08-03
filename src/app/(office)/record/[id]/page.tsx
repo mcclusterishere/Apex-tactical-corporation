@@ -73,13 +73,26 @@ export default async function RecordPage({ params }: { params: Promise<{ id: str
       attachments: { orderBy: { createdAt: "asc" }, include: { custody: true } },
       deadlines: { orderBy: { dueOn: "asc" } },
       holds: { orderBy: { issuedAt: "desc" } },
-      supersededBy: { select: { id: true, recordNumber: true, title: true } },
-      supersedes: { select: { id: true, recordNumber: true, title: true } },
+      // `classification` and `registry` are selected on every joined record so
+      // the links below can be filtered. A related record's NUMBER and TITLE are
+      // disclosure in themselves — in the Contributions register the title is a
+      // donor's legal name — so a link to a record the reader may not open must
+      // not be rendered merely because some other record points at it.
+      supersededBy: { select: { id: true, recordNumber: true, title: true, registry: true, classification: true } },
+      supersedes: { select: { id: true, recordNumber: true, title: true, registry: true, classification: true } },
       relationsFrom: {
-        include: { to: { select: { id: true, recordNumber: true, title: true, registry: true } } },
+        include: {
+          to: {
+            select: { id: true, recordNumber: true, title: true, registry: true, classification: true },
+          },
+        },
       },
       relationsTo: {
-        include: { from: { select: { id: true, recordNumber: true, title: true, registry: true } } },
+        include: {
+          from: {
+            select: { id: true, recordNumber: true, title: true, registry: true, classification: true },
+          },
+        },
       },
     },
   });
@@ -110,6 +123,39 @@ export default async function RecordPage({ params }: { params: Promise<{ id: str
     (field) => !field.classification || canView(principal.clearance, field.classification),
   );
   const hiddenFieldCount = registry.fields.length - visibleFields.length;
+
+  /**
+   * Links and attachments are filtered on the same principle as fields.
+   *
+   * `canReadRecord` above decides whether this record may be opened. It says
+   * nothing about the records this one points at, or about attachments filed
+   * under it — an evidence file carries its own classification precisely so that
+   * a sealed exhibit can hang off a record officers may otherwise read.
+   *
+   * Counts are shown rather than the items, because "three related records you
+   * may not see" is honest and an empty panel is not.
+   */
+  const visibleSupersededBy =
+    record.supersededBy && canReadRecord(principal, record.supersededBy)
+      ? record.supersededBy
+      : null;
+  const visibleSupersedes = record.supersedes.filter((other) => canReadRecord(principal, other));
+  const visibleRelationsFrom = record.relationsFrom.filter((relation) =>
+    canReadRecord(principal, relation.to),
+  );
+  const visibleRelationsTo = record.relationsTo.filter((relation) =>
+    canReadRecord(principal, relation.from),
+  );
+  const hiddenLinkCount =
+    (record.supersededBy && !visibleSupersededBy ? 1 : 0) +
+    (record.supersedes.length - visibleSupersedes.length) +
+    (record.relationsFrom.length - visibleRelationsFrom.length) +
+    (record.relationsTo.length - visibleRelationsTo.length);
+
+  const visibleAttachments = record.attachments.filter((attachment) =>
+    canView(principal.clearance, attachment.classification),
+  );
+  const hiddenAttachmentCount = record.attachments.length - visibleAttachments.length;
 
   const sections: { name: string; fields: typeof visibleFields }[] = [];
   for (const field of visibleFields) {
@@ -171,13 +217,13 @@ export default async function RecordPage({ params }: { params: Promise<{ id: str
         </div>
       ) : null}
 
-      {record.supersededBy ? (
+      {visibleSupersededBy ? (
         <div className="mb-6">
           <Caution title="Superseded">
             Replaced by{" "}
-            <Link href={`/record/${record.supersededBy.id}`} className="underline underline-offset-2">
-              <span className="tabular">{record.supersededBy.recordNumber}</span> —{" "}
-              {record.supersededBy.title}
+            <Link href={`/record/${visibleSupersededBy.id}`} className="underline underline-offset-2">
+              <span className="tabular">{visibleSupersededBy.recordNumber}</span> —{" "}
+              {visibleSupersededBy.title}
             </Link>
             . This entry remains on file as part of the chain of title.
           </Caution>
@@ -296,14 +342,22 @@ export default async function RecordPage({ params }: { params: Promise<{ id: str
         title="Attachments and custody"
         description="Each item is digested on receipt; the digest is what proves the file has not changed since"
       >
-        {record.attachments.length === 0 ? (
+        {hiddenAttachmentCount > 0 ? (
           <p className="muted mb-3 text-sm">
-            Nothing attached. A register entry describing a document is weaker than one holding it —
-            attach the instrument, the certificate, the correspondence, or the capture.
+            {hiddenAttachmentCount === 1
+              ? "One attachment on this record is classified above your clearance and is not listed."
+              : `${hiddenAttachmentCount} attachments on this record are classified above your clearance and are not listed.`}
+          </p>
+        ) : null}
+        {visibleAttachments.length === 0 ? (
+          <p className="muted mb-3 text-sm">
+            {hiddenAttachmentCount > 0
+              ? "Nothing further is attached that you are cleared to see."
+              : "Nothing attached. A register entry describing a document is weaker than one holding it — attach the instrument, the certificate, the correspondence, or the capture."}
           </p>
         ) : (
           <ul className="mb-3 divide-y divide-[var(--rule)]">
-            {record.attachments.map((attachment) => (
+            {visibleAttachments.map((attachment) => (
               <li key={attachment.id} className="py-2.5">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <a
@@ -357,10 +411,13 @@ export default async function RecordPage({ params }: { params: Promise<{ id: str
         ) : null}
       </Panel>
 
-      {record.relationsFrom.length > 0 || record.relationsTo.length > 0 || record.supersedes.length > 0 ? (
+      {visibleRelationsFrom.length > 0 ||
+      visibleRelationsTo.length > 0 ||
+      visibleSupersedes.length > 0 ||
+      hiddenLinkCount > 0 ? (
         <Panel title="Related records">
           <ul className="space-y-1.5 text-sm">
-            {record.supersedes.map((other) => (
+            {visibleSupersedes.map((other) => (
               <li key={other.id}>
                 <span className="overline mr-2">supersedes</span>
                 <Link href={`/record/${other.id}`} className="underline underline-offset-2">
@@ -368,7 +425,7 @@ export default async function RecordPage({ params }: { params: Promise<{ id: str
                 </Link>
               </li>
             ))}
-            {record.relationsFrom.map((relation) => (
+            {visibleRelationsFrom.map((relation) => (
               <li key={relation.id}>
                 <span className="overline mr-2">{relation.kind.toLowerCase().replaceAll("_", " ")}</span>
                 <Link href={`/record/${relation.to.id}`} className="underline underline-offset-2">
@@ -376,7 +433,7 @@ export default async function RecordPage({ params }: { params: Promise<{ id: str
                 </Link>
               </li>
             ))}
-            {record.relationsTo.map((relation) => (
+            {visibleRelationsTo.map((relation) => (
               <li key={relation.id}>
                 <span className="overline mr-2">
                   {relation.kind.toLowerCase().replaceAll("_", " ")} by
@@ -387,6 +444,13 @@ export default async function RecordPage({ params }: { params: Promise<{ id: str
               </li>
             ))}
           </ul>
+          {hiddenLinkCount > 0 ? (
+            <p className="muted mt-3 text-sm">
+              {hiddenLinkCount === 1
+                ? "One further link is to a record above your clearance and is not shown."
+                : `${hiddenLinkCount} further links are to records above your clearance and are not shown.`}
+            </p>
+          ) : null}
         </Panel>
       ) : null}
 

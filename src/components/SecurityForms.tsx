@@ -114,6 +114,7 @@ export function TotpEnrolment({
   const [secret, setSecret] = useState<string | null>(null);
   const [uri, setUri] = useState<string | null>(null);
   const [starting, setStarting] = useState(false);
+  const [beginError, setBeginError] = useState<string | null>(null);
   const [state, formAction] = useActionState(confirm, { ok: false } as FormState & {
     recoveryCodes?: string[];
   });
@@ -146,17 +147,34 @@ export function TotpEnrolment({
           A second factor means a stolen password alone is not enough to act as you. It takes about
           a minute to set up.
         </p>
+        {beginError ? <p className="mb-3 text-[13px] text-seal-600">{beginError}</p> : null}
         <button
           type="button"
           disabled={starting}
           onClick={async () => {
             setStarting(true);
-            const result = await begin();
-            if (result.ok && result.secret) {
-              setSecret(result.secret);
-              setUri(result.uri ?? null);
+            setBeginError(null);
+            try {
+              const result = await begin();
+              if (result.ok && result.secret) {
+                setSecret(result.secret);
+                setUri(result.uri ?? null);
+              } else {
+                setBeginError(result.message ?? "Enrolment could not be started.");
+              }
+            } catch {
+              // A server action that throws otherwise leaves this button doing
+              // nothing at all, which reads as a broken page and tells whoever
+              // has to fix it precisely nothing. This is how an unset
+              // APEX_MASTER_KEY presented itself.
+              setBeginError(
+                "Enrolment could not be started — the server refused. This is usually a " +
+                  "configuration fault rather than anything you did; the server log will say " +
+                  "which. Tell the Registrar before trying again.",
+              );
+            } finally {
+              setStarting(false);
             }
-            setStarting(false);
           }}
           className="rounded-sm border border-ink-800 bg-ink-800 px-4 py-1.5 text-[13px] font-medium text-ink-50 hover:bg-ink-700 disabled:opacity-60 dark:border-ink-100 dark:bg-ink-100 dark:text-ink-900"
         >

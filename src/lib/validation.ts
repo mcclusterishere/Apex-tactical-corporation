@@ -49,7 +49,26 @@ function coerceField(
       }
       // Money is held as an integer number of cents. Floating point cents are
       // how ledgers end up off by a penny and then off by a thousand.
-      return { value: field.type === "money" ? Math.round(num * 100) : num };
+      const value = field.type === "money" ? Math.round(num * 100) : num;
+
+      /*
+       * `Number.isFinite` above passes 1e308. Multiplying it by 100 does not:
+       * the result is Infinity, which canonicalise refuses to serialise, so the
+       * request dies as an unhandled 500 instead of as a field error the officer
+       * can act on. Anything beyond the safe-integer range is also a number this
+       * system cannot represent honestly — arithmetic on it silently stops being
+       * exact, which in a ledger is worse than refusing it.
+       */
+      if (!Number.isFinite(value) || Math.abs(value) > Number.MAX_SAFE_INTEGER) {
+        return {
+          value: undefined,
+          error:
+            field.type === "money"
+              ? "That amount is too large to record exactly. Enter it in a unit this register can hold."
+              : "That number is too large to record exactly.",
+        };
+      }
+      return { value };
     }
 
     case "boolean": {

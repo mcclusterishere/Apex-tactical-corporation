@@ -11,6 +11,7 @@ import {
   TreasuryError,
   ACCOUNT_TYPES,
   RESTRICTIONS,
+  DUAL_CONTROL_THRESHOLD_CENTS,
   type PostingInput,
 } from "@/lib/treasury";
 import { recordAudit } from "@/lib/audit";
@@ -24,15 +25,6 @@ import type { FormState } from "@/app/actions/records";
  * gone. Posting requires the second factor; anything above the dual-control
  * threshold additionally requires step-up re-authentication.
  */
-
-/**
- * Above this, a single officer should not be able to move money alone.
- *
- * The figure is deliberately low for an institution of this size. It is not a
- * statement about trust; it is a statement about what an attacker who obtains
- * one officer's session can do before anyone notices.
- */
-export const DUAL_CONTROL_THRESHOLD_CENTS = 100_000; // $1,000
 
 function fail(error: unknown): FormState {
   if (error instanceof TreasuryError) {

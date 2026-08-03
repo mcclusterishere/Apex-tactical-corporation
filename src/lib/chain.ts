@@ -332,6 +332,32 @@ export async function verifyRecordsAgainstLedger(
         select: { payload: true, eventType: true },
       });
 
+      /**
+       * Whether the ledger says this record was voided or superseded.
+       *
+       * This must be read from the LEDGER, never from the register row. An
+       * earlier version exempted a record from the status check whenever the
+       * *register* said VOID or SUPERSEDED — which is the value the check exists
+       * to verify. Writing "VOID" directly into the row therefore switched off
+       * the only check that would have caught it, and a record could be
+       * suppressed from every list view with nothing to show for it. A test
+       * covers this precise case; see tests/chain-exemption.test.ts.
+       */
+      const lifecycle = await prisma.ledgerEntry.findFirst({
+        where: {
+          recordId: record.id,
+          eventType: { in: ["RECORD_VOIDED", "RECORD_SUPERSEDED"] },
+        },
+        orderBy: { sequence: "desc" },
+        select: { eventType: true },
+      });
+      const statusFromLifecycle =
+        lifecycle?.eventType === "RECORD_VOIDED"
+          ? "VOID"
+          : lifecycle?.eventType === "RECORD_SUPERSEDED"
+            ? "SUPERSEDED"
+            : null;
+
       if (entries.length === 0) {
         divergences.push({
           recordId: record.id,
@@ -386,9 +412,16 @@ export async function verifyRecordsAgainstLedger(
         }
       }
 
+      // Voiding and supersession move a record's status through their own event
+      // types rather than through an amendment, so where the ledger records one
+      // of those acts, IT supplies the expected status. Where it does not, the
+      // amendment history does. Either way the expectation comes from the
+      // ledger, so a status written straight into the row is caught.
+      const expectedStatus = statusFromLifecycle ?? committed("status", "statusTo");
+
       const checks: [string, unknown, string][] = [
         ["title", committed("title", "titleTo"), record.title],
-        ["status", committed("status", "statusTo"), record.status],
+        ["status", expectedStatus, record.status],
         [
           "classification",
           committed("classification", "classificationTo"),
@@ -397,12 +430,6 @@ export async function verifyRecordsAgainstLedger(
       ];
 
       for (const [field, inLedger, inRegister] of checks) {
-        // Voiding and supersession move a record's status through their own
-        // event types rather than through an amendment, so those two states are
-        // legitimately absent from the amendment payloads.
-        if (field === "status" && (inRegister === "VOID" || inRegister === "SUPERSEDED")) {
-          continue;
-        }
         if (typeof inLedger === "string" && inLedger !== inRegister) {
           divergences.push({
             recordId: record.id,
@@ -417,6 +444,142 @@ export async function verifyRecordsAgainstLedger(
 
     cursor = records[records.length - 1].id;
     if (records.length < pageSize) break;
+  }
+
+  divergences.push(...(await findDeletions(pageSize)));
+  return divergences;
+}
+
+/**
+ * Walk the ledger and check that everything it says exists still does.
+ *
+ * The loop above walks register → ledger, which catches a row that was *edited*
+ * but is blind to one that was *deleted*: with no row there is nothing to
+ * compare, and a register missing an inconvenient entry verifies perfectly.
+ *
+ * That is the more attractive attack of the two. Editing a record leaves a
+ * record that says the wrong thing; deleting it leaves nothing to argue with.
+ * The `onDelete: Cascade` on Attachment, Hold, Deadline and RecordRelation
+ * means one `DELETE FROM Record` also takes the evidence, the legal hold, and
+ * the deadlines with it.
+ *
+ * The ledger is what makes this recoverable. Every creation and every
+ * attachment is committed there, the chain proves the commitments were not
+ * rewritten, and so absence becomes provable rather than invisible.
+ */
+async function findDeletions(pageSize: number): Promise<RecordDivergence[]> {
+  const divergences: RecordDivergence[] = [];
+
+  // --- records the ledger says were created -------------------------------
+  //
+  // Identity comes from the PAYLOAD, never from `LedgerEntry.recordId`. The
+  // foreign key is not covered by the entry hash and, before the `Restrict`
+  // that now guards it, a deletion would have silently nulled it — so a check
+  // keyed on it would have been switched off by the very act it looks for. The
+  // payload is inside `payloadHash`, which is inside `entryHash`, which is
+  // chained. It cannot be edited without breaking verification.
+  let cursor: string | undefined;
+  for (;;) {
+    const created = await prisma.ledgerEntry.findMany({
+      take: pageSize,
+      ...(cursor ? { skip: 1, cursor: { id: cursor } } : {}),
+      where: { eventType: "RECORD_CREATED" },
+      orderBy: { id: "asc" },
+      select: { id: true, recordId: true, payload: true },
+    });
+    if (created.length === 0) break;
+
+    const wanted: { number: string; recordId: string | null }[] = [];
+    for (const entry of created) {
+      try {
+        const payload = JSON.parse(entry.payload) as { recordNumber?: unknown };
+        if (typeof payload.recordNumber === "string") {
+          wanted.push({ number: payload.recordNumber, recordId: entry.recordId });
+        }
+      } catch {
+        // verifyChain reports malformed payloads; do not double-report here.
+      }
+    }
+
+    if (wanted.length > 0) {
+      const present = new Set(
+        (
+          await prisma.record.findMany({
+            where: { recordNumber: { in: wanted.map((w) => w.number) } },
+            select: { recordNumber: true },
+          })
+        ).map((record) => record.recordNumber),
+      );
+      for (const want of wanted) {
+        if (present.has(want.number)) continue;
+        divergences.push({
+          recordId: want.recordId ?? want.number,
+          recordNumber: want.number,
+          field: "(whole record)",
+          inRegister: "MISSING — the record was deleted after it was committed",
+          inLedger: "created",
+        });
+      }
+    }
+
+    cursor = created[created.length - 1].id;
+    if (created.length < pageSize) break;
+  }
+
+  // --- attachments the ledger says were filed ------------------------------
+  // An exhibit removed from a record is the same problem in the form that
+  // matters most: the record still reads correctly and the proof is gone.
+  let attachmentCursor: string | undefined;
+  for (;;) {
+    const added = await prisma.ledgerEntry.findMany({
+      take: pageSize,
+      ...(attachmentCursor ? { skip: 1, cursor: { id: attachmentCursor } } : {}),
+      where: { eventType: "ATTACHMENT_ADDED" },
+      orderBy: { id: "asc" },
+      select: { id: true, recordId: true, payload: true },
+    });
+    if (added.length === 0) break;
+
+    const wanted: { attachmentId: string; recordNumber: string; filename: string; recordId: string | null }[] = [];
+    for (const entry of added) {
+      try {
+        const payload = JSON.parse(entry.payload) as Record<string, unknown>;
+        if (typeof payload.attachmentId === "string") {
+          wanted.push({
+            attachmentId: payload.attachmentId,
+            recordNumber: typeof payload.recordNumber === "string" ? payload.recordNumber : "(unknown)",
+            filename: typeof payload.filename === "string" ? payload.filename : "(unnamed)",
+            recordId: entry.recordId,
+          });
+        }
+      } catch {
+        // Reported by verifyChain.
+      }
+    }
+
+    if (wanted.length > 0) {
+      const present = new Set(
+        (
+          await prisma.attachment.findMany({
+            where: { id: { in: wanted.map((w) => w.attachmentId) } },
+            select: { id: true },
+          })
+        ).map((attachment) => attachment.id),
+      );
+      for (const want of wanted) {
+        if (present.has(want.attachmentId)) continue;
+        divergences.push({
+          recordId: want.recordId ?? want.attachmentId,
+          recordNumber: want.recordNumber,
+          field: `attachment ${want.filename}`,
+          inRegister: "MISSING — the attachment was removed after it was filed",
+          inLedger: want.attachmentId,
+        });
+      }
+    }
+
+    attachmentCursor = added[added.length - 1].id;
+    if (added.length < pageSize) break;
   }
 
   return divergences;

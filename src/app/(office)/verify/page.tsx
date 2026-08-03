@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { PageHeader, Panel, Caution } from "@/components/ui";
+import { oneParam } from "@/lib/format";
 
 export const metadata: Metadata = { title: "Verify a certified copy" };
 
 export default async function VerifyIndexPage({
   searchParams,
 }: {
-  searchParams: Promise<{ number?: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   // The lookup form is a plain GET so that a verification is a shareable URL —
   // a recipient can be sent straight to the result rather than instructions.
-  const { number } = await searchParams;
+  const number = oneParam((await searchParams).number);
   const trimmed = number?.trim();
   if (trimmed) redirect(`/verify/${encodeURIComponent(trimmed.toUpperCase())}`);
 

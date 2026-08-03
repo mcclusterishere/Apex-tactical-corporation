@@ -100,3 +100,21 @@ export function shortHash(hash: string | null | undefined): string {
 export function pluralise(count: number, singular: string, plural?: string): string {
   return count === 1 ? singular : (plural ?? `${singular}s`);
 }
+
+/**
+ * Read one value out of a query string.
+ *
+ * Next types `searchParams` optimistically as `{ q?: string }`, but the runtime
+ * hands back `string[]` whenever a parameter appears more than once — and
+ * `?q=a&q=b` is something anyone can type, or a crawler can generate, or a
+ * mangled redirect can produce. The optimistic type means `q.trim()` compiles
+ * and then throws at runtime, which on `/verify` and `/search` is an
+ * unauthenticated 500 on the two pages the Kingdom most wants strangers to be
+ * able to use.
+ *
+ * Taking the first occurrence matches what every other server does.
+ */
+export function oneParam(value: string | string[] | undefined): string | undefined {
+  if (value === undefined) return undefined;
+  return Array.isArray(value) ? value[0] : value;
+}

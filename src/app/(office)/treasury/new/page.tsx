@@ -5,7 +5,8 @@ import { getPrincipal, isAuthenticated } from "@/lib/auth";
 import { can } from "@/lib/authz";
 import { PageHeader, Caution, Panel } from "@/components/ui";
 import { JournalForm } from "@/components/JournalForm";
-import { postJournalAction, DUAL_CONTROL_THRESHOLD_CENTS } from "@/app/actions/treasury";
+import { postJournalAction } from "@/app/actions/treasury";
+import { DUAL_CONTROL_THRESHOLD_CENTS } from "@/lib/treasury";
 import { StepUpPrompt } from "@/components/SecurityForms";
 import { stepUpAction } from "@/app/actions/security";
 

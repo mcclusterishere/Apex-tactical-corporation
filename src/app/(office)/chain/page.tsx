@@ -1,14 +1,15 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/db";
-import { getPrincipal } from "@/lib/auth";
+import { getPrincipal, isAuthenticated } from "@/lib/auth";
 import { can } from "@/lib/authz";
 import { verifyChain, getChainHead, verifyRecordsAgainstLedger } from "@/lib/chain";
 import { visibleClassifications } from "@/lib/queries";
 import { PageHeader, Panel, Stat, ButtonLink, Caution, EmptyState } from "@/components/ui";
 import { AnchorForm } from "@/components/AnchorForm";
 import { recordAnchorAction } from "@/app/actions/chain";
-import { formatTimestamp, formatDate, shortHash } from "@/lib/format";
+import { formatTimestamp, formatDate, shortHash, oneParam } from "@/lib/format";
 
 export const metadata: Metadata = { title: "The ledger chain" };
 export const dynamic = "force-dynamic";
@@ -18,10 +19,35 @@ const PAGE_SIZE = 60;
 export default async function ChainPage({
   searchParams,
 }: {
-  searchParams: Promise<{ page?: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const principal = await getPrincipal();
-  const { page: pageRaw } = await searchParams;
+
+  /**
+   * This is the internal integrity console, not the public one.
+   *
+   * `/verify/AK-XXX-000000` is what a stranger is given: it answers one question
+   * about one record and discloses nothing else. This page is different in kind
+   * — it enumerates every act in sequence, names the records they touched, and
+   * on divergence prints the differing values themselves. Unauthenticated, that
+   * is a map of the Kingdom's sealed activity: how many records exist, in which
+   * registers, when each was touched and by whom.
+   *
+   * It is also expensive. Recomputing the whole chain and replaying every
+   * record on each page load is the right behaviour for an officer checking
+   * integrity and an obvious amplifier for anyone else — one unauthenticated
+   * request costs more than the entire rest of the application.
+   */
+  if (!isAuthenticated(principal)) {
+    redirect(`/sign-in?next=${encodeURIComponent("/chain")}`);
+  }
+
+  // Only the offices that examine the register see the differing VALUES: a
+  // divergence report quotes the record data on both sides, so an unfiltered
+  // one hands sealed content to anyone who can reach this page.
+  const mayAudit = can(principal.role, "audit:read");
+
+  const pageRaw = oneParam((await searchParams).page);
   const page = Math.max(1, Number(pageRaw) || 1);
 
   const [verification, divergences, head, anchors, total] = await Promise.all([
@@ -131,10 +157,22 @@ export default async function ChainPage({
                   {divergence.recordNumber}
                 </Link>{" "}
                 <strong>{divergence.field}</strong>
-                <span className="muted block text-xs">
-                  register: {divergence.inRegister}
-                </span>
-                <span className="muted block text-xs">ledger: {divergence.inLedger}</span>
+                {mayAudit ? (
+                  <>
+                    <span className="muted block break-all text-xs">
+                      register: {divergence.inRegister}
+                    </span>
+                    <span className="muted block break-all text-xs">
+                      ledger: {divergence.inLedger}
+                    </span>
+                  </>
+                ) : (
+                  <span className="muted block text-xs">
+                    The differing values are withheld. A divergence report quotes the record on
+                    both sides, and this one may be above your clearance. Report the record number
+                    to the Registrar or the Auditor.
+                  </span>
+                )}
               </li>
             ))}
           </ul>

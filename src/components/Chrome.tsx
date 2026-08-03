@@ -90,6 +90,7 @@ function Nav({ principal }: { principal: Principal }) {
             </>
           ) : null}
           <NavLink href="/credentials">Credentials</NavLink>
+          <NavLink href="/approvals">Dual control</NavLink>
         </div>
       ) : null}
 

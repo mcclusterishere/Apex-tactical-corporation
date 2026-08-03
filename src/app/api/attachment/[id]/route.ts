@@ -51,12 +51,21 @@ export async function GET(_request: Request, context: { params: Promise<{ id: st
   // Everything is served as an attachment with a neutral content type. Rendering
   // uploaded material inline would let an evidence file execute script in the
   // context of this application, which is exactly the wrong place for it.
-  const filename = attachment.filename.replace(/["\\\r\n]/g, "_");
+  //
+  // The filename needs both forms. HTTP header values are Latin-1, so a name in
+  // Cyrillic, Chinese, or Arabic — or one carrying a curly apostrophe — throws
+  // when set, and the download 500s permanently with the file intact and
+  // unreachable. `filename*` carries the real name per RFC 5987/6266; the plain
+  // `filename` is an ASCII fallback for anything that does not understand it.
+  const ascii = attachment.filename.replace(/[^\x20-\x7e]/g, "_").replace(/["\\\r\n]/g, "_");
+  const disposition =
+    `attachment; filename="${ascii || "attachment"}"; ` +
+    `filename*=UTF-8''${encodeURIComponent(attachment.filename)}`;
   return new NextResponse(new Uint8Array(bytes), {
     headers: {
       "Content-Type": "application/octet-stream",
       "Content-Length": String(bytes.byteLength),
-      "Content-Disposition": `attachment; filename="${filename}"`,
+      "Content-Disposition": disposition,
       "X-Content-Type-Options": "nosniff",
       "Content-Security-Policy": "default-src 'none'; sandbox",
       "Cache-Control": "private, no-store",
