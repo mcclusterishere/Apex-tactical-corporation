@@ -42,6 +42,7 @@ import agreements from "@/registries/agreements";
 import recordsRequests from "@/registries/records-requests";
 import publicBodies from "@/registries/public-bodies";
 import publicSafety from "@/registries/public-safety";
+import recognitions from "@/registries/recognitions";
 
 // Evidence & Custody
 import evidence from "@/registries/evidence";
@@ -99,6 +100,7 @@ export const REGISTRIES: readonly RegistryDef[] = [
   agreements,
   recordsRequests,
   publicSafety,
+  recognitions,
 
   evidence,
   incidents,
