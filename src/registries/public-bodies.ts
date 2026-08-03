@@ -27,11 +27,17 @@ const publicBodies: RegistryDef = {
 
 **Write to the office with authority to give you what you want.** That office is almost never the most senior name available. A certificate of occupancy is issued by the building official, not the mayor. A special permit is granted by the commission, not by its chairman personally. A records request is answered by the designated records officer, and the four-business-day clock in Conn. Gen. Stat. § 1-206(a) runs against the body only once the request reaches someone with authority to answer for it. Before drafting, settle two questions and record the answers here: what does this office have power to give, and under what provision does it hold that power. A body constituted for one purpose will refuse a request outside it however well the request is written.
 
-**Titles, because getting one wrong is read as not having done the work.** Elected officials and judges take *The Honorable [full name]* in the address block, with the office in the salutation. A mayor: *The Honorable —— ——, Mayor of the City of ——*, salutation *Dear Mayor ——*. A first selectman: *The Honorable —— ——, First Selectman, Town of ——*, salutation *Dear First Selectman ——*; some Connecticut towns style the office First Selectwoman, and the right answer is whichever the town's own site and minutes use. A state representative: *The Honorable —— ——, State Representative, ——th Assembly District, Connecticut General Assembly*, salutation *Dear Representative ——*. A state senator also takes *Dear Senator ——*, which is how a United States Senator is addressed — so the address block must say *State Senator, ——th Senatorial District* or the letter reads as though it were meant for Washington. Take the Hartford mailing address from the General Assembly's own site, not from memory. A state agency head: *Commissioner —— ——, Department of ——*, salutation *Dear Commissioner ——*; deputy commissioners and bureau chiefs are not commissioners. A municipal chief of police: *Chief —— ——, Chief of Police, —— Police Department*, salutation *Dear Chief ——*. A United States Representative: *The Honorable —— ——, U.S. House of Representatives, Washington, DC 20515*, salutation *Dear Representative ——*; a Senator: *United States Senate, Washington, DC 20510*, salutation *Dear Senator ——*. Casework goes to the district office rather than to Washington, because that is where a constituent problem is actually worked. An agency records officer takes no honorific: name, then *Freedom of Information Officer* or *Public Records Administrator*, salutation *Dear Ms. ——*; in many Connecticut towns the designated officer is the Town Clerk. A municipal lawyer takes *Esq.* and the office's own title, which varies between Corporation Counsel, City Attorney, and Town Attorney; *Dear Attorney ——* is ordinary Connecticut usage. Never write to a judge about a pending matter at all — that is an ex parte communication, and it damages the case it was meant to help.
+**Titles, because getting one wrong is read as not having done the work.** Elected officials and judges take *The Honorable [full name]* in the address block, with the office in the salutation. A mayor: *The Honorable —— ——, Mayor of the City of ——*, salutation *Dear Mayor ——*. A first selectman: *The Honorable —— ——, First Selectman, Town of ——*, salutation *Dear First Selectman ——*; some Connecticut towns style the office First Selectwoman, and the right answer is whichever the town's own site and minutes use. Not every Connecticut town has a first selectman at all. In a council-manager town the chief executive is an appointed town manager, addressed by that title and taking no honorific, while a mayor in the same town may preside over the council and decide nothing individually; writing to the ceremonial officer about an administrative matter loses a month. A borough is headed by a warden with a board of burgesses, and a letter addressed to the mayor of a borough tells the recipient before the first line that the writer has not looked. A state representative: *The Honorable —— ——, State Representative, ——th Assembly District, Connecticut General Assembly*, salutation *Dear Representative ——*. A state senator also takes *Dear Senator ——*, which is how a United States Senator is addressed — so the address block must say *State Senator, ——th Senatorial District* or the letter reads as though it were meant for Washington. Take the Hartford mailing address from the General Assembly's own site, not from memory. A state agency head: *Commissioner —— ——, Department of ——*, salutation *Dear Commissioner ——*; deputy commissioners and bureau chiefs are not commissioners. A municipal chief of police: *Chief —— ——, Chief of Police, —— Police Department*, salutation *Dear Chief ——*; a number of Connecticut towns maintain no department of their own and are policed by the State Police, in several cases through a resident state trooper, and there the counterpart is the troop commander and there is no chief to write to. A United States Representative: *The Honorable —— ——, U.S. House of Representatives, Washington, DC 20515*, salutation *Dear Representative ——*; a Senator: *United States Senate, Washington, DC 20510*, salutation *Dear Senator ——*. Casework goes to the district office rather than to Washington, because that is where a constituent problem is actually worked. An agency records officer takes no honorific: name, then *Freedom of Information Officer* or *Public Records Administrator*, salutation *Dear Ms. ——*; in many Connecticut towns the designated officer is the Town Clerk. A municipal lawyer takes *Esq.* and the office's own title, which varies between Corporation Counsel, City Attorney, and Town Attorney; *Dear Attorney ——* is ordinary Connecticut usage. Never write to a judge about a pending matter at all — that is an ex parte communication, and it damages the case it was meant to help. Two habits do as much damage as a wrong title. *To Whom It May Concern*, on a letter to an office whose staff are published on its own website, says the writer did not trouble to find out who works there. And *The Honorable* is never combined with *Esq.*, nor with *Mr.* or *Ms.*; the compound is the mark of a form letter.
+
+**Make it possible for the office to say yes without doing the Kingdom's work first.** A public office disposes of correspondence in the order it can dispose of it, and anything obliging the recipient to write back for a missing fact goes to the bottom of the pile. In a busy department the bottom of the pile is where matters die, quietly and without anyone deciding anything. Every letter should carry on its face the date; the body's own file, application, or permit number where one exists; the street address and the assessor's parcel identification where the matter concerns land; the decision complained of, by its date and by the date its notice was published; the specific thing sought, in one sentence, in the first or second paragraph; the enclosures, listed; and a named signer with an office, a direct telephone number, and a return address. Record the body's own reference number here the moment it is issued. It is the only string by which the body can retrieve its own file, and a clerk who cannot retrieve the file cannot answer the letter however sympathetic they are.
+
+**Two things harden an office against a matter that was going perfectly well.** The first is a deadline imposed on the recipient where no statute imposes one — *you must respond within ten days* — which is unenforceable, reads as a threat, and moves the letter from the clerk who could have helped to the lawyer whose job is to say no. State instead the date on which the Kingdom will follow up: it is courteous, it is within the Kingdom's own control, and it converts silence into a scheduled event rather than an insult. The second is copying a routine staff matter to the mayor, the council, and the press. That does not produce speed. It produces an internal chain about how to handle the sender, and a staff member who will now do nothing without clearance. Escalate deliberately, one step at a time, and record each step here.
 
 **Once a body is represented by counsel on a matter, correspond with counsel.** From the moment litigation is anticipated or an attorney appears, letters to the client are at best ignored and at worst treated as an attempt to go around the lawyer. Record counsel's name here the day it becomes known, and set the represented flag, so that no officer of the Kingdom writes to the client by habit.
 
 **Record the posture honestly.** A register that describes an unresponsive planning office as "cooperative" because that is the pleasanter word is worthless to the officer who inherits it. An honest record of three unanswered letters and a refused meeting is the beginning of a Freedom of Information appeal, an equal-terms comparison, or a legislator's casework request. A diplomatic record of the same facts is the beginning of nothing.
+
+**Write every entry as though the body it describes will one day read it, because one of them may.** This register is internal, but internal is not privileged, and in litigation or an administrative appeal a party's own files are ordinarily obtainable. That is not a reason to soften the posture field. Dated facts survive being quoted back: an accurate account of three unanswered letters reads the same in a hearing room as it does here, and it is the entry that does the work. What does not survive is characterisation of individuals, speculation about motive, and anything written in temper — quoted back, those turn a well-founded complaint into evidence of a grievance, and the reader stops assessing the facts and starts assessing the writer. Keep them out of the factual fields altogether.
 
 **Record where the leverage actually is, body by body.** This is the most useful field in the register, because it converts a general sense of grievance into the one specific thing that obliges this particular office to act. With a zoning or planning commission it is RLUIPA, 42 U.S.C. § 2000cc; with any public agency, the Freedom of Information Act, Conn. Gen. Stat. § 1-200 et seq., or 5 U.S.C. § 552 federally; with a legislator, constituent standing; with a grant-making agency, that programme's own published criteria and nothing else. Note the appeal route and its deadline in the same breath, because these periods are jurisdictional: a Connecticut land use appeal must be commenced within fifteen days of publication of notice of the decision (Conn. Gen. Stat. § 8-8(b)).
 
@@ -39,7 +45,7 @@ const publicBodies: RegistryDef = {
 
 **Said once, plainly.** Correspondence that opens by asserting sovereignty, immunity from the recipient's authority, or that the recipient lacks jurisdiction is routed to the law department and never answered; officials meet that vocabulary constantly and have a settled response to it. With a police department it does considerably worse, because it moves the writer from complainant to subject in the eyes of the officer reading it. The Kingdom's leverage — RLUIPA, the Freedom of Information Act, constituent casework, church autonomy under *Watson v. Jones*, 80 U.S. (13 Wall.) 679 (1871), and *Serbian Eastern Orthodox Diocese v. Milivojevich*, 426 U.S. 696 (1976) — requires no one to concede the Kingdom's status, which is precisely why it works.
 
-**Keep it current, because it decays on a schedule.** Connecticut municipal offices turn over at the general municipal election in November of odd-numbered years, and members of the General Assembly stand every two years. Verify names, titles, and addresses annually and again after any election. Nothing recorded here is process, and no entry in this register authorises anything to be served on anyone: formal service of process in a civil action is made by a state marshal under Conn. Gen. Stat. § 52-57, and on the United States under Fed. R. Civ. P. 4(i).`,
+**Keep it current, because it decays on a schedule.** Connecticut municipal offices turn over at the general municipal election in November of odd-numbered years, and members of the General Assembly stand every two years. Verify names, titles, and addresses annually and again after any election. Nothing recorded here is process, and no entry in this register authorises anything to be served on anyone: formal service of process in a civil action is made by a state marshal or other proper officer under Conn. Gen. Stat. §§ 52-50 and 52-57, and on the United States under Fed. R. Civ. P. 4(i).`,
   defaultClassification: "OFFICERS",
   defaultStatus: "UNVERIFIED",
   titleField: "bodyName",
@@ -129,9 +135,13 @@ const publicBodies: RegistryDef = {
         {
           value: "TRIBAL",
           label: "Tribal nation",
-          help: "Federally and state-recognised tribes deal government-to-government with the United States and the State. Approach as a neighbour, never as a peer sovereign, and never claim a relationship that has not been extended.",
+          help: "Federally recognised tribes deal government-to-government with the United States; a state-recognised tribe holds whatever relationship the State has extended to it, and nothing federal follows from that. Keep the two apart in writing, because conflating them is the first error an official in this field notices. Approach as a neighbour, never as a peer sovereign, and never claim a relationship that has not been extended.",
         },
-        { value: "FOREIGN", label: "Foreign state or its consulate" },
+        {
+          value: "FOREIGN",
+          label: "Foreign state or its consulate",
+          help: "A consulate deals with its own nationals — a member's passport, a document to be legalised, a death abroad. That is ordinary consular business and it confers nothing on the Kingdom. Diplomatic vocabulary belongs to states: a note verbale, a mission, an ambassador, immunity. Addressed to a Connecticut town or a federal agency it is the recognised signature of a sovereign-citizen filing, and the letter is flagged rather than read.",
+        },
         {
           value: "QUASI_PUBLIC",
           label: "Quasi-public agency or authority",
@@ -187,7 +197,7 @@ const publicBodies: RegistryDef = {
       label: "Accepts filings and correspondence by post",
       type: "boolean",
       section: "Reaching it",
-      help: "Many bodies now accept applications only through a portal and will not docket a posted one. This records how ordinary correspondence and filings are received. It says nothing about service of process in a lawsuit, which is made by a state marshal under Conn. Gen. Stat. § 52-57 and is not something this register or any document produced from it accomplishes.",
+      help: "Many bodies now accept applications only through a portal and will not docket a posted one. This records how ordinary correspondence and filings are received. It says nothing about service of process in a lawsuit, which is made by a state marshal or other proper officer under Conn. Gen. Stat. §§ 52-50 and 52-57 and is not something this register or any document produced from it accomplishes.",
     },
     {
       key: "portalAddress",
@@ -215,7 +225,7 @@ const publicBodies: RegistryDef = {
       label: "Records-request address",
       type: "textarea",
       section: "Reaching it",
-      help: "Frequently a different address from the general one, and getting it wrong costs the statutory clock: a request delivered to the wrong desk may be lawfully refused, and the four business days under Conn. Gen. Stat. § 1-206(a) restart when it is sent again. Record it separately even when it looks the same today.",
+      help: "Frequently a different address from the general one, and it matters more than it looks. Conn. Gen. Stat. § 1-206(a) places the duty to answer in writing within four business days on the agency official who has custody or control of the record; a request left with someone who has neither may simply sit, with no clock running against anyone and nothing to appeal from. Record this address separately even when it looks today like the general one, and address the request to the designated officer by name.",
     },
     {
       key: "recordsOfficer",
@@ -237,7 +247,14 @@ const publicBodies: RegistryDef = {
       label: "Public comment procedure",
       type: "textarea",
       section: "Reaching it",
-      help: "Whether comment is taken, when in the agenda, whether sign-up is required and by when, any time limit, and whether written submissions are accepted and entered on the record. Written comment filed before the meeting is usually worth more than three minutes at a microphone, because it goes into the file the decision is later reviewed on.",
+      help: "Whether comment is taken, when in the agenda, whether sign-up is required and by when, any time limit, whether written submissions are accepted and entered on the record, and — the detail most often missed — the date by which an item or a written submission must reach the clerk to appear on the agenda at all. Written comment filed before the meeting is usually worth more than three minutes at a microphone, because it goes into the file the decision is later reviewed on.",
+    },
+    {
+      key: "filingRequirements",
+      label: "What this body requires before it will act",
+      type: "textarea",
+      section: "Reaching it",
+      help: "The body's own conditions of a complete submission, taken from its own published instructions: the form and its number, how many copies, the fee and how it is payable, whether an original signature or a notarised statement is wanted, any notice the applicant must give abutters, and the cut-off before a meeting. Fill this in before drafting rather than after a return. An incomplete application is not usually refused on the merits — it is handed back, and in land use the time limits in Conn. Gen. Stat. § 8-7d run from the day of receipt as that section defines it, so an incomplete filing can cost an entire cycle. Confirm the periods and the receipt rule in that section against the current General Statutes.",
     },
     {
       key: "detailsVerifiedDate",
@@ -276,7 +293,7 @@ const publicBodies: RegistryDef = {
         { value: "BOARD_MEMBER", label: "Member of a board or commission" },
         { value: "CAREER_STAFF", label: "Career staff — planner, building official, clerk", help: "Usually the person who actually decides, and almost always the person worth knowing. No honorific; use their working title." },
         { value: "RECORDS_OFFICER", label: "Records or freedom-of-information officer" },
-        { value: "LAW_ENFORCEMENT", label: "Law enforcement officer", help: "Deal with a named community liaison, in a posture of cooperation on public safety. Never a claim of concurrent jurisdiction, never an offer of Kingdom marshals, and never a credential resembling law enforcement — Conn. Gen. Stat. §§ 53a-130 and 53a-130a." },
+        { value: "LAW_ENFORCEMENT", label: "Law enforcement officer", help: "Deal with a named community liaison, in a posture of cooperation on public safety. Never a claim of concurrent jurisdiction, never an offer of Kingdom marshals, and never a credential resembling law enforcement — Conn. Gen. Stat. §§ 53a-130 and 53a-130a. Two practical points beyond that. A department's records unit is a different counterpart from its command and from its community liaison: reports are obtained there under the Freedom of Information Act, subject to the law enforcement exemptions in Conn. Gen. Stat. § 1-210(b), which will ordinarily be claimed while an investigation remains open. And take the case or incident number at the scene, or on the first telephone call — without it a later request cannot be answered, and the matter becomes the complainant's problem rather than the department's." },
         { value: "COUNSEL", label: "Counsel to the body" },
         { value: "AIDE", label: "Aide, assistant, or scheduler", help: "Controls the diary and the routing. Being known to this person is worth more than being known to their principal." },
       ],
@@ -354,7 +371,7 @@ const publicBodies: RegistryDef = {
         },
         { value: "CT_FOIA", label: "Connecticut Freedom of Information Act — Conn. Gen. Stat. § 1-200 et seq.", help: "Reaches any public agency. Written denial due within four business days, silence deemed a denial (§ 1-206(a)), free appeal to the Commission within thirty days (§ 1-206(b)(1))." },
         { value: "FEDERAL_FOIA", label: "Federal FOIA — 5 U.S.C. § 552", help: "Determination due within twenty business days (§ 552(a)(6)(A)(i)). The administrative appeal window is set by the agency's own regulations and stated in the denial letter." },
-        { value: "CONSTITUENT_CASEWORK", label: "Constituent casework", help: "Members are voters in the district. Legislative offices respond well to a specific, bounded problem — a stalled application, an agency that will not answer — and poorly to requests for endorsement of status." },
+        { value: "CONSTITUENT_CASEWORK", label: "Constituent casework", help: "Members are voters in the district. Legislative offices respond well to a specific, bounded problem — a stalled application, an agency that will not answer — and poorly to requests for endorsement of status. Three things an aide will otherwise have to write back for, which in practice is where casework dies: the constituent must actually live in the member's district, or the office will refer the matter on and go no further; the agency's own file number; and, where a federal agency holds the file, the office's own signed release form, because the Privacy Act, 5 U.S.C. § 552a(b), bars the agency from discussing an individual's records with a member's office without that individual's written consent. Ask for the release on the first call. Keep casework distinct from advocacy on pending legislation, which is lobbying: it engages the registration regime administered by the Office of State Ethics under Conn. Gen. Stat. § 1-91 et seq., whose thresholds should be confirmed with that office rather than assumed, and it counts against the limit on substantial lobbying by an organisation exempt under 26 U.S.C. § 501(c)(3) — the expenditure election under § 501(h) not being available to a church." },
         { value: "PROGRAMME_CRITERIA", label: "A grant or programme's own published criteria", help: "For a funder, this is the only leverage there is. Meet the criteria as written; nothing else in this list moves a grant panel." },
         { value: "OPEN_MEETINGS", label: "Open meetings and notice requirements", help: "Meetings of public agencies are open and noticed in advance under the Freedom of Information Act, Conn. Gen. Stat. § 1-200 et seq.; confirm the applicable section and the notice periods before relying on them. A decision taken without proper notice is vulnerable." },
         { value: "TAX_EXEMPTION", label: "Property tax exemption — Conn. Gen. Stat. § 12-81", help: "Subdivision (13) for a house of religious worship and the land it stands on, subdivision (7) for property held by a charitable organisation and used for its exempt purposes. Claimed with the town assessor, with the quadrennial statement under §§ 12-87 and 12-87a." },
@@ -408,7 +425,7 @@ const publicBodies: RegistryDef = {
       type: "boolean",
       section: "Counsel to the body",
       summary: true,
-      help: "Set this the moment an attorney appears or litigation is anticipated. From that point correspondence goes to counsel and not to the client. A letter around the lawyer is at best ignored and at worst treated as an attempt to go behind them, and it is the officer who sent it who wears that.",
+      help: "Set this the moment an attorney appears or litigation is anticipated. From that point correspondence on that matter goes to counsel and not to the client. A letter around the lawyer is at best ignored and at worst treated as an attempt to go behind them, and it is the officer who sent it who wears that. It does not close the ordinary channels on everything else: a records request still goes to the designated records officer and an application still goes to the department that takes applications, because routing either to the town attorney instead is how the statutory clock is lost.",
     },
 
     {
@@ -428,11 +445,26 @@ const publicBodies: RegistryDef = {
       help: "The reference cited in the subject line of every communication with this body and quoted back in every reply. A consistent reference series is one of the few things that makes a small institution legible to a large one, and it makes the whole exchange retrievable years later by either side.",
     },
     {
+      key: "bodyFileReference",
+      label: "The body's own file, application, or case number",
+      type: "text",
+      section: "The Kingdom's side of the file",
+      placeholder: "e.g. Application PZ-2026-0148; Incident 26-0009123",
+      help: "The reference this body uses in its own system — application, permit, docket, complaint, or incident number. Quote it in the subject line ahead of the Kingdom's own reference, because it is the only string by which the body can search its own file. Ask for it in the first exchange and record it the day it is given. A letter carrying only the Kingdom's reference obliges a clerk to go looking, and a clerk who has to go looking usually does not.",
+    },
+    {
       key: "returnAddressUsed",
       label: "Return address used with this body",
       type: "text",
       section: "The Kingdom's side of the file",
       help: "The single address that appears on everything sent to this body. Changing it mid-relationship is how mail goes missing and how an office comes to doubt the sender is settled anywhere. If it must change, tell the body in writing before the first letter from the new address.",
+    },
+    {
+      key: "kingdomDescriptor",
+      label: "How the Kingdom is described to this body",
+      type: "textarea",
+      section: "The Kingdom's side of the file",
+      help: "Two facts, and both are load-bearing. First, the words used on the letterhead and in the signature block with this office. Outward, the description that is read is the accurate one — a religious society and charitable trust constituted in Connecticut — over a signer's own name and office. A signature block asserting a royal or governmental title on a letter to a planner is circulated around the department and answered, if at all, by counsel, and the substantive request is never reached. Internal styling belongs in internal instruments. Second, the legal name under which this body actually holds the file, which is frequently not the name the Kingdom uses of itself: the name on the deed, the application, the trade name certificate, or the exemption claim. Where the two differ, record both, and say so once in the first letter so that the body can match the correspondence to the file it belongs to.",
     },
 
     {
@@ -483,7 +515,7 @@ const publicBodies: RegistryDef = {
       offsetDays: 335,
       severity: "ROUTINE",
       detail:
-        "A year since anyone checked. Confirm the official's name and exact title, the mailing and records-request addresses, the meeting schedule, and counsel, against the body's own current publication. A letter addressed to a title someone else now holds is the clearest possible signal that the Kingdom has not looked at the office in years.",
+        "Nearly a year since anyone checked. Confirm the official's name and exact title, the mailing and records-request addresses, the meeting schedule, and counsel, against the body's own current publication. A letter addressed to a title someone else now holds is the clearest possible signal that the Kingdom has not looked at the office in years.",
     },
     {
       id: "pbo-term-ending",
