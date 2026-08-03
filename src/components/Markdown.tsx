@@ -18,6 +18,26 @@ import type { ReactNode } from "react";
 
 type Inline = ReactNode;
 
+/**
+ * Permit only link targets that cannot execute.
+ *
+ * React escapes element content, so injected markup renders as visible text.
+ * It does NOT sanitise the `href` attribute, so `[text](javascript:...)` would
+ * otherwise produce a working script link. Everything here is authored in-repo,
+ * which makes this unlikely rather than impossible — and "unlikely" is not the
+ * standard for a page that states the Kingdom's legal position.
+ */
+function safeHref(href: string): string | null {
+  const trimmed = href.trim();
+  // Relative and fragment links are always fine.
+  if (/^([./#?]|$)/.test(trimmed)) return trimmed;
+  // Strip control characters and whitespace before testing the scheme;
+  // an embedded tab or newline is the classic way past a naive prefix check.
+  const scheme = /^([a-z][a-z0-9+.-]*):/i.exec(trimmed.replace(/[\u0000-\u0020]/g, ""));
+  if (!scheme) return trimmed; // no scheme at all — a bare path
+  return ["http", "https", "mailto"].includes(scheme[1].toLowerCase()) ? trimmed : null;
+}
+
 function renderInline(text: string, keyPrefix: string): Inline[] {
   const nodes: Inline[] = [];
   // Ordered by precedence: code first so its contents are not further parsed.
@@ -41,17 +61,23 @@ function renderInline(text: string, keyPrefix: string): Inline[] {
     } else if (token.startsWith("[")) {
       const split = token.indexOf("](");
       const label = token.slice(1, split);
-      const href = token.slice(split + 2, -1);
-      const external = /^https?:\/\//i.test(href);
-      nodes.push(
-        <a
-          key={key}
-          href={href}
-          {...(external ? { target: "_blank", rel: "noopener noreferrer nofollow" } : {})}
-        >
-          {label}
-        </a>,
-      );
+      const href = safeHref(token.slice(split + 2, -1));
+      if (href === null) {
+        // A target that could execute is dropped, and the label survives as
+        // plain text so the reader still sees what the document said.
+        nodes.push(<span key={key}>{label}</span>);
+      } else {
+        const external = /^https?:\/\//i.test(href);
+        nodes.push(
+          <a
+            key={key}
+            href={href}
+            {...(external ? { target: "_blank", rel: "noopener noreferrer nofollow" } : {})}
+          >
+            {label}
+          </a>,
+        );
+      }
     } else {
       nodes.push(<em key={key}>{token.slice(1, -1)}</em>);
     }

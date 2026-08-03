@@ -132,10 +132,14 @@ record from day one. Obtain every denial, condition, and continuance in writing
 with the reasons stated.
 
 **Tax exemption.** Property held for religious or charitable purposes is exempt
-under Conn. Gen. Stat. § 12-81(7), claimed by filing with the town assessor, with
-the quadrennial statement required by Conn. Gen. Stat. §§ 12-87 and 12-87a. The
-assessment date is 1 October, and a missed window costs a full cycle with no
-equitable relief.
+under Conn. Gen. Stat. § 12-81 — subdivision (13) covers a house of religious
+worship and the land it stands on, subdivision (7) property held by a charitable
+organisation and used for its exempt purposes. Which applies turns on the use and
+on the form of the entity holding title; ask the assessor in writing which
+subdivision to claim and on what form. The exemption is claimed by filing with the
+town assessor, with the quadrennial statement required by Conn. Gen. Stat.
+§§ 12-87 and 12-87a. The assessment date is 1 October, and a missed window costs a
+full cycle with no equitable relief.
 
 **Police liaison.** The correct posture is a named community contact, advance
 notice of gatherings, and cooperation on public safety. It is never a claim of
@@ -164,8 +168,10 @@ a shelf life. Legislative offices respond well to a constituent with a specific,
 bounded problem — a stalled application, an agency that will not answer — and
 poorly to requests for endorsement of status.
 
-**The Connecticut Indian Affairs Council**, constituted under Conn. Gen. Stat.
-§ 47-59a et seq., sits alongside the tribes the State recognises. Engagement is
+**The Connecticut Indian Affairs Council**, a statutory body under Title 47 of the
+General Statutes, sits alongside the tribes the State recognises. Confirm the
+constituting section and the Council's current composition before citing either.
+Engagement is
 worth having on one condition: that it is honest about what the Kingdom is and is
 not. An approach framed as one tribal government to another creates a written
 record inside a state agency that follows the Kingdom into every later dealing.

@@ -204,7 +204,7 @@ const consents: RegistryDef = {
       section: "Execution",
       options: [
         { value: "WET_INK", label: "Wet ink, original held" },
-        { value: "ESIGN", label: "Electronic signature with audit trail", help: "Enforceable under the E-SIGN Act, provided the platform's certificate of completion is retained with the record." },
+        { value: "ESIGN", label: "Electronic signature with audit trail", help: "A signature is not denied effect merely because it is electronic — 15 U.S.C. Sec. 7001 and Connecticut's Uniform Electronic Transactions Act, Conn. Gen. Stat. Sec. 1-266 et seq. Neither statute supplies proof that this person signed, so retain the platform's certificate of completion and audit trail with the record; that is what answers a denial of signature." },
         { value: "CLICKWRAP", label: "Click-through acceptance", help: "The weakest form. Enforceable only where the terms were conspicuous and assent was unmistakable." },
         { value: "BROWSEWRAP", label: "Notice on a page or wall", help: "Not consent. Courts reject this routinely. Do not rely on it for anything." },
       ],
