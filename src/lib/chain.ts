@@ -42,7 +42,17 @@ export type LedgerEventType =
   | "GAZETTE_PUBLISHED"
   | "HOLD_ISSUED"
   | "HOLD_RELEASED"
-  | "CHAIN_ANCHORED";
+  | "CHAIN_ANCHORED"
+  | "CHECKPOINT_CUT"
+  | "JOURNAL_POSTED"
+  | "JOURNAL_REVERSED"
+  | "CREDENTIAL_ISSUED"
+  | "CREDENTIAL_REVOKED"
+  | "KEY_ENROLLED"
+  | "KEY_REVOKED"
+  | "APPROVAL_REQUESTED"
+  | "APPROVAL_GRANTED"
+  | "APPROVAL_REJECTED";
 
 export function sha256Hex(input: string | Buffer): string {
   return createHash("sha256").update(input).digest("hex");

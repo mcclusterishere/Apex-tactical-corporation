@@ -149,10 +149,13 @@ export function toFormRegistry(registry: RegistryDef): FormRegistry {
 export const REGISTRY_GROUPS = [
   "governance",
   "people",
+  "identity",
   "property",
+  "enterprise",
   "rights",
   "relations",
   "evidence",
+  "treasury",
   "stewardship",
 ] as const;
 
@@ -166,6 +169,9 @@ export const REGISTRY_GROUP_LABELS: Record<RegistryGroup, string> = {
   relations: "External Relations",
   evidence: "Evidence & Custody",
   stewardship: "Stewardship & Finance",
+  identity: "Identity & Credentials",
+  enterprise: "Assets & Entities",
+  treasury: "Treasury & Obligations",
 };
 
 export const REGISTRY_GROUP_BLURBS: Record<RegistryGroup, string> = {
@@ -180,4 +186,8 @@ export const REGISTRY_GROUP_BLURBS: Record<RegistryGroup, string> = {
   evidence:
     "Material collected for use in a proceeding, with the custody record that makes it usable.",
   stewardship: "Funds received and disbursed, and the accounting owed to members and donors.",
+  identity: "Who the Kingdom has recognised, and the credentials issued to them.",
+  enterprise: "What the Kingdom holds, who holds it, and the bodies chartered under it.",
+  treasury:
+    "Obligations, accounts, and purchasing — the money side of the institution, where the controls matter most.",
 };

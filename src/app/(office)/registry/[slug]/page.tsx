@@ -4,8 +4,9 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/db";
 import { getPrincipal, isAuthenticated } from "@/lib/auth";
 import { canWriteRegistry } from "@/lib/authz";
+import { canReadRecord } from "@/lib/access";
 import { getRegistry } from "@/registries";
-import { visibleClassifications } from "@/lib/queries";
+import { visibleClassificationsIn, filterSearchLeaks } from "@/lib/queries";
 import { parseJson } from "@/lib/canonical";
 import {
   PageHeader,
@@ -51,7 +52,7 @@ export default async function RegistryPage({
 
   const where = {
     registry: registry.slug,
-    classification: { in: visibleClassifications(principal) },
+    classification: { in: visibleClassificationsIn(principal, registry.slug) },
     ...(status ? { status } : {}),
     ...(query
       ? {
@@ -64,7 +65,7 @@ export default async function RegistryPage({
       : {}),
   };
 
-  const [records, total] = await Promise.all([
+  const [candidates, total] = await Promise.all([
     prisma.record.findMany({
       where,
       orderBy: [{ recordedAt: "desc" }],
@@ -73,6 +74,10 @@ export default async function RegistryPage({
     }),
     prisma.record.count({ where }),
   ]);
+
+  // When a query is present, drop rows that matched only in fields the reader
+  // may not see. See filterSearchLeaks.
+  const records = query ? filterSearchLeaks(principal, candidates, query) : candidates;
 
   const columns = registry.listColumns
     .map((key) => registry.fields.find((field) => field.key === key))

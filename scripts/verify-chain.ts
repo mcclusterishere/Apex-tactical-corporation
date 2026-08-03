@@ -10,9 +10,10 @@
  */
 
 import { PrismaClient } from "@prisma/client";
-import { createHash } from "node:crypto";
+import { createHash, verify, createPublicKey } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { leafHash, merkleRoot } from "../src/lib/merkle";
 
 const prisma = new PrismaClient();
 const GENESIS_PREV_HASH = "0".repeat(64);
@@ -256,6 +257,128 @@ async function main() {
   }
   if (attachments.length > 0 && missing === 0 && corrupt === 0) {
     console.log("  OK    every stored file matches its recorded digest");
+  }
+
+  // --- The books ----------------------------------------------------------
+  //
+  // Double entry only detects errors if the constraint is actually re-checked.
+  // A trial balance that foots can still hide two offsetting alterations, so
+  // every entry is re-summed individually.
+  const journals = await prisma.journalEntry.findMany({
+    where: { status: { in: ["POSTED", "REVERSED"] } },
+    include: { postings: true },
+  });
+  console.log(`\nTreasury: ${journals.length} posted entr${journals.length === 1 ? "y" : "ies"}`);
+
+  let unbalanced = 0;
+  let bookDebits = 0;
+  let bookCredits = 0;
+  for (const journal of journals) {
+    const debits = journal.postings.reduce((sum, p) => sum + p.debitCents, 0);
+    const credits = journal.postings.reduce((sum, p) => sum + p.creditCents, 0);
+    bookDebits += debits;
+    bookCredits += credits;
+    if (debits !== credits) {
+      console.error(
+        `  FAIL  ${journal.entryNumber} does not balance: debits ${(debits / 100).toFixed(2)}, credits ${(credits / 100).toFixed(2)}`,
+      );
+      unbalanced += 1;
+      failures += 1;
+    }
+    if (journal.postings.length < 2) {
+      console.error(`  FAIL  ${journal.entryNumber} has fewer than two postings`);
+      failures += 1;
+    }
+  }
+  if (bookDebits !== bookCredits) {
+    console.error(
+      `  FAIL  trial balance does not foot: debits ${(bookDebits / 100).toFixed(2)}, credits ${(bookCredits / 100).toFixed(2)}`,
+    );
+    failures += 1;
+  } else if (journals.length > 0 && unbalanced === 0) {
+    console.log(`  OK    every entry balances; the book foots at ${(bookDebits / 100).toFixed(2)}`);
+  }
+
+  // --- Signatures ---------------------------------------------------------
+  const signatures = await prisma.entrySignature.findMany({
+    include: { key: true, entry: true },
+  });
+  console.log(`\nSignatures: ${signatures.length}`);
+  let badSignatures = 0;
+  for (const sig of signatures) {
+    const message = [
+      "apex-kingdom:ledger:v1",
+      String(sig.entry.sequence),
+      sig.entry.entryHash,
+      sig.purpose,
+    ].join("\n");
+    let valid = false;
+    try {
+      valid = verify(
+        null,
+        Buffer.from(message, "utf8"),
+        createPublicKey({
+          key: Buffer.from(sig.key.publicKey, "base64"),
+          format: "der",
+          type: "spki",
+        }),
+        Buffer.from(sig.signature, "base64"),
+      );
+    } catch {
+      valid = false;
+    }
+    if (!valid) {
+      console.error(`  FAIL  signature on entry #${sig.entry.sequence} does not verify`);
+      badSignatures += 1;
+      failures += 1;
+    }
+  }
+  if (signatures.length > 0 && badSignatures === 0) {
+    console.log("  OK    every signature verifies against its key");
+  } else if (signatures.length === 0) {
+    console.log("  ----  no entries have been signed. Enrol a signing key to attribute acts cryptographically.");
+  }
+
+  // --- Transparency log ---------------------------------------------------
+  const checkpoints = await prisma.merkleCheckpoint.findMany({ orderBy: { treeSize: "asc" } });
+  console.log(`\nTransparency log: ${checkpoints.length} checkpoint(s)`);
+  if (checkpoints.length > 0) {
+    const allEntries = await prisma.ledgerEntry.findMany({
+      orderBy: { sequence: "asc" },
+      select: { entryHash: true },
+    });
+    let badCheckpoints = 0;
+    for (const checkpoint of checkpoints) {
+      const leaves = allEntries
+        .slice(0, checkpoint.treeSize)
+        .map((e) => leafHash(e.entryHash));
+      if (leaves.length !== checkpoint.treeSize) {
+        console.error(
+          `  FAIL  checkpoint at size ${checkpoint.treeSize} but only ${leaves.length} entries exist`,
+        );
+        badCheckpoints += 1;
+        failures += 1;
+        continue;
+      }
+      const root = merkleRoot(leaves).toString("hex");
+      if (root !== checkpoint.rootHash) {
+        console.error(
+          `  FAIL  checkpoint at size ${checkpoint.treeSize} recomputes to ${root.slice(0, 16)}… but stores ${checkpoint.rootHash.slice(0, 16)}…`,
+        );
+        badCheckpoints += 1;
+        failures += 1;
+      }
+    }
+    if (badCheckpoints === 0) {
+      console.log("  OK    every published root recomputes from the log");
+    }
+    const head = checkpoints[checkpoints.length - 1];
+    const behind = total - head.treeSize;
+    if (behind > 0) {
+      console.log(`  WARN  ${behind} entries are not covered by any published root.`);
+    }
+  } else if (total > 0) {
+    console.log("  WARN  no checkpoint has been cut. Inclusion proofs cannot be issued.");
   }
 
   // --- External anchoring -------------------------------------------------

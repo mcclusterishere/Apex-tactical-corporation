@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { getPrincipal, assertPermission } from "@/lib/auth";
 import { can } from "@/lib/authz";
-import { canWriteRegistry } from "@/lib/authz";
+import { canReadRecord } from "@/lib/access";
 import { getRegistry } from "@/registries";
 import {
   createRecord,
@@ -17,6 +17,14 @@ import {
 import { appendToChain } from "@/lib/chain";
 import { recordAudit } from "@/lib/audit";
 import { isClassification } from "@/lib/classification";
+import {
+  assertCanMutate,
+  assertRegistryWrite,
+  assertNotHeld,
+  assertPasswordChanged,
+  AccessError,
+} from "@/lib/access";
+import { assertMfa } from "@/lib/auth";
 
 // A "use server" module may only export async functions, so this type is the
 // only non-function export permitted here — types are erased at compile time.
@@ -67,6 +75,9 @@ function failure(error: unknown, values: Record<string, string | string[]>): For
   if (error instanceof RecordError) {
     return { ok: false, message: error.message, fieldErrors: error.fieldErrors, values };
   }
+  if (error instanceof AccessError) {
+    return { ok: false, message: error.message, values };
+  }
   console.error("[records] unexpected failure", error);
   return {
     ok: false,
@@ -84,14 +95,20 @@ export async function createRecordAction(
   const registry = getRegistry(registrySlug);
   if (!registry) return { ok: false, message: "No such register." };
 
-  if (!canWriteRegistry(principal.role, registry.restrictedTo)) {
-    return {
-      ok: false,
-      message: `The office of ${principal.role} may not enter records in the ${registry.title}.`,
-    };
-  }
-
   const { data, values } = collect(registrySlug, formData);
+
+  try {
+    assertMfa(principal);
+    assertPasswordChanged(principal);
+    if (!can(principal.role, "record:create")) {
+      throw new AccessError(
+        `Refused: the office of ${principal.role} does not carry the power to record entries.`,
+      );
+    }
+    assertRegistryWrite(principal, registry, "record entries");
+  } catch (error) {
+    return failure(error, values);
+  }
   const classification = String(formData.get("_classification") ?? registry.defaultClassification);
   const status = String(formData.get("_status") ?? registry.defaultStatus);
   const effectiveDate = String(formData.get("_effectiveDate") ?? "") || null;
@@ -129,14 +146,20 @@ export async function amendRecordAction(
   const registry = getRegistry(existing.registry);
   if (!registry) return { ok: false, message: "No such register." };
 
-  if (!canWriteRegistry(principal.role, registry.restrictedTo)) {
-    return {
-      ok: false,
-      message: `The office of ${principal.role} may not amend records in the ${registry.title}.`,
-    };
-  }
-
   const { data, values } = collect(existing.registry, formData);
+
+  try {
+    assertMfa(principal);
+    assertPasswordChanged(principal);
+    await assertCanMutate(principal, recordId, {
+      permission: "record:amend",
+      act: "amend records",
+    });
+    // A held record is frozen against amendment as well as voiding.
+    await assertNotHeld(recordId, "amended");
+  } catch (error) {
+    return failure(error, values);
+  }
   const classification = String(formData.get("_classification") ?? existing.classification);
   const status = String(formData.get("_status") ?? existing.status);
   const effectiveDate = String(formData.get("_effectiveDate") ?? "") || null;
@@ -179,7 +202,12 @@ export async function voidRecordAction(
 ): Promise<FormState> {
   const principal = await getPrincipal();
   try {
-    assertPermission(principal, "record:void");
+    assertMfa(principal);
+    assertPasswordChanged(principal);
+    await assertCanMutate(principal, recordId, {
+      permission: "record:void",
+      act: "void records",
+    });
     await voidRecord(principal, recordId, String(formData.get("reason") ?? ""));
   } catch (error) {
     return failure(error, {});
@@ -194,19 +222,40 @@ export async function supersedeRecordAction(
   formData: FormData,
 ): Promise<FormState> {
   const principal = await getPrincipal();
-  const replacementNumber = String(formData.get("replacementNumber") ?? "").trim();
+  const replacementNumber = String(formData.get("replacementNumber") ?? "").trim().toUpperCase();
   const note = String(formData.get("note") ?? "");
 
   try {
-    assertPermission(principal, "record:amend");
+    assertMfa(principal);
+    assertPasswordChanged(principal);
+    const { record: superseded, registry } = await assertCanMutate(principal, recordId, {
+      permission: "record:amend",
+      act: "amend records",
+    });
+    await assertNotHeld(recordId, "superseded");
+
     const replacement = await prisma.record.findUnique({
       where: { recordNumber: replacementNumber },
+      select: { id: true, registry: true, classification: true, recordNumber: true },
     });
-    if (!replacement) {
+
+    // The replacement must be readable, and must sit in the same register. Both
+    // checks matter: without the first, an officer could confirm the existence
+    // of records above their clearance by trying numbers; without the second,
+    // supersession could link a public record to a sealed one and leak the
+    // relationship on the public record's page.
+    if (!replacement || !canReadRecord(principal, replacement)) {
       return {
         ok: false,
         message: `No record bears the number ${replacementNumber}.`,
         fieldErrors: { replacementNumber: "Not found." },
+      };
+    }
+    if (replacement.registry !== superseded.registry) {
+      return {
+        ok: false,
+        message: `${replacementNumber} is in a different register. A record can only be superseded within the ${registry.title}.`,
+        fieldErrors: { replacementNumber: "Wrong register." },
       };
     }
     await supersedeRecord(principal, recordId, replacement.id, note);
@@ -246,9 +295,17 @@ export async function relateRecordAction(
   const kind = String(formData.get("kind") ?? "CITES").toUpperCase();
   const note = String(formData.get("note") ?? "").trim();
 
-  if (!can(principal.role, "record:amend")) {
-    return { ok: false, message: "Linking records requires recording authority." };
+  try {
+    assertMfa(principal);
+    assertPasswordChanged(principal);
+    await assertCanMutate(principal, recordId, {
+      permission: "record:amend",
+      act: "link records",
+    });
+  } catch (error) {
+    return failure(error, {});
   }
+
   if (!RELATION_KINDS.has(kind)) {
     return { ok: false, message: "Unrecognised relation." };
   }
@@ -260,8 +317,13 @@ export async function relateRecordAction(
     };
   }
 
-  const target = await prisma.record.findUnique({ where: { recordNumber: targetNumber } });
-  if (!target) {
+  const target = await prisma.record.findUnique({
+    where: { recordNumber: targetNumber },
+    select: { id: true, registry: true, classification: true, recordNumber: true },
+  });
+  // Unreadable and non-existent are the same answer: a link form must not become
+  // a way to probe for records above one's clearance.
+  if (!target || !canReadRecord(principal, target)) {
     return {
       ok: false,
       message: `No record bears the number ${targetNumber}.`,
@@ -308,7 +370,12 @@ export async function issueHoldAction(
   }
 
   try {
-    assertPermission(principal, "hold:issue");
+    assertMfa(principal);
+    assertPasswordChanged(principal);
+    await assertCanMutate(principal, recordId, {
+      permission: "hold:issue",
+      act: "issue legal holds",
+    });
     const hold = await prisma.legalHold.create({
       data: {
         recordId,

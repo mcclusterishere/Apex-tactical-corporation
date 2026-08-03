@@ -36,26 +36,69 @@ model User {
   active       Boolean   @default(true)
   mustResetPw  Boolean   @default(false)
   lastLoginAt  DateTime?
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
 
-  sessions     Session[]
+  // Second factor. The TOTP secret is stored sealed (AES-256-GCM under the
+  // application master key), never in the clear. See src/lib/secrets.ts.
+  totpSecretEnc  String?
+  totpEnrolledAt DateTime?
+  // Single-use recovery codes, stored only as hashes.
+  recoveryCodes  RecoveryCode[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  sessions      Session[]
   ledgerEntries LedgerEntry[]
-  auditEvents  AuditEvent[]
+  auditEvents   AuditEvent[]
+  signingKeys   SigningKey[]
+  approvalVotes ApprovalVote[]
 
   @@index([role])
 }
 
-model Session {
-  id        String   @id @default(cuid())
+// Single-use codes that recover an account when the second factor is lost.
+// Stored as SHA-256 digests: a dump of this table cannot be used to sign in.
+model RecoveryCode {
+  id        String    @id @default(cuid())
   userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  tokenHash String   @unique
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  codeHash  String    @unique
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([userId, usedAt])
+}
+
+// Sign-in attempts, kept for lockout and for the audit record. A public
+// deployment without this is a deployment with an unlimited password oracle.
+model LoginAttempt {
+  id        String   @id @default(cuid())
+  email     String
+  ip        String?
+  success   Boolean
+  reason    String?
+  createdAt DateTime @default(now())
+
+  @@index([email, createdAt])
+  @@index([ip, createdAt])
+}
+
+model Session {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash String    @unique
   expiresAt DateTime
   ip        String?
   userAgent String?
   revokedAt DateTime?
-  createdAt DateTime @default(now())
+  // Set once the second factor has been presented for this session. A session
+  // that has not cleared MFA can read but cannot act.
+  mfaAt     DateTime?
+  // Set when the officer re-authenticated for a consequential act. Short-lived;
+  // see STEP_UP_TTL_MS in src/lib/auth.ts.
+  stepUpAt  DateTime?
+  createdAt DateTime  @default(now())
 
   @@index([userId])
   @@index([expiresAt])
@@ -66,30 +109,30 @@ model Session {
 // ---------------------------------------------------------------------------
 
 model Record {
-  id            String   @id @default(cuid())
+  id             String    @id @default(cuid())
   // Registry slug, e.g. "citizens", "intellectual-property". Declared in code.
-  registry      String
+  registry       String
   // Human-facing, permanent, gapless identifier, e.g. "AK-IP-000014".
-  recordNumber  String   @unique
-  title         String
+  recordNumber   String    @unique
+  title          String
   // Registry-specific payload, validated against the registry's field definitions.
-  data          String   @default("{}")
+  data           String    @default("{}")
   // PUBLIC | MEMBERS | OFFICERS | SEALED — see src/lib/classification.ts
-  classification String  @default("OFFICERS")
+  classification String    @default("OFFICERS")
   // Registry-defined lifecycle state, e.g. "ACTIVE", "SUPERSEDED", "WITHDRAWN".
-  status        String   @default("ACTIVE")
+  status         String    @default("ACTIVE")
   // Date the underlying act occurred (may precede the date it was recorded).
-  effectiveDate DateTime?
+  effectiveDate  DateTime?
   // Set when a later record replaces this one; preserves the chain of title.
   supersededById String?
-  supersededBy  Record?  @relation("Supersession", fields: [supersededById], references: [id], onDelete: SetNull)
-  supersedes    Record[] @relation("Supersession")
+  supersededBy   Record?   @relation("Supersession", fields: [supersededById], references: [id], onDelete: SetNull)
+  supersedes     Record[]  @relation("Supersession")
 
-  recordedAt    DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  recordedAt DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
   // Soft-delete only. Records are never physically removed; see docs/03.
-  voidedAt      DateTime?
-  voidReason    String?
+  voidedAt   DateTime?
+  voidReason String?
 
   attachments   Attachment[]
   ledgerEntries LedgerEntry[]
@@ -126,32 +169,32 @@ model RecordRelation {
 // ---------------------------------------------------------------------------
 
 model Attachment {
-  id           String   @id @default(cuid())
-  recordId     String
-  record       Record   @relation(fields: [recordId], references: [id], onDelete: Cascade)
-  filename     String
-  contentType  String
-  byteSize     Int
+  id             String    @id @default(cuid())
+  recordId       String
+  record         Record    @relation(fields: [recordId], references: [id], onDelete: Cascade)
+  filename       String
+  contentType    String
+  byteSize       Int
   // SHA-256 over the exact bytes received. This is the evidentiary anchor.
-  sha256       String
-  storageKey   String
+  sha256         String
+  storageKey     String
   // How the item came into the Registrar's possession.
-  acquiredFrom String?
-  acquiredAt   DateTime?
+  acquiredFrom   String?
+  acquiredAt     DateTime?
   // Free-text description of collection method, for chain-of-custody purposes.
   collectionNote String?
-  classification String @default("OFFICERS")
-  uploadedById String?
-  createdAt    DateTime @default(now())
+  classification String    @default("OFFICERS")
+  uploadedById   String?
+  createdAt      DateTime  @default(now())
 
-  custody      CustodyEvent[]
+  custody CustodyEvent[]
 
   @@index([recordId])
   @@index([sha256])
 }
 
 model CustodyEvent {
-  id           String   @id @default(cuid())
+  id           String     @id @default(cuid())
   attachmentId String
   attachment   Attachment @relation(fields: [attachmentId], references: [id], onDelete: Cascade)
   // RECEIVED | TRANSFERRED | EXAMINED | COPIED | PRODUCED | RETURNED | SEALED
@@ -160,7 +203,7 @@ model CustodyEvent {
   counterparty String?
   occurredAt   DateTime
   note         String?
-  createdAt    DateTime @default(now())
+  createdAt    DateTime   @default(now())
 
   @@index([attachmentId, occurredAt])
 }
@@ -189,6 +232,8 @@ model LedgerEntry {
   actor       User?    @relation(fields: [actorId], references: [id], onDelete: SetNull)
   actorLabel  String
   createdAt   DateTime @default(now())
+
+  signatures EntrySignature[]
 
   @@index([recordId])
   @@index([eventType])
@@ -222,34 +267,34 @@ model ChainAnchor {
 // anticipated. Spoliation of evidence is the fastest way to lose a case you
 // would otherwise win.
 model LegalHold {
-  id          String   @id @default(cuid())
-  recordId    String
-  record      Record   @relation(fields: [recordId], references: [id], onDelete: Cascade)
-  matter      String
-  reason      String
-  issuedBy    String
-  issuedAt    DateTime @default(now())
-  releasedAt  DateTime?
-  releasedBy  String?
+  id         String    @id @default(cuid())
+  recordId   String
+  record     Record    @relation(fields: [recordId], references: [id], onDelete: Cascade)
+  matter     String
+  reason     String
+  issuedBy   String
+  issuedAt   DateTime  @default(now())
+  releasedAt DateTime?
+  releasedBy String?
 
   @@index([recordId, releasedAt])
 }
 
 // Statutory and administrative dates that forfeit rights if missed.
 model Deadline {
-  id          String   @id @default(cuid())
+  id          String    @id @default(cuid())
   recordId    String?
-  record      Record?  @relation(fields: [recordId], references: [id], onDelete: Cascade)
+  record      Record?   @relation(fields: [recordId], references: [id], onDelete: Cascade)
   title       String
   detail      String?
   dueOn       DateTime
   // Authority that creates the deadline, e.g. "17 U.S.C. 412", "15 U.S.C. 1058".
   authority   String?
   // CRITICAL | HIGH | ROUTINE
-  severity    String   @default("HIGH")
+  severity    String    @default("HIGH")
   completedAt DateTime?
   completedBy String?
-  createdAt   DateTime @default(now())
+  createdAt   DateTime  @default(now())
 
   @@index([dueOn, completedAt])
   @@index([recordId])
@@ -292,4 +337,298 @@ model GazetteIssue {
   chainHead   String?
   chainSeq    Int?
   createdAt   DateTime @default(now())
+}
+
+// ===========================================================================
+// CRYPTOGRAPHIC IDENTITY
+// ===========================================================================
+
+// An officer's signing key.
+//
+// The hash chain proves the register was not rewritten. It does not prove WHO
+// performed an act — `actorLabel` is a string the server wrote. A signature
+// closes that gap: an entry signed under an officer's key could only have been
+// produced by someone holding that officer's passphrase.
+//
+// The private key is sealed with AES-256-GCM under a key derived from the
+// officer's own passphrase, so the server cannot sign on their behalf. That is
+// the whole point: a compromised database yields no signing capability, and an
+// officer can genuinely repudiate an act they did not authorise.
+model SigningKey {
+  id             String    @id @default(cuid())
+  userId         String
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  algorithm      String    @default("Ed25519")
+  // Base64 SPKI DER. Public: published on the officer's commission.
+  publicKey      String
+  // Base64 AES-256-GCM ciphertext of the PKCS#8 private key.
+  privateKeyEnc  String
+  // Base64 salt and IV for the passphrase-derived wrapping key.
+  wrapSalt       String
+  wrapIv         String
+  // SHA-256 of the public key, hex. The human-comparable identifier.
+  fingerprint    String    @unique
+  label          String?
+  createdAt      DateTime  @default(now())
+  revokedAt      DateTime?
+  revokedReason  String?
+  // Superseded rather than deleted, so historical signatures stay verifiable.
+  supersededById String?
+
+  signatures  EntrySignature[]
+  credentials Credential[]
+
+  @@index([userId, revokedAt])
+}
+
+// A detached signature over a ledger entry.
+//
+// Kept separate from LedgerEntry because a single entry may carry several: the
+// acting officer attests, a second officer countersigns a disbursement, the
+// Registrar seals a checkpoint.
+model EntrySignature {
+  id        String      @id @default(cuid())
+  entryId   String
+  entry     LedgerEntry @relation(fields: [entryId], references: [id], onDelete: Cascade)
+  keyId     String
+  key       SigningKey  @relation(fields: [keyId], references: [id], onDelete: Restrict)
+  // Base64 Ed25519 signature over the entry hash.
+  signature String
+  // ATTESTATION | COUNTERSIGNATURE | CHECKPOINT | AUTHORISATION
+  purpose   String      @default("ATTESTATION")
+  signedAt  DateTime    @default(now())
+
+  @@unique([entryId, keyId, purpose])
+  @@index([keyId])
+}
+
+// ===========================================================================
+// TRANSPARENCY LOG
+// ===========================================================================
+
+// A signed commitment to the whole ledger at a point in time.
+//
+// A hash chain proves order and integrity but forces a verifier to read every
+// entry. A Merkle tree over the same entries lets the Kingdom prove that ONE
+// record is in the log — with a proof of log(n) hashes — without disclosing any
+// other entry. For a register whose contents are mostly private, that is the
+// difference between "trust our extract" and "check it yourself".
+//
+// Modelled on RFC 6962 (Certificate Transparency).
+model MerkleCheckpoint {
+  id           String   @id @default(cuid())
+  // Number of ledger entries covered. Also the tree size.
+  treeSize     Int      @unique
+  rootHash     String
+  // Signature by the Registrar's key over (treeSize || rootHash || createdAt).
+  signature    String?
+  signingKeyId String?
+  createdAt    DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+// ===========================================================================
+// TREASURY — double-entry accounting
+// ===========================================================================
+
+// A restricted or unrestricted fund. Donor restrictions are legally binding on
+// a charitable institution; spending a restricted gift on general operations is
+// a breach of trust, not a bookkeeping error. Funds keep the distinction
+// visible in every posting.
+model Fund {
+  id             String   @id @default(cuid())
+  code           String   @unique
+  name           String
+  // UNRESTRICTED | TEMPORARILY_RESTRICTED | PERMANENTLY_RESTRICTED
+  restriction    String   @default("UNRESTRICTED")
+  purpose        String?
+  // The instrument or gift agreement that created the restriction.
+  sourceRecordId String?
+  active         Boolean  @default(true)
+  createdAt      DateTime @default(now())
+
+  accounts Account[]
+  postings Posting[]
+}
+
+// A line in the chart of accounts.
+model Account {
+  id              String    @id @default(cuid())
+  code            String    @unique
+  name            String
+  // ASSET | LIABILITY | NET_ASSETS | REVENUE | EXPENSE
+  type            String
+  subtype         String?
+  fundId          String?
+  fund            Fund?     @relation(fields: [fundId], references: [id], onDelete: SetNull)
+  parentId        String?
+  parent          Account?  @relation("AccountTree", fields: [parentId], references: [id], onDelete: SetNull)
+  children        Account[] @relation("AccountTree")
+  // Sub-ledger accounts belonging to a specific member or counterparty.
+  subjectRecordId String?
+  description     String?
+  active          Boolean   @default(true)
+  createdAt       DateTime  @default(now())
+
+  postings Posting[]
+
+  @@index([type, active])
+  @@index([subjectRecordId])
+}
+
+// A balanced transaction. Debits must equal credits — enforced in
+// src/lib/treasury.ts before anything is written, and re-checked by the
+// verification script.
+model JournalEntry {
+  id             String        @id @default(cuid())
+  entryNumber    String        @unique
+  date           DateTime
+  memo           String
+  reference      String?
+  // DRAFT | PENDING_APPROVAL | POSTED | REVERSED
+  status         String        @default("DRAFT")
+  postedAt       DateTime?
+  postedBy       String?
+  // A posted entry is never edited. Correcting one means posting its reversal.
+  reversesId     String?       @unique
+  reverses       JournalEntry? @relation("Reversal", fields: [reversesId], references: [id], onDelete: SetNull)
+  reversedBy     JournalEntry? @relation("Reversal")
+  // The register record this transaction evidences, if any.
+  sourceRecordId String?
+  createdBy      String
+  createdAt      DateTime      @default(now())
+
+  postings Posting[]
+
+  @@index([date])
+  @@index([status])
+  @@index([sourceRecordId])
+}
+
+// One side of a transaction. Amounts are integer cents; exactly one of
+// debitCents/creditCents is non-zero.
+model Posting {
+  id             String       @id @default(cuid())
+  journalEntryId String
+  journalEntry   JournalEntry @relation(fields: [journalEntryId], references: [id], onDelete: Cascade)
+  accountId      String
+  account        Account      @relation(fields: [accountId], references: [id], onDelete: Restrict)
+  fundId         String?
+  fund           Fund?        @relation(fields: [fundId], references: [id], onDelete: SetNull)
+  debitCents     Int          @default(0)
+  creditCents    Int          @default(0)
+  memo           String?
+  sequence       Int          @default(0)
+
+  @@index([accountId])
+  @@index([journalEntryId])
+  @@index([fundId])
+}
+
+// ===========================================================================
+// CREDENTIALS
+// ===========================================================================
+
+// A credential issued by the Kingdom to a person.
+//
+// HARD CONSTRAINT, enforced in src/lib/credentials.ts and stated on every
+// artefact this system produces: a credential of the Kingdom identifies its
+// holder's standing WITHIN the Kingdom and nothing else. It is not, and may not
+// be presented as, government identification. Holding out a private credential
+// as state ID, or as a law-enforcement credential, is criminal impersonation —
+// Conn. Gen. Stat. sections 53a-130 and 53a-130a. The permitted types below are
+// exhaustive and deliberately exclude every law-enforcement analogue.
+model Credential {
+  id                String    @id @default(cuid())
+  credentialNumber  String    @unique
+  // MEMBERSHIP | OFFICER_COMMISSION | MINISTERIAL | DELEGATE | CONTRACTOR |
+  // VOLUNTEER | ARCHIVE_ACCESS
+  type              String
+  // The Roll of Citizens record this credential belongs to.
+  subjectRecordId   String?
+  subjectName       String
+  // Free-text standing, e.g. "Citizen in good standing", "Registrar General".
+  standing          String?
+  issuedAt          DateTime  @default(now())
+  effectiveFrom     DateTime?
+  expiresAt         DateTime?
+  // ACTIVE | SUSPENDED | REVOKED | EXPIRED | REPLACED
+  status            String    @default("ACTIVE")
+  revokedAt         DateTime?
+  revokedReason     String?
+  replacedById      String?
+  photoAttachmentId String?
+
+  // The canonical signed payload. What the QR code resolves to and what a
+  // verifier checks — so a forged card fails on signature, not on appearance.
+  payload      String
+  payloadHash  String
+  signature    String?
+  signingKeyId String?
+  signingKey   SigningKey? @relation(fields: [signingKeyId], references: [id], onDelete: SetNull)
+
+  // Short, human-transcribable code used for offline verification.
+  verificationCode String   @unique
+  issuedBy         String
+  createdAt        DateTime @default(now())
+
+  @@index([subjectRecordId])
+  @@index([status])
+  @@index([type])
+}
+
+// ===========================================================================
+// DUAL CONTROL
+// ===========================================================================
+
+// An act that requires more than one officer.
+//
+// Every institution that loses money to an insider had one person who could do
+// the whole thing alone. Disbursements above a threshold, credential issuance,
+// unsealing, key revocation, and obligation issuance all route through here.
+model Approval {
+  id            String    @id @default(cuid())
+  // JOURNAL_ENTRY | CREDENTIAL | DISBURSEMENT | UNSEAL | KEY_REVOCATION |
+  // OBLIGATION_ISSUE | RECORD_VOID
+  subjectType   String
+  subjectId     String
+  summary       String
+  reason        String?
+  requiredCount Int       @default(2)
+  // Roles eligible to approve, comma-separated. Empty means any officer.
+  eligibleRoles String?
+  // PENDING | APPROVED | REJECTED | EXECUTED | EXPIRED | WITHDRAWN
+  status        String    @default("PENDING")
+  requestedBy   String
+  requestedById String?
+  requestedAt   DateTime  @default(now())
+  decidedAt     DateTime?
+  executedAt    DateTime?
+  expiresAt     DateTime?
+
+  votes ApprovalVote[]
+
+  @@index([status, subjectType])
+  @@index([subjectType, subjectId])
+}
+
+model ApprovalVote {
+  id         String   @id @default(cuid())
+  approvalId String
+  approval   Approval @relation(fields: [approvalId], references: [id], onDelete: Cascade)
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  // APPROVE | REJECT
+  decision   String
+  note       String?
+  // Optional detached signature over the approval's subject, so consent is
+  // provable rather than merely recorded.
+  signature  String?
+  keyId      String?
+  createdAt  DateTime @default(now())
+
+  // One vote per officer per request. An officer cannot approve twice to reach
+  // the quorum alone.
+  @@unique([approvalId, userId])
 }

@@ -6,6 +6,7 @@ import { canView } from "@/lib/classification";
 import { getRegistry } from "@/registries";
 import { parseJson } from "@/lib/canonical";
 import { getRecordProof, computeEntryHash, sha256Hex } from "@/lib/chain";
+import { proveEntry } from "@/lib/merkle";
 import { recordDigest } from "@/lib/records";
 import { PageHeader, Panel, Field, ClassificationBadge, ButtonLink, Caution } from "@/components/ui";
 import { FieldValue } from "@/components/FieldValue";
@@ -109,6 +110,7 @@ export default async function VerifyRecordPage({
       })()
     : false;
 
+  const inclusion = proof ? await proveEntry(proof.lastSequence) : null;
   const data = parseJson<Record<string, unknown>>(record.data, {});
   const visibleFields =
     registry && mayReadContents
@@ -224,6 +226,27 @@ export default async function VerifyRecordPage({
               </Field>
               <Field label="Latest entry hash">
                 <span className="digest">{proof.entries[proof.entries.length - 1].entryHash}</span>
+              </Field>
+              <Field
+                label="Merkle inclusion proof"
+                help="Recompute the root from the leaf and the path to confirm this entry is in the log, without seeing any other entry. RFC 6962 §2.1.1."
+              >
+                {inclusion ? (
+                  <>
+                    <span className="digest block">root {inclusion.rootHash}</span>
+                    <span className="digest muted mt-1 block">
+                      leaf {inclusion.leafHash} · index {inclusion.leafIndex} · tree{" "}
+                      {inclusion.treeSize.toLocaleString()}
+                    </span>
+                    {inclusion.path.length > 0 ? (
+                      <span className="digest muted mt-1 block">path {inclusion.path.join(" ")}</span>
+                    ) : null}
+                  </>
+                ) : (
+                  <span className="muted">
+                    No checkpoint yet covers this entry. Ask the Registrar to cut one.
+                  </span>
+                )}
               </Field>
               <Field label="External anchor">
                 {proof.coveringAnchor ? (

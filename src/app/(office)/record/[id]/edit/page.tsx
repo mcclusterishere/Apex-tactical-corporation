@@ -4,6 +4,7 @@ import { prisma } from "@/lib/db";
 import { getPrincipal, isAuthenticated } from "@/lib/auth";
 import { can, canWriteRegistry } from "@/lib/authz";
 import { canView } from "@/lib/classification";
+import { canReadRecord } from "@/lib/access";
 import { getRegistry } from "@/registries";
 import { toFormRegistry } from "@/registries/types";
 import { parseJson } from "@/lib/canonical";
@@ -36,7 +37,8 @@ export default async function EditRecordPage({ params }: { params: Promise<{ id:
 
   const registry = getRegistry(record.registry);
   if (!registry) notFound();
-  if (!canView(principal.clearance, record.classification)) notFound();
+  // Registry keepers may read the register they keep, even above their clearance.
+  if (!canReadRecord(principal, record, registry)) notFound();
 
   if (!isAuthenticated(principal)) {
     redirect(`/sign-in?next=${encodeURIComponent(`/record/${id}/edit`)}`);

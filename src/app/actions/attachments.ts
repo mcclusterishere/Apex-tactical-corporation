@@ -2,8 +2,9 @@
 
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/db";
-import { getPrincipal, assertPermission } from "@/lib/auth";
-import { canView, isClassification } from "@/lib/classification";
+import { getPrincipal, assertMfa } from "@/lib/auth";
+import { isClassification } from "@/lib/classification";
+import { assertCanMutate, assertNotHeld, assertPasswordChanged, AccessError } from "@/lib/access";
 import { storeFile, MAX_UPLOAD_BYTES } from "@/lib/storage";
 import { appendToChainTx } from "@/lib/chain";
 import { recordAudit } from "@/lib/audit";
@@ -23,16 +24,23 @@ export async function addAttachmentAction(
   formData: FormData,
 ): Promise<FormState> {
   const principal = await getPrincipal();
+  let record: { id: string; classification: string; recordNumber?: string };
   try {
-    assertPermission(principal, "attachment:add");
+    assertMfa(principal);
+    assertPasswordChanged(principal);
+    // Enforces the register's own restrictedTo as well as the global permission.
+    // Without it a Clerk could insert the first link into an evidence custody
+    // chain that the register reserves to the Sovereign, Registrar, and Counsel.
+    const result = await assertCanMutate(principal, recordId, {
+      permission: "attachment:add",
+      act: "attach material",
+    });
+    record = result.record;
   } catch (error) {
-    return { ok: false, message: error instanceof Error ? error.message : "Refused." };
-  }
-
-  const record = await prisma.record.findUnique({ where: { id: recordId } });
-  if (!record) return { ok: false, message: "No such record." };
-  if (!canView(principal.clearance, record.classification)) {
-    return { ok: false, message: "No such record." };
+    return {
+      ok: false,
+      message: error instanceof AccessError || error instanceof Error ? error.message : "Refused.",
+    };
   }
 
   const file = formData.get("file");
@@ -154,12 +162,6 @@ export async function logCustodyAction(
   formData: FormData,
 ): Promise<FormState> {
   const principal = await getPrincipal();
-  try {
-    assertPermission(principal, "custody:log");
-  } catch (error) {
-    return { ok: false, message: error instanceof Error ? error.message : "Refused." };
-  }
-
   const action = String(formData.get("action") ?? "").trim().toUpperCase();
   const counterparty = String(formData.get("counterparty") ?? "").trim();
   const note = String(formData.get("note") ?? "").trim();
@@ -183,6 +185,24 @@ export async function logCustodyAction(
     include: { record: true },
   });
   if (!attachment) return { ok: false, message: "No such attachment." };
+
+  // The parent record is authorised, not merely loaded. Previously this action
+  // read `attachment.record` only to build an audit label, so an officer holding
+  // custody:log could append to the custody chain of a record above their
+  // clearance given only the attachment id.
+  try {
+    assertMfa(principal);
+    assertPasswordChanged(principal);
+    await assertCanMutate(principal, attachment.recordId, {
+      permission: "custody:log",
+      act: "log custody events",
+    });
+  } catch (error) {
+    return {
+      ok: false,
+      message: error instanceof AccessError || error instanceof Error ? error.message : "Refused.",
+    };
+  }
 
   const occurredAt =
     occurredRaw && /^\d{4}-\d{2}-\d{2}$/.test(occurredRaw)

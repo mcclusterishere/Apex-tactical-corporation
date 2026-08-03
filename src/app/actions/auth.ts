@@ -9,6 +9,11 @@ import {
   pruneSessions,
   getPrincipal,
   assertPermission,
+  ANONYMOUS,
+  checkThrottle,
+  recordLoginAttempt,
+  clearFailures,
+  clientIp,
 } from "@/lib/auth";
 import { recordAudit } from "@/lib/audit";
 import { asRole, isRole } from "@/lib/authz";
@@ -38,6 +43,16 @@ export async function signInAction(_prev: AuthState, formData: FormData): Promis
     return { error: "Enter your email address and password." };
   }
 
+  const ip = await clientIp();
+
+  // Throttle before touching the password. Without this the sign-in form is an
+  // unlimited password oracle for anyone who can reach the deployment.
+  const throttle = await checkThrottle(email, ip);
+  if (throttle.blocked) {
+    await recordLoginAttempt(email, ip, false, "throttled");
+    return { error: throttle.reason ?? "Too many attempts. Try again shortly." };
+  }
+
   const user = await prisma.user.findUnique({ where: { email } });
 
   // Always run a verification, even with no user, so that a missing account and
@@ -48,26 +63,33 @@ export async function signInAction(_prev: AuthState, formData: FormData): Promis
   const valid = await verifyPassword(password, stored);
 
   if (!user || !valid || !user.active) {
+    const reason = user ? (user.active ? "Bad password" : "Account inactive") : "No such account";
+    await recordLoginAttempt(email, ip, false, reason);
     await recordAudit(
-      { id: "anonymous", email, displayName: email || "unknown", role: "OBSERVER", officeTitle: null, clearance: "PUBLIC", mustResetPw: false },
+      { ...ANONYMOUS, email, displayName: email || "unknown" },
       "auth.signin.failed",
       email,
-      user ? (user.active ? "Bad password" : "Account inactive") : "No such account",
+      reason,
     );
     return { error: "Those credentials were not accepted." };
   }
 
-  await createSession(user.id);
+  await recordLoginAttempt(email, ip, true);
+  await clearFailures(email);
+
+  // A session begins MFA-satisfied only when the officer has no second factor
+  // enrolled. Where one exists it must be presented before the session can act.
+  await createSession(user.id, { mfaSatisfied: user.totpSecretEnc === null });
   await prisma.user.update({ where: { id: user.id }, data: { lastLoginAt: new Date() } });
   await pruneSessions();
   await recordAudit(
     {
+      ...ANONYMOUS,
       id: user.id,
       email: user.email,
       displayName: user.displayName,
       role: asRole(user.role),
       officeTitle: user.officeTitle,
-      clearance: "PUBLIC",
       mustResetPw: user.mustResetPw,
     },
     "auth.signin",

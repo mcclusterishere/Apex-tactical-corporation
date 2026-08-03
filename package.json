@@ -2,7 +2,7 @@
   "name": "apex-tactical-corporation",
   "version": "1.0.0",
   "private": true,
-  "description": "Office of the Registrar — Apex Kingdom. Tamper-evident registry, records, and rights-enforcement system.",
+  "description": "Office of the Registrar \u2014 Apex Kingdom. Tamper-evident registry, records, and rights-enforcement system.",
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",
@@ -14,7 +14,10 @@
     "db:studio": "prisma studio",
     "seed": "tsx prisma/seed.ts",
     "chain:verify": "tsx scripts/verify-chain.ts",
-    "chain:anchor": "tsx scripts/anchor-chain.ts"
+    "chain:anchor": "tsx scripts/anchor-chain.ts",
+    "test": "tsx tests/merkle.test.ts && tsx tests/canonical.test.ts && tsx tests/totp.test.ts && tsx tests/credentials.test.ts",
+    "test:merkle": "tsx tests/merkle.test.ts",
+    "log:checkpoint": "tsx scripts/checkpoint.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

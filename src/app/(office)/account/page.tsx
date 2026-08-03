@@ -7,7 +7,23 @@ import { CLASSIFICATION_DESCRIPTIONS } from "@/lib/classification";
 import { PageHeader, Panel, Field, Caution } from "@/components/ui";
 import { PasswordForm } from "@/components/PasswordForm";
 import { changePasswordAction } from "@/app/actions/auth";
-import { formatTimestamp } from "@/lib/format";
+import {
+  TotpEnrolment,
+  MfaPrompt,
+  StepUpPrompt,
+  SigningKeyForm,
+  RevokeKeyForm,
+} from "@/components/SecurityForms";
+import {
+  beginTotpEnrolmentAction,
+  confirmTotpEnrolmentAction,
+  verifyMfaAction,
+  stepUpAction,
+  enrolSigningKeyAction,
+  revokeSigningKeyAction,
+} from "@/app/actions/security";
+import { shortFingerprint } from "@/lib/signing";
+import { formatTimestamp, formatDate } from "@/lib/format";
 
 export const metadata: Metadata = { title: "Your account" };
 export const dynamic = "force-dynamic";
@@ -17,11 +33,19 @@ export default async function AccountPage() {
   if (!isAuthenticated(principal)) redirect("/sign-in?next=%2Faccount");
 
   const role = asRole(principal.role);
-  const sessions = await prisma.session.findMany({
-    where: { userId: principal.id, revokedAt: null, expiresAt: { gt: new Date() } },
-    orderBy: { createdAt: "desc" },
-    take: 10,
-  });
+  const [sessions, keys, recoveryRemaining] = await Promise.all([
+    prisma.session.findMany({
+      where: { userId: principal.id, revokedAt: null, expiresAt: { gt: new Date() } },
+      orderBy: { createdAt: "desc" },
+      take: 10,
+    }),
+    prisma.signingKey.findMany({
+      where: { userId: principal.id },
+      orderBy: { createdAt: "desc" },
+    }),
+    prisma.recoveryCode.count({ where: { userId: principal.id, usedAt: null } }),
+  ]);
+  const activeKey = keys.find((key) => key.revokedAt === null) ?? null;
 
   return (
     <>
@@ -41,6 +65,99 @@ export default async function AccountPage() {
           </Caution>
         </div>
       ) : null}
+
+      {principal.mfaEnrolled && !principal.mfaSatisfied ? (
+        <Panel title="Confirm your second factor" tone="caution">
+          <p className="muted mb-3 text-sm">
+            This session has not presented your authenticator. You can read what you are cleared to
+            read, but you cannot record anything until you do.
+          </p>
+          <MfaPrompt action={verifyMfaAction} />
+        </Panel>
+      ) : null}
+
+      <Panel
+        title="Second factor"
+        description={
+          principal.mfaEnrolled
+            ? `Enrolled. ${recoveryRemaining} recovery ${recoveryRemaining === 1 ? "code" : "codes"} unused.`
+            : "Not enrolled. A stolen password is currently enough to act as you."
+        }
+        tone={principal.mfaEnrolled ? "default" : "caution"}
+      >
+        {principal.mfaEnrolled ? (
+          <p className="muted text-sm">
+            An authenticator is enrolled on this account. To replace it, revoke and re-enrol — which
+            invalidates the existing recovery codes.
+          </p>
+        ) : (
+          <TotpEnrolment begin={beginTotpEnrolmentAction} confirm={confirmTotpEnrolmentAction} />
+        )}
+      </Panel>
+
+      <Panel
+        title="Signing key"
+        description={
+          activeKey
+            ? "Acts you sign can be attributed to you cryptographically, and acts you did not sign cannot."
+            : "Without a key, the ledger records your name against an act but cannot prove it was you."
+        }
+      >
+        {activeKey ? (
+          <>
+            <dl className="grid gap-4 sm:grid-cols-2">
+              <Field label="Fingerprint">
+                <span className="tabular text-xs">{shortFingerprint(activeKey.fingerprint)}</span>
+                <span className="digest muted mt-0.5 block">{activeKey.fingerprint}</span>
+              </Field>
+              <Field label="Enrolled">{formatDate(activeKey.createdAt)}</Field>
+              <Field label="Label" wide>
+                {activeKey.label ?? <span className="muted">none</span>}
+              </Field>
+            </dl>
+            <RevokeKeyForm action={revokeSigningKeyAction.bind(null, activeKey.id)} />
+          </>
+        ) : (
+          <SigningKeyForm action={enrolSigningKeyAction} />
+        )}
+
+        {keys.filter((key) => key.revokedAt).length > 0 ? (
+          <div className="mt-4 border-t border-[var(--rule)] pt-3">
+            <p className="overline mb-1">Revoked keys</p>
+            <ul className="muted space-y-1 text-xs">
+              {keys
+                .filter((key) => key.revokedAt)
+                .map((key) => (
+                  <li key={key.id}>
+                    <span className="tabular">{shortFingerprint(key.fingerprint)}</span> — revoked{" "}
+                    {formatDate(key.revokedAt)}
+                    {key.revokedReason ? ` (${key.revokedReason})` : ""}
+                  </li>
+                ))}
+            </ul>
+            <p className="muted mt-2 text-xs">
+              Retained so signatures made before revocation stay verifiable.
+            </p>
+          </div>
+        ) : null}
+      </Panel>
+
+      <Panel
+        title="Step-up authentication"
+        description={
+          principal.stepUpValid
+            ? "Active. Consequential actions are available."
+            : "Required before moving money, issuing or revoking credentials, or unsealing material."
+        }
+      >
+        {principal.stepUpValid ? (
+          <p className="muted text-sm">
+            You re-authenticated recently. This lapses automatically after fifteen minutes.
+          </p>
+        ) : (
+          <StepUpPrompt action={stepUpAction} />
+        )}
+      </Panel>
 
       <Panel title="Change your password">
         <PasswordForm action={changePasswordAction} />

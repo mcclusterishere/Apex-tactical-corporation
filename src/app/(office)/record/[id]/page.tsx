@@ -5,6 +5,7 @@ import { prisma } from "@/lib/db";
 import { getPrincipal } from "@/lib/auth";
 import { can, canWriteRegistry } from "@/lib/authz";
 import { canView } from "@/lib/classification";
+import { canReadRecord } from "@/lib/access";
 import { getRegistry } from "@/registries";
 import { parseJson } from "@/lib/canonical";
 import { getRecordProof } from "@/lib/chain";
@@ -90,7 +91,8 @@ export default async function RecordPage({ params }: { params: Promise<{ id: str
 
   // Clearance is enforced here, not in the view. A record above the principal's
   // level is indistinguishable from one that does not exist.
-  if (!canView(principal.clearance, record.classification)) notFound();
+  // Registry keepers may read the register they keep, even above their clearance.
+  if (!canReadRecord(principal, record, registry)) notFound();
 
   await recordAccess(principal, record.recordNumber, record.classification);
 

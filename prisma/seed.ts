@@ -380,6 +380,71 @@ The Kingdom asserts its intellectual property rights — its copyrights, its mar
     console.log("  Published Gazette No. 1.");
   }
 
+  // --- A starting chart of accounts and funds -----------------------------
+  //
+  // Conventional numbering: 1xxx assets, 2xxx liabilities, 3xxx net assets,
+  // 4xxx revenue, 5xxx and above expenses. Opened only if the chart is empty,
+  // so a Treasurer who has built their own is never overwritten.
+  if ((await prisma.account.count()) === 0) {
+    const CHART: { code: string; name: string; type: string; description?: string }[] = [
+      { code: "1000", name: "Cash at bank — operating", type: "ASSET" },
+      { code: "1010", name: "Cash at bank — restricted", type: "ASSET", description: "Holds restricted gifts. Never used for general operations." },
+      { code: "1100", name: "Contributions receivable", type: "ASSET", description: "Pledges outstanding." },
+      { code: "1200", name: "Prepaid expenses and deposits", type: "ASSET" },
+      { code: "1500", name: "Land and buildings", type: "ASSET" },
+      { code: "1600", name: "Furniture, equipment and vehicles", type: "ASSET" },
+      { code: "1900", name: "Accumulated depreciation", type: "ASSET", description: "Contra-asset; carries a credit balance." },
+      { code: "2000", name: "Accounts payable", type: "LIABILITY" },
+      { code: "2100", name: "Payroll liabilities withheld", type: "LIABILITY", description: "Trust fund taxes. Personal liability attaches under 26 U.S.C. 6672 if unremitted." },
+      { code: "2200", name: "Notes and obligations payable", type: "LIABILITY" },
+      { code: "3000", name: "Net assets without donor restriction", type: "NET_ASSETS" },
+      { code: "3100", name: "Net assets with donor restriction", type: "NET_ASSETS" },
+      { code: "4000", name: "Tithes and offerings", type: "REVENUE" },
+      { code: "4100", name: "Designated gifts", type: "REVENUE" },
+      { code: "4200", name: "Grants", type: "REVENUE" },
+      { code: "4300", name: "Programme and event income", type: "REVENUE" },
+      { code: "5000", name: "Ministry and programme expense", type: "EXPENSE" },
+      { code: "5100", name: "Occupancy — rent, utilities, maintenance", type: "EXPENSE" },
+      { code: "5200", name: "Salaries, stipends and housing allowance", type: "EXPENSE" },
+      { code: "5300", name: "Payroll taxes", type: "EXPENSE" },
+      { code: "5400", name: "Charitable assistance to individuals", type: "EXPENSE", description: "Subject to the charitable-class discipline. See the Register of Assistance." },
+      { code: "5500", name: "Insurance", type: "EXPENSE" },
+      { code: "5600", name: "Professional fees — legal and accounting", type: "EXPENSE" },
+      { code: "5700", name: "Intellectual property — filing and maintenance", type: "EXPENSE" },
+      { code: "5900", name: "Administration and office", type: "EXPENSE" },
+    ];
+    await prisma.account.createMany({ data: CHART });
+    console.log(`  Opened a chart of ${CHART.length} accounts.`);
+  }
+
+  if ((await prisma.fund.count()) === 0) {
+    await prisma.fund.createMany({
+      data: [
+        {
+          code: "GEN",
+          name: "General fund",
+          restriction: "UNRESTRICTED",
+          purpose: "Applicable to any purpose of the Kingdom.",
+        },
+        {
+          code: "BLD",
+          name: "Building and property fund",
+          restriction: "TEMPORARILY_RESTRICTED",
+          purpose:
+            "Gifts given for acquisition, repair, or maintenance of the Kingdom's premises. May not be applied to general operations.",
+        },
+        {
+          code: "REL",
+          name: "Benevolence and relief fund",
+          restriction: "TEMPORARILY_RESTRICTED",
+          purpose:
+            "Gifts given for the relief of members and others in need. Disbursed on written criteria applied to an indefinite charitable class.",
+        },
+      ],
+    });
+    console.log("  Opened 3 funds.");
+  }
+
   const [records, entries] = await Promise.all([
     prisma.record.count(),
     prisma.ledgerEntry.count(),

@@ -3,9 +3,11 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/db";
 import { getPrincipal } from "@/lib/auth";
 import { canView } from "@/lib/classification";
+import { canReadRecord } from "@/lib/access";
 import { getRegistry } from "@/registries";
 import { parseJson } from "@/lib/canonical";
 import { getRecordProof } from "@/lib/chain";
+import { proveEntry } from "@/lib/merkle";
 import { recordDigest } from "@/lib/records";
 import { recordAudit } from "@/lib/audit";
 import { FieldValue } from "@/components/FieldValue";
@@ -54,7 +56,8 @@ export default async function CertificatePage({ params }: { params: Promise<{ id
 
   const registry = getRegistry(record.registry);
   if (!registry) notFound();
-  if (!canView(principal.clearance, record.classification)) notFound();
+  // Registry keepers may read the register they keep, even above their clearance.
+  if (!canReadRecord(principal, record, registry)) notFound();
 
   await recordAudit(principal, "record.certify", record.recordNumber, "Certified copy produced");
 
@@ -62,6 +65,11 @@ export default async function CertificatePage({ params }: { params: Promise<{ id
   const proof = await getRecordProof(record.id);
   const digest = recordDigest(record);
   const issuedAt = new Date();
+
+  // An inclusion proof against a published root is what lets the recipient
+  // check this extract without asking the Kingdom for anything, and without
+  // the Kingdom disclosing any other entry.
+  const inclusion = proof ? await proveEntry(proof.lastSequence) : null;
 
   const visibleFields = registry.fields.filter(
     (field) => !field.classification || canView(principal.clearance, field.classification),
@@ -214,6 +222,27 @@ export default async function CertificatePage({ params }: { params: Promise<{ id
                   </dd>
                 </div>
               </>
+            ) : null}
+            {inclusion ? (
+              <div>
+                <dt className="overline">
+                  Merkle inclusion proof — tree of {inclusion.treeSize.toLocaleString()} entries
+                </dt>
+                <dd>
+                  <span className="digest block">root {inclusion.rootHash}</span>
+                  <span className="digest muted mt-1 block">
+                    leaf {inclusion.leafHash} at index {inclusion.leafIndex}
+                  </span>
+                  <span className="digest muted mt-1 block">
+                    path {inclusion.path.length > 0 ? inclusion.path.join(" ") : "(none — single-entry tree)"}
+                  </span>
+                  <span className="muted mt-1 block text-xs">
+                    Recomputing the root from the leaf and this path confirms the entry is in the
+                    Kingdom&rsquo;s log, and discloses nothing about any other entry. The procedure is
+                    RFC 6962 §2.1.1.
+                  </span>
+                </dd>
+              </div>
             ) : null}
             <div>
               <dt className="overline">Confirm this extract</dt>

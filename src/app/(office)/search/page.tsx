@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/db";
 import { getPrincipal } from "@/lib/auth";
-import { visibleClassifications } from "@/lib/queries";
+import { visibleClassifications, filterSearchLeaks } from "@/lib/queries";
 import { getRegistry, REGISTRIES } from "@/registries";
 import { PageHeader, Panel, StatusBadge, ClassificationBadge, EmptyState } from "@/components/ui";
 import { formatDateShort } from "@/lib/format";
@@ -19,7 +19,7 @@ export default async function SearchPage({
   const { q, registry: registryFilter } = await searchParams;
   const query = q?.trim() ?? "";
 
-  const records =
+  const candidates =
     query.length > 0
       ? await prisma.record.findMany({
           where: {
@@ -33,9 +33,13 @@ export default async function SearchPage({
             ],
           },
           orderBy: { recordedAt: "desc" },
-          take: 100,
+          take: 200,
         })
       : [];
+
+  // Remove hits that matched only inside a field above this reader's clearance.
+  const records = filterSearchLeaks(principal, candidates, query).slice(0, 100);
+  const suppressed = candidates.length - filterSearchLeaks(principal, candidates, query).length;
 
   return (
     <>
@@ -100,6 +104,11 @@ export default async function SearchPage({
           title={`${records.length}${records.length === 100 ? "+" : ""} ${
             records.length === 1 ? "result" : "results"
           }`}
+          description={
+            suppressed > 0
+              ? `${suppressed} further ${suppressed === 1 ? "record matched" : "records matched"} only in fields above your clearance and ${suppressed === 1 ? "is" : "are"} not shown.`
+              : undefined
+          }
         >
           <div className="scroll-x">
             <table className="w-full text-left text-sm">

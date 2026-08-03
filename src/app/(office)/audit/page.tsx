@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/db";
 import { getPrincipal } from "@/lib/auth";
 import { can } from "@/lib/authz";
-import { PageHeader, Panel, EmptyState } from "@/components/ui";
+import { canReadRecord } from "@/lib/access";
+import { PageHeader, Panel, EmptyState, Caution } from "@/components/ui";
 import { formatTimestamp } from "@/lib/format";
 
 export const metadata: Metadata = { title: "Audit log" };
@@ -48,6 +49,38 @@ export default async function AuditPage({
   ]);
 
   const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+
+  /*
+   * Redact rows whose subject is a record the reader may not see.
+   *
+   * The audit log names records by number and carries free-text detail written
+   * when the act was performed — an amendment reason, an evidence filename, a
+   * hold's matter. Counsel holds `audit:read` but only OFFICERS clearance, so an
+   * unfiltered log discloses the existence, the numbering, and often the content
+   * of sealed records to an officer barred from opening them. Redaction happens
+   * here rather than in the query because a subject is a record NUMBER, not an
+   * id, and the join has to be resolved either way.
+   */
+  const subjects = [...new Set(events.map((e) => e.subject).filter((s): s is string => Boolean(s)))];
+  const referenced = subjects.length
+    ? await prisma.record.findMany({
+        where: { recordNumber: { in: subjects } },
+        select: { id: true, recordNumber: true, registry: true, classification: true },
+      })
+    : [];
+  const byNumber = new Map(referenced.map((r) => [r.recordNumber, r]));
+
+  let redactedCount = 0;
+  const rows = events.map((event) => {
+    const record = event.subject ? byNumber.get(event.subject) : undefined;
+    // A subject that names no record (an email address, a fingerprint, a tree
+    // size) is not redacted — there is no record whose classification to honour.
+    if (record && !canReadRecord(principal, record)) {
+      redactedCount += 1;
+      return { ...event, subject: "—", detail: null, redacted: true };
+    }
+    return { ...event, redacted: false };
+  });
 
   return (
     <>
@@ -94,6 +127,16 @@ export default async function AuditPage({
         ) : null}
       </form>
 
+      {redactedCount > 0 ? (
+        <div className="mb-6">
+          <Caution title={`${redactedCount} entries on this page are redacted`}>
+            Those acts concern records above your clearance. That an act occurred is shown; its
+            subject and detail are withheld. The Sovereign, the Registrar, and the Auditor see the
+            log unredacted.
+          </Caution>
+        </div>
+      ) : null}
+
       <Panel title={`${total.toLocaleString()} events`}>
         {events.length === 0 ? (
           <EmptyState title="Nothing logged">
@@ -113,8 +156,8 @@ export default async function AuditPage({
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-[var(--rule)]">
-                  {events.map((event) => (
-                    <tr key={event.id}>
+                  {rows.map((event) => (
+                    <tr key={event.id} className={event.redacted ? "opacity-60" : undefined}>
                       <td className="tabular muted whitespace-nowrap py-1.5 pr-3 align-top text-xs">
                         {formatTimestamp(event.createdAt)}
                       </td>
@@ -123,7 +166,13 @@ export default async function AuditPage({
                       <td className="tabular py-1.5 pr-3 align-top text-xs">
                         {event.subject ?? "—"}
                       </td>
-                      <td className="muted py-1.5 align-top text-xs">{event.detail ?? "—"}</td>
+                      <td className="muted py-1.5 align-top text-xs">
+                        {event.redacted ? (
+                          <span className="italic">redacted — above your clearance</span>
+                        ) : (
+                          (event.detail ?? "—")
+                        )}
+                      </td>
                     </tr>
                   ))}
                 </tbody>

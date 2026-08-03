@@ -42,10 +42,13 @@ function Nav({ principal }: { principal: Principal }) {
   const groups = groupedRegistries()
     .map((entry) => ({
       ...entry,
-      registries: entry.registries.filter((registry) =>
-        // A registry is listed when its default classification is within reach.
-        // Individual records inside it are filtered again on read.
-        canView(principal.clearance, registry.defaultClassification),
+      registries: entry.registries.filter(
+        (registry) =>
+          // Listed when the default classification is within reach, or when the
+          // principal's office is named as a keeper of that register.
+          canView(principal.clearance, registry.defaultClassification) ||
+          asRole(principal.role) === "SOVEREIGN" ||
+          registry.restrictedTo?.includes(asRole(principal.role)),
       ),
     }))
     .filter((entry) => entry.registries.length > 0);
@@ -56,6 +59,7 @@ function Nav({ principal }: { principal: Principal }) {
         <p className="overline mb-1.5 px-2">Office</p>
         <NavLink href="/">Registrar&rsquo;s desk</NavLink>
         <NavLink href="/chain">The ledger chain</NavLink>
+        <NavLink href="/log">Transparency log</NavLink>
         <NavLink href="/calendar">Deadlines</NavLink>
         <NavLink href="/gazette">Official gazette</NavLink>
         <NavLink href="/search">Search the registers</NavLink>
@@ -73,12 +77,29 @@ function Nav({ principal }: { principal: Principal }) {
         </div>
       ))}
 
+      {isAuthenticated(principal) ? (
+        <div>
+          <p className="overline mb-1.5 px-2">Treasury &amp; Identity</p>
+          {can(principal.role, "registry:financial") ||
+          principal.role === "SOVEREIGN" ||
+          can(principal.role, "audit:read") ? (
+            <>
+              <NavLink href="/treasury">The Treasury</NavLink>
+              <NavLink href="/treasury/journal">Journal</NavLink>
+              <NavLink href="/treasury/accounts">Chart of accounts</NavLink>
+            </>
+          ) : null}
+          <NavLink href="/credentials">Credentials</NavLink>
+        </div>
+      ) : null}
+
       <div>
         <p className="overline mb-1.5 px-2">Reference</p>
         <NavLink href="/doctrine">Manuals &amp; doctrine</NavLink>
         <NavLink href="/doctrine/templates">Instrument templates</NavLink>
         <NavLink href="/charter">The Charter</NavLink>
         <NavLink href="/verify">Verify a certificate</NavLink>
+        <NavLink href="/credentials/verify">Check a credential</NavLink>
       </div>
 
       {can(principal.role, "audit:read") || can(principal.role, "user:manage") ? (
