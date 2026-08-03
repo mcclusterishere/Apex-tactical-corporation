@@ -3,92 +3,121 @@
 /*
  * Apex Kingdom — Office of the Registrar
  *
- * The visual language is deliberately that of a records office rather than a
- * product dashboard: ruled lines instead of drop shadows, a serif face for
- * anything that carries authority, monospace for every number a person might
- * have to read aloud or copy onto a form, and restraint everywhere else.
+ * The visual language is that of a state gazette that happens to have been set
+ * by someone who cared: ruled lines rather than drop shadows, a warm serif for
+ * anything that carries authority, a public-institution sans for everything read
+ * at length, monospace for every figure a person might read aloud or copy onto a
+ * form, and a great deal of restraint. A register that looks like a marketing
+ * site invites the reader to discount it; a register that looks like a well-kept
+ * instrument does the opposite.
  *
- * A register that looks like a marketing site invites the reader to discount it.
+ * Light and dark are both first-class. The theme is driven by `data-theme` on
+ * the root element, set before first paint by the inline script in the layout —
+ * so it follows the reader's local time of day unless they have chosen
+ * otherwise, and never flashes.
  */
 
+/* Drive Tailwind's `dark:` variant off `data-theme`, not the OS preference, so
+   the time-of-day logic and the manual toggle both take effect on utilities as
+   well as on the semantic custom properties below. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 @theme {
-  --color-ink-50: #f4f6f9;
-  --color-ink-100: #e6eaf1;
-  --color-ink-200: #c8d2e0;
-  --color-ink-300: #9aabc3;
-  --color-ink-400: #6b80a0;
-  --color-ink-500: #4a5f80;
-  --color-ink-600: #344a68;
-  --color-ink-700: #24364f;
-  --color-ink-800: #16253a;
-  --color-ink-900: #0d1826;
-  --color-ink-950: #060d16;
+  --color-ink-50: #f1f3f7;
+  --color-ink-100: #e3e8f0;
+  --color-ink-200: #cbd3e0;
+  --color-ink-300: #a3b1c6;
+  --color-ink-400: #6f7f9c;
+  --color-ink-500: #495a78;
+  --color-ink-600: #384864;
+  --color-ink-700: #26344c;
+  --color-ink-800: #182437;
+  --color-ink-900: #0e1826;
+  --color-ink-950: #070e18;
 
-  --color-seal-50: #fdf5f3;
-  --color-seal-100: #fbe7e3;
-  --color-seal-300: #e8a394;
-  --color-seal-500: #b8412a;
-  --color-seal-600: #9c3220;
-  --color-seal-700: #7d281a;
-  --color-seal-900: #4a1810;
+  --color-seal-50: #fbf1ee;
+  --color-seal-100: #f7e0da;
+  --color-seal-300: #e0988a;
+  --color-seal-500: #b23f2b;
+  --color-seal-600: #9a3020;
+  --color-seal-700: #7c281b;
+  --color-seal-900: #481610;
 
-  --color-gilt-100: #fbf3dc;
-  --color-gilt-300: #e9cf8a;
-  --color-gilt-500: #b8912f;
-  --color-gilt-600: #9a7726;
-  --color-gilt-700: #7a5d1d;
+  --color-gilt-100: #f8eecf;
+  --color-gilt-300: #e3c986;
+  --color-gilt-500: #bd9538;
+  --color-gilt-600: #9c7a28;
+  --color-gilt-700: #7c611f;
 
-  --color-moss-100: #e3f0e6;
-  --color-moss-500: #3f7d52;
-  --color-moss-700: #2c5a3a;
+  --color-moss-100: #e0efe3;
+  --color-moss-500: #40804f;
+  --color-moss-700: #2c5a38;
 
-  --color-parchment: #faf8f3;
-  --color-parchment-dark: #f2eee4;
+  --color-parchment: #f5f2e9;
+  --color-parchment-dark: #eae5d6;
 
-  --font-display: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua",
-    "Times New Roman", serif;
-  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
-    Arial, sans-serif;
-  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas,
-    "Liberation Mono", monospace;
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-publicsans), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-plex), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
-:root {
-  --page: #faf8f3;
-  --page-raised: #ffffff;
-  --text: #0d1826;
-  --text-muted: #4a5f80;
-  --rule: #c8d2e0;
-  --rule-strong: #9aabc3;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --page: #060d16;
-    --page-raised: #0d1826;
-    --text: #e6eaf1;
-    --text-muted: #9aabc3;
-    --rule: #1f3149;
-    --rule-strong: #2c4363;
-  }
-}
-
+/* --- Semantic tokens: light (the ivory ledger) --------------------------- */
+:root,
 :root[data-theme="light"] {
-  --page: #faf8f3;
-  --page-raised: #ffffff;
-  --text: #0d1826;
-  --text-muted: #4a5f80;
-  --rule: #c8d2e0;
-  --rule-strong: #9aabc3;
+  --page: #f4f1e8;
+  --page-raised: #fffdf8;
+  --panel-tint: #efebe0;
+  --text: #171d29;
+  --text-muted: #59636f;
+  --rule: #ddd7c8;
+  --rule-strong: #c4bca8;
+  --link: #274b78;
+  --accent: #182437;
+  --gilt-line: #bd9538;
+  --selection: #ecd9a6;
+  --shadow-raised: 0 1px 2px rgba(23, 29, 41, 0.04), 0 3px 10px rgba(23, 29, 41, 0.05);
+  --shadow-float: 0 8px 30px rgba(23, 29, 41, 0.1);
+  color-scheme: light;
 }
 
+/* --- Semantic tokens: dark (the midnight ledger) ------------------------- */
 :root[data-theme="dark"] {
-  --page: #060d16;
-  --page-raised: #0d1826;
-  --text: #e6eaf1;
-  --text-muted: #9aabc3;
-  --rule: #1f3149;
-  --rule-strong: #2c4363;
+  --page: #0b111c;
+  --page-raised: #121a28;
+  --panel-tint: #0e1622;
+  --text: #e9e4d6;
+  --text-muted: #97a2b4;
+  --rule: #263449;
+  --rule-strong: #38485f;
+  --link: #9cc0f0;
+  --accent: #e9e4d6;
+  --gilt-line: #c9a349;
+  --selection: #34445e;
+  --shadow-raised: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 14px rgba(0, 0, 0, 0.35);
+  --shadow-float: 0 10px 34px rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}
+
+/* No-JS fallback only: when the inline script has not set data-theme, honour the
+   OS preference so the page is never unstyled. The script sets data-theme on
+   every real load, and those rules (above) are more specific, so they win. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --page: #0b111c;
+    --page-raised: #121a28;
+    --panel-tint: #0e1622;
+    --text: #e9e4d6;
+    --text-muted: #97a2b4;
+    --rule: #263449;
+    --rule-strong: #38485f;
+    --link: #9cc0f0;
+    --accent: #e9e4d6;
+    --gilt-line: #c9a349;
+    --selection: #34445e;
+    --shadow-raised: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 14px rgba(0, 0, 0, 0.35);
+    --shadow-float: 0 10px 34px rgba(0, 0, 0, 0.5);
+    color-scheme: dark;
+  }
 }
 
 @layer base {
@@ -96,9 +125,13 @@
    * Element defaults live in @layer base so that Tailwind utilities, which sit
    * in @layer utilities, always win over them. Unlayered CSS beats every layer
    * in the cascade — an unlayered `a { color: inherit }` silently overrides
-   * every text-colour utility applied to a link, which is a bug that shows up
-   * as invisible text on a dark button and nowhere else.
+   * every text-colour utility on a link, which shows up as invisible text on a
+   * dark button and nowhere else.
    */
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
 
   body {
     background: var(--page);
@@ -107,6 +140,27 @@
     font-size: 15px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* Only colours transition, so switching theme is a gentle fade rather than a
+       jump. Layout properties are left alone, so nothing shifts. */
+    transition: background-color 0.35s ease, color 0.35s ease;
+  }
+
+  /* A hairline of gilt across the very top of the page, like the edge of a piece
+     of official letterhead. Fixed so it survives scrolling. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      var(--gilt-line) 0%,
+      color-mix(in srgb, var(--gilt-line) 55%, transparent) 55%,
+      transparent 100%
+    );
+    z-index: 60;
+    pointer-events: none;
   }
 
   h1,
@@ -114,35 +168,49 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    font-weight: 700;
-    letter-spacing: -0.011em;
+    font-weight: 600;
+    letter-spacing: -0.006em;
   }
 
   a {
     color: inherit;
   }
 
+  ::selection {
+    background: var(--selection);
+    color: var(--text);
+  }
+
   :focus-visible {
-    outline: 2px solid var(--color-ink-500);
+    outline: 2px solid var(--link);
     outline-offset: 2px;
     border-radius: 2px;
+  }
+
+  /* Surfaces and rules fade with the theme too, so the whole page settles as one
+     rather than in pieces. Scoped to the properties that change colour. */
+  .surface,
+  .surface-tint,
+  [class*="border"] {
+    transition: background-color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
   }
 }
 
 @layer components {
-  /* Project classes. Also below utilities, so a utility can always override. */
+  /* Project classes. Below utilities, so a utility always overrides. */
 
   .display {
     font-family: var(--font-display);
-    font-weight: 700;
-    letter-spacing: -0.011em;
+    font-weight: 600;
+    letter-spacing: -0.006em;
   }
 
   /* Record numbers, hashes, dates in tables — anything transcribed by hand. */
   .tabular {
     font-family: var(--font-mono);
     font-variant-numeric: tabular-nums;
-    font-size: 0.875em;
+    font-size: 0.86em;
+    letter-spacing: -0.01em;
   }
 
   .muted {
@@ -153,8 +221,23 @@
     background: var(--page-raised);
   }
 
+  /* A faintly tinted surface for section headers and secondary panels, so
+     hierarchy reads without a single drop shadow. */
+  .surface-tint {
+    background: var(--panel-tint);
+  }
+
   .hairline {
     border-color: var(--rule);
+  }
+
+  /* Very soft elevation, used only where a surface genuinely sits above the
+     page (the top bar, a floating menu). Documents do not float; chrome may. */
+  .raised {
+    box-shadow: var(--shadow-raised);
+  }
+  .floating {
+    box-shadow: var(--shadow-float);
   }
 
   /* The double rule beneath a masthead, as on a printed instrument. */
@@ -162,11 +245,22 @@
     border-bottom: 3px double var(--rule-strong);
   }
 
-  /* Small caps label used above fields and section headings. */
+  /* A single fine gilt divider, for flourishes. */
+  .gilt-rule {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      var(--gilt-line),
+      color-mix(in srgb, var(--gilt-line) 30%, transparent)
+    );
+  }
+
+  /* Small caps label above fields and section headings. */
   .overline {
     font-size: 0.6875rem;
     font-weight: 600;
-    letter-spacing: 0.09em;
+    letter-spacing: 0.11em;
     text-transform: uppercase;
     color: var(--text-muted);
   }
@@ -179,14 +273,23 @@
     line-height: 1.5;
   }
 
+  /* A link inside body copy, styled to read as a considered reference. */
+  .link {
+    color: var(--link);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: text-decoration-color 0.15s ease;
+  }
+  .link:hover {
+    text-decoration-thickness: 2px;
+  }
+
   /*
    * Wide content must scroll inside its own box; the page never scrolls sideways.
-   *
-   * `min-width: 0` is load-bearing, not defensive. Flex and grid items default to
-   * `min-width: auto`, which sizes them to their content — so a wide table inside
-   * an `overflow-x: auto` box will happily push the box past the viewport and take
-   * the whole page with it. Zeroing the minimum lets the box shrink and the
-   * overflow actually engage.
+   * `min-width: 0` is load-bearing: flex and grid items default to
+   * `min-width: auto`, which sizes them to their content, so a wide table would
+   * otherwise push its box past the viewport and take the page with it.
    */
   .scroll-x {
     overflow-x: auto;
@@ -199,22 +302,24 @@
   /* Long-form prose in guidance panels and the document reader. */
   .prose-doc {
     max-width: 68ch;
+    font-size: 0.975rem;
+    line-height: 1.72;
   }
   .prose-doc h1 {
-    font-size: 1.9rem;
-    line-height: 1.2;
+    font-size: 2rem;
+    line-height: 1.15;
     margin: 0 0 1rem;
   }
   .prose-doc h2 {
-    font-size: 1.35rem;
+    font-size: 1.4rem;
     line-height: 1.3;
-    margin: 2.25rem 0 0.75rem;
+    margin: 2.4rem 0 0.75rem;
     padding-bottom: 0.35rem;
     border-bottom: 1px solid var(--rule);
   }
   .prose-doc h3 {
-    font-size: 1.08rem;
-    margin: 1.75rem 0 0.5rem;
+    font-size: 1.1rem;
+    margin: 1.85rem 0 0.5rem;
   }
   .prose-doc p,
   .prose-doc ul,
@@ -235,14 +340,14 @@
     list-style: decimal;
   }
   .prose-doc li {
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.4rem;
   }
   .prose-doc li > ul,
   .prose-doc li > ol {
-    margin: 0.35rem 0 0.5rem;
+    margin: 0.4rem 0 0.5rem;
   }
   .prose-doc strong {
-    font-weight: 650;
+    font-weight: 600;
   }
   .prose-doc em {
     font-style: italic;
@@ -271,7 +376,7 @@
     font-size: inherit;
   }
   .prose-doc blockquote {
-    border-left: 3px solid var(--rule-strong);
+    border-left: 3px solid var(--gilt-line);
     padding-left: 1rem;
     color: var(--text-muted);
     font-style: italic;
@@ -294,10 +399,11 @@
     vertical-align: top;
   }
   .prose-doc th {
-    background: color-mix(in srgb, var(--rule) 30%, transparent);
-    font-weight: 650;
+    background: var(--panel-tint);
+    font-weight: 600;
   }
   .prose-doc a {
+    color: var(--link);
     text-decoration: underline;
     text-underline-offset: 2px;
   }
@@ -312,10 +418,12 @@
   :root {
     --page: #ffffff;
     --page-raised: #ffffff;
+    --panel-tint: #ffffff;
     --text: #000000;
     --text-muted: #333333;
     --rule: #999999;
     --rule-strong: #333333;
+    --gilt-line: #7c611f;
   }
 
   body {
@@ -323,21 +431,25 @@
     color: #000000;
     font-size: 11pt;
   }
+  body::before {
+    display: none;
+  }
 
   .no-print {
     display: none !important;
   }
-
   .print-only {
     display: block !important;
   }
-
   .page-break {
     page-break-before: always;
   }
-
   .avoid-break {
     page-break-inside: avoid;
+  }
+  .raised,
+  .floating {
+    box-shadow: none !important;
   }
 
   @page {

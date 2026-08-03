@@ -6,11 +6,11 @@ import type { StatusDef } from "@/registries/types";
 /** Shared presentational primitives. Server components; no client state. */
 
 const TONE_CLASS: Record<StatusDef["tone"], string> = {
-  neutral: "border-ink-300 text-ink-600 dark:text-ink-300",
-  active: "border-ink-500 text-ink-700 dark:text-ink-200 bg-ink-50 dark:bg-ink-800",
-  warning: "border-gilt-500 text-gilt-700 dark:text-gilt-300 bg-gilt-100 dark:bg-transparent",
-  danger: "border-seal-500 text-seal-700 dark:text-seal-300 bg-seal-50 dark:bg-transparent",
-  success: "border-moss-500 text-moss-700 dark:text-moss-100 bg-moss-100 dark:bg-transparent",
+  neutral: "border-ink-300 text-ink-600 dark:border-ink-600 dark:text-ink-300",
+  active: "border-ink-400 text-ink-700 dark:text-ink-200 bg-ink-50 dark:bg-ink-800/60",
+  warning: "border-gilt-500 text-gilt-700 dark:text-gilt-300 bg-gilt-100 dark:bg-gilt-500/10",
+  danger: "border-seal-500 text-seal-700 dark:text-seal-300 bg-seal-50 dark:bg-seal-500/10",
+  success: "border-moss-500 text-moss-700 dark:text-moss-100 bg-moss-100 dark:bg-moss-500/10",
 };
 
 export function StatusBadge({ status, statuses }: { status: string; statuses: StatusDef[] }) {
@@ -18,7 +18,7 @@ export function StatusBadge({ status, statuses }: { status: string; statuses: St
   const tone = def?.tone ?? "neutral";
   return (
     <span
-      className={`inline-block whitespace-nowrap rounded-sm border px-1.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide ${TONE_CLASS[tone]}`}
+      className={`inline-block whitespace-nowrap rounded-full border px-2 py-0.5 text-[10.5px] font-semibold uppercase tracking-[0.06em] ${TONE_CLASS[tone]}`}
       title={def?.help}
     >
       {def?.label ?? status}
@@ -30,15 +30,16 @@ const CLASSIFICATION_CLASS: Record<Classification, string> = {
   PUBLIC: "border-moss-500 text-moss-700 dark:text-moss-100",
   MEMBERS: "border-ink-400 text-ink-600 dark:text-ink-300",
   OFFICERS: "border-gilt-600 text-gilt-700 dark:text-gilt-300",
-  SEALED: "border-seal-600 text-seal-700 dark:text-seal-300 bg-seal-50 dark:bg-transparent",
+  SEALED: "border-seal-600 text-seal-700 dark:text-seal-300 bg-seal-50 dark:bg-seal-500/10",
 };
 
 export function ClassificationBadge({ value }: { value: string }) {
   const key = (value in CLASSIFICATION_LABELS ? value : "SEALED") as Classification;
   return (
     <span
-      className={`inline-block whitespace-nowrap rounded-sm border px-1.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide ${CLASSIFICATION_CLASS[key]}`}
+      className={`inline-flex items-center gap-1 whitespace-nowrap rounded-full border px-2 py-0.5 text-[10.5px] font-semibold uppercase tracking-[0.06em] ${CLASSIFICATION_CLASS[key]}`}
     >
+      <span aria-hidden className="h-1 w-1 rounded-full bg-current" />
       {CLASSIFICATION_LABELS[key]}
     </span>
   );
@@ -56,12 +57,17 @@ export function PageHeader({
   actions?: ReactNode;
 }) {
   return (
-    <header className="masthead-rule mb-6 pb-4">
-      <div className="flex flex-wrap items-start justify-between gap-4">
+    <header className="masthead-rule mb-7 pb-5">
+      <div className="flex flex-wrap items-end justify-between gap-4">
         <div className="min-w-0 flex-1">
-          {overline ? <p className="overline mb-1">{overline}</p> : null}
-          <h1 className="text-2xl leading-tight sm:text-[1.75rem]">{title}</h1>
-          {lede ? <div className="muted mt-2 max-w-3xl text-sm">{lede}</div> : null}
+          {overline ? (
+            <p className="overline mb-2 flex items-center gap-1.5">
+              <span aria-hidden className="h-px w-3 bg-[var(--gilt-line)]" />
+              {overline}
+            </p>
+          ) : null}
+          <h1 className="display text-[1.75rem] leading-[1.1] sm:text-[2.05rem]">{title}</h1>
+          {lede ? <div className="muted mt-2.5 max-w-3xl text-sm leading-relaxed">{lede}</div> : null}
         </div>
         {actions ? <div className="no-print flex shrink-0 flex-wrap gap-2">{actions}</div> : null}
       </div>
@@ -89,17 +95,17 @@ export function Panel({
         ? "border-seal-500"
         : "border-[var(--rule)]";
   return (
-    <section className={`surface avoid-break mb-6 rounded-sm border ${border}`}>
+    <section className={`surface avoid-break mb-6 overflow-hidden rounded-lg border ${border}`}>
       {title ? (
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--rule)] px-4 py-2.5">
-          <div>
-            <h2 className="text-sm font-semibold tracking-tight">{title}</h2>
-            {description ? <p className="muted mt-0.5 text-xs">{description}</p> : null}
+        <div className="surface-tint flex flex-wrap items-center justify-between gap-2 border-b border-[var(--rule)] px-5 py-3">
+          <div className="min-w-0">
+            <h2 className="text-[13.5px] font-semibold tracking-tight">{title}</h2>
+            {description ? <p className="muted mt-0.5 text-xs leading-snug">{description}</p> : null}
           </div>
-          {actions ? <div className="no-print flex gap-2">{actions}</div> : null}
+          {actions ? <div className="no-print flex shrink-0 gap-2">{actions}</div> : null}
         </div>
       ) : null}
-      <div className="min-w-0 px-4 py-4">{children}</div>
+      <div className="min-w-0 px-5 py-4">{children}</div>
     </section>
   );
 }
@@ -108,16 +114,15 @@ type ButtonTone = "primary" | "default" | "danger" | "quiet";
 
 const BUTTON_CLASS: Record<ButtonTone, string> = {
   primary:
-    "bg-ink-800 text-ink-50 border-ink-800 hover:bg-ink-700 dark:bg-ink-100 dark:text-ink-900 dark:border-ink-100 dark:hover:bg-white",
-  default:
-    "surface border-[var(--rule-strong)] hover:bg-ink-50 dark:hover:bg-ink-800",
+    "border-[var(--accent)] bg-[var(--accent)] text-[var(--page-raised)] hover:opacity-90",
+  default: "surface border-[var(--rule-strong)] hover:surface-tint",
   danger:
-    "border-seal-600 text-seal-700 dark:text-seal-300 hover:bg-seal-50 dark:hover:bg-seal-900/30",
-  quiet: "border-transparent hover:bg-ink-100 dark:hover:bg-ink-800",
+    "border-seal-600 text-seal-700 dark:text-seal-300 hover:bg-seal-50 dark:hover:bg-seal-500/10",
+  quiet: "border-transparent hover:surface-tint",
 };
 
 const BUTTON_BASE =
-  "inline-flex items-center justify-center gap-1.5 rounded-sm border px-3 py-1.5 text-[13px] font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50";
+  "inline-flex items-center justify-center gap-1.5 rounded-[5px] border px-3.5 py-1.5 text-[13px] font-medium transition-all disabled:cursor-not-allowed disabled:opacity-50";
 
 export function ButtonLink({
   href,
@@ -155,8 +160,8 @@ export function Field({
 }) {
   return (
     <div className={wide ? "sm:col-span-2" : undefined}>
-      <dt className="overline mb-0.5">{label}</dt>
-      <dd className="text-sm">{children}</dd>
+      <dt className="overline mb-1">{label}</dt>
+      <dd className="text-sm leading-relaxed">{children}</dd>
       {help ? <p className="muted mt-0.5 text-xs">{help}</p> : null}
     </div>
   );
@@ -172,9 +177,9 @@ export function EmptyState({
   action?: ReactNode;
 }) {
   return (
-    <div className="border border-dashed border-[var(--rule-strong)] px-6 py-10 text-center">
-      <p className="display text-base font-semibold">{title}</p>
-      {children ? <div className="muted mx-auto mt-1.5 max-w-md text-sm">{children}</div> : null}
+    <div className="surface-tint rounded-md border border-dashed border-[var(--rule-strong)] px-6 py-12 text-center">
+      <p className="display text-lg font-semibold">{title}</p>
+      {children ? <div className="muted mx-auto mt-2 max-w-md text-sm leading-relaxed">{children}</div> : null}
       {action ? <div className="no-print mt-4 flex justify-center">{action}</div> : null}
     </div>
   );
@@ -183,9 +188,9 @@ export function EmptyState({
 /** A short, unmissable statement of a legal or operational constraint. */
 export function Caution({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <div className="avoid-break border-l-[3px] border-gilt-500 bg-gilt-100/60 px-4 py-3 dark:bg-transparent">
+    <div className="avoid-break rounded-r-md border-l-[3px] border-gilt-500 bg-gilt-100/70 px-4 py-3 dark:bg-gilt-500/10">
       <p className="text-[13px] font-semibold">{title}</p>
-      <div className="muted mt-1 text-[13px]">{children}</div>
+      <div className="muted mt-1 text-[13px] leading-relaxed">{children}</div>
     </div>
   );
 }
@@ -194,7 +199,7 @@ export function ErrorNote({ children }: { children: ReactNode }) {
   return (
     <div
       role="alert"
-      className="border-l-[3px] border-seal-600 bg-seal-50 px-4 py-3 text-[13px] text-seal-900 dark:bg-transparent dark:text-seal-300"
+      className="rounded-r-md border-l-[3px] border-seal-600 bg-seal-50 px-4 py-3 text-[13px] text-seal-900 dark:bg-seal-500/10 dark:text-seal-300"
     >
       {children}
     </div>
@@ -221,18 +226,18 @@ export function Stat({
         ? "border-l-gilt-500"
         : tone === "success"
           ? "border-l-moss-500"
-          : "border-l-[var(--rule-strong)]";
+          : "border-l-[var(--gilt-line)]";
 
   const body = (
     <>
       <p className="overline">{label}</p>
-      <p className="display mt-1 text-2xl leading-none">{value}</p>
-      {detail ? <p className="muted mt-1.5 text-xs">{detail}</p> : null}
+      <p className="display mt-1.5 text-[1.7rem] leading-none">{value}</p>
+      {detail ? <p className="muted mt-2 text-xs leading-snug">{detail}</p> : null}
     </>
   );
 
-  const className = `surface block border border-l-[3px] ${accent} px-3.5 py-3 ${
-    href ? "transition-colors hover:bg-ink-50 dark:hover:bg-ink-800" : ""
+  const className = `surface block rounded-md border border-[var(--rule)] border-l-[3px] ${accent} px-4 py-3.5 ${
+    href ? "transition-all hover:raised hover:-translate-y-px" : ""
   }`;
 
   return href ? (
