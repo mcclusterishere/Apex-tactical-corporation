@@ -1,0 +1,54 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# The register itself. The database and the evidence store hold personal data on
+# members and the Kingdom's own confidential material — they are backed up, not
+# committed. See docs/07-OPERATIONS-AND-DEPLOYMENT.md.
+# Ignore the contents, keep the directories — Prisma will not create a missing
+# directory for the SQLite file, so a fresh clone needs them to exist.
+/data/*
+!/data/.gitkeep
+/storage/*
+!/storage/.gitkeep
+
+# Keep the example, never the populated file.
+!.env.example

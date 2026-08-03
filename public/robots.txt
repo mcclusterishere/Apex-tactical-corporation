@@ -1,0 +1,4 @@
+# The register holds personal data on members of Apex Kingdom, including
+# potentially minors. It is not for indexing.
+User-agent: *
+Disallow: /

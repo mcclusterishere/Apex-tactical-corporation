@@ -1,0 +1,295 @@
+// Apex Kingdom — Office of the Registrar
+// Data model for the tamper-evident tribal ledger.
+//
+// Design notes:
+//  * Every substantive record lives in `Record` with a registry-specific JSON payload.
+//    Registries are declared in code (src/registries/*) so new registers can be added
+//    without a migration.
+//  * `LedgerEntry` is an append-only, hash-chained log. Nothing in it is ever updated
+//    or deleted. Record mutations write a new LedgerEntry; the chain proves the
+//    sequence and content of every act of the Registrar.
+//  * Provider is swapped to "postgresql" for hosted deployment; no schema changes
+//    are required beyond the datasource block.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Principals, offices, and access
+// ---------------------------------------------------------------------------
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  displayName  String
+  passwordHash String
+  // Role gates what the principal may do. See src/lib/authz.ts.
+  role         String    @default("OBSERVER")
+  // Office held under Charter Art. IV/VII, if any. Free text, mirrors OfficeRecord.
+  officeTitle  String?
+  active       Boolean   @default(true)
+  mustResetPw  Boolean   @default(false)
+  lastLoginAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  sessions     Session[]
+  ledgerEntries LedgerEntry[]
+  auditEvents  AuditEvent[]
+
+  @@index([role])
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash String   @unique
+  expiresAt DateTime
+  ip        String?
+  userAgent String?
+  revokedAt DateTime?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+// ---------------------------------------------------------------------------
+// The registers
+// ---------------------------------------------------------------------------
+
+model Record {
+  id            String   @id @default(cuid())
+  // Registry slug, e.g. "citizens", "intellectual-property". Declared in code.
+  registry      String
+  // Human-facing, permanent, gapless identifier, e.g. "AK-IP-000014".
+  recordNumber  String   @unique
+  title         String
+  // Registry-specific payload, validated against the registry's field definitions.
+  data          String   @default("{}")
+  // PUBLIC | MEMBERS | OFFICERS | SEALED — see src/lib/classification.ts
+  classification String  @default("OFFICERS")
+  // Registry-defined lifecycle state, e.g. "ACTIVE", "SUPERSEDED", "WITHDRAWN".
+  status        String   @default("ACTIVE")
+  // Date the underlying act occurred (may precede the date it was recorded).
+  effectiveDate DateTime?
+  // Set when a later record replaces this one; preserves the chain of title.
+  supersededById String?
+  supersededBy  Record?  @relation("Supersession", fields: [supersededById], references: [id], onDelete: SetNull)
+  supersedes    Record[] @relation("Supersession")
+
+  recordedAt    DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  // Soft-delete only. Records are never physically removed; see docs/03.
+  voidedAt      DateTime?
+  voidReason    String?
+
+  attachments   Attachment[]
+  ledgerEntries LedgerEntry[]
+  deadlines     Deadline[]
+  holds         LegalHold[]
+  relationsFrom RecordRelation[] @relation("RelationFrom")
+  relationsTo   RecordRelation[] @relation("RelationTo")
+
+  @@index([registry, status])
+  @@index([registry, recordedAt])
+  @@index([classification])
+  @@index([effectiveDate])
+}
+
+// Typed links between records: an enforcement action cites an IP record, which
+// cites the evidence that proves first use, and so on.
+model RecordRelation {
+  id        String   @id @default(cuid())
+  fromId    String
+  from      Record   @relation("RelationFrom", fields: [fromId], references: [id], onDelete: Cascade)
+  toId      String
+  to        Record   @relation("RelationTo", fields: [toId], references: [id], onDelete: Cascade)
+  // e.g. "CITES", "EVIDENCES", "AUTHORIZES", "AMENDS", "SERVED_ON", "DERIVES_FROM"
+  kind      String
+  note      String?
+  createdAt DateTime @default(now())
+
+  @@unique([fromId, toId, kind])
+  @@index([toId])
+}
+
+// ---------------------------------------------------------------------------
+// Evidence and custody
+// ---------------------------------------------------------------------------
+
+model Attachment {
+  id           String   @id @default(cuid())
+  recordId     String
+  record       Record   @relation(fields: [recordId], references: [id], onDelete: Cascade)
+  filename     String
+  contentType  String
+  byteSize     Int
+  // SHA-256 over the exact bytes received. This is the evidentiary anchor.
+  sha256       String
+  storageKey   String
+  // How the item came into the Registrar's possession.
+  acquiredFrom String?
+  acquiredAt   DateTime?
+  // Free-text description of collection method, for chain-of-custody purposes.
+  collectionNote String?
+  classification String @default("OFFICERS")
+  uploadedById String?
+  createdAt    DateTime @default(now())
+
+  custody      CustodyEvent[]
+
+  @@index([recordId])
+  @@index([sha256])
+}
+
+model CustodyEvent {
+  id           String   @id @default(cuid())
+  attachmentId String
+  attachment   Attachment @relation(fields: [attachmentId], references: [id], onDelete: Cascade)
+  // RECEIVED | TRANSFERRED | EXAMINED | COPIED | PRODUCED | RETURNED | SEALED
+  action       String
+  actor        String
+  counterparty String?
+  occurredAt   DateTime
+  note         String?
+  createdAt    DateTime @default(now())
+
+  @@index([attachmentId, occurredAt])
+}
+
+// ---------------------------------------------------------------------------
+// The hash chain
+// ---------------------------------------------------------------------------
+
+model LedgerEntry {
+  id          String   @id @default(cuid())
+  // Monotonic position in the chain, starting at 1 (the genesis entry).
+  sequence    Int      @unique
+  // RECORD_CREATED | RECORD_AMENDED | RECORD_VOIDED | ATTACHMENT_ADDED |
+  // CUSTODY_EVENT | INSTRUMENT_PROMULGATED | NOTICE_SERVED | CHAIN_ANCHORED | GENESIS
+  eventType   String
+  recordId    String?
+  record      Record?  @relation(fields: [recordId], references: [id], onDelete: SetNull)
+  // Canonicalised JSON of the payload that was committed.
+  payload     String
+  // SHA-256 of the canonical payload alone.
+  payloadHash String
+  // SHA-256 of (prevHash || sequence || timestamp || eventType || payloadHash).
+  prevHash    String
+  entryHash   String   @unique
+  actorId     String?
+  actor       User?    @relation(fields: [actorId], references: [id], onDelete: SetNull)
+  actorLabel  String
+  createdAt   DateTime @default(now())
+
+  @@index([recordId])
+  @@index([eventType])
+  @@index([createdAt])
+}
+
+// A published commitment to the state of the chain at a point in time. Publishing
+// the head hash somewhere the Kingdom does not control (gazette, certified mail,
+// RFC 3161 timestamp authority, public repository) is what converts an internal
+// log into evidence a third party cannot dismiss as self-serving.
+model ChainAnchor {
+  id           String   @id @default(cuid())
+  sequence     Int
+  headHash     String
+  // GAZETTE | RFC3161 | CERTIFIED_MAIL | GIT_COMMIT | EXTERNAL_FILING | MANUAL
+  method       String
+  // Timestamp token, tracking number, commit SHA, receipt number, etc.
+  externalRef  String?
+  externalNote String?
+  anchoredAt   DateTime @default(now())
+  createdAt    DateTime @default(now())
+
+  @@index([sequence])
+}
+
+// ---------------------------------------------------------------------------
+// Controls
+// ---------------------------------------------------------------------------
+
+// Blocks voiding/alteration once litigation or investigation is reasonably
+// anticipated. Spoliation of evidence is the fastest way to lose a case you
+// would otherwise win.
+model LegalHold {
+  id          String   @id @default(cuid())
+  recordId    String
+  record      Record   @relation(fields: [recordId], references: [id], onDelete: Cascade)
+  matter      String
+  reason      String
+  issuedBy    String
+  issuedAt    DateTime @default(now())
+  releasedAt  DateTime?
+  releasedBy  String?
+
+  @@index([recordId, releasedAt])
+}
+
+// Statutory and administrative dates that forfeit rights if missed.
+model Deadline {
+  id          String   @id @default(cuid())
+  recordId    String?
+  record      Record?  @relation(fields: [recordId], references: [id], onDelete: Cascade)
+  title       String
+  detail      String?
+  dueOn       DateTime
+  // Authority that creates the deadline, e.g. "17 U.S.C. 412", "15 U.S.C. 1058".
+  authority   String?
+  // CRITICAL | HIGH | ROUTINE
+  severity    String   @default("HIGH")
+  completedAt DateTime?
+  completedBy String?
+  createdAt   DateTime @default(now())
+
+  @@index([dueOn, completedAt])
+  @@index([recordId])
+}
+
+// Immutable read/write trail. Distinct from the ledger: the ledger records what
+// the Kingdom did, the audit log records who looked and who touched.
+model AuditEvent {
+  id         String   @id @default(cuid())
+  actorId    String?
+  actor      User?    @relation(fields: [actorId], references: [id], onDelete: SetNull)
+  actorLabel String
+  action     String
+  subject    String?
+  detail     String?
+  ip         String?
+  userAgent  String?
+  createdAt  DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([actorId])
+  @@index([subject])
+}
+
+// Sequential, per-registry counter backing gapless record numbering.
+model Counter {
+  key   String @id
+  value Int    @default(0)
+}
+
+// Published editions of the official gazette. Publication is what creates
+// constructive notice to the world.
+model GazetteIssue {
+  id          String   @id @default(cuid())
+  number      Int      @unique
+  title       String
+  summary     String?
+  body        String
+  publishedAt DateTime @default(now())
+  chainHead   String?
+  chainSeq    Int?
+  createdAt   DateTime @default(now())
+}

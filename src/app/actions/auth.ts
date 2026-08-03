@@ -1,0 +1,189 @@
+"use server";
+
+import { redirect } from "next/navigation";
+import { prisma } from "@/lib/db";
+import {
+  verifyPassword,
+  hashPassword,
+  createSession,
+  pruneSessions,
+  getPrincipal,
+  assertPermission,
+} from "@/lib/auth";
+import { recordAudit } from "@/lib/audit";
+import { asRole, isRole } from "@/lib/authz";
+
+export interface AuthState {
+  error?: string;
+  ok?: boolean;
+  message?: string;
+}
+
+/**
+ * Sign in.
+ *
+ * The failure message is identical whether the account does not exist, the
+ * password is wrong, or the account has been deactivated. Distinguishing them
+ * would let anyone enumerate which officers hold accounts, and the roll of
+ * officers is not something to hand out at a login form.
+ */
+export async function signInAction(_prev: AuthState, formData: FormData): Promise<AuthState> {
+  const email = String(formData.get("email") ?? "")
+    .trim()
+    .toLowerCase();
+  const password = String(formData.get("password") ?? "");
+  const next = String(formData.get("next") ?? "/");
+
+  if (!email || !password) {
+    return { error: "Enter your email address and password." };
+  }
+
+  const user = await prisma.user.findUnique({ where: { email } });
+
+  // Always run a verification, even with no user, so that a missing account and
+  // a wrong password take the same amount of time.
+  const stored =
+    user?.passwordHash ??
+    "scrypt$32768$8$1$AAAAAAAAAAAAAAAAAAAAAA==$AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==";
+  const valid = await verifyPassword(password, stored);
+
+  if (!user || !valid || !user.active) {
+    await recordAudit(
+      { id: "anonymous", email, displayName: email || "unknown", role: "OBSERVER", officeTitle: null, clearance: "PUBLIC", mustResetPw: false },
+      "auth.signin.failed",
+      email,
+      user ? (user.active ? "Bad password" : "Account inactive") : "No such account",
+    );
+    return { error: "Those credentials were not accepted." };
+  }
+
+  await createSession(user.id);
+  await prisma.user.update({ where: { id: user.id }, data: { lastLoginAt: new Date() } });
+  await pruneSessions();
+  await recordAudit(
+    {
+      id: user.id,
+      email: user.email,
+      displayName: user.displayName,
+      role: asRole(user.role),
+      officeTitle: user.officeTitle,
+      clearance: "PUBLIC",
+      mustResetPw: user.mustResetPw,
+    },
+    "auth.signin",
+    user.email,
+  );
+
+  // Only same-origin relative paths, so a crafted `next` cannot bounce the
+  // officer to an external site that imitates this one.
+  redirect(next.startsWith("/") && !next.startsWith("//") ? next : "/");
+}
+
+export async function changePasswordAction(
+  _prev: AuthState,
+  formData: FormData,
+): Promise<AuthState> {
+  const principal = await getPrincipal();
+  if (principal.id === "anonymous") return { error: "Sign in first." };
+
+  const current = String(formData.get("current") ?? "");
+  const next = String(formData.get("next") ?? "");
+  const confirm = String(formData.get("confirm") ?? "");
+
+  if (next.length < 12) {
+    return { error: "Choose a password of at least 12 characters. Longer is better than complex." };
+  }
+  if (next !== confirm) return { error: "The two new passwords do not match." };
+
+  const user = await prisma.user.findUnique({ where: { id: principal.id } });
+  if (!user || !(await verifyPassword(current, user.passwordHash))) {
+    return { error: "The current password was not accepted." };
+  }
+
+  await prisma.user.update({
+    where: { id: user.id },
+    data: { passwordHash: await hashPassword(next), mustResetPw: false },
+  });
+  // Every other session for this principal is invalidated: a password change is
+  // frequently a response to a suspected compromise.
+  await prisma.session.updateMany({
+    where: { userId: user.id, revokedAt: null },
+    data: { revokedAt: new Date() },
+  });
+  await recordAudit(principal, "auth.password.change", user.email);
+  await createSession(user.id);
+
+  return { ok: true, message: "Password changed. All other sessions have been signed out." };
+}
+
+export async function createPrincipalAction(
+  _prev: AuthState,
+  formData: FormData,
+): Promise<AuthState> {
+  const principal = await getPrincipal();
+  try {
+    assertPermission(principal, "user:manage");
+  } catch (error) {
+    return { error: error instanceof Error ? error.message : "Refused." };
+  }
+
+  const email = String(formData.get("email") ?? "")
+    .trim()
+    .toLowerCase();
+  const displayName = String(formData.get("displayName") ?? "").trim();
+  const officeTitle = String(formData.get("officeTitle") ?? "").trim();
+  const role = String(formData.get("role") ?? "OBSERVER");
+  const password = String(formData.get("password") ?? "");
+
+  if (!email || !displayName) return { error: "Name and email are both required." };
+  if (!isRole(role)) return { error: "That is not a recognised office." };
+  if (password.length < 12) {
+    return { error: "Set an initial password of at least 12 characters." };
+  }
+
+  const existing = await prisma.user.findUnique({ where: { email } });
+  if (existing) return { error: "A principal with that email already exists." };
+
+  const user = await prisma.user.create({
+    data: {
+      email,
+      displayName,
+      officeTitle: officeTitle || null,
+      role,
+      passwordHash: await hashPassword(password),
+      mustResetPw: true,
+    },
+  });
+  await recordAudit(principal, "principal.create", user.email, `Commissioned as ${role}`);
+
+  return {
+    ok: true,
+    message: `${displayName} has been commissioned as ${role}. They must change the password at first sign-in.`,
+  };
+}
+
+export async function setPrincipalActiveAction(
+  userId: string,
+  active: boolean,
+): Promise<AuthState> {
+  const principal = await getPrincipal();
+  try {
+    assertPermission(principal, "user:manage");
+  } catch (error) {
+    return { error: error instanceof Error ? error.message : "Refused." };
+  }
+
+  if (userId === principal.id && !active) {
+    return { error: "You cannot deactivate your own account." };
+  }
+
+  const user = await prisma.user.update({ where: { id: userId }, data: { active } });
+  if (!active) {
+    await prisma.session.updateMany({
+      where: { userId, revokedAt: null },
+      data: { revokedAt: new Date() },
+    });
+  }
+  await recordAudit(principal, active ? "principal.activate" : "principal.deactivate", user.email);
+  return { ok: true, message: `${user.displayName} is now ${active ? "active" : "inactive"}.` };
+}
