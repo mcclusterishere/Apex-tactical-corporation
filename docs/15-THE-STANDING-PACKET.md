@@ -69,7 +69,10 @@ answers to questions the reader has not yet had to ask.
 1. It is drafted once, and thereafter only the variable fields change. Composed
 and approved under 14 § 5; sent by email and ordinary first-class mail, never by
 certified mail, because certified mail signals a dispute and this letter's whole
-purpose is to arrive before one exists.
+purpose is to arrive before one exists. The enclosure list printed in that
+template is a minimum and not the packet; the variant chosen under § 5 governs
+what is listed and what sits behind it, and the two must agree exactly, because
+the first thing a careful reader does with a numbered list is count against it.
 
 **Cost and time.** An hour the first time, ten minutes thereafter, and postage.
 
@@ -262,9 +265,13 @@ the cover letter, in the form the correspondence pack gives: that as a church th
 Kingdom is exempt under § 501(c)(3) and is excepted by § 508(c)(1)(A) from the
 requirement to apply for recognition, that it therefore holds no determination
 letter, and that the absence should not be mistaken for an absence of status.
-Volunteering that before it is asked converts a suspicion into a disclosure. The
-worst position is silence, because the reader then supplies the explanation
-themselves, and the explanation they supply is that there is no status at all.
+That sentence carries a predicate nobody outside the Kingdom has determined — that
+it is a church and that it meets the substantive requirements of § 501(c)(3) —
+which is why the correspondence pack's instruction on the paragraph is *state only
+what is true and documented*. Volunteering it before it is asked converts a
+suspicion into a disclosure. The worst position is silence, because the reader
+then supplies the explanation themselves, and the explanation they supply is that
+there is no status at all.
 
 ### 6. The Charter and governing instrument
 
@@ -295,7 +302,9 @@ interpretive declaration under Article VIII described in 01 § 6, item 10. Until
 that exists, send the extract, and never send an extract that misrepresents what
 the full instrument says — an extract is a selection, not an edit, and a
 recipient who later obtains the whole document must find it consistent with what
-they were given.
+they were given. Where the whole instrument is asked for, send it that week.
+Refusing reads as concealment, and it costs more than the Article VI § 2 problem
+it was meant to avoid.
 
 **Cost and time.** Nil, and a day to prepare the extract properly.
 
@@ -316,7 +325,9 @@ number of the appointing instrument. Where the recipient is a body the Kingdom
 expects continuing dealings with, the designation of liaison — letter 2 of the
 correspondence pack — is enclosed as its own document, because a liaison
 designation that sits inside a roster is not noticed, and the whole value of a
-liaison is that one name and one telephone number do not change.
+liaison is that one name and one telephone number do not change. Because it
+travels as its own document, `/standing` reports it as a line of its own rather
+than inside this item.
 
 **Cost and time.** Nil to produce, and this is the item that goes stale fastest.
 See § 4 below.
@@ -385,7 +396,11 @@ do, and the exclusion is practical long before it is reputational.
 **Where to obtain it.** A broker who writes religious organisations and
 non-profits; there are several who specialise. The certificate itself is issued
 by the broker on the standard ACORD certificate of liability insurance form,
-usually the same day, at no charge, as often as the Kingdom asks.
+usually the same day, at no charge, as often as the Kingdom asks. Ask for a
+freshly dated one every time a packet goes out. The policy period is the first
+thing a clerk looks at and frequently the only thing, and a certificate whose
+period has run is read the way a forfeited entity is read — not as an oversight
+but as a claim nobody checked.
 
 **The distinction that trips people.** A *certificate holder* is a party who
 receives a copy of the certificate and notice of cancellation, and nothing more.
@@ -438,8 +453,9 @@ sharper point concerns religious land use. An assembly occupied without a
 certificate of occupancy for assembly use is the fact that ends a RLUIPA argument
 before it begins, because the Kingdom is then the party out of compliance and the
 town's decision has an obvious lawful basis. 42 U.S.C. § 2000cc excuses nobody
-from applying; it is a claim built on a record of correct applications correctly
-refused.
+from applying; it is a claim built on correct applications refused for stated
+reasons that do not survive comparison with the secular assembly uses the zone
+permits.
 
 ### 11. The Official Citation of the Connecticut General Assembly
 
@@ -511,11 +527,18 @@ Kingdom's own.
 
 **What it proves.** That the institution's own records can be checked by the
 recipient without the institution's cooperation and without an account. Every
-certified extract the Kingdom issues carries the record's content digest, its
-position in the append-only ledger, and the covering anchor, and the verification
-route publishes all three. A recipient can establish for themselves that the
-document in their hand is the document the register holds, that the record
-existed on the date claimed, and that it has not been altered since.
+certified extract the Kingdom issues carries the record's content digest and its
+position in the append-only ledger, and the verification route publishes both. A
+recipient can establish for themselves that the document in their hand is the
+document the register holds and that it has not been altered since.
+
+The date is a separate question, and it is answered only by an external anchor —
+the ledger head published outside the Kingdom's control on a fixed date, which
+puts every entry at or below it provably earlier. Where an entry is covered the
+verification page says so; where it is not, the page says in terms that the
+recording date rests on the Kingdom's own attestation. Anchor before the packet
+goes out, because a recipient invited to check who arrives at that second
+sentence has been told more than the register supports.
 
 **Why this item is worth explaining at length.** Every other institution's packet
 asks to be believed. This one tells the recipient where to go and check. That
@@ -540,11 +563,11 @@ paragraph of the standing letter and in the footer of the letterhead.
 **Cost and time.** Nil.
 
 **The limit, which must be stated to the recipient.** Verification proves what
-the Kingdom recorded and when it recorded it. It does not prove that what was
-recorded is true. Say so in the letter. The honesty is not a weakness in the
-offer — it is the thing that makes the offer credible, and a recipient who
-discovers the limit for themselves will conclude the Kingdom was hoping they
-would not.
+the Kingdom recorded, and — where an anchor covers the entry — that it was
+recorded no later than the anchor. It does not prove that what was recorded is
+true. Say so in the letter. The honesty is not a weakness in the offer — it is
+the thing that makes the offer credible, and a recipient who discovers the limit
+for themselves will conclude the Kingdom was hoping they would not.
 
 **If it is absent.** Nothing is lost in strict terms, but the most distinctive
 thing about this institution goes unmentioned to a reader who was, at that
@@ -613,8 +636,8 @@ particular kind of filing, and they route the envelope to the law department
 before anybody reads the second page.
 
 Said once, because it belongs here and does not need repeating: the criminal
-provisions are not theoretical. Filing a lien or encumbrance against a federal
-officer or employee on account of their official duties is a felony under
+provisions are not theoretical. Filing a false lien or encumbrance against a
+federal officer or employee on account of their official duties is a felony under
 18 U.S.C. § 1521. Making or wearing anything resembling a federal badge or
 insignia reaches 18 U.S.C. § 701, representing oneself as a federal officer
 reaches § 912, and producing an identification document purporting to be issued
@@ -631,8 +654,15 @@ months later, by somebody who was inclined to help, and what is lost is that
 person.
 
 **And, more mundanely: length.** No history, no seal sheets, no photographs, no
-promotional material, no binder. A packet running past a dozen pages is not read
-past the third.
+promotional material, no binder. The cover letter is one page and is written on
+the assumption that it is the only page read. The enclosures behind it may run
+longer where the recipient's own process genuinely wants them — a land use file
+wants the deed and the certificate of occupancy, a police department wants
+neither — but each must be intelligible from its own first lines, and anything
+running past a few sheets is described in a line on the cover and offered rather
+than enclosed. The fault to avoid is not thickness. It is a reader who cannot
+tell what a given sheet is for, because a sheet whose purpose is unclear is the
+one that gets read closely, and it will not be the best one.
 
 ## 4. Assembly and maintenance
 
@@ -645,7 +675,35 @@ all, because it will be relied on, and the reliance will be wrong.
 date in the footer of the cover letter and on the footer of every enclosure —
 *Standing packet, version 3, 14 March 2026*. This is what makes it possible to
 answer the only question that matters when something changes: who holds which
-version.
+version. Print with it the line that stops a stale packet being relied on:
+*these particulars are stated as at [date]; if you are reading this more than a
+year later, telephone the liaison named above and we will send you the current
+version.* An out-of-date packet in a file does its damage only because nothing on
+its face tells the reader it is out of date, and one line cures that for the cost
+of a line.
+
+**The reference number goes on the page without its prefix.** A packet carries
+the reference of the register entry opened before dispatch, on the cover and on
+every enclosure (14 § 3), and for a packet that entry sits in the
+Government-to-Government Contact Register, whose internal prefix is G2G. Print
+the digits and leave the prefix off the paper. A footer reading *G2G-0041*
+repeated down thirteen consecutive sheets tells a town attorney that the sender
+files its dealings with the town as government to government — which is the one
+proposition the entire envelope exists to disclaim, and no careful paragraph on
+page one survives it. The register keeps the full number against the digits, and
+nothing is lost internally (`docs/templates/EXTERNAL-CORRESPONDENCE-PACK.md`, the
+spine, element 1).
+
+**One name on every page.** The packet goes out for Apex Kingdom. Certified
+extracts, register certificates, letterhead, and the verification footer must not
+carry the records office's own style on paper sent to a police department, a fire
+marshal, or a school: to that reader the word "Tactical" does not read as the
+name of a registry, it reads as equipment, and it is the one word in the
+Kingdom's vocabulary capable of turning a complainant into a subject. Alternating
+between two names inside one envelope carries a smaller cost of its own — it
+reads as two organisations, and the reader has to work out which one is writing
+(`docs/templates/EXTERNAL-CORRESPONDENCE-PACK.md`, "Before any of these goes
+out"; 14 § 3).
 
 **Triggers for a new version, immediately and without waiting for the review
 date.** Any change of officer, liaison, counsel, registered agent, address,
@@ -666,6 +724,14 @@ title, the date, the delivery method, the version number, and the enclosure list
 *as actually sent* rather than as generally intended. Without that last detail
 the Kingdom cannot answer a later question about what a particular office was
 told, and that question always arrives at the worst moment.
+
+**The telephone call in the week named is part of the packet.** The cover letter
+gives a date on which the Kingdom will telephone, and that call is where a filed
+document becomes a relationship — a call to an office that has the packet in
+front of it is a different call from a cold one, and it is the only step in this
+whole exercise that produces a name to write to next time. Diarise it when the
+register entry is opened rather than when the envelope is sealed. A packet sent
+without the call being made was, in practical terms, filed by both parties.
 
 **Reissue on change.** When a new version is produced, send it to every body
 holding an older one, with a one-paragraph covering letter and the sentence
@@ -689,11 +755,36 @@ An honest gap explained in one sentence is a stronger position than a claim the
 recipient discovers to be empty, because the gap costs a line and the discovery
 costs the relationship.
 
-## 5. Three worked variants
+## 5. Three worked variants, and where the packet does not go
 
 Sending everything to everyone reads as unfocused, which is the opposite of the
 impression the packet exists to create. Assemble for the reader. What follows is
 what each of three readers is actually deciding, and what answers it.
+
+Three are worked here because they are the three the Kingdom meets first. The
+register's `/standing` page scopes the same items for two further readers on the
+identical principle — a state or federal agency applying a programme's published
+criteria, and a grantmaker who will not proceed without documented tax status and
+governance however sympathetic they are. The principle in every case is that the
+packet answers what this reader is deciding and encloses nothing else.
+
+Before any variant is assembled, settle two things about the recipient, because
+both are checked in the first seconds and both are got wrong often enough to
+matter. **Address it to a named individual**, in the style that officeholder uses
+about themselves, verified against the body's own current publication in the week
+it goes; 14 § 4 gives the address and salutation lines and
+`docs/templates/EXTERNAL-CORRESPONDENCE-PACK.md` collects the Connecticut
+particulars that most often catch a writer working from another state's template.
+A title wrong by one word is read as evidence that nothing else in the envelope
+was checked either, and it is the cheapest error in this document to avoid.
+**And confirm the office exists in the form assumed.** Many Connecticut towns
+have no police department at all and are policed by the State Police from a
+troop, in a number of cases with a resident trooper stationed in the town; a town
+on the selectman form has a first selectman rather than a mayor, and one on the
+council-manager form has a manager who runs it and a mayor who does not.
+Bridgeport keeps both a town clerk and a city clerk, holding different records.
+A packet sent to an office that does not exist is not forwarded to the one that
+does.
 
 ### A police department
 
@@ -723,10 +814,24 @@ answers the question their training has taught them to ask about an unfamiliar
 organisation with a name like this one. It answers it in the right direction, and
 it answers it before anything is at stake.
 
-**Ask for.** Nothing, or at most two small things: a named liaison in return, and
-a physical security assessment, which departments conduct at no charge and whose
+**Ask for.** Nothing, or at most three small things, each of which a district
+commander can grant without consulting anybody. A named liaison in return. A
+physical security assessment, which departments conduct at no charge and whose
 written result is the foundation of any later security grant application
-(14 § 7).
+(14 § 7). And the question that decides whether this packet does any operational
+work at all: how a note about the premises reaches the officers working the
+overnight shift. A packet in the chief's office is not in the patrol car at two
+in the morning, which is the hour the whole variant was assembled for. Every
+department knows how its own premises information is recorded and will say so if
+asked; none volunteers it.
+
+**Two cautions particular to this reader.** Everything handed to a municipal
+police department becomes a record held by a public agency and is presumptively
+disclosable to any person under Conn. Gen. Stat. § 1-200 et seq. (§ 3). Give a
+telephone number the Kingdom is content to see published — an institutional line
+answered out of hours rather than an officer's personal mobile — and no home
+address for anybody. And the name rule in § 4 matters here more than anywhere: on
+paper going to a police department the sender is Apex Kingdom.
 
 ### A municipal land-use authority
 
@@ -754,6 +859,27 @@ of the use stated in writing at the outset, a correct and complete application,
 and the comparable secular assembly uses the zone permits identified on the
 record. That file is what municipal counsel cannot advise around. A statutory
 citation in a covering letter is what they advise around before breakfast.
+
+**Where it goes, and when.** With the application, or at the pre-application
+meeting the land use office will usually give if asked for one — not on its own,
+and not first to the town attorney. A packet arriving cold has no file to be put
+in, and municipal land files are indexed by parcel and by application number
+rather than by the applicant's name, so the cover must carry the property
+address, the assessor's map, block, and lot, and the application number where one
+has been assigned. Without those it goes into general correspondence and is not
+in front of the commission on the night the application is heard, which is the
+only night it was assembled for. Sending the first packet to Corporation Counsel
+— or the City Attorney or Town Attorney, as that office styles itself — tells the
+town the Kingdom is expecting a fight, and produces one earlier than it need
+have come. Counsel is the reader behind the reader, and reaches the file in the
+ordinary course without being written to.
+
+**Ask for one bounded thing.** Confirmation that the application is complete, the
+name of the staff member assigned to it, or thirty minutes before filing. All
+three are routine, all three can be granted by the person opening the envelope,
+and any of them puts a named official on the Kingdom's side of the counter before
+anything is contested. Ask for the outcome in the first letter and the letter is
+answered by the process rather than by a person.
 
 **Two operational notes.** Obtain every denial, condition, and continuance in
 writing with the reasons stated. And note that a Connecticut land use appeal must
@@ -785,9 +911,45 @@ endorsement of status, which they cannot grant and which put the request into a
 category the office handles by not replying
 (`docs/04-GOVERNMENT-RELATIONS-PROTOCOL.md` § 7).
 
+**Enclose what the office would otherwise have to write back for**, because a
+request that cannot be worked as it stands is not refused, it is set down. Where
+the ask concerns a named person's matter, a legislative office will generally not
+approach an agency on that person's behalf without their written authorisation,
+and offices keep their own release form for the purpose. Ask which form the
+office uses and return it signed rather than supplying one of the Kingdom's
+drafting. With it goes the name of the agency, the file or application number,
+the date the matter was opened, and the dates of what has already been sent and
+not answered. On the constituent number, state it as at a date, say plainly that
+it counts members whose home addresses fall inside the district, and be able to
+produce the working if the aide asks — numbers only, never names (§ 3). An aide
+who has to send a letter back to get any of that has already spent more on the
+matter than it was allocated.
+
 **Where the office introduced or signed the Citation, say so in the first
 sentence and name the member.** Nine legislators already know the Kingdom's name.
 That is a real asset and it has a shelf life measured in electoral cycles.
+
+### Where the packet does not go
+
+Two places, and in each the error is over-enclosure by an institution pleased
+with its own file.
+
+**With a records request.** Records of public agencies are open to inspection and
+copying under Conn. Gen. Stat. § 1-210 without the requester saying who they are
+or why they want them. A request arriving beneath a thirteen-item institutional
+dossier invites the records officer to weigh a question the Act does not ask,
+takes the matter off the desk of the clerk who could have answered it inside the
+four business days, and puts it in front of somebody who now wants to know what
+this is about. Records requests go on their own, in their own reference series,
+under the Register of Public Records Requests, and they are stronger for being
+unremarkable (14 § 8).
+
+**Into a matter that has already turned adverse.** Once a body is represented on
+a matter, a packet is not an introduction; it is unsolicited material sent around
+its lawyer, and it is read that way by the lawyer it went around. Standing is
+established through counsel from that point, or not at all (14 § 9). The packet
+is an instrument of first contact, and its value is entirely in arriving before
+there is anything to argue about.
 
 ---
 

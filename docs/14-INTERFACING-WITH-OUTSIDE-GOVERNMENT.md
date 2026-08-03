@@ -54,8 +54,9 @@ any clerk finds in thirty seconds. On choosing between them, see
 `docs/12-ASSETS-AND-THE-POPULATION-REGISTER.md` § 2.
 
 **A charitable trust**, whose property is bound to its stated purpose and whose
-trust the Attorney General has standing to enforce. The protective half matters
-here: a body under Attorney General oversight is visibly not a personal
+trust the Attorney General has standing to enforce, representing the public
+interest in charitable gifts under Conn. Gen. Stat. § 3-125. The protective half
+matters here: a body under Attorney General oversight is visibly not a personal
 enterprise, and officials read it that way.
 
 **A church exempt under 26 U.S.C. § 501(c)(3)** — exempt without applying,
@@ -131,9 +132,21 @@ depreciates to nothing the moment either end changes.
 **The seal and a consistent letterhead**, the seal small and once. A seal larger
 than the text, a device resembling a government's arms, or an office name
 imitating a public agency produce the opposite of the intended effect. Hold to
-one name per matter: the Kingdom writes as Apex Kingdom, records business is
-signed by Apex Tactical Corporation — Office of the Registrar, and alternating
-within a matter reads as two organisations.
+one name per matter, and outward that name is Apex Kingdom: correspondence with a
+public body is signed for Apex Kingdom, while the records office's own style —
+Apex Tactical Corporation — Office of the Registrar — belongs to internal records
+business and to the certificates and extracts the register issues. Alternating
+between the two inside one matter reads as two organisations.
+
+Two constraints on that second name. It goes on paper only where it is in fact an
+incorporated entity or a trade name recorded with the town clerk under Conn. Gen.
+Stat. § 35-1, because a name asserting a corporate form the Kingdom does not hold
+is the small inaccuracy a municipal attorney notices and keeps. And it goes on
+nothing addressed to a police department, a fire marshal, an emergency management
+office, or a school, whatever the internal division of labour. To that reader
+"Tactical" does not read as the name of a registry; it reads as equipment, and
+the impression is formed before the first sentence. Those bodies are written to
+as Apex Kingdom.
 
 **Counsel of record where the matter is adverse.** A letter from an attorney is
 read by an attorney, which is the right pairing, and it removes any question of
@@ -156,40 +169,132 @@ against the body's own current publication before sending; full address blocks
 are in `docs/templates/government-correspondence.md`, and verified details belong
 in the Register of Public Bodies and Officials.
 
+Two errors come before any question of honorifics. The first is writing to the
+most senior name available rather than to the office holding power to grant the
+request. A letter to the mayor about a zoning question is forwarded to the land
+use office having gained nothing and having told that office the Kingdom went
+over its head. The second is assuming Connecticut towns are organised alike. Some
+have a first selectman, some an elected mayor, some a council with an appointed
+manager who is in fact the chief executive, and the chief elected official and
+the chief administrative officer are frequently two different people. The town's
+own website names both.
+
+Where the body's publication leaves the honorific uncertain, use the full name —
+*Dear Jordan Ellis:* — which is never wrong. A guessed *Mr.* or *Ms.* that lands
+wrong is the first line of the letter, and it is remembered.
+
 - **Mayor.** *The Honorable [name], Mayor of the City of [—]* — *Dear Mayor [—]:*
 - **First selectman.** *The Honorable [name], First Selectman, Town of [—]* —
   *Dear First Selectman [—]:* Several towns style it First Selectwoman; use
-  whichever the town uses itself.
+  whichever the town uses itself. Where a town has an appointed manager, the
+  administrative request goes to the manager and the political one to the chief
+  elected official.
+- **Assessor.** *[name], Assessor, Town of [—]* — *Dear Assessor [—]:* The
+  assessor decides the exemption under Conn. Gen. Stat. § 12-81, and is written
+  to by name before the filing window rather than after it.
+- **Town clerk.** *[name], Town Clerk, Town of [—]*. The clerk holds the land
+  records and the trade name index and, in many towns, is also the records
+  officer.
+- **Chair of a land use board or commission.** *[name], Chair, [—] Planning and
+  Zoning Commission*, care of the land use office and never to a member's home
+  address. Where an application is pending, a board of appeals or a commission
+  acting on a special permit decides on its own record, and contact with an
+  individual member outside the hearing is an ex parte communication capable of
+  invalidating the very approval sought. Correspondence on a pending application
+  goes to staff or into the hearing record and nowhere else. Confirm the position
+  with Counsel before any other contact.
 - **State representative.** *The Honorable [name], State Representative, [—]th
   Assembly District, Connecticut General Assembly* — *Dear Representative [—]:*
 - **State senator.** *The Honorable [name], State Senator, [—]th Senatorial
   District, Connecticut General Assembly* — *Dear Senator [—]:* The salutation is
   identical to a United States Senator's, so the address block must carry the
   district or the letter reads as though meant for Washington.
+- **Secretary of the State.** *The Honorable [name], Secretary of the State,
+  State of Connecticut* — *Dear Madam Secretary:* or *Dear Mr. Secretary:*
+  Connecticut's officer is the Secretary of the State, not the Secretary of
+  State. On a letter about an entity filing, that one article tells the office
+  whether the writer has read the statute being filed under.
+- **Attorney General.** *The Honorable [name], Attorney General, State of
+  Connecticut* — *Dear Attorney General [—]:* The office with protective
+  jurisdiction over the charitable trust is the same office that would receive a
+  complaint about it, so correspondence there is drafted by Counsel and not by
+  the liaison.
 - **State agency head.** *Commissioner [name], Connecticut Department of [—]* —
   *Dear Commissioner [—]:* Deputies and bureau chiefs are not commissioners.
 - **Chief of police.** *Chief [name], Chief of Police, [—] Police Department* —
-  *Dear Chief [—]:*
-- **Records officer.** No honorific: *[name], Freedom of Information Officer* —
-  *Dear Ms. [—]:* In many Connecticut towns it is the Town Clerk.
+  *Dear Chief [—]:* Towns served under the resident state trooper arrangements
+  have no chief of their own; there the letter goes to the resident trooper or
+  the Troop commander, and which one should be confirmed before writing.
+- **Records officer.** No honorific, and whatever title the body itself gives the
+  person who actually holds the record. Many Connecticut towns have no officer
+  styled Freedom of Information Officer, and a request addressed to one that does
+  not exist is opened by somebody under no duty to answer it. Police reports go
+  to the department's records division, not to the town hall.
 - **Municipal lawyer.** *[name], Esq., Corporation Counsel* — or City Attorney or
-  Town Attorney, as the office styles itself — *Dear Attorney [—]:*
+  Town Attorney, as the office styles itself — *Dear Attorney [—]:* Many towns
+  retain a private firm rather than employ one, in which case the letter goes to
+  the firm's address.
 - **Member of Congress.** *The Honorable [name], U.S. House of Representatives,
   Washington, DC 20515* — *Dear Representative [—]:*, or *United States Senate,
   Washington, DC 20510* — *Dear Senator [—]:* Casework goes to the district office.
 - **A judge, about a pending matter.** Never. That is an ex parte communication;
   it damages the case it was meant to help and it embarrasses counsel.
 
+**Casework, at either level.** A legislative office will not take a constituent's
+matter up with an agency without the constituent's written authorisation, and a
+federal agency will not discuss an individual's records with a congressional
+office without it — the Privacy Act, 5 U.S.C. § 552a, being the reason. Enclose
+the signed release with the first letter. A matter left waiting while the office
+writes back to ask for one commonly waits until the aide who read it has moved to
+another job.
+
 Close *Respectfully,* or *Sincerely,*. The block carries a name, the office held
-within the Kingdom, and a return address, and claims no governmental, judicial,
-diplomatic, or law-enforcement authority. Internally the Founder is properly
-styled the Sovereign; on a letter to a city planner the block reads *Matthew
-McCluster, Founder and Presiding Officer, Apex Kingdom* (04 § 2).
+within the Kingdom, a return address, a direct telephone number, and an email
+address, and claims no governmental, judicial, diplomatic, or law-enforcement
+authority. A block giving no telephone number obliges anybody with a question to
+write, and most will not. Internally the Founder is properly styled the
+Sovereign; on a letter to a city planner the block reads *Matthew McCluster,
+Founder and Presiding Officer, Apex Kingdom* (04 § 2).
 
 ## 5. Composition and approval
 
 **One letter, one subject, one request.** A letter carrying three asks is
 answered on the easiest and filed on the other two.
+
+**Telephone before writing.** Two minutes on the telephone establishes who holds
+the file, what the building calls the thing being asked for, which form it wants
+it on, and whether the request belongs somewhere else entirely. A letter arriving
+at the right desk already knowing those answers is worked; a letter arriving at
+the wrong desk is forwarded, and forwarded correspondence keeps neither its clock
+nor its urgency. Log the call in the Government-to-Government Contact Register
+the same day and open the letter with it — *further to my conversation with
+[name] on [date]* — which gives the reader a colleague who has already agreed the
+matter is theirs.
+
+**Give the office its own identifiers.** Every municipal and agency file is
+indexed by something: a street address with the assessor's map, block, and lot; a
+permit or application number; a police case number; a docket; a licence number;
+an account number from a bill. A request without the identifier makes the
+recipient search before they can decide anything, and the search is where a
+letter becomes next week's problem. Where the identifier is genuinely unknown,
+say so and supply what would let a clerk find it — exact address, date, names,
+and what the matter was called at the time.
+
+**Enclose almost nothing.** One page, and at most one further page identifying
+the Kingdom by filing number, address, and liaison. The Charter, the Citation, a
+history, and a folder of photographs sent with a first letter do not establish
+seriousness; they establish that the writer does not know what the office needs,
+and they are how a file acquires a note on it. The standing packet is for
+meetings, where somebody is present to explain it
+(`docs/15-THE-STANDING-PACKET.md`). Where anything is enclosed, list the
+enclosures at the foot of the letter: an office that cannot tell whether a page
+is missing writes back to ask, and the matter sleeps until it does.
+
+**Copy nobody as a manoeuvre.** A copy to the town attorney tells a clerk the
+matter has become legal and that they should stop helping. A copy to the mayor on
+a letter to a staff member is read as going over that person's head and is repaid
+in the speed of every later reply. Copy those who need the document to do their
+work, name them at the foot of the letter, and copy no one else.
 
 **Who may sign.** Routine correspondence — a form, a status enquiry, a records
 request, a meeting request — is signed by the designated liaison under a standing
@@ -256,8 +361,9 @@ answer to a demand is not "you are wrong" but "that is not the document I
 received". And verify the address against a current source first.
 
 None of this is service of process, and the Kingdom serves process on nobody. In
-a Connecticut civil action process is served by a state marshal under Conn. Gen.
-Stat. § 52-57, and on the United States under Fed. R. Civ. P. 4(i). Where
+a Connecticut civil action process is directed to a state marshal or other proper
+officer under Conn. Gen. Stat. § 52-50 and served in the manner § 52-57
+prescribes; on the United States it is served under Fed. R. Civ. P. 4(i). Where
 something must be served, counsel arranges it.
 
 ## 7. Police and emergency services
@@ -280,10 +386,18 @@ skipping rungs is how a complainant becomes a nuisance in the file.
 
 1. The responding officer, at the scene. Get the incident number before they
    leave — without it nothing later can be requested — and record name and badge
-   number as given.
+   number as given. Ask what the department calls it as well: case number,
+   incident number, and dispatch number are not always the same string, and a
+   request quoting the wrong one comes back "no record found" rather than
+   corrected.
 2. The shift supervisor, the same day, by telephone and then a one-paragraph
    email confirming what was said.
-3. The records division, in writing, for the report: a records request under § 8,
+3. The records division, in writing, for the report. Ask first whether the
+   department has its own report-request form and use it if so; most departments
+   have one, most fill it within days, and it costs a copying fee rather than a
+   posture. A formal request under the Act for a report the counter would have
+   handed over marks the requester as litigious before there is anything to
+   litigate. Where the form produces nothing, the request under § 8 follows,
    recorded in the Register of Public Records Requests. Expect withholding while a
    matter is open under the law-enforcement exemptions at Conn. Gen. Stat.
    § 1-210(b)(3), and ask which subdivision is relied on rather than arguing.
@@ -313,15 +427,16 @@ days and months, not years, and are not extendable.
 no badge, patch, shield, warrant card, plate, uniform item, or identification that
 could be mistaken for law enforcement or for a governmental body; commissions no
 officer with police powers; conducts no stop, detention, search, or arrest; and
-directs no process at any officer, department, or agency. Making or wearing
-anything resembling a federal badge or insignia reaches 18 U.S.C. § 701;
-representing oneself as a federal officer, § 912; producing an identification
-document purporting to be issued by a governmental body, § 1028. Holding a private
-person out as a peace officer is criminal impersonation under Conn. Gen. Stat.
-§§ 53a-130 and 53a-130a. A false lien against a federal officer on account of
-their official duties is a felony under 18 U.S.C. § 1521, and the Connecticut
-forgery provisions at § 53a-137 et seq. reach instruments purporting to affect a
-legal right. Destroying or concealing evidence is tampering under § 53a-155.
+directs no process at any officer, department, or agency. Making, selling, or
+possessing anything resembling a federal badge or insignia reaches 18 U.S.C.
+§ 701; representing oneself as a federal officer, § 912; producing an
+identification document purporting to be issued by a governmental body, § 1028.
+Holding a private person out as a peace officer is criminal impersonation under
+Conn. Gen. Stat. §§ 53a-130 and 53a-130a. A false lien against a federal officer
+on account of their official duties is a felony under 18 U.S.C. § 1521, and the
+Connecticut forgery provisions at § 53a-137 et seq. reach instruments purporting
+to affect a legal right. Destroying or concealing evidence is tampering under
+§ 53a-155.
 
 No officer instructs any person to refuse lawful process, to decline to identify
 themselves to police, or to tell a court it lacks jurisdiction. A state may
@@ -333,13 +448,15 @@ religious body with real grievances and a department inclined to help; after it
 exists the Kingdom is a subject, and the goodwill does not come back.
 
 **Mandated reporting is a personal legal duty, not an institutional choice.**
-Where anyone forms reasonable cause to suspect that a child has been abused or
-neglected or placed in imminent risk of serious harm, that individual reports
-under Conn. Gen. Stat. § 17a-101 et seq. — orally or electronically as soon as
-practicable and within twelve hours (§ 17a-101b(a)), then in writing within
-forty-eight hours (§ 17a-101c). Clergy are enumerated reporters and failure to
-report is itself an offence. No officer, the Founder included, may tell a
-reporter to wait. Report first, then record it.
+Where a mandated reporter forms reasonable cause to suspect that a child has been
+abused or neglected or placed in imminent risk of serious harm, that individual
+reports under Conn. Gen. Stat. § 17a-101 et seq. — orally or electronically as
+soon as practicable and within twelve hours (§ 17a-101b(a)), then in writing
+within forty-eight hours (§ 17a-101c). The list at § 17a-101(b) names clergy and
+most who teach, coach, supervise, or care for children, which is nearly everyone
+the Kingdom places near them, and failure to report is an offence under
+§ 17a-101a. A person not on that list may still report and should. No officer,
+the Founder included, may tell a reporter to wait. Report first, then record it.
 
 **Where a member is the subject rather than the complainant**, the institution
 does not obstruct, conceal, coach, or take custody of anything, and refers the
@@ -359,30 +476,53 @@ hearing rather than after it.
 
 **Mechanics, at the level an officer can work from.** Records of public agencies
 are open to inspection and copying under Conn. Gen. Stat. § 1-210. Address the
-request to the body's designated records officer — in many towns the Town Clerk —
-because the clock runs against the body once the request reaches someone with
-authority to answer for it. Describe the records so a clerk who knows nothing of
-the matter can find them: name the office, name the subject, name the individuals
-whose correspondence is sought, and give a date range with both ends closed. Ask
+request to the official who has custody of the record — in many towns the Town
+Clerk, and for a police report the department's own records division — because
+the clock runs against the body once the request reaches someone with authority
+to answer for it, and a request sitting on the wrong desk is a request nobody is
+answerable for. Describe the records so a clerk who knows nothing of the matter
+can find them: name the office, name the subject, name the individuals whose
+correspondence is sought, and give a date range with both ends closed. Ask
 for electronic records in native electronic form, which preserves metadata and
 costs the agency less than copying. Ask in the same letter for a fee waiver where
 the request is not commercial, in one sentence about the public interest. Date
 it, carry the register reference, and send it by a method that proves delivery.
 
+Two further things earn their space, and both exist to stop the request coming
+back as a question. **Say what the Kingdom will pay.** Copying fees are provided
+for at Conn. Gen. Stat. § 1-212, whose current terms and maxima should be
+confirmed there; a request silent on money produces a letter asking about money,
+and from that point the matter waits on the Kingdom rather than on the agency.
+State a ceiling, ask to be telephoned before it is exceeded, and offer to inspect
+before copying — inspection costs the agency less and is generally granted
+sooner. Where the fee waiver is refused, the ceiling keeps the request moving.
+**And offer to narrow.** *If this is broader than your office can readily fill,
+please telephone me and I will cut it down* turns a request that would have been
+refused as unreasonably burdensome into a conversation, and records officers take
+it up. Avoid *any and all documents relating to*, which produces either a refusal
+or a search nobody will begin.
+
 A denial must be made in writing within four business days of the request, and a
-failure to respond within four business days is itself deemed a denial
-(§ 1-206(a)). From a denial, actual or deemed, there are thirty days to file a
-notice of appeal with the Freedom of Information Commission (§ 1-206(b)(1)). The
-Commission takes evidence, holds hearings, and may order disclosure; it may also
-impose a civil penalty personally on an official who denied access without
-reasonable grounds — confirm the amount and subsection before mentioning it, and
-as a matter of tone do not threaten it at all. Appeals are free and routinely
-conducted without counsel. From the Commission an appeal lies to the Superior
-Court under the Uniform Administrative Procedure Act, Conn. Gen. Stat. § 4-183;
-confirm the period, which is short. Federally, an agency must determine within
-twenty business days whether it will comply and say why not (5 U.S.C.
-§ 552(a)(6)(A)(i)); the administrative appeal window is set by each agency's own
-regulations and stated in the denial letter, so read it there.
+failure to respond within the applicable period is itself deemed a denial
+(§ 1-206(a)). Four is not the only interval in that section, and the exception
+bites hardest on the requests the last section produces: where a request is
+determined to reach records subject to Conn. Gen. Stat. § 1-214(b) and (c) — an
+employee's personnel or medical file, which a request about a named officer's
+conduct frequently is — § 1-206(a) allows ten business days rather than four, and
+the agency must notify the employee, who may object. That is a lawful delay
+rather than an evasion, and a letter that has already announced a four-day
+deadline reads badly against it. From a denial, actual or deemed, there are
+thirty days to file a notice of appeal with the Freedom of Information Commission
+(§ 1-206(b)(1)). The Commission takes evidence, holds hearings, and may order
+disclosure; it may also impose a civil penalty personally on an official who
+denied access without reasonable grounds — confirm the amount and subsection
+before mentioning it, and as a matter of tone do not threaten it at all. Appeals
+are free and routinely conducted without counsel. From the Commission an appeal
+lies to the Superior Court under the Uniform Administrative Procedure Act, Conn.
+Gen. Stat. § 4-183; confirm the period, which is short. Federally, an agency must
+determine within twenty business days whether it will comply and say why not
+(5 U.S.C. § 552(a)(6)(A)(i)); the administrative appeal window is set by each
+agency's own regulations and stated in the denial letter, so read it there.
 
 **Every interval stated in this section must be confirmed against the General
 Statutes and the United States Code as they currently stand before it is relied
@@ -402,7 +542,9 @@ Gen. Stat. § 1-200(1) and is generally under no obligation to answer a request
 made under the Act. Say so once, courteously, record the decision and its
 reasons, and stop. Where the request touches membership records, discipline
 files, donor identities, or the personal data of minors, produce nothing and
-route it to Counsel.
+route it to Counsel. None of that reaches a subpoena, a court order, or a
+regulator's statutory demand: those are § 9's subject, and they are complied with
+or challenged in court, never ignored.
 
 ## 9. When a matter becomes adverse
 
@@ -503,8 +645,14 @@ Cheap first, and in this order, because each step makes the next cheaper.
 2. Appoint a registered agent at a real Connecticut street address and record the
    appointment, confirming the current statutory requirements for agent and
    registered office when the entity is formed.
-3. Fix one return address, one telephone number that is answered, and one email
-   address, and do not change them.
+3. Fix one return address; one telephone number that is answered, with a
+   voicemail greeting naming the Kingdom, because an official who reaches an
+   unnamed mailbox leaves no message; and one email address at the Kingdom's own
+   domain, a free webmail address on institutional letterhead undoing the
+   letterhead. Put one page on the open internet under that domain saying what
+   the Kingdom is, where it is, and whom to call. The official deciding whether
+   to answer will search the name before replying, and a search returning nothing
+   is itself an answer. Then change none of them.
 4. Designate the liaison by name, in writing, in the Register of Offices and
    Commissions, and notify each body the Kingdom already deals with.
 5. Adopt the letterhead and signature block in § 4 and retire every earlier

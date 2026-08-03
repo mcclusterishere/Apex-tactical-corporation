@@ -28,7 +28,12 @@ destroyed by asserting it.
 Eleven elements. A letter missing any of them is a letter that can be set aside
 without consequence, and public offices set aside what they can.
 
-1. A reference number from the register in which the matter is recorded.
+1. A reference number from the register in which the matter is recorded, in a
+   form the recipient can quote back. Print the number and leave the register's
+   internal prefix off the page where an outside reader could decode it into a
+   claim. A reference block reading "G2G-0041" says government-to-government to
+   anyone who pauses over it, and the closing section of this file explains why
+   that phrase must never reach a town hall.
 2. The date, written out.
 3. The method of delivery, stated at the top, so the file shows how it went.
 4. A recipient block naming an individual, with the correct title.
@@ -46,10 +51,18 @@ without consequence, and public offices set aside what they can.
 ### Before any of these goes out
 
 - [ ] **A record is open** in the Government-to-Government Contact Register, and
-      the letter carries its reference. The record is completed the day the
-      letter is sent, not when a reply arrives. A records request opens instead
-      in the Register of Public Records Requests; an incident report opens in the
-      Register of Incidents first and the contact register second.
+      the letter carries its reference in the form element 1 above requires — the
+      digits, with the full internal number held in the register against them.
+      The record is completed the day the letter is sent, not when a reply
+      arrives. A records request opens instead in the Register of Public Records
+      Requests, whose FOI prefix is unobjectionable and goes out as it stands.
+      Anything addressed to a police department, a fire marshal, or an emergency
+      service — letters 4, 5, 6, 7, and 8 — opens in the Register of Public
+      Safety and Emergency Services Liaison, which is the operating register for
+      those dealings (`14-INTERFACING-WITH-OUTSIDE-GOVERNMENT` § 7). Where the
+      underlying event is an incident it opens in the Register of Incidents
+      first; where the letter forms part of a wider dealing with the same body it
+      is linked to the contact register rather than entered twice.
 - [ ] **The name, title, and address are verified this week** from the body's own
       website or by telephone.
 - [ ] **The letterhead is plain.** No seal larger than the text, no device
@@ -62,7 +75,14 @@ without consequence, and public offices set aside what they can.
       Tactical Corporation" unless that name is in fact an incorporated entity or
       a trade name recorded with the town clerk under Conn. Gen. Stat. § 35-1. A
       name asserting a corporate form the Kingdom does not hold is exactly the
-      small inaccuracy a municipal attorney notices and keeps.
+      small inaccuracy a municipal attorney notices and keeps. Separately, and
+      whatever that name's legal position turns out to be: the word "Tactical"
+      does not go on paper sent to a police department, a fire marshal, or a
+      school. To that reader it does not read as the name of a records office. It
+      reads as equipment and organisation, it sits badly beside any mention of
+      stewards in vests, and it is the one word in the Kingdom's vocabulary
+      capable of turning a complainant into a subject. Correspondence with public
+      bodies is signed for Apex Kingdom.
 - [ ] **The letter has been read once against the closing section of this file**,
       "What never goes out over the Kingdom's name."
 - [ ] **A follow-up date is in the calendar** and an officer is assigned to make
@@ -77,6 +97,63 @@ APEX KINGDOM
 Bridgeport, Connecticut [ZIP]
 Telephone [NUMBER] · [EMAIL ADDRESS]
 ```
+
+### Forms of address, and the Connecticut facts behind them
+
+Every letter in this pack carries a `[SALUTATION]`, and getting it wrong is the
+cheapest way there is to lose a reader. The address block is where an unfamiliar
+organisation is first judged, and a title wrong by one word tells the recipient
+that nothing else in the envelope was checked either. Verify the name and the
+style from the body's own website in the week the letter goes out, and use the
+style the officeholder uses about themselves.
+
+The particulars that most often catch a writer working from another state's
+template, each of which is noticed here immediately:
+
+**There is no county government.** Connecticut abolished it in 1960. The counties
+survive as lines on a map and as the names of judicial districts; there is no
+county executive, no county council, and nothing to write to. Regional business is
+done by councils of governments, which are voluntary associations of member
+municipalities and hold no authority over a private organisation.
+
+**There are no sheriffs.** The county sheriff system was abolished by
+constitutional amendment in 2000. Civil process is served by state marshals, who
+are appointed and are not police officers; courthouse and prisoner duties belong
+to judicial marshals.
+
+**Prosecutors are State's Attorneys.** The Division of Criminal Justice is headed
+by the Chief State's Attorney, and each judicial district has a State's Attorney.
+There is no District Attorney in Connecticut.
+
+**The chief executive of a municipality is often not a mayor.** Cities take a
+mayor. Towns on the selectman form take a first selectman, and where the incumbent
+uses First Selectwoman that is the style to use. Towns on the
+council-manager form are run by an appointed town manager or town administrator,
+and the mayor, where there is one, chairs the council and does not run the town —
+so a letter about an operational matter addressed to that mayor goes to the wrong
+desk and costs a fortnight. Connecticut also has boroughs, whose chief executive
+is a warden sitting with a board of burgesses.
+
+**"The Honorable" belongs to the elected.** Mayors, first selectmen, legislators,
+and judges take it in the address block, with the office in the salutation — "Dear
+Mayor ——", "Dear First Selectman ——", "Dear Senator ——". Appointed officers,
+including town managers, chiefs of police, fire marshals, assessors, and records
+officers, take their actual title and no honorific. Applying it to an appointed
+professional is a small error and it reads as flattery.
+
+**Many towns have no police department.** They are policed by the Connecticut
+State Police from a troop, in many cases with a resident trooper stationed in the
+town under the arrangement authorised in Title 29 of the General Statutes; confirm
+the section against the current General Statutes before citing it. Letters 4, 6,
+and 8 in this pack are addressed to a chief of police who in those towns does not
+exist. There the correspondence goes to the troop commander and the resident
+trooper, and the town's own contact is the first selectman's office. Establish
+which arrangement applies before drafting.
+
+**It is the Secretary of the State**, not the Secretary of State. And some
+municipalities, Bridgeport among them, maintain both a town clerk and a city clerk
+holding different records. Confirm which office holds the record you want before
+writing to either; a misdirected request is forwarded slowly, if at all.
 
 ---
 
@@ -109,11 +186,35 @@ be treated as what the Kingdom actually is.
 
 ## What must accompany it
 
-The Charter or a certified extract; the Official Citation of the Connecticut
-General Assembly of 5 October 2025, described exactly as it is; a certificate of
-insurance; proof of tax status in whatever form the Kingdom holds it; and the
-public verification address of the register. Nothing else. Do not enclose a
-history, a manifesto, a seal sheet, or photographs.
+A certified extract of the Charter rather than the whole of it; the Official
+Citation of the Connecticut General Assembly of 5 October 2025, described exactly
+as it is; a certificate of insurance; proof of tax status in whatever form the
+Kingdom holds it; and the public verification address of the register. Nothing
+else. Do not enclose a history, a manifesto, a seal sheet, or photographs.
+
+Assemble for the reader rather than sending everything to everybody.
+`docs/15-THE-STANDING-PACKET.md` § 5 sets out worked variants, and the police
+variant in particular omits the Citation, the tax status, and the EIN — the first
+because it bears on nothing that reader is deciding, the others because nothing
+financial belongs in that envelope. Where a variant omits an item, cut both the
+corresponding section of the letter and the numbered enclosure list to match. The
+two must agree exactly, because the first thing a careful reader does with a
+numbered list is count against it.
+
+The extract rather than the Charter, because the reader will read what is
+enclosed. An extract limited to the name, the purposes, the governance structure,
+and the officers answers every question a public office actually has. The whole
+Charter is a religious constitution written for the Kingdom's own members in the
+Kingdom's own vocabulary, and one page of it read cold by a town attorney will
+undo the careful paragraph on page one of the letter. Offer the full document on
+request and provide it the same week if it is asked for — refusing would be worse
+than enclosing it — but do not volunteer it.
+
+For the same reason the letter gives the Charter's founding date in plain
+English. *Nunc pro tunc* is a court's phrase for what a court does, and a private
+body using it about its own instrument reads as an attempt to give that instrument
+retroactive legal effect. The fact is unremarkable and survives translation:
+the community dates itself from 30 October 2010 and wrote that down in 2025.
 
 ## The letter
 
@@ -131,7 +232,7 @@ BY EMAIL TO [ADDRESS] AND BY FIRST-CLASS MAIL
 [CITY], Connecticut [ZIP]
 
 Re:  Statement of institutional standing — Apex Kingdom
-     Our reference: [G2G RECORD NUMBER]
+     Our reference: [OUR FILE NUMBER — DIGITS ONLY]
 
 Dear [SALUTATION]:
 
@@ -144,9 +245,12 @@ WHAT THE KINGDOM IS
 Apex Kingdom is a religious society, cultural institution, and
 charitable trust operating in [BRIDGEPORT], Connecticut. It is
 constituted by a written Charter executed 29 May 2025 before a
-Connecticut notary with an attesting witness, effective by its terms
-nunc pro tunc to 30 October 2010, which is the date the community
-considers itself to have begun. It is affiliated with [CONGREGATION].
+Connecticut notary with an attesting witness, which takes as its
+founding date 30 October 2010, the date from which the community
+considers itself to have begun. [IT IS AFFILIATED WITH
+[CONGREGATION]. — OMIT THIS SENTENCE ENTIRELY IF THERE IS NO
+AFFILIATION AN OFFICER OF THAT BODY WOULD CONFIRM ON THE
+TELEPHONE.]
 [WHERE THE KINGDOM HAS INCORPORATED, STATE IT EXACTLY: It is
 incorporated in Connecticut as [a religious corporation under Conn.
 Gen. Stat. § 33-264a et seq. / a nonstock corporation under Conn. Gen.
@@ -184,7 +288,9 @@ OFFICERS AND HOW TO REACH US
 
 TAX STATUS AND INSURANCE
 
-[STATE ONLY WHAT IS TRUE AND DOCUMENTED. EXAMPLES:
+[THE TAX PARAGRAPH IS OMITTED FOR A POLICE DEPARTMENT, WHICH IS
+ DECIDING NOTHING THAT TURNS ON IT; THE INSURANCE PARAGRAPH STAYS.
+ STATE ONLY WHAT IS TRUE AND DOCUMENTED. EXAMPLES:
  "The Kingdom holds Employer Identification Number [NUMBER]. As a
  church it is exempt from federal income tax under 26 U.S.C.
  § 501(c)(3) and is excepted by 26 U.S.C. § 508(c)(1)(A) from the
@@ -216,34 +322,39 @@ telephone call to the liaison named above.
 
 RECOGNITION
 
-On 5 October 2025 the Connecticut General Assembly issued Apex Kingdom
-an Official Citation, introduced by nine legislators and signed by the
+[OMIT THIS WHOLE SECTION, AND ENCLOSURE 2 WITH IT, WHERE THE CITATION
+ BEARS ON NOTHING THE READER IS DECIDING — A POLICE DEPARTMENT ABOVE
+ ALL, WHERE IT READS AS STATUS-SEEKING TO PRECISELY THE AUDIENCE
+ TRAINED TO NOTICE IT. THE SENTENCES BELOW ARE THE STANDARD
+ DESCRIPTION AND ARE USED VERBATIM WHEREVER THE CITATION IS DESCRIBED
+ OR REPRODUCED; DO NOT REWORD THEM.]
+
+The Official Citation of the Connecticut General Assembly of
+5 October 2025, introduced by nine legislators and signed by the
 President Pro Tempore, the Speaker of the House, and the Secretary of
-the State, recognising the organisation for advancing cultural
-heritage, civic education, and community empowerment. A copy is
-enclosed. It is a ceremonial honour of the kind the General Assembly
-issues to mark community contribution. It confers no legal status, is
-not recognition of a tribe, and creates no government-to-government
-relationship, and I set that out here so that there is no ambiguity
-about how we describe it.
+the State, is a ceremonial honour recognising Apex Kingdom's
+contribution to cultural heritage, civic education, and community
+empowerment. It confers no legal status, is not state recognition of a
+tribe, and creates no government-to-government relationship. A copy is
+enclosed, and I set the description out in the terms we use everywhere
+so that there is no ambiguity about how we describe it.
 
 WHAT THE KINGDOM DOES NOT CLAIM
 
 The Kingdom is a private religious and charitable body. It claims no
 sovereign status, no immunity from the process of any court, no
-jurisdiction over any person who has not agreed in writing to its
-internal forums, and no law-enforcement authority of any kind. Its
-officers hold no peace-officer powers, carry no badges or credentials
-suggesting any, and are instructed that presenting themselves
-otherwise would be a crime. Its internal tribunal decides matters of
-faith, discipline, and internal governance among consenting members
-and nothing else; where its determinations have effect outside the
-membership they have it only through ordinary arbitration on written
-consent under 9 U.S.C. § 2.
+jurisdiction over any person who has not agreed to it in writing, and
+no law-enforcement authority of any kind. Its officers hold no
+peace-officer powers, carry no badge or credential suggesting
+otherwise, and hold themselves out as none. Its internal tribunal
+decides questions of faith, discipline, and governance among its own
+members and nothing else; where a determination is to have effect
+outside the membership it does so only as ordinary arbitration, on
+written consent given in advance, under 9 U.S.C. § 2.
 
-I set this out at the outset because it is the question a public office
-is entitled to have answered before it deals with an unfamiliar
-religious body, and because the answer is a good one.
+I set this out unprompted because it is a fair thing for a public
+office to have in mind when a body called a Kingdom writes to it, and
+it is better answered here than left open.
 
 I would welcome the chance to introduce myself in person at your
 convenience, and I will telephone your office in the week of [DATE] to
@@ -257,16 +368,22 @@ ______________________________
 [OFFICE HELD], Apex Kingdom
 [STREET ADDRESS] · [TELEPHONE] · [EMAIL]
 
-Enclosures:  1. Charter of Apex Kingdom [or certified extract]
+Enclosures:  1. Certified extract of the Charter of Apex Kingdom
+                [the full Charter provided on request]
              2. Official Citation of the Connecticut General
-                Assembly, 5 October 2025
+                Assembly, 5 October 2025 [OMIT AND RENUMBER WHERE
+                THE RECOGNITION SECTION IS OMITTED]
              3. Certificate of insurance
              4. [Determination letter / Certificate of
                 incorporation / Trade name certificate — LIST ONLY
                 WHAT IS ACTUALLY ENCLOSED]
 
-cc:          [COUNSEL, WHERE THE BODY IS ONE THE KINGDOM EXPECTS TO
-             HAVE ADVERSE DEALINGS WITH — OTHERWISE OMIT]
+cc:          [NONE. Counsel is named in the body above, and copying
+             counsel on an introduction signals the dispute this
+             letter exists to precede — more loudly than certified
+             mail would. If the relationship is already adverse
+             enough to want counsel on the cc line, this is the
+             wrong letter.]
 ```
 
 ## Delivery, and what to do with the answer
@@ -326,7 +443,7 @@ BY EMAIL TO [ADDRESS] AND BY FIRST-CLASS MAIL
 
 Re:  Designation of liaison officer for correspondence with your
      office
-     Our reference: [G2G RECORD NUMBER]
+     Our reference: [OUR FILE NUMBER — DIGITS ONLY]
 
 Dear [SALUTATION]:
 
@@ -440,7 +557,7 @@ Re:  [THE MATTER, IN ONE LINE, WITH THE BODY'S OWN FILE NUMBER — e.g.,
      "Zoning enforcement action, 000 Main Street, Notice of Violation
      No. 2026-0000"]
      Notice of representation
-     Our reference: [G2G RECORD NUMBER]
+     Our reference: [OUR FILE NUMBER — DIGITS ONLY]
 
 Dear [SALUTATION]:
 
@@ -521,6 +638,16 @@ Use it also where an incident has already been reported by telephone and the
 Kingdom wants a written, dated account in the department's file. Departments lose
 verbal reports. A one-page written complaint with a date on it does not
 disappear, and it is the document that makes a later pattern provable.
+
+**Understand what this letter does not do.** In most departments a letter does
+not open a case. A report is taken by an officer, at the scene, at the station,
+or over the telephone, and the case number comes from that. A complaint posted to
+a chief's office with nothing behind it is logged as correspondence and routed for
+information, and the writer discovers six weeks later that no case exists and that
+the evidence has aged. So either send this after a report has been taken,
+referring to it by case number, or send it and telephone the desk the same day to
+ask that an officer take the report. The letter is the record that supports the
+report; it is not a substitute for making one.
 
 **The single most important discipline here is accuracy.** Write only what the
 Kingdom saw, and mark plainly what it was told by someone else and by whom.
@@ -623,7 +750,12 @@ that it be recorded and investigated.
 
 The Kingdom will cooperate fully with any investigation. Its officers
 and members are available for interview at your convenience, and I
-will make premises and records available on request. We are not
+will make premises and records available on request. I am willing to
+give a signed written statement and will attend the station for that
+purpose at any time convenient to your officers, and I will supply
+whatever identifying details your report form requires. The Kingdom
+wishes this complaint pursued and will cooperate with any
+prosecution, including by attending court if required. We are not
 conducting any inquiry of our own and will not do so.
 
 Please direct any question about this complaint to me at the numbers
@@ -682,7 +814,10 @@ Kingdom is dealing with. Frame it as what it is: an ordinary request under the
 Connecticut Freedom of Information Act, made by a private body with no more
 authority than any resident has. That framing is why it works. It concedes
 nothing, requires nobody's permission, and is routed to a records officer rather
-than to whoever has been slow to return calls.
+than to whoever has been slow to return calls. Many Connecticut records divisions
+are commanded by a sworn officer, so establish the rank before writing; "Dear
+Lieutenant ——" where that is the rank is correct and tells the reader the writer
+knows the department.
 
 Read `connecticut-foia-request` first. This is that letter, cut down and pointed
 at a police department, and the general notes there on specificity, fees, and the
@@ -702,12 +837,44 @@ from memory.
 
 The four-business-day interval at Conn. Gen. Stat. § 1-206(a) — within which a
 denial of the right to inspect or copy must be made in writing, a failure to
-comply being deemed a denial — is the statutory norm and it is worth citing. But
-say plainly in the letter that the department's own published records procedure
+comply being deemed a denial — is the statutory norm and it is worth citing. It
+is not the only interval in that section, and the exception bites here more often
+than anywhere else. Where a request is determined to reach records subject to
+Conn. Gen. Stat. § 1-214(b) and (c) — an employee's personnel or medical file or
+a similar file, which a request touching a named officer's conduct frequently is
+— § 1-206(a) allows ten business days rather than four, and the department must
+notify the officer and any collective bargaining representative, who may object
+within the period § 1-214 gives them, after which the department cannot disclose
+without an order of the Commission. That is a lawful delay and not an evasion,
+and a letter that has already announced a four-day deadline reads badly against
+it. Say four business days, and say it subject to that section.
+
+Say plainly in the letter, too, that the department's own published records procedure
 governs how a request is made and processed, and confirm the exact intervals and
 the department's form against that procedure before relying on any of them. A
 requester who quotes a deadline wrongly has handed the department a reason to
 answer the deadline instead of the request.
+
+Three further things a records officer notices. The four-day interval governs the
+making of a denial; it is not a production deadline, and a requester who writes as
+though the department must hand over a file within four business days is corrected
+on that point rather than answered on the request. Fees for copies are capped by
+Conn. Gen. Stat. § 1-212, with different maxima for state and municipal agencies
+and separate provision for records transmitted electronically; confirm the current
+figures against the General Statutes before authorising an amount, because a
+requester who has the cap right is dealt with as somebody who has done this
+before. And the Act gives a right to existing records — it does not oblige an
+agency to create a record, to compile one, or to answer questions. A request
+phrased as a question is refused correctly and costs a month.
+
+Where the request reaches body-worn or dashboard camera recordings, expect delay
+and expect redaction. Conn. Gen. Stat. § 29-6d governs police body-worn recording
+equipment and what must be done with what it captures; confirm its current text
+before relying on any part of it. The practical consequence is that this is the
+slowest and most expensive part of any request, and it is better made narrowly —
+the officers who actually responded, the period from dispatch to clearance — than
+as a request for everything, which invites a fee estimate designed to end the
+conversation.
 
 ## What must accompany it
 
@@ -736,7 +903,7 @@ Re:  Request for public records under the Freedom of Information Act,
      Case number [NUMBER], incident of [DATE] at [LOCATION]
      Our reference: [FOI RECORD NUMBER]
 
-Dear [MR./MS./MX.] [SURNAME]:
+Dear [MR./MS. OR RANK] [SURNAME]:
 
 This is a request to inspect and copy public records under the
 Connecticut Freedom of Information Act, Conn. Gen. Stat. § 1-200 et
@@ -754,7 +921,9 @@ the complainant in the matter below.]
    (c) the computer-aided dispatch record for the call, including
        times of dispatch, arrival, and clearance;
    (d) any photographs, sketches, or diagrams;
-   (e) any body-worn or dashboard camera recording, in native format;
+   (e) any body-worn or dashboard camera recording made by the
+       officers who responded, covering the period from dispatch to
+       clearance, in native format;
    (f) the property or evidence receipt for anything taken;
    (g) the disposition of the case as recorded to date; and
    (h) [ANY FURTHER CATEGORY, DESCRIBED SO A CLERK COULD FIND IT].
@@ -792,7 +961,9 @@ the complainant in the matter below.]
 
    Conn. Gen. Stat. § 1-206(a) requires that a denial of the right to
    inspect or copy be made in writing within four business days of a
-   request, and provides that a failure to comply within that period
+   request — ten business days where the request is determined to be
+   subject to subsections (b) and (c) of Conn. Gen. Stat. § 1-214 —
+   and provides that a failure to comply within the applicable period
    is deemed a denial. I understand that the department's own
    published records procedure governs how requests are made and
    handled, and I will follow it; if this request should be made on a
@@ -985,12 +1156,10 @@ Enclosures:  1. Photographs, [NUMBER] images, taken [DATE], before
              3. Schedule of prior incidents with case numbers
                 [WHERE THERE ARE ANY]
 
-cc:          [COUNSEL]
-             [WHERE THE PATTERN IS SERIOUS AND THE DEPARTMENT HAS
-             BEEN GIVEN A FAIR CHANCE FIRST: the Connecticut
-             Commission on Human Rights and Opportunities, or the
-             Office of the Chief State's Attorney — BUT SEE THE NOTES
-             BELOW BEFORE COPYING ANYONE]
+cc:          [COUNSEL, OR NOBODY. DO NOT COPY A CIVIL RIGHTS BODY,
+             A PROSECUTOR, OR ANY OTHER AUTHORITY ON A FIRST REPORT.
+             THE REASONS ARE BELOW, AND AN ESCALATION IS ITS OWN
+             LETTER RATHER THAN A LINE ON THIS ONE.]
 ```
 
 ## Delivery, and what to do with the answer
@@ -1053,6 +1222,21 @@ under Title 29 of the General Statutes. Ask them which provisions they apply and
 get the answer in writing; do not cite a code section to a fire marshal from
 memory.
 
+Three further things stop events that were otherwise applied for properly, and
+all three are outside the office that grants the permit. Many Connecticut main
+streets are state highways, and a municipality cannot authorise the closure or
+occupation of one; that requires an encroachment permit from the Department of
+Transportation under the provisions of Title 13a of the General Statutes, on the
+Department's timetable rather than the town's — confirm the section against the
+current General Statutes before citing it, and establish who owns the road before
+choosing the route. Amplified sound is governed by the municipality's noise
+ordinance, made under the noise control provisions of Title 22a; ask for the
+ordinance rather than assume the permitted hours. And where food will be served
+or sold, a temporary food event permit comes from the municipal health department
+or the district health department covering the town, on its own form and with its
+own lead time. A festival refused three days out has almost always been refused by
+the health authority, not by the office that issued the permit.
+
 ## What must accompany it
 
 The completed municipal application form, if there is one — find it before
@@ -1086,7 +1270,7 @@ BY EMAIL TO [ADDRESS] AND BY FIRST-CLASS MAIL
 Re:  [Application for a [PARADE / SPECIAL EVENT / PARK USE] permit /
      Notice of a religious assembly] — [NAME OF THE EVENT],
      [DATE OF THE EVENT]
-     Our reference: [G2G RECORD NUMBER]
+     Our reference: [OUR FILE NUMBER — DIGITS ONLY]
 
 Dear [SALUTATION]:
 
@@ -1100,7 +1284,10 @@ observance] to be held as follows.
                       procession of witness, a religious observance
                       of the Kingdom"]
   Date and time       [DATE], assembling [TIME], concluding [TIME]
-  Place or route      [FULL DETAIL; ATTACH THE MAP]
+  Rain date           [DATE, OR "none — the observance proceeds in
+                      any weather"]
+  Place or route      [FULL DETAIL; ATTACH THE MAP. STATE WHETHER
+                      ANY PART OF THE ROUTE IS A STATE HIGHWAY]
   Expected attendance [NUMBER — ESTIMATE HONESTLY AND ON THE HIGH
                       SIDE; AN UNDERSTATED FIGURE IS THE ONE THING
                       THAT WILL BE REMEMBERED]
@@ -1114,6 +1301,9 @@ observance] to be held as follows.
                       marked 'STEWARD'"], directing our own
                       participants only
   Person in charge    [NAME], [MOBILE NUMBER], present throughout
+  Food                [NONE / DESCRIBE, STATING WHETHER A TEMPORARY
+                      FOOD EVENT PERMIT HAS BEEN APPLIED FOR AND TO
+                      WHICH HEALTH DEPARTMENT OR DISTRICT]
   Clean-up            [WHO, AND BY WHEN]
   Insurance           [INSURER], policy [NUMBER], limits [AMOUNT];
                       certificate enclosed [naming the [CITY] as
@@ -1239,7 +1429,7 @@ BY EMAIL TO [ADDRESS] AND BY FIRST-CLASS MAIL
 
 Re:  Request for special attention and a security assessment —
      [ADDRESS OF THE PLACE OF WORSHIP]
-     Our reference: [G2G RECORD NUMBER]
+     Our reference: [OUR FILE NUMBER — DIGITS ONLY]
 
 Dear [SALUTATION]:
 
@@ -1388,6 +1578,30 @@ a period that is jurisdictional. **A courteous accommodation dialogue will run
 that clock out if nobody is watching it.** Compute the appeal date the day the
 decision is published, before this letter is drafted, and treat it as immovable.
 
+Be certain first which clock is running, because there are two and this template
+is addressed to both situations. Section 8-8 governs an appeal from the decision
+of a board — a zoning commission, a planning commission, a zoning board of
+appeals. An order of a zoning enforcement officer, which is what a notice of
+violation or a cease-and-desist order usually is, is not a decision of a board.
+It is appealed first to the zoning board of appeals under Conn. Gen. Stat.
+§§ 8-6 and 8-7, within the period that board's own rules prescribe, and § 8-8
+governs only the appeal from what the board then decides. Confirm the board's
+rule and the period it sets before computing anything, and confirm both against
+the current General Statutes. Reading the fifteen-day period onto a zoning
+enforcement officer's notice is how an appeal is brought in the wrong forum while
+the right one closes, and that is not a mistake anyone can repair afterwards.
+The § 8-8 appeal to the Superior Court — not the appeal to the board — is
+commenced by service of process rather than by filing, and service is made by a
+state marshal, so counsel and a marshal have to be engaged with days in hand and
+not on the fifteenth.
+
+This letter should also not go out until counsel has read it. It names a federal
+statute, which means the first question the town attorney asks is whether the
+Kingdom is represented, and the answer changes the reply that gets drafted. A
+RLUIPA paragraph over the signature of a lay principal with no lawyer behind it
+is read as posturing; the same paragraph with counsel copied is read as a
+position the town will have to answer.
+
 ## What must accompany it
 
 The comparison, which is the entire strength of the letter: what the ordinance
@@ -1419,7 +1633,7 @@ BY EMAIL TO [ADDRESS] AND BY CERTIFIED MAIL, RETURN RECEIPT REQUESTED
 Re:  [ADDRESS OF THE PROPERTY] — [Application No. [NUMBER] /
      Notice of Violation No. [NUMBER]]
      Request for accommodation of religious use
-     Our reference: [G2G RECORD NUMBER]
+     Our reference: [OUR FILE NUMBER — DIGITS ONLY]
 
 Dear [SALUTATION]:
 
@@ -1517,12 +1731,14 @@ attempt to do that.
    weeks. I am content to come alone or with counsel, whichever the
    [CITY] would prefer.
 
-   [WHERE AN APPEAL PERIOD IS RUNNING, SAY SO WITHOUT MENACE: The
-   Kingdom notes that the period for an appeal under Conn. Gen.
-   Stat. § 8-8(b) expires on [DATE]. It would prefer to resolve this
-   by agreement, but it cannot allow that period to lapse, and I
-   mention the date so that the timetable is clear to both of us
-   rather than a surprise to either.]
+   [WHERE AN APPEAL PERIOD IS RUNNING, SAY SO WITHOUT MENACE, AND
+   NAME THE RIGHT PROVISION — § 8-8(b) FOR A DECISION OF A BOARD,
+   §§ 8-6 AND 8-7 AND THE BOARD'S OWN RULE FOR AN APPEAL FROM A
+   ZONING ENFORCEMENT OFFICER: The Kingdom notes that the period for
+   an appeal under [PROVISION] expires on [DATE]. It would prefer to
+   resolve this by agreement, but it cannot allow that period to
+   lapse, and I mention the date so that the timetable is clear to
+   both of us rather than a surprise to either.]
 
 If I have not heard from your office by [DATE], I will telephone. If
 any factual statement above is wrong, please tell me and I will
@@ -1544,8 +1760,8 @@ Enclosures:  1. Application No. [NUMBER] and decision of [DATE]
 
 cc:          [NAME], Esq., Office of the City Attorney
              [COUNSEL FOR THE KINGDOM]
-             [THE CHAIRMAN OF THE BOARD OR COMMISSION, WHERE THE
-             LETTER GOES TO STAFF]
+             [NOT THE CHAIRMAN OR ANY MEMBER OF A BOARD OR
+             COMMISSION THAT HAS THE MATTER BEFORE IT — SEE BELOW]
 ```
 
 ## Delivery, and what to do with the answer
@@ -1554,6 +1770,15 @@ Certified mail with return receipt and email, with the City Attorney copied by
 name from the outset. Copying the attorney is not an escalation here; it is the
 courtesy that gets the letter to the person who will decide, and it prevents the
 answer that nobody in a position to settle ever saw it.
+
+Do not copy the chairman or any member of a board or commission that has the
+application before it. Those bodies act quasi-judicially on an individualised
+application, and correspondence reaching a member outside the record is an ex
+parte communication — which town counsel then has to deal with, which can taint
+the very decision the Kingdom is asking for, and which tells the attorney that
+the applicant does not understand the proceeding they are in. Everything meant for
+the commission goes into the record through staff or at the hearing, where it can
+be relied on afterwards.
 
 Then hold two things simultaneously and do not let either slip. Pursue the
 meeting genuinely, prepare a written note of it within a business day, and
@@ -1613,7 +1838,7 @@ Legislative Office Building, Room [NUMBER]
 Hartford, Connecticut 06106
 
 Re:  [Constituent request — [SUBJECT] / Request for a meeting]
-     Our reference: [G2G RECORD NUMBER]
+     Our reference: [OUR FILE NUMBER — DIGITS ONLY]
 
 Dear [Senator / Representative] [SURNAME]:
 
@@ -1622,9 +1847,14 @@ trust operating in [BRIDGEPORT]. Our members live, work, and worship
 in your district, and [NUMBER] of them are registered voters in
 [TOWN].
 
-[WHERE THE LEGISLATOR SIGNED THE CITATION: You were among the
-legislators who introduced the Official Citation the General Assembly
-issued to the Kingdom on 5 October 2025, and I am grateful for it.]
+[WHERE THIS LEGISLATOR IS ONE OF THE NINE WHO INTRODUCED THE
+CITATION — CHECK THE FACE OF THE DOCUMENT, AND OMIT THE SENTENCE
+OTHERWISE; THE SIGNATURES ARE THE PRESIDENT PRO TEMPORE'S, THE
+SPEAKER'S, AND THE SECRETARY OF THE STATE'S, AND TELLING A MEMBER
+THEY SIGNED SOMETHING THEY DID NOT IS THE SMALL CHECKABLE ERROR
+THIS PACK EXISTS TO PREVENT: You were among the legislators who
+introduced the Official Citation the General Assembly issued to the
+Kingdom on 5 October 2025, and I am grateful for it.]
 
 [VERSION A — CASEWORK]
 
@@ -1686,16 +1916,25 @@ Enclosures:  1. Chronology of contacts with [AGENCY]
              3. [Statement of institutional standing, for a first
                 approach]
 
-cc:          [DISTRICT OFFICE / LEGISLATIVE AIDE BY NAME, WHERE
-             KNOWN]
+cc:          [THE CAUCUS OFFICE STAFF MEMBER WHO HANDLES
+             CONSTITUENT MATTERS FOR THIS MEMBER, BY NAME, WHERE
+             ESTABLISHED BY TELEPHONE]
 ```
 
 ## Delivery, and what to do with the answer
 
-Email to the office's published address and to the aide by name where one is
-known, with first-class mail behind it. The aide is the correct target: casework
-is done by staff, and a letter that reaches the aide directly is worked the same
-week.
+Email to the office's published address, with first-class mail behind it, and to
+a named staff member wherever one can be identified — casework is done by staff,
+and a letter that reaches that person directly is worked the same week.
+
+Be realistic about who that person is. The General Assembly is a part-time
+legislature. Most rank-and-file members have neither a district office nor a
+personal aide, and staff support runs through the party caucus offices at the
+Capitol rather than through the member. Telephone the member's Capitol number,
+ask who handles constituent matters for them, and write to that person by name. A
+letter addressed to "the district office" of a Connecticut state representative is
+addressed to somewhere that does not exist, and a casework request naming nobody
+waits for a part-time legislator to open post between sessions.
 
 Timing matters more with a legislature than with any other body in this pack. The
 General Assembly sits in a longer session in odd-numbered years and a shorter one
@@ -1803,7 +2042,7 @@ BY EMAIL TO [ADDRESS] AND BY FIRST-CLASS MAIL
 
 Re:  Request for religious accommodation — [MEMBER NAME]
      [Employee / student / inmate / patient number [NUMBER]]
-     Our reference: [G2G RECORD NUMBER]
+     Our reference: [OUR FILE NUMBER — DIGITS ONLY]
 
 Dear [SALUTATION]:
 
@@ -1993,7 +2232,7 @@ Re:  [THE MATTER AS THE SENDER STYLED IT, WITH THEIR OWN REFERENCE —
      e.g., "Subpoena duces tecum dated [DATE], [CASE CAPTION], Docket
      No. [NUMBER]" / "Inquiry of [DATE], file [NUMBER]"]
      Acknowledgment of receipt
-     Our reference: [G2G RECORD NUMBER]
+     Our reference: [OUR FILE NUMBER — DIGITS ONLY]
 
 Dear [SALUTATION]:
 
@@ -2062,7 +2301,11 @@ changes how the matter is handled from the beginning.
 Some cautions worth stating once, in the order they bite.
 
 Nobody accepts service on behalf of a person who has not authorised it, and no
-officer signs anything at the door beyond a delivery receipt. This
+officer signs anything at the door beyond a delivery receipt. The papers are
+taken all the same. Refusing an envelope, returning it unopened, or writing on it
+does not defeat service, it is the gesture every account of an organisation of
+this kind records, and it costs the Kingdom the only advantage available on the
+day, which is knowing what the document says. This
 acknowledgment records how the document arrived as a matter of fact and concedes
 nothing about whether service was properly made; the manner of service in
 Connecticut is governed by Conn. Gen. Stat. § 52-57 and the applicable subsection
@@ -2136,7 +2379,7 @@ BY EMAIL TO [ADDRESS] AND BY CERTIFIED MAIL, RETURN RECEIPT REQUESTED
 
 Re:  [THE MATTER, AS IN THE ORIGINAL LETTER]
      Correspondence of [DATE OF FIRST LETTER] and [DATE], unanswered
-     Our reference: [G2G RECORD NUMBER]
+     Our reference: [OUR FILE NUMBER — DIGITS ONLY]
 
 Dear [SALUTATION]:
 
@@ -2284,7 +2527,11 @@ the United States", "government-to-government" said to a town hall. These are th
 recognised markers of sovereign-citizen filings. The consequence is not that the
 recipient disagrees; it is that the correspondence is flagged rather than read,
 and in a police context it can convert a complainant into a subject — which is the
-precise opposite of what letters 4, 6, and 8 exist to achieve.
+precise opposite of what letters 4, 6, and 8 exist to achieve. The abbreviation
+counts as much as the phrase. The contact register numbers its records
+`AK-G2G-000000`, and those three characters are that phrase in a form a reader
+decodes in about a second, which is why the reference printed on an outgoing
+letter is the digits and nothing else.
 
 **Instructions to anyone to refuse lawful process,** to decline to identify
 themselves to a police officer, or to assert that a court lacks jurisdiction over

@@ -454,7 +454,10 @@ export const PACKET_ITEMS: readonly PacketItem[] = [
     proves: "What the institution is, how it is governed, and by what authority the signatory signs.",
     ifAbsent: "Every question about authority to act has to be asked and answered by letter.",
     registry: "instruments",
-    variants: ALL,
+    // Not the legislator's packet: a legislative aide will not read a governing
+    // instrument, and enclosing one signals a misunderstanding of what that
+    // office does (docs/15-THE-STANDING-PACKET.md § 5).
+    variants: ["POLICE", "LAND_USE", "AGENCY", "GRANTMAKER"],
     essential: true,
   },
   {
@@ -509,7 +512,7 @@ export const PACKET_ITEMS: readonly PacketItem[] = [
     label: "One-page statement of beliefs and activities",
     proves: "That there is a religious purpose capable of being described, which every accommodation claim depends on.",
     ifAbsent: "A RLUIPA or Title VII claim is harder to make out, because the burden has nothing to bear on.",
-    variants: ["LAND_USE", "AGENCY", "POLICE"],
+    variants: ["LAND_USE", "AGENCY", "POLICE", "LEGISLATOR"],
     essential: false,
   },
   {

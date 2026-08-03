@@ -33,13 +33,23 @@ const publicSafety: RegistryDef = {
 
 This comes first because it protects everything else on the page. The Kingdom issues no badge, patch, shield, warrant card, plate, uniform item, or identification of any kind that could be mistaken for law enforcement or for a governmental body. It commissions no officer with police powers. It conducts no stops, detentions, searches, seizures, or arrests. It directs no process at any officer, department, or agency — no summons, subpoena, warrant, lien, or notice of default, whatever it is called.
 
-The exposure is personal and criminal rather than institutional and civil. Holding a private person out as a peace officer is criminal impersonation under Conn. Gen. Stat. §§ 53a-130 and 53a-130a. Making or wearing anything resembling a federal badge or insignia reaches 18 U.S.C. § 701; representing oneself as a federal officer reaches § 912; producing an identification document purporting to be issued by a governmental body reaches § 1028; and filing a lien against a federal officer on account of their official duties is a felony under § 1521. Read the list as protective, because it is: one embroidered patch turns an institution the police were prepared to help into a file the department forwards to its legal division, and that goodwill does not come back.
+The exposure is personal and criminal rather than institutional and civil. Holding a private person out as a peace officer is criminal impersonation under Conn. Gen. Stat. §§ 53a-130 and 53a-130a. Making or wearing anything resembling a federal badge or insignia reaches 18 U.S.C. § 701; representing oneself as a federal officer reaches § 912; producing an identification document purporting to be issued by a governmental body reaches § 1028; and filing a false lien against a federal officer on account of their official duties is a felony under § 1521. Where the target is a municipal officer rather than a federal one, the Connecticut forgery provisions at Conn. Gen. Stat. § 53a-137 et seq. reach an instrument purporting to affect a legal right; the federal list is not a map of where the rule stops. Read all of it as protective, because it is: one embroidered patch turns an institution the police were prepared to help into a file the department forwards to its legal division, and that goodwill does not come back.
 
-**Stewards at Kingdom events.** People who marshal parking, watch doors, and keep order are stewards. They wear nothing that reads as police — no shield, no chevron, no lettering implying office, no title containing "officer", "marshal", or "patrol" used as a rank — and they carry no badge. Their authority is exactly that of any private person on private property: to ask someone to leave, and to call the police if they will not. Anything past that is an assault, a false imprisonment, or both, and it is the steward personally who is charged.
+**Stewards at Kingdom events.** People who marshal parking, watch doors, and keep order are stewards. They wear nothing that reads as police — no shield, no chevron, no lettering implying office, no title containing "officer", "marshal", or "patrol" used as a rank — and they carry no badge. Their authority is exactly that of any private person on private property: to ask someone to leave, and to call the police if they will not. A steward who instead takes hold of someone, confines them, or searches them is the person who answers for it, on a charge of assault or unlawful restraint and in a civil claim alongside it. Conn. Gen. Stat. § 53a-20 gives a person in control of premises a justification for reasonable physical force to terminate a trespass, but a justification is what is argued after an arrest, not a permission to be relied on in a doorway. And where stewarding is paid, or is provided to anybody other than the Kingdom at the Kingdom's own gatherings, Connecticut's licensing regime for security services may be engaged; those provisions sit in Conn. Gen. Stat. Title 29, and the position should be settled with counsel before money changes hands or a steward stands at anyone else's door.
 
-**How to be effective as a complainant.** Report promptly, before anyone debates whether it is worth reporting. Get the incident number before the officer leaves; without it every later request goes nowhere. Write down the officer's name and badge number exactly as they gave it. Photograph damage before cleaning up — wide enough to show where, close enough to show what — and lodge the images in the Evidence Vault the same day. Then request the report in writing under the Connecticut Freedom of Information Act, Conn. Gen. Stat. § 1-200 et seq., opening a record in the Register of Public Records Requests, which keeps the four-business-day response period and the free thirty-day appeal to the Freedom of Information Commission (§§ 1-206(a), 1-206(b)(1)). Expect withholding while a matter is open under the law-enforcement exemptions at § 1-210(b)(3), and ask which subdivision is relied on rather than arguing about the result. Where a department will not answer, the ladder is the shift supervisor, then the chief, then the Commission. Indignation is not a rung on it.
+**How to be effective as a complainant.** Report promptly, before anyone debates whether it is worth reporting. Get the incident number before the officer leaves; without it every later request goes nowhere. Write down the officer's name and badge number exactly as they gave it. Photograph damage before cleaning up — wide enough to show where, close enough to show what — and lodge the images in the Evidence Vault the same day. Where an officer declines to take a report, do not argue at the scene: attend the records division, or use the department's online reporting portal, and make the report in writing there, which produces a number whatever view was taken on the street. Then request the report in writing under the Connecticut Freedom of Information Act, Conn. Gen. Stat. § 1-200 et seq., opening a record in the Register of Public Records Requests, which keeps the response period and the free thirty-day appeal to the Freedom of Information Commission (§§ 1-206(a), 1-206(b)(1)). Be exact about that first period rather than announcing it. A denial must be made in writing within four business days and silence is deemed a denial, but § 1-206(a) allows ten business days where the request is determined to reach records subject to Conn. Gen. Stat. § 1-214(b) and (c) — an employee's personnel or medical file, which a request touching a named officer's conduct frequently is — and the officer must be notified and may object. That is a lawful delay rather than an evasion, and a letter that has already announced a four-day deadline reads badly against it. Expect withholding while a matter is open under the law-enforcement exemptions at § 1-210(b)(3), and ask which subdivision is relied on rather than arguing about the result. One thing is not discretionary: where an arrest has been made, the record of the arrest is a public record under Conn. Gen. Stat. § 1-215 notwithstanding that the investigation continues. Confirm that section's current text and what it obliges the agency to release before pressing it — the value of knowing it is in asking for the right document, not in arguing the exemption.
 
-**Bias-motivated incidents.** A defaced door, a threat naming the congregation's faith, repeated vandalism of the same religious property: here the quality of the file decides the outcome. Connecticut punishes intimidation based on bigotry or bias in degrees under Conn. Gen. Stat. § 53a-181j et seq. Tell the responding officer plainly that the Kingdom believes the incident was religiously motivated and ask that it be classified as such — classification is done by the local agency, and the federal picture is assembled from what agencies submit through the FBI's Uniform Crime Reporting and NIBRS bias-crime collection. Connecticut separately requires state-level collection of such offences; confirm the current section before citing it. Four dated, photographed, numbered, professionally reported incidents are a case a prosecutor can bring. The same four recalled from memory a year later are an impression.
+**Writing to the right desk, and addressing it correctly.** Connecticut has no single model of local policing, and a letter addressed to a body that does not exist is not forwarded but discarded. Cities and larger towns run their own departments under a chief of police. Many smaller towns run none, and are policed by the Connecticut State Police troop with jurisdiction, in some cases through a resident state trooper serving under an agreement between the town and the Department of Emergency Services and Public Protection; the constituting section sits in Conn. Gen. Stat. Title 29 and should be confirmed against the current General Statutes before it is cited. Establish which arrangement applies before writing, and record it on the department's standing entry in the Register of Public Bodies so nobody establishes it twice.
+
+Then address the person by the title they actually hold. A chief is *Chief ——*; a state police troop is commanded by an officer addressed by rank; a fire marshal is *Fire Marshal ——*. The municipality's chief executive is a first selectman in some towns, a mayor in others, and a town manager in others again, and the three are not interchangeable — check the town's own website before the salutation is typed, because it is the first line read and the first thing noticed. Records go to the department's records division or the town's designated freedom of information officer, not to the chief; a request sent to the chief reaches the records division eventually, and later than one addressed there.
+
+**Name the records, not the subject.** A police department holds a set of discrete documents, and a request that names them can be answered, where a request for everything concerning an incident is refused as vague and takes weeks to be refused. The usual set is the incident or case report and its supplements, the computer-aided dispatch event chronology for the call, the recording of the 911 call and of the dispatch radio traffic, body-worn and dashboard camera recordings for the officers who attended, the arrest report or the summons where there was one, photographs taken by an evidence technician, and the property or evidence receipt for anything taken. Ask for what is wanted by name, give the case number and the date, and give a time window for the recordings. Doing that work is the difference between a records officer who can say yes and one who must write back.
+
+**Preserve before requesting.** Recordings go first. Dispatch audio, computer-aided dispatch data, and body-worn camera footage are held on retention schedules measured in months rather than years — the body-worn recording provisions sit in Conn. Gen. Stat. Title 29, and both the section and the current minimum period should be confirmed before either is relied on — and private camera systems around a site usually overwrite inside a fortnight. A written preservation request costs nothing, asks for nothing to be produced, and stops the material being destroyed while a records request is argued about. Send one the same week to the records division, naming the case number, the date, the location, and the time window. It is a request, not a demand, and it is never styled as process.
+
+**Bias-motivated incidents.** A defaced door, a threat naming the congregation's faith, repeated vandalism of the same religious property: here the quality of the file decides the outcome, and quality is a matter of facts rather than of emphasis. Connecticut punishes intimidation based on bigotry or bias in degrees under Conn. Gen. Stat. § 53a-181j et seq. An officer cannot classify an incident as bias-motivated because a complainant says it was; the officer records what supports the classification, and a supervisor and eventually a prosecutor read that record. So supply the predicate and let it carry the conclusion: the words or symbols used, verbatim and photographed; that the property is a place of worship and was identifiable as one from the street; the dates and case numbers of every prior incident at the same address; what was said, by whom, and to whom. Then say once, plainly, that the Kingdom believes the incident was religiously motivated and asks that it be classified as such, and ask that the request be noted in the report. Classification is done by the local agency, and the federal picture is assembled from what agencies submit through the FBI's Uniform Crime Reporting and NIBRS bias-crime collection. Connecticut separately requires state-level collection of such offences; confirm the current section before citing it. Four dated, photographed, numbered, professionally reported incidents are a case a prosecutor can bring. The same four recalled from memory a year later are an impression.
+
+**Three different ladders, and using the right one.** A department that will not produce a record is a freedom of information matter: the records officer, then the chief, then a complaint to the Freedom of Information Commission, which is free to file and needs no counsel. A complaint about how an officer behaved is not that, and sending it up the records ladder wastes it — it goes to the department's internal affairs function, then to whatever civilian authority the town places above the department, and, for a certified officer, to the Police Officer Standards and Training Council, which certifies Connecticut officers and may act against certification; its constituting provisions are at Conn. Gen. Stat. § 7-294a et seq., and the current complaint route should be taken from the Council's own published procedure rather than assumed. A legislative office is a third thing again. A legislator can ask an agency for the status of a matter and can be shown a pattern across years; a legislator cannot direct an investigation, cannot instruct a police department, and will decline to try — and asking is the request that ends the relationship. Approach a legislator through a member who lives in that member's district, with dates, case numbers, and one bounded question. Indignation is not a rung on any of the three.
 
 **When a member is the subject rather than the complainant.** The institution does not obstruct, does not conceal, does not counsel anyone on what to say, and does not take custody of anything. Record what the Kingdom knows and refer the member to their own lawyer — not the Kingdom's, whose duty runs to the institution. Do not collect statements from other members; an internal inquiry running alongside a criminal investigation interferes with it and creates discoverable material that helps no one. Anything relevant the Kingdom already holds is preserved exactly as it is, and Counsel is told. Destroying, altering, or concealing it is tampering with physical evidence under Conn. Gen. Stat. § 53a-155, and the hindering-prosecution offences nearby reach the rest; confirm the pin cite before relying on a section.
 
@@ -47,7 +57,7 @@ The exposure is personal and criminal rather than institutional and civil. Holdi
 
 **Mandated reporting is a legal duty, not an institutional choice.** Where anyone forms reasonable cause to suspect that a child has been abused or neglected or placed in imminent risk of serious harm, the duty is that individual's own under Conn. Gen. Stat. § 17a-101 et seq.: an oral or electronic report to the Commissioner of Children and Families or a law enforcement agency as soon as practicable and within twelve hours (§ 17a-101b(a)), then a written report within forty-eight hours of it (§ 17a-101c). Clergy are enumerated mandated reporters (§ 17a-101(b)), and failure to report is itself an offence (§ 17a-101a). No officer of the Kingdom, the Founder included, may tell a reporter to wait, and internal handling is never a substitute. Report first, then enter it here and in the Register of Incidents.
 
-**Assemblies, patrol, and a named liaison.** Notify the department in advance of anything drawing a crowd or touching a public way, and apply for whatever permit the municipality requires. A permit scheme reaching religious assembly on public ways is constrained by the First Amendment — content neutral, narrowly tailored, free of unbridled discretion (*Cox v. New Hampshire*, 312 U.S. 569 (1941); *Forsyth County v. Nationalist Movement*, 505 U.S. 123 (1992)) — but the answer to an unconstitutional condition is counsel and a court, never proceeding without the permit and daring the town to act. Extra patrol and a physical security assessment may simply be asked for in writing from the district commander; departments assess at no charge, and the written result is what an application to the federal Nonprofit Security Grant Program, administered through each state's homeland security administrative agency, is built on. Check that programme's current notice of funding opportunity each cycle rather than any figure recalled from memory. And designate one liaison: a named person, a number that is answered, notified in writing and refreshed annually.`,
+**Assemblies, patrol, and a named liaison.** Notify the department in advance of anything drawing a crowd or touching a public way, and apply for whatever permit the municipality requires. A permit scheme reaching religious assembly on public ways is constrained by the First Amendment — content neutral, narrowly tailored, free of unbridled discretion (*Cox v. New Hampshire*, 312 U.S. 569 (1941); *Forsyth County v. Nationalist Movement*, 505 U.S. 123 (1992)) — but the answer to an unconstitutional condition is counsel and a court, never proceeding without the permit and daring the town to act. Extra patrol and a physical security assessment may simply be asked for in writing from whoever commands the district, or the troop, covering the site; departments assess at no charge, and the written result is what an application to the federal Nonprofit Security Grant Program, administered through each state's homeland security administrative agency, is built on. Check that programme's current notice of funding opportunity each cycle rather than any figure recalled from memory. And designate one liaison: a named person, a number that is answered, notified in writing and refreshed annually.`,
   defaultClassification: "OFFICERS",
   defaultStatus: "PREPARED",
   restrictedTo: ["SOVEREIGN", "REGISTRAR", "COUNSEL"],
@@ -125,7 +135,7 @@ The exposure is personal and criminal rather than institutional and civil. Holdi
       required: true,
       section: "The interaction",
       summary: true,
-      help: "The list is closed deliberately. Every legitimate dealing the Kingdom has with police and emergency services is one of these ten. If what is being contemplated does not fit any of them, that is the answer, not a gap in the form.",
+      help: "The list is closed deliberately. Every legitimate dealing the Kingdom has with police, fire, and emergency services is one of these twelve. If what is being contemplated does not fit any of them, that is the answer, not a gap in the form.",
       options: [
         {
           value: "CRIME_REPORT",
@@ -135,7 +145,7 @@ The exposure is personal and criminal rather than institutional and civil. Holdi
         {
           value: "BIAS_INCIDENT",
           label: "Report of a bias or hate-motivated incident",
-          help: "Say plainly that the Kingdom believes the incident was religiously motivated and ask that it be classified as such. Conn. Gen. Stat. § 53a-181j et seq.; the federal picture is built from what the local agency submits through the FBI's UCR and NIBRS bias-crime collection.",
+          help: "Supply the predicate before the conclusion: the words or symbols used, verbatim and photographed; that the property was identifiable as a place of worship; the case numbers of every prior incident at the address. Then say once that the Kingdom believes the incident was religiously motivated and asks that it be classified as such. Do not assert a motive the evidence does not carry — an overstated report the department cannot substantiate is why the next one is discounted, and the next one may be the one that matters. Conn. Gen. Stat. § 53a-181j et seq.; the federal picture is built from what the local agency submits through the FBI's UCR and NIBRS bias-crime collection.",
         },
         {
           value: "REPORT_COPY_REQUEST",
@@ -145,17 +155,27 @@ The exposure is personal and criminal rather than institutional and civil. Holdi
         {
           value: "EVENT_NOTIFICATION",
           label: "Notification of an assembly, procession, or public event",
-          help: "Including any municipal permit application. Apply, even where the scheme looks constitutionally doubtful; the remedy for an unlawful condition is counsel and a court, never proceeding without the permit.",
+          help: "Including any municipal permit application. Give the department what it needs to plan rather than what it must write back for: the date, the start and finish times, the expected attendance, the route where anything moves, whether a street or lane must be closed, whether there will be amplified sound, the parking arrangement, and a name and mobile number answered on the day. Apply, even where the scheme looks constitutionally doubtful; the remedy for an unlawful condition is counsel and a court, never proceeding without the permit.",
         },
         {
           value: "PATROL_REQUEST",
           label: "Request for extra patrol or a security assessment",
-          help: "Ask the district commander in writing. Departments conduct physical security assessments at no charge, and the written assessment is what a Nonprofit Security Grant Program application is later built on.",
+          help: "Ask in writing, addressed to whoever commands the district or the troop covering the site. Departments conduct physical security assessments at no charge, and the written assessment is what a Nonprofit Security Grant Program application is later built on.",
+        },
+        {
+          value: "FIRE_SAFETY_INSPECTION",
+          label: "Fire marshal inspection, order, or life-safety requirement",
+          help: "The local fire marshal's inspection of an assembly space, and anything ordered as a result. Get the order in writing with the provision it rests on, comply or appeal by the route the order itself states, and keep the certificate. The occupancy figure a fire marshal fixes decides how many people may lawfully be in the room, and a building is lost this way faster than it is lost to zoning. No religious argument answers a life-safety order and none should be attempted; RLUIPA is a land-use statute, not a fire code exemption.",
+        },
+        {
+          value: "EMERGENCY_MEDICAL",
+          label: "Emergency medical or fire response to Kingdom premises or an event",
+          help: "An ambulance or an engine called to a service, a gathering, or Kingdom property. Record the time, who called, and the run or incident number, and lodge the note the same day — these calls are the ones nobody thinks to write down and the ones an insurer asks about a year later. Keep clinical detail out of this register: the fact of the call belongs here, and anything about a member's condition belongs in the Register of Incidents, classified.",
         },
         {
           value: "WELFARE_CHECK",
           label: "Request for a welfare check on a member",
-          help: "Give the address, what was last known, and why there is concern. Record who asked for the check and on what information — a welfare check is an entry into someone's home and the reason for it should be written down.",
+          help: "Give the department what it needs to go in safely: the exact address with the unit, who is believed to be inside, what was last known and when, whether there is any history of weapons in the home, any medical or psychiatric condition and any medication, who holds a key, and what is being asked for. Where the concern is mental health rather than immediate safety, ask whether a crisis-trained officer or a mobile crisis team is available. Record who asked for the check and on what information. A welfare check is an entry into somebody's home, and it is not a way to reach a person who is in dispute with the Kingdom or who has asked not to be contacted; a department that sees it used that way stops answering.",
         },
         {
           value: "MANDATED_REPORT",
@@ -201,7 +221,7 @@ The exposure is personal and criminal rather than institutional and civil. Holdi
       label: "Location concerned",
       type: "text",
       section: "The interaction",
-      help: "The address or place the matter concerns, specific enough for a stranger to find. Repeat incidents at one address are the fact that eventually moves a department.",
+      help: "The street number, the unit, and the nearest cross street. Dispatch works from the address it is given, and an approximate one sends officers to the wrong door; the same specificity is what makes a records request answerable two years later.",
     },
     {
       key: "positionOfKingdom",
@@ -276,6 +296,14 @@ The exposure is personal and criminal rather than institutional and civil. Holdi
       ],
     },
     {
+      key: "addressedTo",
+      label: "Person and title the approach was addressed to",
+      type: "text",
+      section: "The agency",
+      placeholder: "e.g. Chief —— , Bridgeport Police Department; or Records Division",
+      help: "For anything written. The title exactly as the office itself gives it — chief, lieutenant, fire marshal, first selectman, mayor, town manager, records officer — because the salutation is the first line read and the wrong title is the first thing noticed. Where the approach went to a division rather than a person, name the division. The standing entry in the Register of Public Bodies holds the current holder; check it against the town's own website before writing.",
+    },
+    {
       key: "officerName",
       label: "Officer or dispatcher, as they gave it",
       type: "text",
@@ -296,6 +324,13 @@ The exposure is personal and criminal rather than institutional and civil. Holdi
       section: "The agency",
       summary: true,
       help: "Ask for it before the officer leaves, or from the call taker at the end of the call. Without this number a records request has nothing to identify and a follow-up has nothing to cite. It is the single most valuable thing to come out of most interactions.",
+    },
+    {
+      key: "deliveryEvidence",
+      label: "Proof of delivery",
+      type: "text",
+      section: "The agency",
+      help: "For anything written: the certified mail article number, the courier tracking, the portal confirmation reference, or the name of the person at the desk who accepted it. Without this, an unanswered letter proves nothing, and a department's account that it never arrived cannot be answered.",
     },
 
     {
@@ -336,6 +371,13 @@ The exposure is personal and criminal rather than institutional and civil. Holdi
       help: "Photograph first, always — wide enough to show where, close enough to show what. Most camera systems overwrite within a fortnight, and damage is cleaned up within hours.",
     },
 
+    {
+      key: "preservationRequested",
+      label: "A written preservation request has been sent",
+      type: "boolean",
+      section: "The report copy",
+      help: "Asking the records division to preserve the dispatch audio, the computer-aided dispatch data, and any body-worn or dashboard camera recording, identified by case number, date, location, and time window. It costs nothing, asks for no production, and is the only step that outlasts a retention schedule while a records request is being argued about. It is a request and is never styled as process.",
+    },
     {
       key: "copyRequested",
       label: "A written request for the report has been made",
@@ -428,7 +470,7 @@ The exposure is personal and criminal rather than institutional and civil. Holdi
       help: "Process is complied with, or challenged through counsel in the court that issued it. It is never ignored, and it is never answered with a document denying that court's jurisdiction.",
       options: [
         { value: "NONE", label: "None — no process was served" },
-        { value: "SUBPOENA", label: "Subpoena", help: "Route to Counsel the same day. A return date missed while the Kingdom considers its position is a contempt finding against the officer who signed." },
+        { value: "SUBPOENA", label: "Subpoena", help: "Route to Counsel the same day. A return date missed while the Kingdom considers its position produces a motion for contempt, and the sanction falls on the person or body the subpoena was directed to. An objection or a motion to quash, filed on time, costs nothing by comparison." },
         { value: "SEARCH_WARRANT", label: "Search warrant", help: "Do not obstruct, do not remove or destroy anything, and do not argue at the door. Note the officers present, the time, the issuing court, and what was taken, and telephone Counsel." },
         { value: "COURT_ORDER", label: "Other court order" },
         { value: "PRESERVATION_REQUEST", label: "Preservation request or letter", help: "Suspend any routine deletion touching the described material immediately, and record the date the hold attached." },
@@ -510,7 +552,7 @@ The exposure is personal and criminal rather than institutional and civil. Holdi
         { value: "UNDER_INVESTIGATION", label: "Under investigation" },
         { value: "REFERRED_PROSECUTOR", label: "Referred to the prosecuting authority" },
         { value: "ARREST_MADE", label: "Arrest made" },
-        { value: "NO_ACTION", label: "No action taken", help: "Record it as an outcome rather than leaving the entry open. Repeated no-action outcomes at one address are the pattern worth putting to a chief." },
+        { value: "NO_ACTION", label: "No action taken", help: "Record it as an outcome rather than leaving the entry open, and ask in writing for the reason the matter was closed and under what classification. A closure with a stated reason can be answered; a file that simply stops cannot." },
         { value: "CLOSED_BY_AGENCY", label: "Closed by the agency" },
         { value: "REQUEST_GRANTED", label: "Request granted", help: "For patrol, assessment, permit, and records requests." },
         { value: "REQUEST_REFUSED", label: "Request refused" },
@@ -558,6 +600,21 @@ The exposure is personal and criminal rather than institutional and civil. Holdi
       when: (data) => Boolean(data.processServed) && data.processServed !== "NONE",
     },
     {
+      id: "psl-preserve-recordings",
+      title: "Recordings at risk — no preservation request has been sent",
+      fromField: "interactionDate",
+      offsetDays: 3,
+      severity: "HIGH",
+      detail:
+        "Officers attended or a call was made, and no written preservation request has gone in. Dispatch audio, computer-aided dispatch data, and body-worn camera recordings are held on short retention schedules, and private camera systems around a site overwrite sooner still. Send a preservation request to the records division today, naming the case number, the date, the location, and the time window. Preservation is asked for separately from production and earlier than it; a request for a copy argued about for a month is worth nothing once the recording is gone.",
+      when: (data) =>
+        !data.preservationRequested &&
+        (data.channel === "OFFICER_ATTENDED" ||
+          data.channel === "EMERGENCY_CALL" ||
+          data.interactionType === "CRIME_REPORT" ||
+          data.interactionType === "BIAS_INCIDENT"),
+    },
+    {
       id: "psl-request-report-copy",
       title: "Report taken but no written request for a copy has gone in",
       fromField: "interactionDate",
@@ -565,7 +622,7 @@ The exposure is personal and criminal rather than institutional and civil. Holdi
       severity: "HIGH",
       authority: "Conn. Gen. Stat. § 1-200 et seq.; § 1-210(b)(3)",
       detail:
-        "A week has passed since a report was taken and no written request for a copy has been made. Send one under the Connecticut Freedom of Information Act and open the matching record in the Register of Public Records Requests, which keeps the four-business-day response period and the thirty-day appeal window. Expect withholding while the matter is open under the law-enforcement exemptions at § 1-210(b)(3), and ask which subdivision is relied on. A report never requested is a report the Kingdom cannot produce when it matters.",
+        "A week has passed since a report was taken and no written request for a copy has been made. Send one under the Connecticut Freedom of Information Act and open the matching record in the Register of Public Records Requests, which keeps the four-business-day response period and the thirty-day appeal window. Expect withholding while the matter is open under the law-enforcement exemptions at § 1-210(b)(3), and ask which subdivision is relied on. The seven days is this register's own interval and not a statutory one: the Act fixes the period in which an agency must answer a request, not any period within which a request must be made. A report never requested is a report the Kingdom cannot produce when it matters.",
       when: (data) => data.reportTaken === true && !data.copyObtained && !data.copyRequested,
     },
     {
