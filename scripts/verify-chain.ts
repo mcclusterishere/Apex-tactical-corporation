@@ -381,6 +381,28 @@ async function main() {
     console.log("  WARN  no checkpoint has been cut. Inclusion proofs cannot be issued.");
   }
 
+  // --- The Apex Mark ------------------------------------------------------
+  //
+  // The money supply must reconcile from three independent places — the wallets,
+  // the double-entry books, and each wallet's own entry history — or a Mark
+  // exists that is not backed. This runs the same check the Mint page shows.
+  const { verifyCurrency, currencyState, MARK, formatMarks } = await import("@/lib/currency");
+  const currencyProblems = await verifyCurrency();
+  const money = await currencyState();
+  console.log(`\nThe Apex Mark: ${MARK.symbol}${formatMarks(money.outstandingMinor)} in circulation`);
+  if (money.walletCount === 0) {
+    console.log("  ----  the Mint has issued nothing yet");
+  } else if (currencyProblems.length === 0) {
+    console.log(
+      `  OK    fully reserved; wallets, books and reserve agree (${(money.reserveCents / 100).toFixed(2)} USD held)`,
+    );
+  } else {
+    for (const problem of currencyProblems) {
+      console.error(`  FAIL  ${problem.kind}: ${problem.detail}`);
+    }
+    failures += currencyProblems.length;
+  }
+
   // --- External anchoring -------------------------------------------------
   const anchor = await prisma.chainAnchor.findFirst({ orderBy: { sequence: "desc" } });
   console.log("\nExternal anchoring:");

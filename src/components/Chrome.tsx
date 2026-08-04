@@ -79,6 +79,7 @@ function Nav({ principal }: { principal: Principal }) {
               </NavLink>
               <NavLink href="/treasury/journal">Journal</NavLink>
               <NavLink href="/treasury/accounts">Chart of accounts</NavLink>
+              <NavLink href="/treasury/currency">The Mint · Apex Mark</NavLink>
             </>
           ) : null}
           <NavLink href="/credentials" exact>

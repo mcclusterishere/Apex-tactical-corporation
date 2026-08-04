@@ -52,7 +52,13 @@ export type LedgerEventType =
   | "KEY_REVOKED"
   | "APPROVAL_REQUESTED"
   | "APPROVAL_GRANTED"
-  | "APPROVAL_REJECTED";
+  | "APPROVAL_REJECTED"
+  | "CURRENCY_ACCOUNT_OPENED"
+  | "CURRENCY_ISSUED"
+  | "CURRENCY_SPENT"
+  | "CURRENCY_REDEEMED"
+  | "CURRENCY_FROZEN"
+  | "CURRENCY_ADJUSTED";
 
 export function sha256Hex(input: string | Buffer): string {
   return createHash("sha256").update(input).digest("hex");

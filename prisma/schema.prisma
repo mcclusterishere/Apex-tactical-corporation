@@ -645,3 +645,66 @@ model ApprovalVote {
   // the quorum alone.
   @@unique([approvalId, userId])
 }
+
+
+// --- The Apex Mark: a fully-reserved, closed-loop internal unit of account ----
+//
+// This is the Kingdom's own money in the only sense that is lawful: a private
+// medium of exchange used within the membership for the Kingdom's own goods and
+// services, denominated in the Apex Mark, backed one-for-one by United States
+// dollars held in a reserve the Kingdom does not spend, and redeemable to those
+// dollars on demand. It is NOT legal tender, it is NOT minted as coin or note
+// intended to circulate as current money (18 U.S.C. Section 486), and value does
+// NOT move between third parties through it (18 U.S.C. Section 1960). Every
+// issuance, redemption and spend is double-entered in the Treasury and committed
+// to the hash chain, so the money supply is as tamper-evident as the register.
+model CurrencyAccount {
+  id             String   @id @default(cuid())
+  // Human-facing wallet number, e.g. AXM-000001.
+  number         String   @unique
+  holderName     String
+  // The Roll of Citizens record this wallet belongs to, where the holder is a
+  // member. Issuance is confined to members precisely so the loop stays closed.
+  holderRecordId String?
+  // ACTIVE | FROZEN | CLOSED
+  status         String   @default("ACTIVE")
+  // Cached balance in Mark-pence (1 Mark = 100). The entries are authoritative;
+  // this is kept in step inside the same transaction and re-checked by
+  // verifyCurrency, which recomputes it from the entries.
+  balanceMinor   Int      @default(0)
+  openedBy       String
+  createdAt      DateTime @default(now())
+
+  entries CurrencyEntry[]
+
+  @@index([holderRecordId])
+  @@index([status])
+}
+
+model CurrencyEntry {
+  id                String          @id @default(cuid())
+  accountId         String
+  account           CurrencyAccount @relation(fields: [accountId], references: [id], onDelete: Restrict)
+  // Per-account sequence, from 1, gapless.
+  seq               Int
+  // ISSUE | SPEND | REDEEM | ADJUST | REVERSAL
+  type              String
+  // Signed change to the holder's balance, in Mark-pence.
+  deltaMinor        Int
+  balanceAfterMinor Int
+  // United States dollars moved for this entry, in cents. Non-zero for ISSUE
+  // (dollars in) and REDEEM (dollars out); zero for SPEND (the holder consumed
+  // credit for goods, no dollars left the Kingdom).
+  usdCents          Int             @default(0)
+  memo              String?
+  reference         String?
+  // The Treasury journal entry that recorded the money movement, so the wallet
+  // and the books can never be reconciled to two different answers.
+  journalEntryId    String?
+  createdBy         String
+  createdAt         DateTime        @default(now())
+
+  @@unique([accountId, seq])
+  @@index([accountId])
+  @@index([type])
+}

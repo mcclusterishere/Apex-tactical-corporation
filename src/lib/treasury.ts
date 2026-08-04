@@ -170,7 +170,21 @@ export function validateJournal(input: JournalInput): {
  * are written together or not at all. A treasury whose accounting record can
  * drift out of step with its own audit trail is not a treasury.
  */
-export async function postJournal(principal: Principal, input: JournalInput) {
+type JournalTxClient = Parameters<typeof appendToChainTx>[0];
+
+/**
+ * Post a journal entry inside an existing transaction.
+ *
+ * Extracted so a caller that must move money and do something else atomically —
+ * the currency mint recording an issuance in the same breath as it credits a
+ * wallet — posts the entry through the one, tested posting path rather than a
+ * second copy of it. `postJournal` is this wrapped in its own transaction.
+ */
+export async function postJournalTx(
+  tx: JournalTxClient,
+  principal: Principal,
+  input: JournalInput,
+) {
   const { totalDebits } = validateJournal(input);
 
   const accountCodes = [...new Set(input.postings.map((p) => p.accountCode))];
@@ -178,12 +192,9 @@ export async function postJournal(principal: Principal, input: JournalInput) {
     ...new Set(input.postings.map((p) => p.fundCode).filter((c): c is string => Boolean(c))),
   ];
 
-  const [accounts, funds] = await Promise.all([
-    prisma.account.findMany({ where: { code: { in: accountCodes } } }),
-    fundCodes.length > 0
-      ? prisma.fund.findMany({ where: { code: { in: fundCodes } } })
-      : Promise.resolve([]),
-  ]);
+  const accounts = await tx.account.findMany({ where: { code: { in: accountCodes } } });
+  const funds =
+    fundCodes.length > 0 ? await tx.fund.findMany({ where: { code: { in: fundCodes } } }) : [];
 
   const accountByCode = new Map(accounts.map((a) => [a.code, a]));
   const fundByCode = new Map(funds.map((f) => [f.code, f]));
@@ -201,62 +212,64 @@ export async function postJournal(principal: Principal, input: JournalInput) {
 
   const date = new Date(`${input.date}T00:00:00Z`);
 
-  return prisma.$transaction(async (tx) => {
-    const counter = await tx.counter.upsert({
-      where: { key: "journal:sequence" },
-      create: { key: "journal:sequence", value: 1 },
-      update: { value: { increment: 1 } },
-    });
-    const entryNumber = `AK-JE-${String(counter.value).padStart(6, "0")}`;
+  const counter = await tx.counter.upsert({
+    where: { key: "journal:sequence" },
+    create: { key: "journal:sequence", value: 1 },
+    update: { value: { increment: 1 } },
+  });
+  const entryNumber = `AK-JE-${String(counter.value).padStart(6, "0")}`;
 
-    const journal = await tx.journalEntry.create({
-      data: {
-        entryNumber,
-        date,
-        memo: input.memo.trim(),
-        reference: input.reference?.trim() || null,
-        sourceRecordId: input.sourceRecordId ?? null,
-        status: "POSTED",
-        postedAt: new Date(),
-        postedBy: `${principal.displayName} (${principal.role})`,
-        createdBy: `${principal.displayName} (${principal.role})`,
-        postings: {
-          create: input.postings.map((posting, index) => ({
-            accountId: accountByCode.get(posting.accountCode)!.id,
-            fundId: posting.fundCode ? (fundByCode.get(posting.fundCode)?.id ?? null) : null,
-            debitCents: posting.debitCents ?? 0,
-            creditCents: posting.creditCents ?? 0,
-            memo: posting.memo?.trim() || null,
-            sequence: index,
-          })),
-        },
-      },
-      include: { postings: true },
-    });
-
-    await appendToChainTx(tx, {
-      eventType: "JOURNAL_POSTED",
-      actorId: principal.id === "anonymous" ? null : principal.id,
-      actorLabel: `${principal.displayName} (${principal.role})`,
-      payload: {
-        entryNumber,
-        date: input.date,
-        memo: journal.memo,
-        reference: journal.reference,
-        totalCents: totalDebits,
-        sourceRecordId: input.sourceRecordId ?? null,
-        postings: input.postings.map((posting) => ({
-          account: posting.accountCode,
-          fund: posting.fundCode ?? null,
+  const journal = await tx.journalEntry.create({
+    data: {
+      entryNumber,
+      date,
+      memo: input.memo.trim(),
+      reference: input.reference?.trim() || null,
+      sourceRecordId: input.sourceRecordId ?? null,
+      status: "POSTED",
+      postedAt: new Date(),
+      postedBy: `${principal.displayName} (${principal.role})`,
+      createdBy: `${principal.displayName} (${principal.role})`,
+      postings: {
+        create: input.postings.map((posting, index) => ({
+          accountId: accountByCode.get(posting.accountCode)!.id,
+          fundId: posting.fundCode ? (fundByCode.get(posting.fundCode)?.id ?? null) : null,
           debitCents: posting.debitCents ?? 0,
           creditCents: posting.creditCents ?? 0,
-          memo: posting.memo ?? null,
-        })) as unknown as Record<string, never>,
+          memo: posting.memo?.trim() || null,
+          sequence: index,
+        })),
       },
-    });
-
-    return journal;
+    },
+    include: { postings: true },
   });
+
+  await appendToChainTx(tx, {
+    eventType: "JOURNAL_POSTED",
+    actorId: principal.id === "anonymous" ? null : principal.id,
+    actorLabel: `${principal.displayName} (${principal.role})`,
+    payload: {
+      entryNumber,
+      date: input.date,
+      memo: journal.memo,
+      reference: journal.reference,
+      totalCents: totalDebits,
+      sourceRecordId: input.sourceRecordId ?? null,
+      postings: input.postings.map((posting) => ({
+        account: posting.accountCode,
+        fund: posting.fundCode ?? null,
+        debitCents: posting.debitCents ?? 0,
+        creditCents: posting.creditCents ?? 0,
+        memo: posting.memo ?? null,
+      })) as unknown as Record<string, never>,
+    },
+  });
+
+  return journal;
+}
+
+export async function postJournal(principal: Principal, input: JournalInput) {
+  return prisma.$transaction((tx) => postJournalTx(tx as JournalTxClient, principal, input));
 }
 
 /**
