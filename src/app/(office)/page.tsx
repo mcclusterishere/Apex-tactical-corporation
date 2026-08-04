@@ -3,9 +3,32 @@ import { getPrincipal, isAuthenticated } from "@/lib/auth";
 import { getChainHead } from "@/lib/chain";
 import { prisma } from "@/lib/db";
 import { countsByRegistry, recentRecords, upcomingDeadlines, openHolds } from "@/lib/queries";
-import { groupedRegistries, getRegistry, REGISTRIES } from "@/registries";
+import { getRegistry, REGISTRIES, groupedRegistries } from "@/registries";
 import { REGISTRY_GROUP_LABELS, REGISTRY_GROUP_BLURBS } from "@/registries/types";
-import { PageHeader, Panel, Stat, StatusBadge, ClassificationBadge, ButtonLink, EmptyState, Caution } from "@/components/ui";
+import { can } from "@/lib/authz";
+import {
+  Hero,
+  ActionCard,
+  Panel,
+  Stat,
+  StatusBadge,
+  ClassificationBadge,
+  ButtonLink,
+  EmptyState,
+  Caution,
+} from "@/components/ui";
+import {
+  IconVerify,
+  IconSearch,
+  IconCharter,
+  IconGazette,
+  IconLedger,
+  IconIdentity,
+  IconStay,
+  IconRegisters,
+  IconTreasury,
+  IconAccount,
+} from "@/components/Icons";
 import { formatDateShort, formatTimestamp, shortHash, daysUntil, describeDueIn } from "@/lib/format";
 import { Seal } from "@/components/Seal";
 
@@ -14,6 +37,8 @@ export const dynamic = "force-dynamic";
 export default async function RegistrarsDesk() {
   const principal = await getPrincipal();
   const signedIn = isAuthenticated(principal);
+  const firstName = principal.displayName?.trim().split(/\s+/)[0];
+  const canMoney = can(principal.role, "registry:financial") || principal.role === "SOVEREIGN";
 
   const [head, counts, recent, deadlines, holds, totalRecords, lastAnchor] = await Promise.all([
     getChainHead(),
@@ -29,37 +54,31 @@ export default async function RegistrarsDesk() {
   const critical = deadlines.filter(
     (deadline) => deadline.severity === "CRITICAL" && daysUntil(deadline.dueOn) >= 0,
   );
-
   const unanchored = head ? head.sequence - (lastAnchor?.sequence ?? 0) : 0;
 
   return (
     <>
-      <PageHeader
-        overline="Apex Tactical Corporation"
-        title="The Registrar&rsquo;s desk"
+      <Hero
+        eyebrow="Apex Kingdom · Office of the Registrar"
+        seal={<Seal size={96} />}
+        title={signedIn && firstName ? `Welcome, ${firstName}.` : "The register of Apex Kingdom"}
         lede={
           signedIn ? (
             <>
-              Signed in as <strong>{principal.displayName}</strong>
-              {principal.officeTitle ? `, ${principal.officeTitle}` : ""}. You hold{" "}
-              <strong>{principal.clearance.toLowerCase()}</strong> clearance.
+              This is the Kingdom&rsquo;s system of record. Everything entered here is sealed into a
+              chain that cannot be quietly changed. Choose what you&rsquo;d like to do &mdash; or use
+              the sections in the menu for anything more detailed.
             </>
           ) : (
             <>
-              You are viewing the public register. Sign in to reach member, officer, and sealed
-              material.
+              This is the public register of Apex Kingdom, a religious society and cultural
+              institution. Every entry is sealed into an unbroken chain, so anyone holding a
+              certified copy can prove it is genuine. Start with one of the doors below.
             </>
           )
         }
         actions={
-          signedIn ? (
-            <>
-              <ButtonLink href="/chain">Ledger chain</ButtonLink>
-              <ButtonLink href="/search" tone="primary">
-                Search
-              </ButtonLink>
-            </>
-          ) : (
+          signedIn ? null : (
             <ButtonLink href="/sign-in" tone="primary">
               Sign in
             </ButtonLink>
@@ -67,85 +86,57 @@ export default async function RegistrarsDesk() {
         }
       />
 
-      {!signedIn ? (
-        <section className="surface mb-6 rounded-sm border border-[var(--rule-strong)] px-5 py-5">
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
-            <Seal size={92} />
-            <div className="min-w-0 flex-1">
-              <h2 className="text-lg">The register of Apex Kingdom</h2>
-              <p className="muted mt-1.5 text-sm">
-                This is the system of record of Apex Kingdom, a religious society and cultural
-                institution constituted by Charter on 30 October 2010 and reduced to writing on 29
-                May 2025. It keeps the Kingdom&rsquo;s instruments, its offices, its property, its
-                intellectual property, its dealings with outside governments, and the evidence
-                supporting its claims.
-              </p>
-              <p className="muted mt-2 text-sm">
-                Every entry is committed to an append-only chain of cryptographic hashes. Anyone
-                holding a certified extract can confirm, without an account and without the
-                Kingdom&rsquo;s cooperation, that the document they hold is the document that was
-                recorded.
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <ButtonLink href="/verify" tone="primary">
-                  Verify a certified copy
-                </ButtonLink>
-                <ButtonLink href="/charter">Read the Charter</ButtonLink>
-                <ButtonLink href="/gazette">Official gazette</ButtonLink>
-              </div>
-            </div>
-          </div>
-        </section>
-      ) : null}
+      {/* The front door: a few big, plain doors anyone can read at a glance. */}
+      <section aria-label="What would you like to do?" className="mb-9">
+        <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
+          <ActionCard href="/verify" icon={<IconVerify />} title="Verify a document" tone="gilt">
+            Check that a certified copy is genuine and unaltered.
+          </ActionCard>
+          <ActionCard href="/search" icon={<IconSearch />} title="Search the records">
+            Find a person, a filing, or a record by name or number.
+          </ActionCard>
+          <ActionCard href="/charter" icon={<IconCharter />} title="Read the Charter">
+            The founding document that constitutes the Kingdom.
+          </ActionCard>
 
-      <div className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <Stat
-          label="Records on file"
-          value={totalRecords.toLocaleString()}
-          detail={`Across ${REGISTRIES.length} registers`}
-          href="/search"
-        />
-        <Stat
-          label="Ledger entries"
-          value={head ? head.sequence.toLocaleString() : "—"}
-          detail={head ? `Head ${shortHash(head.entryHash)}` : "The ledger has not been opened"}
-          href="/chain"
-        />
-        <Stat
-          label="Overdue"
-          value={overdue.length}
-          detail={
-            overdue.length > 0
-              ? "Deadlines past due — rights may be forfeiting"
-              : critical.length > 0
-                ? `${critical.length} critical ahead`
-                : "Nothing past due"
-          }
-          tone={overdue.length > 0 ? "danger" : critical.length > 0 ? "warning" : "success"}
-          href="/calendar"
-        />
-        <Stat
-          label="Unanchored entries"
-          value={unanchored}
-          detail={
-            lastAnchor
-              ? `Last anchored ${formatDateShort(lastAnchor.anchoredAt)}`
-              : "Never anchored externally"
-          }
-          tone={unanchored > 25 || !lastAnchor ? "warning" : "success"}
-          href="/chain"
-        />
-      </div>
+          {signedIn ? (
+            <>
+              <ActionCard href="/claim" icon={<IconIdentity />} title="Claim your identity">
+                Prove who you are and link yourself to your record.
+              </ActionCard>
+              <ActionCard href="/zomes" icon={<IconStay />} title="Book a stay">
+                Reserve a zome on the Kingdom&rsquo;s land.
+              </ActionCard>
+              <ActionCard href="/account" icon={<IconAccount />} title="Your account">
+                Your office, your password, and your sign-in security.
+              </ActionCard>
+            </>
+          ) : (
+            <>
+              <ActionCard href="/gazette" icon={<IconGazette />} title="The official gazette">
+                Notices the Kingdom has published to the public.
+              </ActionCard>
+              <ActionCard href="/chain" icon={<IconLedger />} title="The ledger chain">
+                See the sealed chain and check it for yourself.
+              </ActionCard>
+              <ActionCard href="/claim" icon={<IconIdentity />} title="Claim your identity">
+                Prove who you are and link yourself to your record.
+              </ActionCard>
+            </>
+          )}
+        </div>
+      </section>
 
+      {/* Alerts that genuinely need a person's attention come before anything else. */}
       {!lastAnchor && head ? (
         <div className="mb-6">
           <Caution title="The chain has never been anchored outside the Kingdom">
             An internal hash chain proves the register has not been rewritten. It does not, on its
-            own, prove when anything was recorded — the dates rest on the Kingdom&rsquo;s own
-            assertion until a head hash is fixed somewhere it does not control. Publish the current
-            head in the gazette, mail it to yourself by certified mail, or obtain an RFC 3161
-            timestamp. Run{" "}
-            <code className="tabular">npm run chain:anchor</code> for the procedure, and see the{" "}
+            own, prove <em>when</em> anything was recorded &mdash; the dates rest on the
+            Kingdom&rsquo;s own assertion until a head hash is fixed somewhere it does not control.
+            Publish the current head in the gazette, mail it to yourself by certified mail, or obtain
+            an RFC 3161 timestamp. Run <code className="tabular">npm run chain:anchor</code> for the
+            procedure, and see the{" "}
             <Link href="/doctrine/05-EVIDENCE-AND-CHAIN-OF-CUSTODY" className="underline">
               evidence manual
             </Link>
@@ -216,17 +207,60 @@ export default async function RegistrarsDesk() {
         </Panel>
       ) : null}
 
+      {/* Trust signals — the same four figures, framed as reassurance rather than a cockpit. */}
+      <div className="mb-2">
+        <h2 className="overline mb-3 flex items-center gap-1.5">
+          <span aria-hidden className="h-px w-3 bg-[var(--gilt-line)]" />
+          The register at a glance
+        </h2>
+      </div>
+      <div className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <Stat
+          label="Records on file"
+          value={totalRecords.toLocaleString()}
+          detail={`Across ${REGISTRIES.length} registers`}
+          href="/search"
+        />
+        <Stat
+          label="Ledger entries"
+          value={head ? head.sequence.toLocaleString() : "—"}
+          detail={head ? `Head ${shortHash(head.entryHash)}` : "The ledger has not been opened"}
+          href="/chain"
+        />
+        <Stat
+          label="Overdue"
+          value={overdue.length}
+          detail={
+            overdue.length > 0
+              ? "Deadlines past due — rights may be forfeiting"
+              : critical.length > 0
+                ? `${critical.length} critical ahead`
+                : "Nothing past due"
+          }
+          tone={overdue.length > 0 ? "danger" : critical.length > 0 ? "warning" : "success"}
+          href="/calendar"
+        />
+        <Stat
+          label="Unanchored entries"
+          value={unanchored}
+          detail={
+            lastAnchor
+              ? `Last anchored ${formatDateShort(lastAnchor.anchoredAt)}`
+              : "Never anchored externally"
+          }
+          tone={unanchored > 25 || !lastAnchor ? "warning" : "success"}
+          href="/chain"
+        />
+      </div>
+
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="min-w-0 lg:col-span-2">
-          <Panel
-            title="Recently recorded"
-            actions={<ButtonLink href="/search">Search all</ButtonLink>}
-          >
+          <Panel title="Recently recorded" actions={<ButtonLink href="/search">Search all</ButtonLink>}>
             {recent.length === 0 ? (
               <EmptyState title="The registers are empty">
-                Nothing has been recorded yet. Open a register from the navigation and make the
-                first entry, or run <code className="tabular">npm run seed</code> to load the
-                founding instruments.
+                Nothing has been recorded yet. Open a register from the menu and make the first
+                entry, or run <code className="tabular">npm run seed</code> to load the founding
+                instruments.
               </EmptyState>
             ) : (
               <div className="scroll-x">
@@ -363,12 +397,32 @@ export default async function RegistrarsDesk() {
               </div>
             </Panel>
           ) : null}
+
+          {canMoney ? (
+            <Panel title="Treasury">
+              <p className="muted text-sm">
+                The Kingdom&rsquo;s double-entry books, the chart of accounts, and the Mint.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <ButtonLink href="/treasury">
+                  <span className="inline-flex items-center gap-1.5">
+                    <IconTreasury size="1em" /> Open the Treasury
+                  </span>
+                </ButtonLink>
+              </div>
+            </Panel>
+          ) : null}
         </div>
       </div>
 
       <Panel
         title="The registers"
         description="Every register kept under the Charter, with the count of entries you may read"
+        actions={
+          <span className="muted hidden items-center gap-1.5 text-xs sm:inline-flex">
+            <IconRegisters size="1em" /> {REGISTRIES.length} registers
+          </span>
+        }
       >
         <div className="space-y-6">
           {groupedRegistries().map((entry) => (
@@ -380,7 +434,7 @@ export default async function RegistrarsDesk() {
                   <Link
                     key={registry.slug}
                     href={`/registry/${registry.slug}`}
-                    className="block border border-[var(--rule)] px-3 py-2.5 transition-colors hover:bg-ink-50 dark:hover:bg-ink-800"
+                    className="block rounded-md border border-[var(--rule)] px-3 py-2.5 transition-colors hover:surface-tint"
                   >
                     <div className="flex items-baseline justify-between gap-2">
                       <span className="text-sm font-medium">{registry.shortTitle}</span>

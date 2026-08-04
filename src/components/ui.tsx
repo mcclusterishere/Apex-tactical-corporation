@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { CLASSIFICATION_LABELS, type Classification } from "@/lib/classification";
 import type { StatusDef } from "@/registries/types";
+import { IconArrow } from "@/components/Icons";
 
 /** Shared presentational primitives. Server components; no client state. */
 
@@ -203,6 +204,107 @@ export function ErrorNote({ children }: { children: ReactNode }) {
     >
       {children}
     </div>
+  );
+}
+
+/**
+ * The greeter band at the top of the front door. Warm parchment ground, the
+ * seal set large like the head of a piece of letterhead, one plain sentence of
+ * what this is, and — for a first-time or elderly visitor — nothing to decipher.
+ * The gravitas is carried by the type and the seal, not by clutter.
+ */
+export function Hero({
+  eyebrow,
+  title,
+  lede,
+  seal,
+  actions,
+}: {
+  eyebrow?: ReactNode;
+  title: ReactNode;
+  lede?: ReactNode;
+  seal?: ReactNode;
+  actions?: ReactNode;
+}) {
+  return (
+    <section className="hero-band avoid-break mb-8 overflow-hidden rounded-xl border border-[var(--rule-strong)]">
+      <div className="flex flex-col items-start gap-6 px-6 py-8 sm:flex-row sm:items-center sm:px-9 sm:py-10">
+        {seal ? (
+          <div className="text-[var(--gilt-line)] opacity-90 drop-shadow-sm">{seal}</div>
+        ) : null}
+        <div className="min-w-0 flex-1">
+          {eyebrow ? (
+            <p className="overline mb-2.5 flex items-center gap-1.5">
+              <span aria-hidden className="h-px w-3.5 bg-[var(--gilt-line)]" />
+              {eyebrow}
+            </p>
+          ) : null}
+          <h1 className="display text-[2rem] leading-[1.05] sm:text-[2.6rem]">{title}</h1>
+          {lede ? (
+            <div className="mt-3.5 max-w-2xl text-[15.5px] leading-relaxed text-[var(--text-muted)]">
+              {lede}
+            </div>
+          ) : null}
+          {actions ? (
+            <div className="no-print mt-5 flex flex-wrap gap-2.5">{actions}</div>
+          ) : null}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/**
+ * A large, unmissable "what do you want to do?" card. One picture, one plain
+ * verb, one line of help. Big enough to hit with a thumb, calm enough to read at
+ * a glance, and it lifts a hair toward the reader on hover so it plainly invites
+ * a click. This is the load-bearing element of the simple front door.
+ */
+export function ActionCard({
+  href,
+  icon,
+  title,
+  children,
+  tone = "default",
+  external,
+}: {
+  href: string;
+  icon: ReactNode;
+  title: string;
+  children?: ReactNode;
+  tone?: "default" | "gilt";
+  external?: boolean;
+}) {
+  const ring =
+    tone === "gilt"
+      ? "text-[var(--gilt-line)] bg-gilt-100 dark:bg-gilt-500/15"
+      : "text-[var(--link)] bg-[color-mix(in_srgb,var(--link)_12%,transparent)]";
+  return (
+    <Link
+      href={href}
+      target={external ? "_blank" : undefined}
+      className="action-card surface group flex min-h-[9.5rem] flex-col rounded-xl border border-[var(--rule)] p-5 transition-all hover:-translate-y-0.5 hover:border-[var(--rule-strong)] hover:raised focus-visible:-translate-y-0.5"
+    >
+      <span
+        className={`mb-3.5 inline-flex h-11 w-11 items-center justify-center rounded-lg text-[22px] ${ring}`}
+      >
+        {icon}
+      </span>
+      <span className="display flex items-center gap-1.5 text-[1.15rem] font-semibold leading-tight">
+        {title}
+        <span
+          aria-hidden
+          className="translate-x-0 text-[var(--text-muted)] opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100"
+        >
+          <IconArrow size="0.7em" />
+        </span>
+      </span>
+      {children ? (
+        <span className="mt-1.5 text-[13.5px] leading-relaxed text-[var(--text-muted)]">
+          {children}
+        </span>
+      ) : null}
+    </Link>
   );
 }
 

@@ -137,8 +137,11 @@
     background: var(--page);
     color: var(--text);
     font-family: var(--font-sans);
-    font-size: 15px;
-    line-height: 1.6;
+    /* A hair larger than a typical app: this is read by members and elders, not
+       only officers, and a comfortable base size is the cheapest accessibility
+       win there is. */
+    font-size: 16px;
+    line-height: 1.62;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     /* Only colours transition, so switching theme is a gentle fade rather than a
@@ -254,6 +257,55 @@
       var(--gilt-line),
       color-mix(in srgb, var(--gilt-line) 30%, transparent)
     );
+  }
+
+  /*
+   * The greeter band. A warm parchment ground lifted off the page with a faint
+   * gilt wash in one corner — the visual equivalent of good letterhead stock.
+   * A gilt hairline sits along the top edge like an embossed rule. Restrained on
+   * purpose: it should read as an official instrument that happens to be
+   * beautiful, never as a marketing hero.
+   */
+  .hero-band {
+    position: relative;
+    background:
+      radial-gradient(
+        120% 140% at 88% -10%,
+        color-mix(in srgb, var(--gilt-line) 16%, transparent) 0%,
+        transparent 46%
+      ),
+      linear-gradient(180deg, var(--page-raised) 0%, var(--panel-tint) 100%);
+  }
+  .hero-band::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      var(--gilt-line) 0%,
+      color-mix(in srgb, var(--gilt-line) 40%, transparent) 60%,
+      transparent 100%
+    );
+  }
+
+  /* The front-door action cards read as one calm field until a cursor lands on
+     one, at which point a gilt edge and a soft lift single it out. */
+  .action-card {
+    position: relative;
+  }
+  .action-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px transparent;
+    transition: box-shadow 0.18s ease;
+    pointer-events: none;
+  }
+  .action-card:hover::after,
+  .action-card:focus-visible::after {
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--gilt-line) 55%, transparent);
   }
 
   /* Small caps label above fields and section headings. */

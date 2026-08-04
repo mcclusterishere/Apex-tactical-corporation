@@ -48,13 +48,14 @@ function Nav({ principal }: { principal: Principal }) {
     <nav className="space-y-5">
       <NavSection label="Office">
         <NavLink href="/" exact>
-          Registrar&rsquo;s desk
+          Home
         </NavLink>
+        <NavLink href="/search">Search the registers</NavLink>
+        <NavLink href="/verify">Verify a document</NavLink>
         <NavLink href="/chain">The ledger chain</NavLink>
         <NavLink href="/log">Transparency log</NavLink>
         <NavLink href="/calendar">Deadlines</NavLink>
         <NavLink href="/gazette">Official gazette</NavLink>
-        <NavLink href="/search">Search the registers</NavLink>
         {isAuthenticated(principal) ? <NavLink href="/account">Your account</NavLink> : null}
       </NavSection>
 
