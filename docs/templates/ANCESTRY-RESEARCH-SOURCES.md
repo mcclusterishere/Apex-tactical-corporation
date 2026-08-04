@@ -7,23 +7,43 @@ record set actually contains, who holds it, and how to get it. Work through it
 with the register open, because a search that is not logged is a search that will
 be done twice and cannot be relied on once.*
 
+*It is the third of three documents and the narrowest.
+`docs/18-DESCENT-RECOGNITION-AND-CITIZENSHIP.md` says what documented descent is
+worth once it exists, which routes are open, and how a claim of this kind gets
+destroyed; the register holds the findings; this guide is the fieldwork. Where
+this document and that one appear to differ on a point of law or of history, that
+one governs and this one should be corrected.*
+
 ---
 
 ## The one thing to settle before starting
 
 **The unit of a claim is a family line. It is not Apex Kingdom.**
 
-Federal acknowledgment under 25 C.F.R. Part 83 requires a petitioner to satisfy
-every criterion in § 83.11. Four of them are fatal to a body constituted in 2025:
+Apex Kingdom cannot be federally acknowledged as an Indian tribe, and the reason
+comes before the criteria rather than out of them. **25 C.F.R. § 83.4(a)**
+provides that the Department will not acknowledge "an association, organization,
+corporation, or entity of any character formed in recent times unless the entity
+has only changed form by recently incorporating or otherwise formalizing its
+existing politically autonomous community" — a saving clause that reaches a
+community which has written itself down, not a body that came into existence when
+its instrument was signed.
+
+Past that threshold, Part 83 requires a petitioner to satisfy every criterion in
+§ 83.11, and three of them are measured from a date no research can reach:
 identification "as an American Indian entity on a substantially continuous basis
 since 1900" (§ 83.11(a)); existence as "a distinct community … from 1900 until
-the present" (§ 83.11(b)); maintenance of "political influence or authority over
-its members as an autonomous entity from 1900 until the present" (§ 83.11(c));
-and membership consisting of individuals "who descend from a historical Indian
-tribe" (§ 83.11(e)). No amount of research produces a century of continuous
-community that did not occur, and no register can supply it. Nothing in this
-document is directed at that outcome, and no record obtained under it should ever
-be filed toward it.
+the present" (§ 83.11(b)); and maintenance of "political influence or authority
+over its members as an autonomous entity from 1900 until the present"
+(§ 83.11(c)). A fourth, § 83.11(e), requires that the petitioner's membership
+consist of individuals "who descend from a historical Indian tribe" — that one is
+about evidence rather than about years, and it is the only one this document can
+help with, but it is met by a *group* petitioner and confers nothing on an
+individual. No amount of research produces a century of continuous community that
+did not occur, and no register can supply it. Nothing in this document is
+directed at that outcome, and no record obtained under it should ever be filed
+toward it. The full treatment is at
+`docs/18-DESCENT-RECOGNITION-AND-CITIZENSHIP.md` § 1.
 
 What research *can* establish is descent — that particular people descended from
 particular people, each step resting on a named document. That is the question
@@ -70,10 +90,11 @@ comes next, and doing them out of order wastes months.
       highest value and a proof of none. Its job is to tell you which county to
       search. It is never quoted as evidence of the thing it asserts.
 - [ ] **2. Build the line backwards from the living, one generation at a time, to
-      1940.** Do not start from the ancestor you hope to find. Start from yourself
+      1950.** Do not start from the ancestor you hope to find. Start from yourself
       and work back. Every generation skipped is a generation an adversary will
-      say you invented. The 1950 census is released; so are 1940 and everything
-      earlier.
+      say you invented. The 1950 census is open, and so is everything earlier;
+      1960 is not, so the years between the present and 1950 must be bridged with
+      vital records, not censuses.
 - [ ] **3. Get every death certificate in the line.** They are the cheapest
       document that names a previous generation, and they are held by state vital
       records offices with published fee schedules. Note that parentage on a death
@@ -83,7 +104,7 @@ comes next, and doing them out of order wastes months.
 - [ ] **4. Fix the county, not just the state.** American records are kept by
       county and city. Until the county is known, nothing below can be searched.
       Where the family moved, fix the county for each census year separately.
-- [ ] **5. Track one named person across every census from 1940 back to their
+- [ ] **5. Track one named person across every census from 1950 back to their
       first appearance, and record the racial classification entered each time.**
       This is the highest-yield single technique available and is set out in full
       in Part 2. Do it before ordering anything.
@@ -105,7 +126,15 @@ comes next, and doing them out of order wastes months.
       `NOT_FOUND` where those are the answers. A register in which nothing ever
       fails is a register nobody should believe.
 
-**DNA belongs at step 10 or later, never at step 1.** Part 7 explains why.
+**Order a DNA kit whenever you like; rely on it at step 10 and not before.** Keep
+those two things separate, because they pull in opposite directions and both are
+right. A kit is inexpensive and takes weeks to come back, so there is no reason
+not to have one running in the background from the first week — that is why
+`docs/18-DESCENT-RECOGNITION-AND-CITIZENSHIP.md` puts ordering it among the first
+steps. But a result is only interpretable against a paper trail, and a test taken
+to find out what the family is, rather than to answer a question the documents
+have already framed, produces a number that gets read as an answer. Part 7
+explains why, and what the result can and cannot do once it arrives.
 
 ---
 
@@ -129,6 +158,14 @@ Three general points that save weeks:
   change.** NARA re-describes series and moves records between facilities. Check
   the National Archives Catalog at `catalog.archives.gov` before writing to
   anyone, and quote whatever it says today.
+- **Where a record set has both a web page and a printed descriptive pamphlet,
+  read the pamphlet.** NARA's descriptive pamphlets are the authoritative
+  description of what a publication contains and generally quote the underlying
+  statute, decree, or report; the web pages are summaries and are occasionally at
+  odds with them. Section 1.3 sets out a case where the two disagree materially
+  about the eligibility rule for a roll, and 1.6 sets out one where the pamphlet
+  answers a question the web page leaves open. The pamphlets are published as PDFs
+  at `archives.gov` and are free.
 - **A commercial index is a finding aid, never a source.** Cite the record, not
   the website. An index entry is a stranger's transcription and is the commonest
   origin of a confidently wrong name. Always look at the image.
@@ -211,11 +248,22 @@ Note what the categories did and did not do. Enrolment as a Freedman did not
 record a blood degree, which is why Cherokee Freedmen descendants today establish
 citizenship by descent from a Freedmen enrollee without a Certificate of Degree
 of Indian Blood. *Cherokee Nation v. Nash*, 267 F. Supp. 3d 86 (D.D.C. 2017),
-held that Article 9 of the 1866 Treaty gives qualifying Freedmen and their
-descendants the same right of citizenship as native Cherokees. If any part of the
-line was enslaved by a member of one of the Five Tribes, the Freedmen schedules
-are the first place to look and one of the few places where a documented finding
-converts directly into a recognised status.
+held that Article 9 of the 1866 Treaty gives the descendants of freedmen listed
+on the Dawes Freedmen roll the same right of Cherokee Nation citizenship as
+native Cherokees, and that the right is tethered to that treaty rather than to the
+Cherokee Nation Constitution, so it could not be extinguished by amending the
+Constitution.
+
+**That holding is about the Cherokee Nation.** Each of the Five Tribes made its
+own 1866 treaty and each has taken its own position on Freedmen descendants
+since; the Choctaw, Chickasaw, Creek and Seminole positions are not governed by
+*Nash* and several remain contested. Read the relevant nation's own citizenship
+law and its own 1866 treaty before assuming the Cherokee result transfers.
+
+If any part of the line was enslaved by a member of one of the Five Tribes, the
+Freedmen schedules are still the first place to look, and for a Cherokee line one
+of the few places where a documented finding converts directly into a recognised
+status.
 
 - [ ] Search the Final Rolls by surname and by every spelling variant.
 - [ ] For every hit, retrieve the census card by card number, then the application
@@ -246,8 +294,10 @@ those entitled to share the award.
   number, then order the application from M1104.
 
 **Search this even where the family has no Cherokee tradition, and search the
-rejections hardest.** Because there was cash on offer, a great many people
-applied who were not eligible, and there was no residency requirement.
+rejections hardest.** There was no residency requirement and there was cash on
+offer, so a great many people applied from all over the country who were not
+eligible — which is precisely why the rejected applications are such a large and
+such a useful body of sworn family statements.
 
 **NARA's two descriptions of the eligibility test differ, and the difference
 matters.** Record both, and know which you are quoting:
@@ -329,9 +379,13 @@ is the sort of thing that makes a rejected file worth ordering.
 The Commission built its tentative list from earlier rolls, each of which is a
 searchable record set in its own right:
 
-- 1835 Census of Cherokees Living East of the Mississippi River (Henderson Roll),
-  1851 Chapman Roll, and 1884 Hester Roll — all within *Eastern Cherokee Census
-  Rolls, 1835–1884* (NAID 2110769), microfilmed as **M1773**.
+- 1835 Census of Cherokees Living East of the Mississippi River, 1851 Chapman
+  Roll, and 1884 Hester Roll — all within *Eastern Cherokee Census Rolls,
+  1835–1884* (NAID 2110769), microfilmed as **M1773**. The 1835 census is widely
+  called the Henderson Roll; NARA's own pamphlets use the descriptive title, so
+  ask by that. Do not confuse the alias with James E. Henderson, the Cherokee
+  Agency superintendent who sat on the 1924 Enrolling Commission. The 1835 census
+  is separately on **T496**.
 - Council Roll of Eastern Band of Cherokee, 1907 (NAID 2123972).
 - Rolls of Eastern Band of Cherokee, 1908 — the Churchill Roll (NAID 2123980).
 - The 1909 Eastern Cherokee Roll (Guion Miller), NAID 300329.
@@ -784,20 +838,29 @@ The sequence matters because a nil finding in the wrong decade means nothing:
   statewide recording of births, marriages, and deaths. Counties and cities
   maintained registers and sent a copy annually to the Auditor of Public Accounts
   for state recordation.
-- **1897–1911 — the gap.** By an act of assembly of 4 March 1898 the state halted
-  the recording of births and deaths. Most counties and cities did not record
-  births or deaths in this period, though some metropolitan areas did.
-  **Marriage recording was uninterrupted.**
+- **1897–1911 — the gap.** By an act of assembly the state discontinued the
+  recording of births and deaths on 4 March 1898. Most counties and cities did not
+  record births or deaths in this period, though some urban areas continued.
+  **Marriage recording was uninterrupted throughout.**
 - **1912 onwards.** Virginia reinstituted the recording of births and deaths in
   1912 — the same year the Bureau of Vital Statistics was established and Walter
   Ashby Plecker became its first registrar.
 
 The Library of Virginia holds birth and death registers 1853–1896 and marriage
 registers 1853–1935 on microfilm, death certificates 1912–1939, and select birth
-and death records recorded by cities between 1897 and 1911. Records after those
-dates are with the Virginia Department of Health, Division of Vital Records.
-**Confirm the current cut-off between the two before writing, because it moves as
-records are transferred.**
+and death records recorded by cities between 1897 and 1911. The Virginia
+Department of Health's Office of Vital Records issues certified copies for
+1853–1896 and 1912 to the present. Note that the two custodies overlap rather
+than abut, so a record may exist in both places in different forms — the
+Library's register copy and the Department's certificate. **Confirm the current
+cut-off before writing, because it moves as records are transferred.**
+
+One point of provenance worth knowing before arguing about any of it: the county
+and city registers 1853–1896 were sent annually to the Auditor of Public
+Accounts, who turned them over to the Bureau of Vital Statistics in 1918, and they
+were transferred to the state archive later. The registers Plecker's Bureau
+annotated are therefore in many cases the same physical volumes the Library holds
+now, which is why the annotations survive.
 
 - [ ] Where a birth falls in 1897–1911, do not record "no record found." Record
       that the Commonwealth was not recording births in that period, and cite the
@@ -806,31 +869,57 @@ records are transferred.**
 
 ### 4.2 The Plecker material, which is itself evidence
 
-Walter Ashby Plecker was Virginia's first registrar of the Bureau of Vital
-Statistics, from its establishment in 1912 until he left the post in 1946. The
-Racial Integrity Act — the Act to Preserve Racial Integrity, signed 20 March
+Walter Ashby Plecker (1861–1947) was Virginia's first registrar of the Bureau of
+Vital Statistics, from its establishment in 1912 until he retired in 1946. Use
+those dates: he died in 1947 and the two are often conflated, and a date wrong by
+a year in a filing invites a reader to check everything else.
+
+The Racial Integrity Act — the Act to Preserve Racial Integrity, signed 20 March
 1924 — recognised two categories, white and colored, and defined a white person
 as one having "no trace whatever of any blood other than Caucasian." Plecker and
 his office set about reclassifying Virginians who identified as Indian.
 
+**Quote the whole definition, including the exception, because the exception is
+half the mechanism.** The Act carried what is generally called the Pocahontas
+clause: persons with one-sixteenth or less American Indian blood and no other
+non-Caucasian blood were deemed white. The statute therefore did not treat all
+Indian ancestry alike. A small, documented, socially prestigious quantum of
+Indian descent kept a family white; anything Plecker could connect to African
+descent made the family colored, whatever its Indian ancestry. Plecker himself
+opposed the exception and read it as a route by which Virginia Indians were
+passing as white. A file that quotes only "no trace whatever" invites the reply
+that the Act made express provision for Indian ancestry — which it did, on terms
+that are themselves the point.
+
 **The correspondence is held, it is citable, and it is the affirmative case.**
-Verified holdings, with the citations as the holding institutions give them:
+The citations below are given in the form the holding institution itself uses in
+its published work, which is the form to copy into a request letter.
 
-| Material | Where it is held |
-|---|---|
-| Marriage and other registers of the Bureau of Vital Statistics, Commonwealth of Virginia Department of Health, **Record Group 36** — including county register copies carrying Plecker's annotations and clippings pasted to the page | Library of Virginia, Richmond |
-| Plecker's correspondence with the Governor, including his letter of 16 May 1925 justifying his treatment of the Rappahannock — Virginia. Governor (1922–1926: Trinkle), Executive Papers, 1922–1926, Box 76, **Accession 21567b**, State government records collection | Library of Virginia, Richmond |
-| Plecker's letter of 24 March 1925 to Chief George L. Nelson of the Rappahannock, telling him "we cannot classify any of these who are recorded as colored and 'Free Negroes' as Indians" — Indian Rights Association Records, Series 1, Correspondence, Box 91, Folder 1 | Historical Society of Pennsylvania |
-| George L. Nelson Papers | National Museum of the American Indian Archive Center, Smithsonian Institution |
-| Birth and marriage certificates bearing letters from the State Registrar taped or attached to the reverse, asserting that the named person was not Indian | Virginia Department of Health, Richmond; images through the Library of Virginia's licensed access and commercial providers |
+| Material | Where it is held | Citation confirmed against |
+|---|---|---|
+| Marriage and other registers of the Bureau of Vital Statistics, Commonwealth of Virginia Department of Health, **Record Group 36** — including county register copies carrying Plecker's annotations | Library of Virginia, Richmond | LVA cites this exactly as "[County]. Marriage Register, Bureau of Vital Statistics, Commonwealth of Virginia Department of Health, Record Group 36, Library of Virginia" in *Records of a Paper Genocide* |
+| Plecker's letter of 16 May 1925 to the Governor — Virginia. Governor (1922–1926: Trinkle), Executive Papers, 1922–1926, Box 76, **Accession 21567b**, State government records collection | Library of Virginia, Richmond | LVA, *The Impact of the Act to Preserve Racial Integrity on Virginia's Indigenous Tribes* (17 July 2024), which cites the same accession and box |
+| Plecker's letter of 24 March 1925 to Chief George L. Nelson of the Rappahannock — The Indian Rights Association, 1882–1986: Series 1, Correspondence, 1864–1989, Box 91, Folder 1 | Historical Society of Pennsylvania | Same LVA article, citing box and folder |
+| Further Indian Rights Association correspondence, April 1925, Box 92, Folder 3 | Historical Society of Pennsylvania | Same LVA article |
+| Birth certificates bearing letters from the State Registrar taped to the reverse, asserting that the named person was not Indian | Virginia Department of Health, Richmond; images through the Library of Virginia's licensed access and commercial providers | LVA, *Records of a Paper Genocide*, which reproduces certificates of the Almond children with letters taped to the back |
+| George L. Nelson Papers | National Museum of the American Indian Archive Center, Smithsonian Institution | **Not independently confirmed against NMAI's own catalogue. Ask before citing.** |
 
-Plecker's 1943 circular to local officials compiled a document entitled
-**"Surnames, By Counties and Cities, Of Mixed Negroid Virginia Families Striving
-to Pass as 'Indian' or White."** Its purpose was to stop local registrars issuing
-marriage certificates recording people as Indian. Many of the surnames on it can
-be connected to tribes recognised by Virginia and by the United States today.
+In 1943 Plecker circulated to local registrars, clerks and other officials a
+letter enclosing a list entitled **"Surnames, By Counties and Cities, Of Mixed
+Negroid Virginia Families Striving to Pass as 'Indian' or White."** Its purpose
+was to stop local officials recording people as Indian. Many of the surnames on
+it belong to families in tribes recognised by Virginia and by the United States
+today.
 
-- [ ] Obtain the 1943 surname circular and check the line's surnames against it.
+The title is widely reproduced and is almost certainly right, but the Kingdom has
+not confirmed it against an original, and published accounts differ on the month
+of the covering letter. **Ask the Library of Virginia for the accession and item
+citation of the 1943 list and of the covering letter, and for the letter's date,
+and quote what they give you rather than this paragraph.** A document this central
+to the argument should be cited from the archive that holds it, and a wrong month
+on it is the sort of thing a reader uses to discount the rest.
+
+- [ ] Obtain the 1943 surname list and check the line's surnames against it.
       A surname on that list, in the county the family lived in, is a documented
       instruction to officials to refuse that family an Indian classification.
       That is not a genealogical inference; it is an administrative act on the
@@ -846,11 +935,13 @@ be connected to tribes recognised by Virginia and by the United States today.
 
 Note the reason this material carries weight beyond Virginia. When Congress
 recognised six Virginia tribes by statute in the Thomasina E. Jordan Indian
-Tribes of Virginia Federal Recognition Act, Pub. L. 115-121, signed 29 January
-2018 — the Chickahominy, the Chickahominy Indian Tribe Eastern Division, the
-Upper Mattaponi, the Rappahannock, the Monacan, and the Nansemond — it did so
-because the administrative Part 83 route runs on documents and these documents
-had been deliberately falsified. But observe *how* it was proved: with paper.
+Tribes of Virginia Federal Recognition Act of 2017, Pub. L. 115-121, signed
+29 January 2018 — naming them, in the Act's own words, the Chickahominy Indian
+Tribe, the Chickahominy Indian Tribe—Eastern Division, the Upper Mattaponi Tribe,
+the Rappahannock Tribe, Inc., the Monacan Indian Nation, and the Nansemond Indian
+Tribe — it did so because the administrative Part 83 route runs on documents and
+these documents had been deliberately falsified. But observe *how* it was proved:
+with paper.
 Plecker's own letters, the altered certificates, the census entries either side of
 the change. **Reclassification is demonstrated by producing records, not by
 pointing at the space where records should be.** The precedent is real and it is
@@ -907,20 +998,24 @@ A state vital record records what the state's form permitted. A church register
 records what the family told the minister.
 
 That difference is the entire point in this research. Where the Commonwealth's
-birth register offered "white" or "colored" and nothing else — as the Library of
-Virginia's published example of a register with exactly those two options shows —
-a family had no lawful way to enter what they were. The parish clerk who wrote
-down what the family said was under no such constraint. **Baptism, marriage, and
+birth register offered "white" or "colored" and nothing else, a family had no
+lawful way to enter what they were: the Racial Integrity Act recognised two
+categories and the forms were printed to match. The parish clerk who wrote down
+what the family said was under no such constraint. **Baptism, marriage, and
 burial registers are therefore often the only place a family's own
 self-description survives in a contemporaneous document, and a contemporaneous
 self-description is a category of evidence the state records were engineered to
 destroy.**
 
 The same instinct is visible in the state records themselves, when someone found
-room. The Library of Virginia has published a 1918 Charles City County birth
-certificate on which, under two printed options reading WHITE and COLORED,
-somebody wrote **Indian** underneath. Look for the writing in the margins. It is
-in no index.
+room — an entry written in beside or beneath the printed options, an annotation
+in the margin. **Look for the writing in the margins; it is in no index, and only
+the image will show it.** A specific example of a Virginia birth certificate on
+which "Indian" was written under the printed WHITE and COLORED options is
+sometimes cited to the Library of Virginia; the Kingdom has not located the
+Library's publication of it, and it is named here as a thing to look for rather
+than as a citation. If you find such a certificate in the line, that is the
+citation, and it is worth more than a published example anyway.
 
 Where to look:
 
@@ -961,11 +1056,17 @@ technique.
   on the system is published through the Department of the Interior's Federal
   Indian Boarding School Initiative.
 - **Tribal and community schools founded to avoid segregated schooling.** These
-  are directly relevant to the Virginia story: the Library of Virginia has
-  published a contemporary newspaper account of Rappahannock and Chickahominy
-  delegations petitioning Governor Trinkle in the 1920s for an appropriation to
-  found an Indian high school. Petitions, appropriation files, and the resulting
-  school's records are governmental records and are obtainable.
+  are directly relevant to the Virginia story. Virginia Indian communities in the
+  1920s sought appropriations for their own schools rather than accept assignment
+  to colored schools, and the Library of Virginia's work on the period touches on
+  it. The Kingdom has not confirmed the specific newspaper account of a
+  Rappahannock and Chickahominy delegation petitioning Governor Trinkle that is
+  sometimes cited, so treat it as a lead: **ask the Library of Virginia's
+  reference service what survives in the Trinkle executive papers (Accession
+  21567b) on Indian schooling.** That accession is already confirmed to hold
+  Plecker's correspondence with the Governor, so the request costs one letter.
+  Petitions, appropriation files, and any resulting school's records are
+  governmental records and are obtainable.
 
 ---
 
@@ -985,16 +1086,19 @@ affidavits are frequently the only surviving account of a family's life before
 
 Indexes:
 
-- **T288**, *General Index to Pension Files, 1861–1934*, 200 rolls, arranged
-  alphabetically by the veteran's surname.
+- **T288**, *General Index to Pension Files, 1861–1934*, **544 rolls**, arranged
+  alphabetically by the veteran's surname. This is the one to start with.
 - **T289**, *Organization Index to Pension Files of Veterans Who Served Between
-  1861 and 1900*, 200 rolls, arranged by unit then alphabetically.
+  1861 and 1900*, **765 rolls**, arranged by state or territory, then by type of
+  unit, then alphabetically by name. Use it when the surname index fails and the
+  unit is known, and note that despite its title it reaches beyond 1900.
 
 **Order the complete file, not the "pension documents packet."** NARA's ordering
 form offers both. The packet is a selection of up to eight documents; the
-complete Civil War and later pension application file runs up to 100 pages. The
-packet is cheaper and it will omit exactly the neighbour affidavits that are the
-reason to order the file at all. See Part 8 for the mechanics.
+complete Civil War and later pension application file runs up to 100 pages and
+includes the packet within it. The packet is cheaper and it will omit exactly the
+neighbour affidavits that are the reason to order the file at all. See Part 8 for
+the mechanics and the current fee difference.
 
 ### 6.2 United States Colored Troops
 
@@ -1050,18 +1154,33 @@ defeats most researchers:
 
 | Category | Record Group | Notes |
 |---|---|---|
-| **Allowed claims** | **RG 217**, Records of the Accounting Officers of the Department of the Treasury | *Settled Case Files for Claims Approved by the Southern Claims Commission, 1871–1880* is partially digitised in the National Archives Catalog |
-| **Barred and disallowed claims** | **RG 233**, Records of the U.S. House of Representatives | Held by the Center for Legislative Archives. Reproduced as **M1407**, *Barred and Disallowed Case Files of the Southern Claims Commission, 1871–1880*. Disallowed files arranged by report number then office number; barred files alphabetically by claimant |
+| **Allowed claims** | **RG 217**, Records of the Accounting Officers of the Department of the Treasury | *Settled Case Files for Claims Approved by the Southern Claims Commission, 1871–1880* is partially digitised in the National Archives Catalog. NARA has also published approved case files state by state on microfilm — see below |
+| **Barred and disallowed claims** | **RG 233**, Records of the U.S. House of Representatives | Held by the Center for Legislative Archives. Reproduced as **M1407**, *Barred and Disallowed Case Files of the Southern Claims Commission, 1871–1880* — a microfiche publication, so ask for a fiche reader or a reproduction rather than a reel. Disallowed files arranged by report number then office number; barred files alphabetically by claimant |
 | **Administrative records and correspondence** | **RG 56**, General Records of the Department of the Treasury | |
 | **Cases referred onward to the Court of Claims** | **RG 123**, Records of the United States Court of Claims | Under the Bowman Act of 1883 (22 Stat. 485) and the Tucker Act of 1887 (24 Stat. 505). A disallowed file in RG 233 containing only an envelope is most likely a referral card indicating the case went to the Court of Claims |
 
-The finding aid is the **Consolidated Index of Claims Reported by the
-Commissioners of Claims to the House of Representatives from 1871–1880**,
-arranged alphabetically by claimant's surname, giving office and report numbers,
-the amount claimed, the amount received, a brief description of the property, and
-whether the case was barred. *A microfilm publication number is commonly quoted
-for the records of the Commissioners of Claims; it could not be verified against
-NARA's own description and is therefore not given here. Ask for it by title.*
+For allowed claims, NARA has published the approved case files state by state.
+The Virginia publication is the one that matters most for this line:
+
+- **M2094**, *Southern Claims Commission Approved Claims, 1871–1880: Virginia*,
+  45 rolls, reproducing the 931 approved Virginia case files, **RG 217**.
+- **M1658**, *Southern Claims Commission Approved Claims, 1871–1880: Georgia*,
+  **RG 217**.
+- **M2062**, *Southern Claims Commission Approved Claims, 1871–1880: Alabama*,
+  36 rolls, reproducing 828 approved case files, **RG 217**.
+
+For other states, ask whether an approved-claims publication exists before
+assuming a trip to Washington: this series has been issued state by state over
+three decades and more may have been added.
+
+The finding aid across all categories is the **Consolidated Index of Claims
+Reported by the Commissioners of Claims to the House of Representatives from
+1871–1880**, arranged alphabetically by claimant's surname, giving office and
+report numbers, the amount claimed, the amount received, a brief description of
+the property, and whether the case was barred. *The administrative records of the
+Commissioners of Claims themselves are a separate matter: a microfilm publication
+number is sometimes quoted for them, it could not be verified against NARA's own
+description, and it is therefore not given here. Ask for those by title.*
 
 Contacts, which differ by category and which NARA publishes: barred and
 disallowed files — legislative.archives@nara.gov; allowed files and Court of
@@ -1092,6 +1211,19 @@ back. It says nothing whatever about any other ancestor.
 It says nothing about any other ancestor, and women do not carry it — a woman
 testing this line must recruit a direct male-line relative.
 
+A note on haplogroups, because they are a different kind of result from an
+admixture percentage and are sometimes reported alongside one. A haplogroup
+assignment on mtDNA or Y-DNA is a classification of the tested line into a branch
+of the human tree, and it is a far more stable finding than a percentage — it does
+not move when a company revises its reference panel. But it carries three
+limits that must be stated wherever it is recorded: it speaks only to the single
+line tested and to none of the hundreds of other ancestors in the same
+generation; it identifies no tribe, for the reason given below; and it cannot
+date the ancestor who carried it, so it is consistent with that line being
+Indigenous ten generations back or fifty. It is a fact about one thread, and the
+temptation to report it as a fact about the family is the specific error to
+avoid.
+
 ### 7.2 What the numbers on an ethnicity report actually are
 
 An "admixture" or "ethnicity" estimate is **a statistical inference, produced by
@@ -1121,15 +1253,28 @@ stated in the file whenever a result is recorded:
 accepts one as the basis for citizenship.**
 
 This is not a cautious gloss; it is the position of the government agency
-concerned. The Bureau of Indian Affairs states that DNA tests can establish only
-whether an individual is biologically related to a tribal member and have limited
-value for proving ancestry to a particular tribe, and that whether any test is
-accepted is a matter for the individual tribe. What is required for enrolment,
-and for a Certificate of Degree of Indian Blood, is **genealogical documentation
-proving lineal descent from an ancestor listed on the relevant tribal roll** —
-documents, not biology. The Cherokee Nation, for instance, requires descent from
-a person on the Dawes Rolls and applies no minimum blood quantum; the proof is
-the paper trail from the applicant to the enrollee.
+concerned, in its own words. The Bureau of Indian Affairs states: **"Blood tests
+and DNA tests will not help an individual document his or her descent from a
+specific Federally recognized tribe or tribal community."** Quote that sentence
+rather than paraphrasing it, and quote it *before* an opponent does.
+
+What the BIA says is required instead is documentary: identify the tribe the
+ancestor was a member of or affiliated with; establish a lineal ancestor who is
+an American Indian or Alaska Native person from a federally recognised tribe; and
+provide documentation of the relationship using vital statistics records and
+other records the tribe may require. For a Certificate of Degree of Indian Blood
+the BIA requires documentation establishing a lineal relationship to an ancestor
+listed with a degree of Indian blood on official tribal rolls. Documents, not
+biology, at every step.
+
+The BIA is equally clear that it does not decide the question: **"Tribal
+enrollment is determined and set by individual Tribes, not the Bureau of Indian
+Affairs; therefore, uniform membership requirements across all Tribes do not
+exist as criterion varies from Tribe to Tribe."** The Cherokee Nation, for
+instance, requires descent from a person on the Dawes Rolls and applies no
+minimum blood quantum; the proof is the paper trail from the applicant to the
+enrollee. Another nation may require a quantum, a closed base roll, or residence.
+Read the tribe's own enrolment law first.
 
 Underlying all of this is *Santa Clara Pueblo v. Martinez*, 436 U.S. 49 (1978): a
 tribe determines its own membership under its own law. No test result and no file
@@ -1168,8 +1313,9 @@ fishing expedition.
       parentage; who in the family is told about it is a decision for the family,
       not for the researcher.
 - [ ] State in terms, in any document leaving the Kingdom, that no genetic result
-      is offered as proof of tribal descent. Say it before someone else says it
-      for you.
+      is offered as proof of tribal descent. A file that says this itself is read
+      as one that understands its own evidence; a file that omits it invites the
+      reader to decide what the results were meant to imply.
 
 ---
 
@@ -1201,15 +1347,18 @@ one routes the request to the staff who hold the records:
 
 | Form | Use |
 |---|---|
-| **NATF 85** | Military pension and bounty-land warrant application files, Federal (not State or Confederate) service, Revolutionary War to pre-World War I. **Specify the complete file, not the documents packet.** |
+| **NATF 85** | Military pension and bounty-land warrant application files, Federal (not State or Confederate) service, Revolutionary War to pre-World War I. **Specify the complete file, not the documents packet.** The complete Civil War and later file is priced for the first 100 pages with a per-page charge beyond that; the packet is a flat, much lower fee for up to eight documents. Confirm current prices at the time of ordering |
 | **NATF 86** | Compiled military service records — regular Federal forces (officers before 30 June 1917, enlisted before 31 October 1912), Confederate forces 1861–1865, and volunteer service 1775–1902 |
 | **NATF 83** | Eastern Cherokee applications (Guion Miller) |
 | **NATF 84** | Federal land entry files |
 | **NATF 81** | Passenger arrival records |
 | **NATF 82** | Federal census records |
 
-Published expectations are twelve to sixteen weeks for most of these, and longer
-for complete pension files under NATF 85, which are large. **Order early and
+NATF 80 is no longer used; anyone working from an older guide will send it and
+wait. Pensions go on NATF 85 and pre-1912 Army service records on NATF 86.
+
+Published expectations are around twelve to sixteen weeks, and longer for
+complete pension files under NATF 85 because of their size. **Order early and
 order in parallel** — there is no reason to wait for one to return before sending
 the next, and sequencing them costs a year.
 
@@ -1250,11 +1399,16 @@ day in a reading room beats a year of orders.
   recent birth and death certificates to specified relatives. Establish what
   proof of relationship is required before sending money.
 
-One local advantage worth using: Conn. Gen. Stat. § 7-51a opens Connecticut birth
-records at least one hundred years old to any adult, and gives members of a
-genealogical society incorporated or authorised in Connecticut access to vital
-records held by registrars, subject to stated exceptions. **Confirm the current
-text before relying on it**, but joining such a society is among the cheapest
+One local advantage worth using: Conn. Gen. Stat. § 7-51a lets any person
+eighteen or older purchase certified copies of birth or fetal death records at
+least one hundred years old from any registrar of vital statistics, and gives
+members of genealogical societies **incorporated or authorised by the Secretary
+of the State to do business or conduct affairs in Connecticut** full access to
+vital records in a registrar's custody — certificates, ledgers, record books,
+card files, indexes and database printouts — excepting records carrying Social
+Security numbers and confidential files on adoption, gender change, surrogacy and
+parentage. **Confirm the current text before relying on it**, but the membership
+qualification is specific and joining such a society is among the cheapest
 research decisions available.
 
 ### 8.4 What every request must contain
@@ -1311,11 +1465,79 @@ write that down and leave the status at `CONFLICTED`. **A disclosed conflict is 
 research problem. A discovered one is a credibility problem, and it takes the
 sound findings down with it.**
 
+This document holds itself to that rule, and section 1.3 is the worked example.
+NARA's web page and NARA's own descriptive pamphlet state the Guion Miller
+eligibility rule differently and give different counts of the individuals
+documented. Both are set out there, with a reasoned preference and the reason for
+it. That is the form: not the better figure quietly chosen, but both figures,
+the source of each, and the ground for preferring one. Anyone can check it, which
+is the point. If a conflict of that kind is found anywhere else in this guide,
+the entry is wrong and should be rewritten the same way rather than resolved by
+deleting the inconvenient source.
+
 **Record what runs against the claim.** The census year that says "Black." The
 rejected application. The DNA result that refuted the hypothesis. The line that
 simply ends. These are the entries that make the file believable, and a file
 without any of them tells a reader that the searching stopped when the answer got
 inconvenient.
+
+### And if the answer is no
+
+It is a real possibility and it should be planned for now, while nothing is
+invested. A line worked back to 1870 with the documents in hand and no Native
+ancestor found is a completed piece of research, not a failure of it. Record it
+as `NOT_FOUND` or `DISPROVEN`, with the search log that supports it, and stop.
+
+The work is not wasted when that happens. What the file then contains is a
+documented African American descent traced to slavery with named ancestors, an
+enslaver identified, county records located, and a body of evidence about how
+this family was classified and by whom. That is a substantial thing to hold, and
+it is the same file the Kingdom's archival and cultural work draws on either way.
+
+The failure mode to avoid is the one where a nil result produces a wider search
+for a more agreeable one — another roll, another tribe, another database — until
+something turns up that can be made to fit. That process has a name and every
+enrolment officer in the country recognises it. The discipline that prevents it is
+simple: the search plan and the criteria are written down before the searching
+starts, and the plan is not revised because the answer was unwelcome.
+
+## What in this document has been verified, and against what
+
+Stated so that a reader can weigh the rest, and so that the next person to work
+on it knows where to spend their time.
+
+**Checked against the holding institution's own published description:** the
+25 C.F.R. § 83.11 criteria; the Dawes record groups, NAIDs, microfilm numbers,
+enrolment category abbreviations and Freedmen card fields, including P2089; the
+Guion Miller statute, decree dates, deadline, figures and both conflicting NARA
+descriptions; M1104 and M685 titles, roll counts and record groups; the Baker Roll
+statutes, application and enrolment figures, roll and application fields, and
+grounds of rejection; M1773; the Wallace Rolls' eight lists, M1833's title and
+NARA's statement that rejected applicants are not included; the Kern-Clifton Roll;
+the Drennen Roll's location on M685 roll 12; M595's roll count, statute, fields
+and NARA's statement about eastern tribes; every National Archives Identifier
+cited in Part 1; M1791 and its statute; the 1930 enumerator instructions; the
+Census Bureau's position on enumerator observation through 1950; RG 105 and the
+Freedmen's Bureau publication numbers including M2029's full title; the Virginia
+vital records timeline and the Library of Virginia's holdings; the Library of
+Virginia's own citation forms for Record Group 36, Accession 21567b and the
+Historical Society of Pennsylvania boxes; Pub. L. 115-121 and the statutory names
+of the six tribes; T288 and T289 roll counts; every USCT publication in Part 6.2;
+the Southern Claims statute, figures, record groups, M1407 and the approved-claims
+publications; the NATF form numbers; the BIA's statements on DNA and enrolment;
+and Conn. Gen. Stat. § 7-51a.
+
+**Flagged in place as unconfirmed, and to be confirmed before citing:** the
+George L. Nelson Papers at the National Museum of the American Indian; Library of
+Virginia Accession 31577; the exact title, date and archival citation of the 1943
+surname list and its covering letter; the reported 1918 Charles City County birth
+certificate; the reported petition to Governor Trinkle for an Indian high school;
+the Drennen Roll's year and whether an original series exists apart from Miller's
+copies; and the microfilm publication number sometimes quoted for the
+administrative records of the Commissioners of Claims.
+
+Nothing in the second list should appear in anything filed outside the Kingdom
+until it has moved to the first.
 
 ---
 

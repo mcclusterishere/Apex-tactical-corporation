@@ -203,9 +203,9 @@ the right one because the family story named it and nobody checked.
 
 This is the route that matters most for a Black American family with roots
 touching the Five Tribes, and it deserves the most space, because it is the one
-place in this entire field where a court has already held that an administrative
-exclusion of Black people from tribal citizenship was unlawful and ordered it
-undone.
+area in this entire field where courts have already held that the exclusion of
+Black people from tribal citizenship was unlawful and ordered it undone — once in
+a United States district court and once in a tribal supreme court.
 
 ### (a) What happened, in the order it happened
 
@@ -219,10 +219,10 @@ in five different places today.
 In 1893 Congress created the Commission to the Five Civilized Tribes — the
 **Dawes Commission** — to dissolve communal landholding and allot the land in
 severalty. To allot land, the Commission had to decide who the members were, and
-so it enrolled them. **Enrollment began in 1898 and closed in 1907**, with a
-small number of people added between 1912 and 1914. The resulting enumeration is
-the **Dawes Rolls**, formally the Final Rolls of Citizens and Freedmen of the
-Five Civilized Tribes in Indian Territory, printed in 1914.
+so it enrolled them. **Enrollment began in 1898 and the rolls closed in 1907**,
+with a handful of persons added afterwards by act of Congress in 1914. The
+resulting enumeration is the **Dawes Rolls**, formally the Final Rolls of
+Citizens and Freedmen of the Five Civilized Tribes in Indian Territory.
 
 ### (b) The separate schedules, and why the separation is the whole fight
 
@@ -375,10 +375,14 @@ before anything else in this area. Its findings include:
   must permit enrollment; the Chickasaw and Choctaw Nations do not permit it.
 - GAO estimated the Freedmen descendant population at between **146,400 and
   395,400** individuals as of 2022.
-- Most of the enrolled Freedmen descendants GAO interviewed reported encountering
-  barriers accessing tribally administered federal services.
+- "Most of the 19 enrolled Freedmen descendants GAO interviewed said they
+  encountered barriers accessing such services" — health care, education, and
+  housing assistance intended for tribal citizens.
 
-That last finding is worth sitting with. Enrollment is the door, not the room.
+Note the sample size on that last one: nineteen people, not a survey. It is
+enough to establish that the barrier exists and not enough to quantify it, and
+citing it as though it were a statistic invites the correction. What it does
+establish is worth planning around. Enrollment is the door, not the room.
 
 ### (h) Honest assessment of difficulty
 
@@ -433,10 +437,13 @@ They were acknowledged and then un-acknowledged.
 One qualification, because it is the difference between a live risk and a
 historical one. Those reversals ran through the reconsideration machinery of the
 1994 regulations, which delayed the effect of a Final Determination while the
-IBIA reviewed it. The current rule at **25 C.F.R. § 83.45** makes a final
-determination immediately effective, and the List Act provides that a recognised
-tribe may not be terminated except by an Act of Congress. The Connecticut cases
-show what the Department has done, not what it can still do by the same route.
+IBIA reviewed it. The current rule at **25 C.F.R. § 83.45** provides that "the
+final determination will become immediately effective," and Congress found in the
+List Act that a tribe once recognised "may not be terminated except by an Act of
+Congress" (108 Stat. 4791). Read that second point precisely: it sits in the
+Act's findings rather than in an operative prohibition, and it has been argued
+rather than settled. The Connecticut cases show what the Department has done, not
+that it could do the same thing by the same route today.
 
 **Elsewhere the pattern is duration rather than reversal.** The ACHP's own
 guidance records that the Nipmuc Nation of Massachusetts began acknowledgment
@@ -462,14 +469,20 @@ Authorization Process** at 25 C.F.R. §§ 83.47 through 83.62 (regulatory text a
 90 Fed. Reg. 3643). It creates a narrow, one-time route for an unsuccessful
 petitioner to seek authorisation to petition again; under § 83.49(a) a petitioner
 denied before 14 February 2025 must request authorisation by 14 February 2030.
+Note how the two citations fit together, because they look inconsistent and are
+not: Subpart D as a whole runs from § 83.47 to § 83.62, while the exception
+written into the § 83.4(d) bar is narrower on its face — that provision excepts
+an entity only where it "meets the conditions of §§ 83.47 through 83.49."
 
-That door is being used. The Schaghticoke Tribal Nation submitted a request for
-authorisation to re-petition on **23 September 2025**, arguing that the 2015
-criteria, applied to its original petition, would have produced a positive
-determination. The request is published on `bia.gov` and is worth reading in
-full, because it is a working example of a real community assembling a real
-acknowledgment argument, and of what that costs. It does nothing for a body that
-has never petitioned and could not.
+That door is being used. The Office of Federal Acknowledgment received a request
+for authorisation to re-petition from the **Schaghticoke Tribal Nation on
+29 September 2025**, arguing that the 2015 criteria, applied to its original
+petition, would have produced a positive determination. Notice of receipt was
+published at **90 Fed. Reg. 61161 (30 December 2025)**, opening a comment period,
+and the narrative portion of the request is published on `bia.gov`. It is worth
+reading in full, because it is a working example of a real community assembling a
+real acknowledgment argument, and of what that costs. It does nothing for a body
+that has never petitioned and could not.
 
 ### (c) The congressional door, and the worked example the Founder should study
 
@@ -514,9 +527,12 @@ point of including them:
 
 - The Commonwealth recognised the Chickahominy, the Chickahominy Eastern
   Division, the Rappahannock, and the Upper Mattaponi by House Joint Resolution
-  No. 54 in **1983**; the Nansemond by House Joint Resolution No. 205 on
-  **20 February 1985**; the Monacan by House Joint Resolution No. 390 on
-  **24 January 1989**.
+  No. 54 in **1983** — a resolution that also reached the Mattaponi and the
+  Pamunkey, who are not among the six the 2018 Act names; the Nansemond by House
+  Joint Resolution No. 205 in **1985**; and the Monacan by House Joint Resolution
+  No. 390 in **1989**. (Resolution numbers and years are confirmed; take the
+  precise dates of adoption from the General Assembly's own record before putting
+  one in a filing.)
 - Recognition bills were introduced in successive Congresses and worked through
   the Senate Committee on Indian Affairs for well over a decade: a committee
   hearing in the 109th Congress (S. Hrg. 109-576), a committee report in the
@@ -646,14 +662,26 @@ things people actually want:
 
 ### (d) One thing that must not be blurred
 
-The Official Citation of the Connecticut General Assembly that the Kingdom holds
-is genuine, is signed and sealed, and is worth being proud of. **It is not state
-recognition of a tribe and must never be described as though it were.** The
-General Assembly issues citations for anniversaries, retirements, and business
-openings. Presented honestly it opens doors. Presented as recognition it ends the
-conversation and taints everything filed alongside it. This is set out at length
-in `docs/01-LEGAL-POSTURE.md` § 3(d) and is repeated here only because this is the
-memorandum where the temptation will arise.
+The Official Citation of the Connecticut General Assembly of 5 October 2025 that
+the Kingdom holds is genuine — introduced by nine legislators and signed and
+sealed by the President Pro Tempore, the Speaker of the House, and the Secretary
+of the State — and it is worth being proud of. It is creditable evidence of
+contribution to cultural heritage, civic education, and community empowerment.
+**It is not state recognition of a tribe, it confers no legal status, and it
+creates no government-to-government relationship, and it must never be described
+as though it did.** The General Assembly issues citations for anniversaries,
+retirements, Eagle Scout courts of honour, and business openings, and every
+official the Kingdom will ever write to knows that, their own office having
+issued a hundred of them. Presented honestly it opens doors. Presented as
+recognition it ends the conversation and taints everything filed alongside it.
+
+That characterisation is not this memorandum's own. It is the one already carried
+in `docs/01-LEGAL-POSTURE.md` § 3(d), on the Register of Recognitions, and on the
+Government-to-Government Contact Register, and the wording should stay the same
+in all four places — a claim that grows in the retelling is caught by laying two
+of the Kingdom's own documents side by side, which is trivially easy for anyone
+to do. It is repeated here only because this is the memorandum where the
+temptation will arise.
 
 ---
 
@@ -722,13 +750,21 @@ effective January 2024 — confirm the current text before relying on any
 provision), governs the repatriation of human remains and cultural items held by
 federal agencies and museums receiving federal funds.
 
-**The opening.** Under **25 U.S.C. § 3005(a)(1)**, Native American human remains
-and associated funerary objects are to be expeditiously returned on the request of
-a **known lineal descendant** — or of the culturally affiliated tribe or Native
-Hawaiian organisation. A lineal descendant is a person, identified by
+**The opening.** Under **25 U.S.C. § 3005(a)(1)**, where the cultural affiliation
+of Native American human remains and associated funerary objects with a
+particular Indian tribe or Native Hawaiian organisation "is established" under the
+inventory process at § 3003, the agency or museum shall expeditiously return them
+"upon the request of a known lineal descendant of the Native American or of the
+tribe or organization." A lineal descendant is a person, identified by
 genealogical evidence. **Enrollment is not required to be a lineal descendant.**
 This is a genuine, individual, federally enforceable right that turns on exactly
 the kind of documentation this system is built to produce.
+
+Note the order of operations, because it is where an unprepared claimant stops:
+the affiliation to a tribe comes first, through the agency's or museum's own
+inventory, and the descendant's claim runs to identified remains within it. The
+work is finding the inventory entry and then proving the line to that named
+person.
 
 **The limit.** Under **§ 3005(a)(2)**, unassociated funerary objects, sacred
 objects, and objects of cultural patrimony are repatriated to **Indian tribes and
@@ -750,7 +786,14 @@ standing to be consulted; they carry the ability to serve as a repository. The
 ACHP's own guidance notes the Wanapum Tribe of Washington, which has chosen not to
 pursue federal recognition, is nonetheless "regularly invited to participate in
 Section 106 reviews and other processes such as… NAGPRA" and maintains a heritage
-centre. This track is described in `docs/01-LEGAL-POSTURE.md` § 3(d) and is the
+centre.
+
+Take the right lesson from that example. The Wanapum are a historical people who
+declined a status they could have sought; the invitations follow from who they
+are, not from the heritage centre. What transfers is the mechanism — that a body
+which holds records, runs a repository, and is known to the agencies and the
+SHPO gets asked — and that mechanism is available to any serious institution.
+This track is described in `docs/01-LEGAL-POSTURE.md` § 3(d) and is the
 attainable version of most of what recognition is wanted for.
 
 ### (d) Standing to participate in another community's effort
@@ -864,8 +907,10 @@ may not lawfully market work as Indian-produced.
 The practical rule for the Kingdom: **describe the maker and the tradition
 truthfully and claim no tribal origin for any good** unless the maker is an
 enrolled member of a qualifying tribe or holds that tribe's artisan
-certification, and the file shows which. If in doubt, say nothing about origin at
-all. Nothing about a sale is worth a federal criminal exposure of this size.
+certification, and the file shows which. Where a good is offered for sale, record
+in the enterprise file which of those two things is true of the maker and the
+document that shows it; where neither is true, say nothing about origin. That
+record is also what answers an enquiry quickly if one ever comes.
 
 ### (d) The reputational cost, which has no remedy
 
@@ -892,6 +937,14 @@ what it can prove is an institution whose next assertion is believed.
 Cheapest and most informative first. Each stage produces something usable even if
 the next stage is never reached, and no stage requires the conclusion of a later
 one.
+
+This section says what to do and in what order. It does not say where each record
+set is, what it contains, who holds it, or how to ask for it — that is
+`docs/templates/ANCESTRY-RESEARCH-SOURCES.md`, which is the working companion to
+this memorandum and to the register. Read its closing section first: it lists
+which of its own archival identifiers have been checked against the holding
+institution and which have not, and nothing on the second list should leave the
+Kingdom as a citation.
 
 **Stage 0 — Write down what is claimed, and label it correctly.**
 Before any research, record the family tradition as tradition: what is said, by
@@ -944,6 +997,24 @@ reclassification the Founder is describing, captured in a federal record. That
 pattern is evidence in its own right, it is what the Virginia tribes put before
 Congress, and it is worth documenting carefully even when it does not by itself
 establish descent.
+
+Two structural facts about this record set will shape the whole exercise, and it
+is better to plan around them than to discover them:
+
+- **The 1890 population schedules are gone.** They were damaged in a fire in the
+  Commerce Department building on 10 January 1921 and the remnants were destroyed
+  by order of Congress in the 1930s; the National Archives records that the
+  records of only **6,160** of the **62,979,766** people enumerated survived. The gap runs
+  1880 to 1900, which is exactly the period in which many families' classification
+  changed. Substitutes — state censuses, tax lists, city directories, church
+  registers, voter rolls, agency records — are how that decade gets covered, and
+  the search for them belongs in the search log whether or not it succeeds.
+- **The 1900 and 1910 censuses used special Indian population schedules** for
+  Indian populations in the continental United States, with separate inquiries;
+  1920 and 1930 used the ordinary form with special instructions for Indian
+  respondents. If a family may have been enumerated on one of those, ask the
+  National Archives which schedule covers the county and year before concluding
+  the family is absent from a census.
 
 **Stage 5 — Order the DNA test early, and understand exactly what it can do.**
 Order it now because it is inexpensive and takes weeks to return, so it should be
@@ -1060,8 +1131,18 @@ goes to weight and a concealed one goes to credibility.
 **Stage 8 — Bring in professional help at the point it stops being tractable.**
 That point is usually one of three: the paper trail dies before 1870 and the line
 runs into enslavement; two documents conflict irreconcilably; or a Dawes
-application jacket needs to be read against the Commission's own procedures. Engage
-a credentialled genealogist — the Board for Certification of Genealogists
+enrollment application file needs to be read against the Commission's own
+procedures.
+
+The first of those has a name and a shape. The 1870 census is the first federal
+census in which most formerly enslaved people appear by name, and before it the
+record set changes in kind: the search moves from censuses and certificates to
+probate inventories, wills, deeds and bills of sale, estate divisions, plantation
+books, Freedmen's Bureau records, and Freedman's Savings and Trust Company
+registers — that is, to the records of the people who held the family as property.
+It is skilled, slow work and it is emotionally heavy work. Budget for both.
+
+Engage a credentialled genealogist — the Board for Certification of Genealogists
 maintains a public roster — and ask specifically for experience with the Five
 Tribes and with Freedmen research, because it is a distinct specialism with its
 own record set. Pay properly. Weigh the fee against the cost of building a claim
@@ -1115,8 +1196,9 @@ record that an adversary cannot accuse of doing the same thing in reverse.
 
 ## 11. First steps, in order
 
-1. Read GAO-26-107118 in full. It is the current, neutral, authoritative map of
-   the Freedmen question and it will take an afternoon.
+1. Read GAO-26-107118 in full (`gao.gov/products/gao-26-107118`). It is the
+   current, neutral, authoritative map of the Freedmen question and it will take
+   an afternoon.
 2. Record the family tradition as tradition, with attribution and a date, before
    any research contaminates it.
 3. Book the interviews with the oldest living relatives. This month.
