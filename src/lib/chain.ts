@@ -66,7 +66,15 @@ export type LedgerEventType =
   | "IDENTITY_CLAIM_OPENED"
   | "IDENTITY_CLAIM_DECIDED"
   | "IDENTITY_CLAIM_REVIEWED"
-  | "IDENTITY_CLAIM_LINKED";
+  | "IDENTITY_CLAIM_LINKED"
+  // The land earns. These record a zome being listed and a booking moving
+  // through its life, so the calendar and the revenue are as tamper-evident
+  // as everything else the Kingdom keeps.
+  | "ZOME_LISTED"
+  | "ZOME_RETIRED"
+  | "BOOKING_CONFIRMED"
+  | "BOOKING_CANCELLED"
+  | "BOOKING_COMPLETED";
 
 export function sha256Hex(input: string | Buffer): string {
   return createHash("sha256").update(input).digest("hex");

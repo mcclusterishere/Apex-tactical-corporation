@@ -780,3 +780,95 @@ model IdentityClaim {
   @@index([reviewState])
   @@index([documentDigest])
 }
+
+/// A zome — one rentable structure on the Kingdom's land.
+///
+/// The Kingdom owns land; this is what stands on it and earns. Modelled as a
+/// unit rather than a whole property so a single parcel (say the Ash Street lot)
+/// can carry several zomes, each booked independently.
+model Zome {
+  id            String  @id @default(cuid())
+  // Short human name, e.g. "Weldon Zome 1".
+  name          String
+  // Where it stands — free text, e.g. "Ash St, Weldon NC".
+  location      String?
+  description   String?
+  // How many guests it sleeps. Used only to inform the booking, not enforced.
+  sleeps        Int     @default(2)
+  // The default rate, in whole US cents per night. Integer money only — the
+  // same discipline the Treasury keeps, so a booking total and a journal entry
+  // can never round to two different answers.
+  nightlyCents  Int     @default(0)
+  // A cleaning fee added once per booking, in cents.
+  cleaningCents Int     @default(0)
+  // DRAFT (not yet bookable) | LISTED (bookable) | RETIRED (no longer let).
+  status        String  @default("DRAFT")
+
+  bookings Booking[]
+  blocks   ZomeBlock[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+}
+
+/// A booking of one zome for a run of nights.
+///
+/// Dates are stored as plain calendar dates (midnight UTC) and are treated as a
+/// half-open interval [checkIn, checkOut): a guest occupies the nights from
+/// checkIn up to but NOT including checkOut, so one guest's checkout day is the
+/// next guest's check-in day and that is not a conflict. Every overlap rule in
+/// the code depends on that convention holding exactly.
+model Booking {
+  id     String @id @default(cuid())
+  zomeId String
+  zome   Zome   @relation(fields: [zomeId], references: [id], onDelete: Restrict)
+
+  guestName    String
+  guestContact String?
+  // How the booking came in: DIRECT | AIRBNB | OTHER. Kept because the fee and
+  // the tax treatment differ, and because a channel that double-books you is a
+  // channel you want to see named.
+  channel      String  @default("DIRECT")
+
+  // Half-open interval. checkOut is the morning of departure.
+  checkIn  DateTime
+  checkOut DateTime
+  nights   Int
+
+  // Money captured at booking time in whole cents, so a later change to the
+  // zome's rate never silently rewrites what a past guest was quoted.
+  nightlyCents  Int
+  cleaningCents Int
+  totalCents    Int
+
+  // INQUIRY (held, not blocking) | CONFIRMED (blocks the dates) |
+  // CANCELLED (releases them) | COMPLETED (stay is over).
+  status String @default("CONFIRMED")
+
+  // Set once the booking's revenue has been posted to the Treasury, so it is
+  // never posted twice.
+  postedJournalId String?
+
+  note      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([zomeId, checkIn, checkOut])
+  @@index([status])
+}
+
+/// A manual hold on a zome's calendar — maintenance, owner use, a build week.
+/// Blocks the dates exactly as a confirmed booking does, but earns nothing.
+model ZomeBlock {
+  id        String   @id @default(cuid())
+  zomeId    String
+  zome      Zome     @relation(fields: [zomeId], references: [id], onDelete: Cascade)
+  checkIn   DateTime
+  checkOut  DateTime
+  reason    String?
+  createdAt DateTime @default(now())
+
+  @@index([zomeId, checkIn, checkOut])
+}

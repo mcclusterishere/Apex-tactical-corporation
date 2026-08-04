@@ -96,6 +96,13 @@ function Nav({ principal }: { principal: Principal }) {
         </NavSection>
       ) : null}
 
+      {isAuthenticated(principal) ? (
+        <NavSection label="Lands &amp; Lettings">
+          <NavLink href="/zomes" exact>Zomes &amp; lettings</NavLink>
+          <NavLink href="/bookings">Bookings</NavLink>
+        </NavSection>
+      ) : null}
+
       <NavSection label="Reference">
         <NavLink href="/doctrine" exact>
           Manuals &amp; doctrine
