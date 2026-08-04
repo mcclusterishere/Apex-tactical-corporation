@@ -2,7 +2,7 @@
   "name": "apex-tactical-corporation",
   "version": "1.0.0",
   "private": true,
-  "description": "Office of the Registrar — Apex Kingdom. Tamper-evident registry, records, and rights-enforcement system.",
+  "description": "Office of the Registrar \u2014 Apex Kingdom. Tamper-evident registry, records, and rights-enforcement system.",
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",
@@ -17,7 +17,8 @@
     "chain:anchor": "tsx scripts/anchor-chain.ts",
     "test": "tsx tests/merkle.test.ts && tsx tests/canonical.test.ts && tsx tests/totp.test.ts && tsx tests/credentials.test.ts && tsx tests/preflight.test.ts && tsx tests/chain-exemption.test.ts && tsx tests/correspondence.test.ts",
     "test:merkle": "tsx tests/merkle.test.ts",
-    "log:checkpoint": "tsx scripts/checkpoint.ts"
+    "log:checkpoint": "tsx scripts/checkpoint.ts",
+    "start:railway": "prisma db push --skip-generate && tsx prisma/seed.ts && next start"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -25,8 +26,10 @@
   "dependencies": {
     "@prisma/client": "^6.2.1",
     "next": "15.5.22",
+    "prisma": "^6.2.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "tsx": "^4.19.2",
     "zod": "^3.24.1"
   },
   "devDependencies": {
@@ -37,9 +40,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.22",
-    "prisma": "^6.2.1",
     "tailwindcss": "^4",
-    "tsx": "^4.19.2",
     "typescript": "^5"
   }
 }

@@ -1,0 +1,5 @@
+# Apex Kingdom register — Railway/Nixpacks build.
+# Node 20+ is required (see README). The app self-hosts its fonts and uses no
+# outbound network at runtime; the only runtime dependency is the database.
+[phases.setup]
+nixPkgs = ["nodejs_20"]
