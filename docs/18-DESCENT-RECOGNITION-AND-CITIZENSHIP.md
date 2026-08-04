@@ -56,10 +56,12 @@ tunc* declares when a community considers itself to have begun, which is a real
 and honourable thing to declare, and it is not evidence of political autonomy in
 1900.
 
-§ 83.4 goes on to bar splinter groups from recognised tribes (subsection (b)),
-entities subject to terminating legislation (subsection (c)), and entities
-previously denied acknowledgment (subsection (d)) — with a narrow exception
-added in 2025, discussed at section 5(b) below.
+§ 83.4 goes on to bar a group that has separated from a currently recognised
+tribe, a petitioner, or a previous petitioner (subsection (b)); an entity subject
+to congressional legislation terminating or forbidding the government-to-
+government relationship (subsection (c)); and an entity previously denied
+acknowledgment (subsection (d)) — the last with a narrow exception added in 2025
+and discussed at section 5(b) below.
 
 That is the whole of the bad news, and it is now said. It is not a judgement
 about the Founder's ancestry, the community's sincerity, or the reality of what
@@ -126,7 +128,8 @@ change them. It may close enrollment entirely.
 The Bureau of Indian Affairs says the same thing in its own public guidance on
 tracing ancestry: *"Tribal enrollment is determined and set by individual Tribes,
 not the Bureau of Indian Affairs; therefore, uniform membership requirements
-across all Tribes do not exist."*
+across all Tribes do not exist as criterion varies from Tribe to Tribe."*
+(`bia.gov`, Office of Indian Services, tracing Indian ancestry guidance.)
 
 Two practical consequences. First, **there is no appeal to a federal agency or a
 federal court from a tribe's decision about its own citizens** in the ordinary
@@ -165,9 +168,10 @@ whose Native ancestry is several generations back.
 
 **Lineal descent.** The applicant must trace to an ancestor on the base roll.
 There is no minimum fraction. The Cherokee Nation is the largest example: its
-requirement is one or more direct ancestors on the Dawes Rolls, with no blood
-quantum floor, so that a citizen may descend from a full-blood ancestor or from
-one many generations removed.
+Tribal Registration office states that eligibility requires one or more direct
+ancestors listed on the Dawes Rolls and that the Nation applies no minimum blood
+quantum, so that a citizen may descend from a full-blood ancestor or from one
+many generations removed.
 
 **Blood quantum.** The applicant must possess a minimum degree — commonly one
 quarter, sometimes one half, sometimes one eighth — computed from the degrees
@@ -212,25 +216,26 @@ and addressed the status of the people it had enslaved. The terms were not
 identical, and the differences between them are the reason the five nations sit
 in five different places today.
 
-Beginning in 1893 Congress created the Commission to the Five Civilized Tribes —
-the **Dawes Commission** — to dissolve communal landholding and allot the land in
+In 1893 Congress created the Commission to the Five Civilized Tribes — the
+**Dawes Commission** — to dissolve communal landholding and allot the land in
 severalty. To allot land, the Commission had to decide who the members were, and
-so it enrolled them. Applications were taken from **1898 through 1907**, with a
-handful accepted in 1914. The resulting enumeration is the **Dawes Rolls**,
-formally the Final Rolls of Citizens and Freedmen of the Five Civilized Tribes in
-Indian Territory.
+so it enrolled them. **Enrollment began in 1898 and closed in 1907**, with a
+small number of people added between 1912 and 1914. The resulting enumeration is
+the **Dawes Rolls**, formally the Final Rolls of Citizens and Freedmen of the
+Five Civilized Tribes in Indian Territory, printed in 1914.
 
 ### (b) The separate schedules, and why the separation is the whole fight
 
 The Dawes Commission did not produce one list. It produced a set of schedules,
-and the National Archives records the categories under which people were
-enrolled — among them:
+and the National Archives (`archives.gov/research/native-americans/dawes`)
+records the categories under which people were enrolled — among them:
 
-> "Citizens by blood (BB)"; "Citizens by marriage (IM)"; "Adopted (A)";
-> "Intermarried White (IW)"; "Minors by blood (M)"; "Newborns by blood (NB)";
-> **"Freedmen (F)"** — described as "African Americans formerly enslaved by
-> tribal members"; "Freedmen Denied/doubtful (FD)"; "Freedmen Rejected (FR)";
-> "Minor Freedmen (FM)"; "Newborn Freedmen (FNB)".
+> "Adopted (A)"; "Citizens by blood (BB)"; "Citizens by marriage (IM)";
+> "Denied/doubtful (D)"; **"Freedmen (F)"** — described as "African Americans
+> formerly enslaved by tribal members"; "Freedmen Denied/doubtful (FD)";
+> "Freedmen Rejected (FR)"; "Intermarried White (IW)"; "Minors by blood (M)";
+> "Minor Freedmen (FM)"; "Newborns by blood (NB)"; "Newborn Freedmen (FNB)";
+> "Rejected (R)".
 
 Two features of that structure govern everything that has followed.
 
@@ -238,11 +243,12 @@ Two features of that structure govern everything that has followed.
 schedules.** Enrollment as a Freedman recorded a person's relation to slavery,
 not their ancestry. A person with Cherokee and African parents could be — and
 routinely was — enrolled as a Freedman, with the column that would have recorded
-their Cherokee descent left permanently blank. The Commission's field practice
-sorted people by appearance, by community report, and by former status. The
-Freedmen enrollment cards carry fields for **"slave of," "father's owner," and
-"mother's owner."** They do not carry a blood quantum, because the Commission was
-not asking.
+their Cherokee descent left permanently blank. The Oklahoma Historical Society
+puts it flatly in its own guide to the rolls: the Commission "typically enrolled
+people of mixed heritage as Freedmen and indicated no blood relation to the
+tribe." The Freedmen enrollment cards carry fields for **"slave of," "father's
+owner," and "mother's owner."** They do not carry a blood quantum, because the
+Commission was not asking.
 
 **Second, that blank column became the exclusion.** When the Five Tribes later
 wrote citizenship rules keyed to descent from the **by-blood** schedules, the
@@ -263,10 +269,11 @@ Cherokee Nation is directly proportional to Native Cherokees' right to
 citizenship," and that a 2007 constitutional amendment restricting citizenship to
 by-blood descendants could not override the treaty.
 
-In **February 2021 the Cherokee Nation Supreme Court** ordered the words "by
-blood" struck from the Cherokee Nation Constitution and its statutes, holding the
-language "illegal, obsolete and repugnant to the ideal of liberty." The Cherokee
-Nation accepted the ruling rather than resisting it.
+On **22 February 2021 the Cherokee Nation Supreme Court**, in a unanimous opinion
+in **SC-2017-07**, held that "the words *by blood* are void, were never valid from
+inception, and must be removed wherever found throughout our tribal law when said
+words are used in reference to the Dawes Rolls." The Cherokee Nation accepted the
+ruling rather than resisting it.
 
 **Where that leaves things today.** Cherokee Nation citizenship requires one or
 more direct ancestors on the Dawes Rolls, and the Freedmen schedules count.
@@ -297,13 +304,17 @@ failure to trace to an ancestor on the Creek **by-blood** Dawes Roll, without
 applying Article II of the Treaty of 1866.
 
 What has happened since is the reason this section is written in the present
-tense. Approximately a month after the ruling, the Principal Chief signed an
-executive order pausing issuance of citizenship cards to Freedmen descendants,
-taking the position that the court had exceeded its authority and that the
-Nation's law required amendment first. Enforcement and contempt motions followed
-through 2025 and into 2026. On **24 July 2026** Grayson and Kennedy filed suit in
-federal court against the Principal Chief and the Citizenship Board seeking to
-compel acknowledgment of their citizenship.
+tense. On **27 August 2025** Principal Chief David Hill signed **Executive Order
+25-01**, directing the Citizenship Office to keep accepting applications from
+Freedmen descendants but to issue no new citizenship cards until the Nation's
+laws and policies were updated to reflect the ruling. On **14 October 2025**
+Grayson and Kennedy asked the Nation's Supreme Court to hold the Citizenship
+Board and the Principal Chief in contempt; the court declined to enforce, taking
+the position that execution of its order belonged to the executive branch. On
+**23 July 2026**, the first anniversary of the ruling, Grayson and Kennedy filed
+suit in federal court against the Nation, the Principal Chief, and the
+Citizenship Board seeking to compel acknowledgment of their citizenship. That
+suit is pending as this is written.
 
 **Status: decided in principle, unresolved in practice, and actively in
 litigation.** Anyone with a documented Creek Freedmen line should be preparing
@@ -320,24 +331,29 @@ Choctaw or Chickasaw offer.
 What has been contested for decades is what the citizenship carries. Reporting and
 advocacy over the past several years describe Freedmen band members being treated
 as citizens for governance purposes but excluded from services and programmes
-reserved to those with recorded Native ancestry. The Indian Health Service
-announced in October 2021 that Seminole Freedmen are eligible for its care. Access
-to housing and other tribally administered federal programmes has remained
-disputed.
+reserved to those with recorded Native ancestry. On **5 October 2021** the Indian
+Health Service issued a Dear Tribal Leader and Urban Indian Organization Leader
+letter determining that Seminole Freedmen are eligible for health services from
+IHS, tribal health programmes, and urban Indian organisations. Access to housing
+and other tribally administered federal programmes has remained disputed.
 
 ### (f) Choctaw and Chickasaw Nations — closed at present
 
 Freedmen descendants are **not** eligible for citizenship in either nation today.
-The historical divergence is old: the Choctaw and Chickasaw 1866 treaty made
-adoption of their Freedmen conditional and held funds in trust against it; the
-Choctaw Nation eventually adopted its Freedmen by tribal act in the 1880s, and
-the Chickasaw Nation never did. Present-day citizenship in both nations runs to
-descendants of the by-blood Dawes schedules.
+The historical divergence is old, and the Supreme Court set it out in *Choctaw
+Nation of Indians v. United States*, 318 U.S. 423 (1943). The Choctaw and
+Chickasaw treaty of 1866 made adoption of their Freedmen conditional and held a
+$300,000 fund in trust against it. The Choctaws adopted their Freedmen by tribal
+act in **1883**, and Congress thereupon appropriated the Choctaw share of the
+fund by the Act of 3 March 1885, 23 Stat. 362. The Chickasaws, in the Court's
+words, "never adopted their freedmen," having taken one abortive step in that
+direction in 1873. Present-day citizenship in both nations runs to descendants of
+the by-blood Dawes schedules; the statement about present eligibility is drawn
+from the GAO report cited below.
 
-*(The nineteenth-century dates in this paragraph come from secondary historical
-sources and should be confirmed against the treaty text and tribal records before
-being used in any filing. The statement about present eligibility is drawn from
-the GAO report cited below.)*
+*(Read the 1866 treaty text and the tribal enactments directly before relying on
+any of this in a filing. A nineteenth-century date recited from a memorandum is
+not a citation.)*
 
 A Choctaw-Chickasaw Freedmen advocacy effort has existed for many years and
 continues to press the treaty argument. It has not yet produced the result the
@@ -390,8 +406,9 @@ Acknowledgment can come **administratively**, through the Part 83 process
 administered by Interior's Office of Federal Acknowledgment; or **legislatively**,
 by an Act of Congress. (A federal court decision can also establish it, but that
 is rare and turns on particular histories.) The BIA publishes the resulting list
-in the Federal Register annually; the current list, at **91 Fed. Reg. 4102
-(30 January 2026)**, carries 575 entities.
+in the Federal Register under section 104 of the Federally Recognized Indian
+Tribe List Act of 1994, Pub. L. No. 103-454, 108 Stat. 4791; the current list, at
+**91 Fed. Reg. 4102 (30 January 2026)**, carries 575 entities.
 
 ### (b) The administrative door, and what it has actually done
 
@@ -399,37 +416,60 @@ Part 83 is brutal, and the honest measure of it is what has happened to
 well-documented communities with reservations older than the United States.
 
 **Connecticut is the cautionary case, and it is on the Founder's doorstep.** The
-Eastern Pequot were acknowledged in 2002 and the Schaghticoke Tribal Nation in a
-Final Determination of 29 January 2004. On 12 October 2005, after the Interior
-Board of Indian Appeals vacated and remanded the determinations, the Department
-issued Reconsidered Final Determinations **withdrawing acknowledgment from both**.
-The Schaghticoke litigated and lost: *Schaghticoke Tribal Nation v. Kempthorne*,
-587 F. Supp. 2d 389 (D. Conn. 2008), aff'd, 587 F.3d 132 (2d Cir. 2009), cert.
-denied (2010). These are tribes with state recognition, with reservation land held
-since the seventeenth century, and with continuous documented presence. They were
-acknowledged and then un-acknowledged.
+Historical Eastern Pequot Tribe was acknowledged by a Final Determination
+published on 1 July 2002, and the Schaghticoke Tribal Nation by one published at
+**69 Fed. Reg. 5570 (5 February 2004)**. The Interior Board of Indian Appeals
+vacated and remanded both, holding that the Department had relied impermissibly
+on state recognition as evidence of community and political authority. On
+**11 October 2005** the Department issued Reconsidered Final Determinations
+**withdrawing acknowledgment from both**, published at 70 Fed. Reg. 60101
+(14 October 2005). The Schaghticoke litigated and lost: *Schaghticoke Tribal
+Nation v. Kempthorne*, 587 F. Supp. 2d 389 (D. Conn. 2008), aff'd, 587 F.3d 132
+(2d Cir. 2009), cert. denied sub nom. *Schaghticoke Tribal Nation v. Salazar*,
+562 U.S. 947 (2010). These are tribes with state recognition, with reservation
+land set aside in the colonial period, and with continuous documented presence.
+They were acknowledged and then un-acknowledged.
+
+One qualification, because it is the difference between a live risk and a
+historical one. Those reversals ran through the reconsideration machinery of the
+1994 regulations, which delayed the effect of a Final Determination while the
+IBIA reviewed it. The current rule at **25 C.F.R. § 83.45** makes a final
+determination immediately effective, and the List Act provides that a recognised
+tribe may not be terminated except by an Act of Congress. The Connecticut cases
+show what the Department has done, not what it can still do by the same route.
 
 **Elsewhere the pattern is duration rather than reversal.** The ACHP's own
 guidance records that the Nipmuc Nation of Massachusetts began acknowledgment
 efforts in 1980, two years after the regulations existed, and after a "30-plus
 year attempt" remains unrecognised, holding state recognition with a tax-free
-reservation and tuition benefits at state institutions but no federal status.
+reservation and tuition-free education at state institutions but no federal
+status.
 
 **One Virginia tribe did succeed administratively.** The Pamunkey Indian Tribe
-received a Final Determination on 2 July 2015, published in the Federal Register
-on 8 July 2015 and effective that October — the first federally recognised tribe
-in Virginia.
+received a Final Determination signed 2 July 2015 and published in the Federal
+Register on 8 July 2015. It would have taken effect on 6 October 2015, but a
+request for reconsideration was filed that day, and it became effective only in
+January 2016 when the IBIA dismissed the request — the first federally recognised
+tribe in Virginia. The reconsideration interval is worth noticing: a favourable
+determination is not the end of the matter under the regulations that produced it.
 
 **On re-petitioning.** The 2015 revision of Part 83 barred previously denied
-petitioners from trying again. Two federal district courts held Interior's
-explanation for that ban inadequate under the Administrative Procedure Act, and
-Interior responded with a final rule published at **90 Fed. Reg. 3643
+petitioners from trying again. Two federal district courts held Interior's stated
+reasons for that ban arbitrary and capricious under the Administrative Procedure
+Act, and Interior responded with a final rule published at **90 Fed. Reg. 3627
 (15 January 2025)**, effective 14 February 2025, adding **Subpart D — Re-Petition
-Authorization Process** at 25 C.F.R. §§ 83.47 *et seq*. It creates a narrow,
-one-time route for an unsuccessful petitioner to seek authorisation to petition
-again; a petitioner denied before 14 February 2025 must request authorisation by
-14 February 2030. It does nothing for a body that has never petitioned and could
-not.
+Authorization Process** at 25 C.F.R. §§ 83.47 through 83.62 (regulatory text at
+90 Fed. Reg. 3643). It creates a narrow, one-time route for an unsuccessful
+petitioner to seek authorisation to petition again; under § 83.49(a) a petitioner
+denied before 14 February 2025 must request authorisation by 14 February 2030.
+
+That door is being used. The Schaghticoke Tribal Nation submitted a request for
+authorisation to re-petition on **23 September 2025**, arguing that the 2015
+criteria, applied to its original petition, would have produced a positive
+determination. The request is published on `bia.gov` and is worth reading in
+full, because it is a working example of a real community assembling a real
+acknowledgment argument, and of what that costs. It does nothing for a body that
+has never petitioned and could not.
 
 ### (c) The congressional door, and the worked example the Founder should study
 
@@ -441,9 +481,19 @@ The **Thomasina E. Jordan Indian Tribes of Virginia Federal Recognition Act of
 Virginia tribes: the Chickahominy Indian Tribe; the Chickahominy Indian Tribe —
 Eastern Division; the Upper Mattaponi Tribe; the Rappahannock Tribe, Inc.; the
 Monacan Indian Nation; and the Nansemond Indian Tribe. Each title of the Act
-extends recognition in a single sentence, fixes the tribe's membership roll as the
-most recent roll submitted to the Secretary before enactment, and bars the tribe
-from gaming.
+extends recognition in a single sentence, fixes the tribe's membership roll and
+governing documents as "the most recent membership roll and governing documents,
+respectively, submitted by the Tribe to the Secretary before the date of
+enactment," names a service area by county, and bars the tribe from gaming.
+
+Read that roll provision carefully, because it is the one that bears on a
+descendant. The Act froze each roll **as it stood in January 2018** for the
+purpose of identifying who was a member then. It did not close enrollment: each
+title also defines a tribal member to include "an individual who has been placed
+on the membership rolls of the Tribe in accordance with this title," so later
+admission runs through each tribe's own governing documents under its own law.
+Whether any of these six is currently accepting applications, and on what terms,
+is a question for that tribe's enrollment office and nobody else.
 
 Congress acted because the administrative route was foreclosed by the very
 records Part 83 requires. **Walter Plecker headed Virginia's Bureau of Vital
@@ -463,14 +513,21 @@ Now the measure of what it took. These are not small numbers and they are the
 point of including them:
 
 - The Commonwealth recognised the Chickahominy, the Chickahominy Eastern
-  Division, the Rappahannock, and the Upper Mattaponi in **1983**; the Nansemond
-  in **1984**; the Monacan in **1989**.
-- Recognition bills were introduced in Congress and reported by the Senate
-  Committee on Indian Affairs across multiple Congresses — including the 108th
-  (2004), the 113th (2014), and the 114th (2015) — before enactment in the 115th.
+  Division, the Rappahannock, and the Upper Mattaponi by House Joint Resolution
+  No. 54 in **1983**; the Nansemond by House Joint Resolution No. 205 on
+  **20 February 1985**; the Monacan by House Joint Resolution No. 390 on
+  **24 January 1989**.
+- Recognition bills were introduced in successive Congresses and worked through
+  the Senate Committee on Indian Affairs for well over a decade: a committee
+  hearing in the 109th Congress (S. Hrg. 109-576), a committee report in the
+  113th (S. Rep. No. 113-209), another in the 114th (S. Rep. No. 114-141,
+  10 September 2015), and finally S. Rep. No. 115-123 in the Congress that
+  enacted it. Earlier introductions are listed on `congress.gov` and should be
+  checked there rather than taken from this list.
 - That is roughly **two decades of sustained legislative effort**, on top of
-  decades of state-level organising, resting on communities with continuous
-  documented existence for centuries.
+  thirty-five years of state recognition and generations of organising before
+  that, resting on communities with continuous documented existence for
+  centuries.
 
 **The most recent example is fresher and starker still.** The Lumbee Tribe of
 North Carolina was recognised by North Carolina in 1885 and has sought federal
@@ -478,9 +535,18 @@ recognition since 1888. The Lumbee Act of 1956, Pub. L. No. 84-570, named them
 Indian but withheld the benefits of recognition — and that very statute then
 blocked their 1987 Part 83 petition, because Part 83 excludes entities subject to
 congressional legislation forbidding the federal relationship (now § 83.11(g) and
-§ 83.4(c)). Full recognition finally came in the **National Defense Authorization
-Act for Fiscal Year 2026, Pub. L. No. 119-60** (18 December 2025), which made the
-Lumbee the 575th entity on the BIA list. **One hundred and thirty-seven years.**
+§ 83.4(c)). Recognition finally came at **section 8803 of the National Defense
+Authorization Act for Fiscal Year 2026, Pub. L. No. 119-60** (18 December 2025),
+and the BIA added the Lumbee to its list, bringing it to 575 entities.
+**One hundred and thirty-seven years.**
+
+Even that came with conditions, and they are instructive about what recognition
+by statute actually delivers on day one. The BIA's own notice records that the
+Act conditions the Tribe's eligibility for federal services on the Secretary's
+verification of its roll and on the development of a determination of needs, with
+**a general delay in the delivery of services until the third fiscal year
+following enactment** (91 Fed. Reg. 4102, 4102–03). Recognition is a status. The
+services attached to it arrive later, and on terms Congress writes.
 
 ### (d) Honest assessment of difficulty
 
@@ -500,6 +566,18 @@ work. That is what the descent apparatus is for.
 
 ## 6. Route D — State recognition
 
+**This is a community route, like Route C, and it is set out for the same two
+reasons.** State recognition is granted to a historical community, and every
+state that has criteria at all asks a version of the questions Part 83 asks:
+continuous existence, a documented governing body, ancestral connection to a
+people indigenous to that state. A body constituted in 2025 is no better placed
+here than it is at Part 83, and a state that says no leaves a record in the same
+places a federal agency does. Where this section earns its length is that state
+recognition is what several of the tribes discussed above actually held while
+they waited, and it carries real things that are worth knowing about — including
+one, the Indian Arts and Crafts Act status at (c), that has criminal consequences
+if it is misunderstood.
+
 ### (a) What it is, and how much it varies
 
 State recognition is a creature of each state's own law and there is no common
@@ -509,7 +587,10 @@ Louisiana, Maryland, Massachusetts, Montana, New Jersey, New York, North
 Carolina, Vermont, Virginia, and Washington. Some states run a commission with
 published criteria and a petition process; some recognise by statute, tribe by
 tribe, with no process at all. Confirm the current position for any state before
-relying on that list.
+relying on that list. The same guidance notes that the Government Accountability
+Office has identified roughly 400 non-federally recognised tribal entities in the
+United States, which is a useful sense of scale: this is a crowded field, and the
+people running it have seen a great many applicants.
 
 ### (b) Connecticut
 
@@ -525,12 +606,19 @@ the General Statutes also provides for the Connecticut Indian Affairs Council an
 for the administration of reservation land and tribal funds.
 
 **The point that matters, and it is the one people do not expect: Connecticut law
-contains no procedure for recognising a new tribe, and none for withdrawing
-recognition.** The Office of Legislative Research has said so plainly. The five
-names are in the statute. Adding a sixth means persuading the General Assembly to
-amend § 47-59a. **There is no petition to file, no commission to apply to, and no
+contains no procedure for recognising a new tribe.** The five names are in the
+statute. Adding a sixth means persuading the General Assembly to amend
+§ 47-59a. **There is no petition to file, no commission to apply to, and no
 administrative decision to seek.** Anyone offering to prepare a Connecticut state
 recognition application is selling something that does not exist.
+
+The General Assembly's Office of Legislative Research has written on this
+repeatedly and its reports are the fastest way in — among them "Recognition of
+Indian Tribes" (96-R-0343), "Questions about State Recognition of Indian Tribes"
+(2002-R-0072), and "Connecticut Law on Indian Tribes" (2007-R-0475), all on
+`cga.ct.gov`. They are research memoranda rather than law, and some are old
+enough that the statutory position should be checked against the current text of
+chapter 824 before anything is said in reliance on them.
 
 ### (c) What state recognition does and does not confer
 
@@ -601,14 +689,25 @@ party status to a party with a demonstrated interest, while lawful, "may defeat
 the ultimate intent of Section 106."
 
 **Be clear about the limits, because they are real.** The same guide states that
-the decision "is a discretionary decision by the federal agency… completely
-discretionary and is not done on a government-to-government basis." An agency that
-declines is within its rights, and a group that is declined may still submit views
-as a member of the public. There is one situation where status is not
-discretionary: under **36 C.F.R. § 800.3(c)(4)**, an **applicant** for the federal
-assistance, permit, licence, or approval at issue is entitled to be a consulting
-party regardless of what kind of entity it is. If the Kingdom is itself the
-applicant, it is a consulting party as of right.
+the decision "is a discretionary decision by the federal agency," that the
+inclusion of non-recognised tribes "is completely discretionary and is not done
+on a government-to-government basis," and that if the agency declines, those
+tribes "can still provide views and information to the federal agency as members
+of the public."
+
+There is one situation where status is not discretionary: under **36 C.F.R.
+§ 800.2(c)(4)**, "an applicant for Federal assistance or for a Federal permit,
+license, or other approval is entitled to participate as a consulting party as
+defined in this part," whatever kind of entity it is. If the Kingdom is itself
+the applicant, it is a consulting party as of right.
+
+*A citation note, because it will otherwise be copied forward.* The ACHP guide
+cites this provision at footnote 6 as "36 C.F.R. § 800.3(c)(4)." That is a
+misprint. Section 800.3(c) concerns identifying the SHPO or THPO, and its
+paragraph (4) covers the failure of a SHPO or THPO to respond. The applicant
+entitlement is at § 800.2(c)(4). Quote the guide for its reasoning and cite the
+regulation for the rule; the reverse gets noticed by exactly the reader who
+matters.
 
 This is available now, it costs a letter, and every grant of it is a federal
 agency putting in writing that this body has a demonstrated interest in historic
@@ -669,8 +768,8 @@ whole institutional lives and can distinguish the two in a paragraph.
 
 ## 8. The things that destroy a claim
 
-Stated as protection rather than as warning. Each of these has ended real
-efforts, and the first two end them permanently.
+Four failure modes, each of which has ended real efforts. What follows is how
+each one works and what it costs, so that it can be recognised in advance.
 
 ### (a) Claiming a tribe without documented descent
 
@@ -698,17 +797,23 @@ places, precisely so this cannot happen through carelessness.
 
 There is an industry selling tribal membership cards, "indigenous status,"
 sovereign identification documents, and enrollment in entities that recognise
-themselves. **The cards are worthless. Some of the sellers are criminals, and the
-purchasers have been treated as victims and sometimes as something worse.**
+themselves. **The cards confer nothing, and the sellers have been prosecuted.**
 
-Two prosecutions make the shape of it concrete. The **Kaweah Indian Nation**,
-which the BIA confirms is not federally recognised, was the vehicle for a scheme
-selling fraudulent tribal documents to immigrants, who paid for papers they then
-attempted to use to obtain driver's licences, passports, and Social Security
-cards. In the Southern District of Texas, two defendants pleaded guilty to selling
-membership in the **Yamassee** tribe on representations that the documents would
-prevent deportation and permit lawful work; one was sentenced to 33 months and
-ordered to pay $198,795 in restitution to 144 victims.
+Two prosecutions make the shape of it concrete. The **Kaweah Indian Nation** is
+not a federally recognised tribe — the BIA determined in 1984 that the group had
+no historical link to an Indian tribe — and it was the vehicle for a scheme
+selling tribal documents to immigrants, marketed as usable to obtain Social
+Security cards, passports, health benefits, and driver's licences. Its leader,
+Malcolm Webber, was convicted on federal charges including conspiracy to defraud
+the United States, possession of false documents, harbouring, and mail fraud.
+Separately, in the Southern District of Texas, Humberto Reveles and Maria Isabel
+Lerma pleaded guilty to selling membership in the **Yamassee** tribe on
+representations that the documents would prevent deportation and permit lawful
+work; Reveles was sentenced to 33 months and ordered to pay $198,795 in
+restitution to 144 victims, and Lerma received five years' probation.
+
+The purchasers in these schemes were treated as victims for the purposes of
+restitution. They also had, at the end of it, no status and no money.
 
 The rule that follows: **a card issued by a body that recognises itself confers
 nothing.** Presenting one to any government officer as identification is a
@@ -729,14 +834,22 @@ not decorative.
 **25 U.S.C. § 305e** and **18 U.S.C. § 1159** make it unlawful to offer or display
 for sale, or sell, a good in a manner that **falsely suggests it is Indian
 produced, an Indian product, or the product of a particular Indian or Indian tribe
-or Indian arts and crafts organization**. The criminal penalties under § 1159 for
-a first offence reach a fine of up to $250,000 or five years' imprisonment or
-both for an individual, and up to $1,000,000 for a person other than an
-individual; subsequent offences reach fifteen years. The civil provision at
-§ 305e carries damages including not less than $1,000 for each day the offer,
-display, or sale continues, and suit may be brought by the Attorney General at
-the Secretary's request, by an Indian tribe, by an individual Indian, or by an
-Indian arts and crafts organisation.
+or Indian arts and crafts organization**.
+
+The criminal penalties under § 1159(b) are tiered by the total cost of the goods.
+Where that total is $1,000 or more, a first offence carries a fine of up to
+$250,000 or five years' imprisonment or both for an individual, and up to
+$1,000,000 for a person other than an individual; below $1,000 the figures are
+$25,000 and one year, and $100,000. Subsequent offences reach fifteen years for
+an individual and $5,000,000 for a person other than an individual.
+
+The civil provision at § 305e(b) allows recovery of the greater of treble damages
+or, for each aggrieved Indian, Indian tribe, or Indian arts and crafts
+organisation, **not less than $1,000 for each day** the offer, display, or sale
+continues, with punitive damages, costs, and attorney's fees available under
+§ 305e(c). Suit may be brought by the Attorney General at the Secretary's
+request, by an Indian tribe, by an individual Indian, or by an Indian arts and
+crafts organisation.
 
 **Now the part that surprises people, and it is the reason this section exists.**
 "Indian" for this statute means a person who **is a member of an Indian tribe**, or
@@ -840,60 +953,109 @@ actual capabilities.
 The BIA states the position without ambiguity: *"Blood tests and DNA tests will
 not help an individual document his or her descent from a specific Federally
 recognized tribe or tribal community."* No tribe accepts a commercial admixture
-percentage as proof of descent, and none is obliged to. A low or absent
-"Indigenous Americas" percentage does not disprove a documented ancestor five or
-six generations back, because any individual inherits only a fraction of any given
-ancestor's DNA and may inherit none of it. A high percentage proves nothing about
-*which* people, because these tests compare against reference panels, not tribes.
+percentage as proof of descent, and none is obliged to.
 
-**What DNA is genuinely good for, and it is a great deal:** confirming or refuting
-a specific relationship between two living people, which can rescue a paper trail
-that has gone ambiguous; and finding matches — cousins who descend from the same
-couple and who may hold the family Bible, the photograph with names on the back,
-or the certificate that was never filed with any state. **Use it to find people
-who have documents. Do not use it to produce a number.**
+Four limits, stated exactly, because each of them is a place where a claim gets
+taken apart:
+
+- **A low or absent "Indigenous Americas" percentage disproves nothing.** Each
+  person inherits roughly half their autosomal DNA from each parent, but which
+  half is a matter of chance, and beyond a few generations an individual may
+  inherit no measurable segment from a particular ancestor at all. A documented
+  fifth-great-grandparent can leave no trace in the test.
+- **A high percentage identifies no people.** These tests compare a sample
+  against reference panels assembled by the testing company. The panels are not
+  tribes, tribal membership is political and legal rather than genetic, and no
+  commercial test can distinguish one nation from another.
+- **The percentages are estimates, and they move.** Companies revise their
+  reference panels and algorithms, and a customer's reported ethnicity
+  composition changes with them. A figure quoted from a screenshot in 2026 may
+  not be the figure the same account shows in 2028.
+- **Y-DNA and mitochondrial tests each cover one line only** — the strictly
+  paternal and strictly maternal lines respectively. They say nothing about the
+  other ancestors in the same generation, and for a claim that runs through a
+  woman's father or a man's mother they are silent.
+
+**What DNA is genuinely good for.** It can establish close biological
+relationships with high confidence — parent and child, full and half siblings,
+aunt or uncle and niece or nephew, first cousins — which is enough to rescue a
+paper trail that has gone ambiguous, or to show that a documented parentage is
+wrong. Beyond about second cousins the amount of shared DNA overlaps between
+several different relationships, so a match narrows the possibilities rather than
+settling them, and a shared segment shows common ancestry *somewhere* rather than
+descent from a particular named couple.
+
+Its best use here is social rather than evidentiary: **matches are people, and
+people hold documents.** A third cousin may have the family Bible, the photograph
+with names written on the back, or the certificate that was never filed with any
+state. **Use it to find people who have papers. Do not use it to produce a
+number**, and never enter a DNA result in the register as the basis of a tribal
+connection — the register flags exactly that and is right to.
 
 **Stage 6 — Identify which rolls to search, then search them.**
 Only once a surname, a place, and a period are established. Then:
 
-- **The Dawes Rolls**, for a line touching the Five Tribes. Applications 1898–1907,
-  a few in 1914; records in **Record Group 48** (Office of the Secretary of the
-  Interior) and **Record Group 75** (Bureau of Indian Affairs); enrollment cards
-  digitised in the National Archives Catalog as *Enrollment Cards, 1898–1914*
-  (National Archives Identifier 251747), searchable by name, tribe, and census
-  card number. Search **all** schedules, not just the by-blood ones — for a Black
-  American family this is the single most important instruction in this document,
-  because the family is far more likely to appear on a Freedmen schedule, and the
-  Freedmen cards carry the "slave of," "father's owner," and "mother's owner"
-  fields that link a person to the household that enslaved them.
-- **The application jackets, not merely the roll index.** The jacket holds the
-  application and its supporting documents — testimony, affidavits, correspondence
-  — and it is where the actual family relationships and the Commission's reasoning
-  are found. The index tells you a name exists. The jacket tells you who they
-  were.
+- **The Dawes Rolls**, for a line touching the Five Tribes. Enrollment 1898–1907,
+  with additions to 1914; records in **Record Group 48** (Office of the Secretary
+  of the Interior) and **Record Group 75** (Bureau of Indian Affairs); the census
+  or enrollment cards digitised in the National Archives Catalog as *Enrollment
+  Cards, 1898–1914* (National Archives Identifier 251747), and microfilmed as
+  NARA publication **M1186**, searchable by name, tribe, and card number. Search
+  **all** schedules, not just the by-blood ones — for a Black American family this
+  is the single most important instruction in this document, because the family is
+  far more likely to appear on a Freedmen schedule, and the Freedmen cards carry
+  the "slave of," "father's owner," and "mother's owner" fields that link a person
+  to the household that enslaved them.
+- **The application packet behind the card, not merely the roll index.** The card
+  is a summary. The enrollment application file holds the testimony, the
+  affidavits, and the correspondence, and it is where the actual family
+  relationships and the Commission's reasoning are found. Distinguish it from the
+  separate **land allotment application jackets (1899–1907)**, which were created
+  only for people whose enrollment was approved — an absent jacket may mean a
+  rejected application rather than an absent family. Both series are described on
+  `archives.gov/research/native-americans/dawes`, which directs questions about
+  the census cards, the enrollment applications, and the land allotment jackets to
+  the **National Archives at Kansas City**, questions about the allotment maps to
+  Fort Worth, and questions about the Final Rolls themselves to Washington. Ask
+  which series answers the question before ordering anything.
 - **The earlier Cherokee Freedmen rolls**, where relevant: the **Wallace Roll**
-  (compiled from investigations from about 1889 to 1896) and the **Kern-Clifton
-  Roll** of 1897, both held by the National Archives, which were made precisely
-  because Cherokee citizenship of formerly enslaved people was being disputed. A
-  family absent from Dawes may appear on one of these, and the discrepancy is
-  itself historically meaningful.
+  (NARA describes its holding as a "Revised Copy of the Wallace Roll, ca. 1890–
+  ca. 1896") and the **Kern-Clifton Roll of 16 January 1897**, both at the
+  National Archives, which were made precisely because Cherokee citizenship of
+  formerly enslaved people was being disputed. A family absent from Dawes may
+  appear on one of these, and the discrepancy is itself historically meaningful.
 - **Whichever base roll the evidence actually points to**, for a line outside the
   Five Tribes — allotment rolls, agency censuses, claims rolls. Ask the tribe's
   enrollment office which roll governs before searching.
 
-**Stage 7 — Record the negative findings as findings.**
-Every search that returns nothing gets an entry in the ancestor's record in `LIN`:
-the repository, the collection, the terms searched, the years covered, the date of
-the search, and the result. The register raises a deadline where findings have
-been entered with no search log behind them, because that is the shape a curated
-file takes and it is visible from outside. A
-file of confirmations only is a file that has been curated, and any competent
-reader can tell. A file that says "searched the 1900 Choctaw Freedmen schedule for
-this surname across all districts; not present" is a file that has been kept
-honestly, and the confirmations in it are believed because of it. This is the same
-principle that governs the Evidence Vault — see
-`docs/05-EVIDENCE-AND-CHAIN-OF-CUSTODY.md` — where a disclosed gap goes to weight
-and a concealed one goes to credibility.
+**Stage 7 — Record what does not help, with the same care as what does.**
+Three distinct things belong in the ancestor's record in `LIN`, and they are not
+the same thing:
+
+- **Negative findings.** Every search that returns nothing gets an entry: the
+  repository, the collection, the terms searched, the years covered, the date of
+  the search, and the result. "Searched the Choctaw Freedmen schedules of the
+  Dawes enrollment cards for this surname across all districts; not present" is a
+  finding, and the register carries a status — *Searched, not found* — for
+  precisely that outcome.
+- **Negative evidence.** The absence of something that ought to have been there,
+  used affirmatively. A man who appears in every county tax list from 1868 to
+  1884 and in none after it has probably died or moved, and that inference is
+  evidence. It is a different animal from a fruitless search and is labelled
+  differently.
+- **Evidence against interest.** Anything found that cuts against the claim: the
+  certificate that records the wrong race, the rejected application, the census
+  entry that puts the family somewhere the story does not. The register raises a
+  deadline where ninety days of work on a line has produced nothing against it,
+  because occasionally that is true and much more often it means the contrary
+  material was seen and not entered.
+
+A file of confirmations only is a file that has been curated, and any competent
+reader can tell — every ancestor confirmed, no rejected application, no ambiguous
+entry, no line that failed. Such a file gets discounted wholesale, including the
+parts of it that were sound. This is the same principle that governs the Evidence
+Vault — see `docs/05-EVIDENCE-AND-CHAIN-OF-CUSTODY.md` — where a disclosed gap
+goes to weight and a concealed one goes to credibility.
 
 **Stage 8 — Bring in professional help at the point it stops being tractable.**
 That point is usually one of three: the paper trail dies before 1870 and the line
@@ -924,10 +1086,19 @@ That is why it takes one record per ancestor rather than one per conclusion; why
 it records the source before the finding; why it carries a search log and raises
 a deadline when findings appear without one; why it holds contradicting documents
 side by side rather than resolving them silently; why traditional knowledge and
-documentary evidence are kept in different registers under different labels; why
-it flags any tribal connection resting on family tradition or a genetic result
-alone; and why a finding of "no Native ancestry established" is a permitted,
-recorded, final outcome rather than a failure state.
+documentary evidence are kept in different registers under different labels; and
+why it flags any tribal connection resting on family tradition or a genetic
+result alone.
+
+It is also why the statuses include outcomes nobody wants. *Searched, not found*
+records that the sources were worked and the person was not in them.
+*Conflicting evidence unresolved* is a place a record is allowed to sit, because
+the fourth element of the Genealogical Proof Standard is resolution of conflicts
+and that requirement cannot be met by choosing the convenient reading.
+*Disproven* keeps the record and the reasoning and marks everything downstream
+that depended on it. **"No Native ancestry established" is a permitted, recorded,
+final outcome, not a failure state** — and a register in which no line ever fails
+is a register nobody should believe.
 
 A genealogy that records only confirmations proves nothing, because a reader
 cannot tell whether the negatives were absent or removed. A genealogy that records
@@ -958,9 +1129,12 @@ record that an adversary cannot accuse of doing the same thing in reverse.
    live Section 106 review touching a site of concern, under 36 C.F.R.
    § 800.2(c)(5). It costs a stamp, it is available today, and it is the first
    piece of federal correspondence in the file.
-9. Do not, in the meantime, describe Apex Kingdom as a tribe, as seeking
-   recognition as one, or as holding any status conferred by descent, anywhere,
-   to anyone.
+9. Settle the wording, once, for how the Kingdom describes itself in public while
+   the research runs — a Connecticut religious society with a cultural heritage
+   and historical-society purpose, holding a General Assembly citation, whose
+   members are researching their own family lines. Put it in the letterhead pack
+   and use it everywhere. Having the sentence ready is what keeps a looser one
+   out of a grant application at eleven at night.
 
 ---
 

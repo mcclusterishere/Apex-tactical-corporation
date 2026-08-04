@@ -29,8 +29,25 @@ What research *can* establish is descent — that particular people descended fr
 particular people, each step resting on a named document. That is the question
 every real route asks first: enrolment in an existing tribe under that tribe's
 own law, Freedmen citizenship where a treaty right exists, or participation in a
-documented community's own recognition effort. It is worth doing properly, and it
-is the only thing here worth doing at all.
+documented community's own recognition effort.
+
+Two consequences follow from that, and they shape everything below.
+
+The applicant is a person, not a body. Enrolment petitions are made by an
+individual to a tribe, under that tribe's law, on that individual's own
+documents. Apex Kingdom can hold the archive, pay the fees, keep the register,
+and write the letters — that is real and useful work. It cannot be the applicant,
+and its name should not appear on an enrolment file except as the custodian of
+records.
+
+And documented descent is a necessary condition, not a sufficient one. A
+perfectly proved line to a person on a tribal roll establishes the fact of
+descent; whether that fact produces citizenship is a question for the tribe under
+its own law, and the answer is frequently no — closed rolls, blood quantum
+requirements, residency requirements, or a base roll the ancestor is not on.
+*Santa Clara Pueblo v. Martinez*, 436 U.S. 49 (1978). Knowing the tribe's
+criteria before spending three years on the paper is the difference between
+research and hope.
 
 **And it is worth doing to a hostile standard, because there is one run at it.**
 A file that overstates is not merely rejected; it is remembered. Every registrar,
@@ -136,8 +153,11 @@ proves that they were not enrolled. It does not prove they were not Indian.** It
 may mean they lived outside the geography the roll covered, missed the deadline,
 declined to apply, were rejected on a ground unrelated to ancestry, or were
 refused by an official acting on instructions. Record the nil finding as a nil
-finding and state which of those the roll's own terms leave open. Overstating
-absence is dishonest; ignoring it is worse, because the adversary will find it.
+finding, and record alongside it which of those possibilities the roll's own
+terms leave open. Both halves belong in the register: the absence, because an
+adversary will find it anyway and a file that omitted it loses on that alone; and
+the roll's scope, because it is what determines whether the absence means
+anything.
 
 ### 1.2 The Dawes Rolls and, more importantly, the packets behind them
 
@@ -209,42 +229,72 @@ converts directly into a recognised status.
 
 *Eastern Cherokee. 1906–1911.*
 
-In 1902 Congress authorised the U.S. Court of Claims to hear claims arising from
-Cherokee treaties (32 Stat. 726). The Court ruled for the Eastern Cherokee on
-18 May 1905, and Special Commissioner Guion Miller compiled a roll of those
-eligible to share the award.
+An act of Congress approved 1 July 1902 (32 Stat. 726) gave the Court of Claims
+jurisdiction over claims arising under the Cherokee treaties. On 18 May 1905 the
+Court decided in favour of the Eastern Cherokee. By a decree of 29 April 1907 it
+appointed Guion Miller a special commissioner of the Court to compile the roll of
+those entitled to share the award.
 
 - **M1104**, *Eastern Cherokee Applications of the U.S. Court of Claims,
-  1906–1909* (NAID 301643). A digitised name index is at NAID 300330.
+  1906–1909*, 348 rolls (NAID 301643) — the applications themselves, which are
+  part of **RG 123**, Records of the United States Court of Claims, not RG 75. A
+  digitised name index is at NAID 300330.
 - **M685**, *Records Relating to Enrollment of Eastern Cherokee by Guion Miller,
-  1908–1910* (NAID 300329) — the final roll, testimony of witnesses, and copies
-  of earlier census rolls used in the determinations.
+  1908–1910*, 12 rolls (NAID 300329) — Miller's report, the roll, testimony taken
+  before special commissioners, and copies of earlier census rolls used in the
+  determinations. Roll 1 is the General Index; use it to get the application
+  number, then order the application from M1104.
 
 **Search this even where the family has no Cherokee tradition, and search the
-rejections hardest.** To qualify an applicant had to be alive on 28 May 1906,
-establish membership or descent from a person included in the removal known as
-the Ross Party, not be affiliated with another tribe, and apply by
-31 August 1907. There was no residency requirement, and because there was cash on
-offer many people applied who were not eligible. The applications document over
-125,000 individuals; the Court approved 30,820. NARA's own note is the one to
-hold on to: most late applications were rejected, **and all of them contain
-important individual and family history information**. An application can give
-English and Indian names, dates and places of birth, residence, spouse and
-children, siblings and ages, parents' and grandparents' birthplaces and dates of
-death, and extended family. A rejected 1907 application is a sworn family
-statement made by an ancestor, and it is worth more than any tree.
+rejections hardest.** Because there was cash on offer, a great many people
+applied who were not eligible, and there was no residency requirement.
+
+**NARA's two descriptions of the eligibility test differ, and the difference
+matters.** Record both, and know which you are quoting:
+
+| Source | What it says |
+|---|---|
+| NARA's Guion Miller Roll web page | The applicant had to be alive on 28 May 1906; establish that they were "a member or descendant of a person who had been included in the forced removal to Indian Territory, known as the 'Ross Party'"; not be affiliated with a tribe other than the Cherokee; and apply by 31 August 1907. It states the records "document over 125,000 individuals" and that the court approved 30,820 |
+| NARA's descriptive pamphlet for **M685**, quoting the Court's decree of 29 April 1907 and Miller's report of 28 May 1909 | The fund was to be distributed to Eastern and Western Cherokee alive on 28 May 1906 "who could establish the fact that at the time of the treaties they were members of the Eastern Cherokee Tribe of Indians or were descendants of such persons, and that they had not been affiliated with any tribe of Indians other than the Eastern Cherokees or the Cherokee Nation," applying on or before 31 August 1907. Miller reported **45,847 applications representing about 90,000 individual claimants, of which 30,254 were enrolled**; after the supplemental report of 5 January 1910 added 610 names and struck 44, the final figure was **30,820** |
+
+The pamphlet is the better authority on the criteria, because it quotes the
+decree that created them, and its "membership in the Eastern Cherokee Tribe at
+the time of the treaties" is materially wider than the web page's "Ross Party."
+Quote the pamphlet, and cite it as the descriptive pamphlet for M685 so the
+reader can see why. The two sources also give the treaty dates differently — the
+web page says 1835 and 1846, the pamphlet says 1835–36 and 1845.
+
+The 30,820 figure is common to both and is safe to use. The count of individuals
+is not: 125,000 is the web page's figure, about 90,000 is Miller's own. Use
+Miller's, note the discrepancy, and do not average them.
+
+**Whichever description governs, the research point is the same.** NARA states
+that most late applications were rejected for late receipt, **and that all of
+them contain important individual and family history information**. An
+application can give English and Indian names, dates and places of birth,
+residence, spouse and children, siblings and ages, parents' and grandparents'
+birthplaces and dates of death, and extended family. A rejected 1907 application
+is a sworn family statement made by an ancestor. Order it by name and application
+number on **NATF 83**.
 
 ### 1.4 The Baker Roll
 
 *Eastern Band of Cherokee Indians of North Carolina. 1924–1929.*
 
-The "Final Roll of the Eastern Band of Cherokee Indians of North Carolina Under
-the Act of June 4, 1924 (43 Stat. 376)," compiled by Fred A. Baker. Congress
-amended the 1924 act on 4 March 1931, halting allotment and declaring the Baker
-Roll final for membership purposes only (46 Stat. 1518).
+An act of Congress of 4 June 1924 (43 Stat. 376) established the Eastern Cherokee
+Enrolling Commission to determine membership for the Eastern Band and place its
+tribal lands into federal trust. Fred A. Baker, examiner of inheritance, submitted
+the roll to the Commissioner of Indian Affairs on 1 December 1928.
 
-NARA's descriptive pamphlet is **M2104**, *The 1928 Baker Roll and Records of the
-Eastern Cherokee Enrolling Commission, 1924–1929*.
+The roll's continuing legal effect is set by regulation rather than by inference:
+25 C.F.R. § 75.4 provides that persons whose names appear on the roll prepared
+and approved pursuant to the act of 4 June 1924 (43 Stat. 376) and the act of
+4 March 1931 (46 Stat. 1518) shall be members of the Band. The Baker Roll is the
+base roll, and the Eastern Band treats it as not subject to challenge or amendment
+as to the information it contains.
+
+The records are **M2104**, *The 1928 Baker Roll and Records of the Eastern
+Cherokee Enrolling Commission, 1924–1929*, 69 rolls, **RG 75**.
 
 The roll gives name, enrolment number, relationship to head of family, sex, age
 in 1926, date of birth, degree of Cherokee blood, degree of other Indian blood,
@@ -254,13 +304,27 @@ degree of Indian blood, the ancestor from whom descent was claimed and the
 relationship to them, the evidence offered for the lineage, and each parent's
 name, degree of Indian blood, and residence.
 
-3,833 applications were filed involving 11,979 individuals; 3,146 people were
-enrolled. That means roughly 8,800 people appear in these records who were *not*
-enrolled — a very large body of documented family statements. The recorded
-grounds of rejection are themselves evidence of how the criteria operated: they
-included absence of the applicant or their parents from North Carolina on
-23 October 1874, non-enrolment in or since 1868, want of evidence of affiliation
-with the Band, and non-recognition by the tribe.
+Baker's final report states that 3,833 applications were filed involving 11,979
+individuals, of which 1,924 were uncontested, 1,229 were contested and approved,
+and 687 were apparently not accepted; 3,146 were eventually accepted, and 3,146
+persons were enrolled. Note that NARA's pamphlet uses the same figure of 3,146
+for both applications accepted and persons enrolled, so do not compute a number
+of unsuccessful individuals by subtraction and put it in a filing — the two
+figures are not in the same unit. What is safe to say, and is enough, is that
+several times as many individuals appear in these records as were enrolled, and
+each of them left a documented family statement.
+
+The recorded grounds of rejection are themselves evidence of how the criteria
+operated. Baker's annotations cite, among others: that the applicant's ancestors
+had not been enrolled as members of the Eastern Band; that the applicant or their
+parents were not in North Carolina on 23 October 1874; that they were not enrolled
+in or since 1868; want of evidence of affiliation and association with the Band;
+non-recognition as a member by the tribe; want of evidence of contribution to the
+purchase of the Qualla Boundary or other tribal lands; membership of the Western
+Cherokee; and that the applicant's parents, one being white, were married since
+7 June 1897 apart from the community. That last ground rejects an applicant for
+their parents' marriage rather than for any defect in the descent claimed, and it
+is the sort of thing that makes a rejected file worth ordering.
 
 The Commission built its tentative list from earlier rolls, each of which is a
 searchable record set in its own right:
@@ -332,44 +396,64 @@ Roll, 1897 with its index, supplement, and exhibits (NAIDs 1949698, 1949712,
 1949732, 1950093). A related series, "List of Applicants as Freedmen, 1897," is
 at the National Archives at Fort Worth (NAID 649621).
 
-### 1.6 The Drennen Roll — real, and the identifier must be confirmed
+### 1.6 The Drennen Roll — where it actually is
 
-The Drennen Roll is a genuine record: an 1851–1852 enumeration and payment roll
-of Cherokees who emigrated to Indian Territory following the Treaty of New
-Echota, as distinct from the "Old Settlers" who had removed earlier. It is
-regularly used to distinguish the two populations, and that distinction matters
-because eligibility for later payments and rolls often turned on it.
+The Drennen Roll is a genuine record: an enumeration and payment roll of
+Cherokees who emigrated to Indian Territory following the Treaty of New Echota,
+as distinct from the "Old Settlers" who had removed earlier. The distinction
+matters because eligibility for later payments and rolls often turned on it.
 
-**Do not cite a publication number for it from this document.** NARA's own tribal
-rolls page does not list the Drennen Roll among its described rolls, and the
-commonly repeated statement that it appears on roll 12 of **M685** among the
-older Cherokee rolls used by the Guion Miller Commission comes from secondary
-finding aids rather than from NARA's published description. It is plausible —
-M685 is described by NARA as including copies of earlier census rolls used in the
-determinations — but plausible is not verified.
+It does not appear on NARA's tribal rolls web page, which is why it is often said
+to be undocumented. It is documented, in a place people do not look: **footnote 3
+to NARA's descriptive pamphlet for M2104**, which states that roll 12 of **M685**
+"includes Miller's own copies of the 1850 Old Settlers Roll, the 1850 Drennen
+Roll, the 1851 Chapman Roll, and the 1884 Hester Roll." The M685 pamphlet
+independently records that Miller used earlier rolls "made of the Cherokees by
+Hester, Chapman, Drennen, and others between 1835 and 1884," and describes roll
+12 as "Indexes and Rolls of Eastern Cherokee Indians, 1850, 1854, and 1884."
 
-- [ ] Ask the Archives 1 Reference Branch, in writing, for the series title and
-      National Archives Identifier of the Drennen Roll and whether it is
-      reproduced on M685. Record the answer in `LIN` and cite the answer.
+So: **order roll 12 of M685.** That is a verified citation and it is enough to
+start.
+
+Two limits to carry with it. First, NARA dates the roll to 1850 in the M2104
+footnote, while secondary finding aids commonly date it 1851–1852; do not assert
+a year in a filing without checking the roll itself. Second, what is on M685 is
+described as Miller's own copies, which is a derivative source made for a later
+purpose — record it in `LIN` as derivative, and ask the Archives 1 Reference
+Branch whether an original series exists with its own National Archives
+Identifier if the copy is ever challenged.
 
 ### 1.7 Indian Census Rolls, 1885–1940
 
 **M595**, *Indian Census Rolls, 1885–1940*, 692 rolls, **RG 75**. Submitted
-annually by agents or superintendents in charge of Indian reservations under the
-act of Congress of 4 July 1884.
+usually each year by agents or superintendents in charge of Indian reservations
+as required by an act of Congress of 4 July 1884 (23 Stat. 98).
 
 Content varies, but the rolls usually give the English and/or Indian name, roll
-number, age or date of birth, sex, and relationship to head of family. **From
-1930 they also show degree of Indian blood, marital status, ward status, and
-place of residence** — which makes the 1930s rolls disproportionately valuable
-where they cover the family.
+number, age or date of birth, sex, and relationship to head of family. **Beginning
+in 1930 the rolls also show degree of Indian blood, marital status, ward status,
+and place of residence** — which makes the 1930s rolls disproportionately
+valuable where they cover the family. Note also that there is no census for every
+group in every year; that for 1935, 1936, 1938 and 1939 only supplemental rolls
+of additions and deductions were generally compiled; and that most of the 1940
+rolls were retained by the Bureau and are not on M595.
 
-The limit is the whole point and must be recorded with every nil finding: these
-are censuses of people formally affiliated with tribes under federal supervision.
+The limit is the whole point, and NARA states it in terms, which means it can be
+quoted rather than argued: *"Only persons who maintained a formal affiliation
+with a tribe under Federal supervision are listed on these census rolls. Some
+tribes, particularly those in the East, have never been under Federal
+jurisdiction. Because many persons with some degree of Indian blood did not
+maintain tribal connection, their names do not appear on the rolls."*
+
 A family living in Virginia, or anywhere outside an agency's jurisdiction, will
-not appear however Indian they were and however they identified. **Absence from
-M595 is close to meaningless for an eastern line, and saying so protects the
-credibility of the searches that did produce something.**
+therefore not appear however they identified. **Absence from M595 is close to
+meaningless for an eastern line.** Record the nil finding, and record that
+sentence from the pamphlet next to it — it is NARA explaining why the nil finding
+proves nothing, in NARA's words rather than the Kingdom's.
+
+One further trap NARA flags: for the Five Civilized Tribes of Oklahoma there is
+only an 1885 census of the Choctaw on M595. For those five nations the Dawes
+material at 1.2 is the record set, not this one.
 
 ### 1.8 Other roll types worth knowing exist
 
@@ -387,11 +471,17 @@ categories are not mutually exclusive because the Bureau reused rolls:
   1729351) and material interfiled in *Irregularly Shaped Papers, 1849–1907*
   (NAID 300295).
 - **Judgment rolls** — Guion Miller (above); the *Annotated California Judgment
-  Roll Authorized in 1928* (NAID 57140147), microfilmed as **M1853**.
+  Roll Authorized in 1928* (NAID 57140147), microfilmed as **M1853**, whose own
+  title is *Indians of California Census Rolls Authorized Under the Act of May 18,
+  1928 As Amended, Approved May 16–17, 1933*. California only.
 - **Removal rolls** — *Cherokee Emigration Rolls, 1817–1838* (NAID 595427); the
   *Census Roll Concerning Choctaw Removal, 1831*, the Armstrong Roll (NAID
   2124153); *Muster Rolls Concerning Indian Removal, 1832–1846* (NAID 2124810),
-  microfilmed as **M1831**.
+  microfilmed as **M1831** and published under the title *Miscellaneous Indian
+  Removal Muster Rolls, 1832–1846*. Check M1831's scope before ordering: it is a
+  single roll covering Potawatomi of Chicago, Kickapoo, New York Indians at the
+  Osage Sub-Agency, Quapaw, Ottawa, Seminole, and Wyandot parties. It contains no
+  Cherokee or Choctaw material, and a nil finding in it says nothing about either.
 - **Roblin Roll, 1911–1919** — American Indians in western Washington not
   enrolled or allotted to an agency. Named here because it is the closest federal
   analogue to the situation this research is about: a roll made specifically of
@@ -406,13 +496,20 @@ categories are not mutually exclusive because the Bureau reused rolls:
 This is the fact the whole affirmative case rests on, and it needs to be stated
 precisely rather than rhetorically.
 
-The 1970 census was the first in which race was recorded on the basis of
-self-identification. Before that the classification was entered by the
-enumerator, applying printed instructions, on the basis of observation and local
-report. (The 1960 census introduced an advance form mailed to householders, but
-the enumerator still called, collected it, and transferred the entries.) **Every
-federal census currently open to research — 1950 and earlier — therefore records
-race as a government employee's judgement, not a family's statement.**
+State it in the form the Census Bureau itself uses. **Through 1950, census race
+classification was usually obtained by the enumerator's observation**, applying
+printed instructions, on the basis of what the enumerator saw and what the
+neighbourhood said. Since every federal census currently open to research is 1950
+or earlier, **every census entry available to this work records race as a
+government employee's judgement, not a family's statement.**
+
+The transition afterwards was gradual, and it is worth getting right so that no
+one can correct you on it. In 1960 — the first census with a mailed questionnaire,
+to urban households — race was collected by a combination of self-classification,
+direct interview, and observation. In 1970 it was obtained primarily through
+self-classification, though enumerators were still permitted to fill blanks by
+observation. The clean line often drawn at 1970 is therefore roughly, not exactly,
+right; the line at 1950 is exact and is the only one this research needs.
 
 Say that precisely, because it is the hinge of the whole argument. A census entry
 is evidence of what an official wrote down about a family in a particular year
@@ -428,12 +525,12 @@ where he or she was regarded as White in the community." A person of mixed India
 and Negro blood was to be listed as Negro **"unless the Indian blood predominated
 and the person was generally accepted as an Indian in the community."**
 
-Read that last rule twice. It made *community reputation* the operative test for
-an Indian classification. That is exactly the thing a registrar circulating
-surname lists to local officials was able to destroy — not by changing anyone's
-ancestry, but by changing what local officials would accept. This is the
-mechanism, it is documented in the government's own instructions, and it is
-citable.
+That last rule made *community reputation* the operative test for an Indian
+classification. It is the thing a registrar circulating surname lists to local
+officials was able to destroy — not by changing anyone's ancestry, but by
+changing what local officials would accept. The mechanism is set out in the
+government's own enumerator instructions, which means it is citable rather than
+merely arguable.
 
 ### 2.2 Comparing the same person across successive censuses
 
@@ -452,13 +549,25 @@ children, has not changed. **The record changed. That contradiction, documented,
 is the evidence — and it is worth more than any single entry, because no single
 entry can be attacked as a clerical slip once the pattern is on the page.**
 
-The Library of Virginia's own published research shows how far this went: a
-Mattaponi woman recorded as Indian on the 1940 census had those three letters
-struck out and replaced with the numeral for "colored." **Look for the
-alteration, not merely the entry.** Strikethroughs, overwriting, and marginal
-annotations on the image are the artefact of the reclassification itself, and
-they are invisible in every index. This is the reason the instruction to look at
-the image rather than the transcription is not pedantry.
+The Library of Virginia's published research shows how far this went. In *Records
+of a Paper Genocide* (The UncommonWealth, 13 November 2024) the Library
+reproduces the 1940 census entry for Cora Almond, a Mattaponi woman at West Point
+in King William County, on which the letters "Ind" were scratched out and
+replaced with the numeral 2, meaning "colored." The citation the Library gives is
+1940 Census, West Point, King William, Virginia; Roll m-t0627-04272; Page 61A;
+Enumeration District 51-6.
+
+**Look for the alteration, not merely the entry.** Strikethroughs, overwriting,
+and marginal annotations on the image are the artefact of the reclassification
+itself, and no index carries them. An index entry for that household reads
+"colored" with nothing to show it was ever anything else.
+
+The same article records the other half of the picture, and it belongs in the
+file just as much: the clerk of King William County ignored Plecker's directions
+and continued to record the Upper Mattaponi as Indian. Local officials did not
+all comply, which means an Indian classification surviving in one county in a
+year when a neighbouring county has none is evidence about the clerk as well as
+about the family.
 
 Two disciplines make this survive scrutiny:
 
@@ -489,15 +598,16 @@ original records were bound in four volumes: Indians near Fort Simcoe and at
 Tulalip in Washington Territory; near Fort Yates in Dakota Territory; and in
 California.
 
-**Be honest about this one.** It asked remarkable questions — Indian name and its
-English translation, the habitually used name, whether full-blooded and if mixed
-with which tribe or with white, black, or mulatto, whether a white or black
-person adopted into the tribe, years resident on the reservation, years wearing
-"citizen's dress," languages spoken, and much besides. But it covers Washington
-Territory, Dakota Territory, and California and nothing else. **For a Virginia or
-southern line it is not a source, and searching it produces a nil finding that
-means nothing at all.** Do not list it in a claim as a record set searched
-without saying what its geographic scope was.
+The questions it asked are remarkable — Indian name and its English translation,
+the habitually used name, whether full-blooded and if mixed with which tribe or
+with white, black, or mulatto, whether a white or black person adopted into the
+tribe, years resident on the reservation, years wearing "citizen's dress,"
+languages spoken, and much besides. Its scope is the reason it is listed here
+under a caution rather than as a lead: it covers Washington Territory, Dakota
+Territory, and California and nothing else. **For a Virginia or southern line it
+is not a source, and searching it produces a nil finding that means nothing at
+all.** If it is listed in a claim as a record set searched, list its geographic
+scope in the same line.
 
 **1900 — the Indian population schedule.** A modified form of Schedule No. 1 used
 for Indians both on reservations and living in family groups outside them. In
@@ -538,15 +648,16 @@ documentary evidence obtainable, and it predates the 1924 legislation entirely.
   years between the federal decennials, sometimes with different racial
   categories and occasionally with a self-reported one.
 - **Draft registration cards**, which are self-completed and therefore record
-  what the man said about himself. World War I cards are in **RG 163** (Records
-  of the Selective Service System, World War I) and World War II cards in
-  **RG 147** (Records of the Selective Service System). The Library of Virginia
-  has published the case of a King William County man who wrote "Indian" on his
-  1917 card and, twenty-five years later on a 1942 card that forced a selection
-  from printed options rather than a written answer, registered as white. **Both
-  cards go in the file.** The change is not a contradiction to be hidden; it is
-  data about what the forms permitted, and it is exactly the kind of
-  against-interest recording that makes a file credible.
+  what the man said about himself rather than what an official decided about him.
+  World War I cards are in **RG 163** (Records of the Selective Service System,
+  World War I) and World War II cards in **RG 147** (Records of the Selective
+  Service System). The Library of Virginia cites both series for King William
+  County in *Records of a Paper Genocide*, and uses them to show the same man
+  answering differently on a 1917 card that took a written answer and on a 1942
+  card that forced a selection from printed options. **Both cards go in the
+  file.** The change is not a contradiction to be hidden; it is data about what
+  each form permitted, and recording it is what makes the rest of the file
+  credible.
 
 ---
 
@@ -595,11 +706,14 @@ aid and protection, and trial summaries.
 containing documents and letters submitted by Black soldiers and sailors for
 bounty, pension, arrears of pay, commutation of rations, and prize money, with
 letters sent, registers of claimants, and affidavits. Reproduced as **M2029**,
-*Records of the Field Offices of the Bureau, Office of the Adjutant General*.
-These are from field offices in Georgia, Kansas, Kentucky, Louisiana,
-Mississippi, Missouri, North Carolina, South Carolina, Tennessee, and Virginia,
-and NARA specifically recommends using them alongside military service and
-pension records.
+*Records of the Field Offices of the Freedmen's Branch, Office of the Adjutant
+General, 1872–1878* — quote that title in full when ordering, because "field
+office records" without "Freedmen's Branch" will be routed to the Bureau's own
+field office series instead. Disbursing and field offices sat at Washington,
+Louisville, St. Louis, Nashville, Memphis, Vicksburg, Natchez, New Orleans, and
+Fort Leavenworth, among others, and claims were routed through them by the
+claimant's state rather than by where the soldier served. NARA recommends using
+this series alongside military service and pension records.
 
 ### 3.2 Marriage records
 
