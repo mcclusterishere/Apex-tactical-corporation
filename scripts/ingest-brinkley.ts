@@ -27,6 +27,7 @@ interface Person {
 
 interface Transcription {
   naId: string;
+  sex?: string;
   applicantName: string;
   applicationNumber: string;
   legible: string;
@@ -58,6 +59,7 @@ interface Entry {
 
 const ROLLS: Record<string, number> = {
   "56637149": 186,
+  "56637988": 186,
   "56638054": 186,
   "56764320": 244,
   "56766211": 246,
@@ -70,7 +72,10 @@ function decisionToRoll(decision: string): string {
   const d = decision.toUpperCase();
   if (d.startsWith("ADMITTED")) return "YES";
   if (d.startsWith("REJECTED")) return "SEARCHED_NOT_FOUND";
-  return "UNKNOWN";
+  // No disposition slip found among the pages held. "Not searched" is the honest
+  // value: the roll has an answer, we simply have not yet obtained it. Recording
+  // it as a negative would assert a rejection nobody has seen.
+  return "NOT_SEARCHED";
 }
 
 async function main() {
@@ -138,10 +143,19 @@ async function main() {
     const data: Record<string, unknown> = {
       ancestorName: t.applicantName,
       nameVariants: `${t.applicantName}; catalogue form as filmed`,
-      sex: "UNKNOWN",
-      birthDate: t.birthDate || "",
-      birthPlace: t.birthPlace || "",
-      birthConfidence: t.birthDate ? "STATED_ON_RECORD" : "UNKNOWN",
+      sex: t.sex === "FEMALE" || t.sex === "MALE" ? t.sex : "UNRECORDED",
+      // The register's date field wants a real calendar date. Several of these
+      // applicants gave only a year, and a year is not a date; padding it to
+      // January the first would invent precision the film does not carry.
+      birthDate: /^\d{4}-\d{2}-\d{2}$/.test(t.birthDate ?? "") ? t.birthDate : null,
+      birthPlace: t.birthDate && !/^\d{4}-\d{2}-\d{2}$/.test(t.birthDate)
+        ? `${t.birthPlace || "Not stated"} — birth given on the application as "${t.birthDate}", a year only, so it is recorded here rather than in the date field.`
+        : t.birthPlace || "",
+      birthConfidence: /^\d{4}-\d{2}-\d{2}$/.test(t.birthDate ?? "")
+        ? "DOCUMENTED"
+        : t.birthDate
+          ? "RANGE_ESTIMATED"
+          : "UNKNOWN",
       generation: 0,
       relationshipPath:
         "Surname match to the Founder's mother's maiden name (Brinkley). NO relationship has been established. Filed as a research subject on the strength of the surname alone.",
@@ -154,7 +168,7 @@ async function main() {
       reclassificationAnalysis:
         "Not applicable on this document. It records a claim of descent and its disposition, not a reclassification.",
       recordingOfficials: "U.S. Court of Claims, Eastern Cherokee applications, 1906-1909.",
-      recordSetsSearched: ["TRIBAL_ROLLS"],
+      recordSetsSearched: ["DAWES", "INDIAN_CENSUS_ROLLS"],
       searchLog:
         `NARA catalogue searched for the surname Brinkley within records titled "Application Number" — 236 hits, paged to exhaustion (232 of 236 unique descriptions retrieved across 5 pages). ` +
         `17 Eastern Cherokee Applications were returned; exactly 4 carry the name Brinkley in the title, and all 4 are filed in this register. ` +
