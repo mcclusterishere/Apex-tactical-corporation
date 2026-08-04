@@ -171,6 +171,35 @@ export function inspectEnvironment(
     });
   }
 
+  // --- Identity verification ----------------------------------------------
+  // Optional: the register works without it, and the public claim page simply
+  // refuses. But a HALF-configured setup is worse than none — a key with no
+  // webhook secret means claims are opened and their results never arrive, so
+  // people verify themselves into a queue that never updates.
+  const diditKey = env.DIDIT_API_KEY;
+  const diditSecret = env.DIDIT_WEBHOOK_SECRET;
+  if (diditKey && !diditSecret) {
+    findings.push({
+      severity: "warning",
+      key: "DIDIT_WEBHOOK_SECRET",
+      message:
+        "An identity verification key is set but no webhook secret is. Claims will be opened " +
+        "and their results will never be received: the webhook endpoint fails closed on an " +
+        "unsigned request, which is correct, so every claim will sit unresolved.",
+      remedy: "Set DIDIT_WEBHOOK_SECRET to the destination secret from the Didit console.",
+    });
+  }
+  if (!diditKey && diditSecret) {
+    findings.push({
+      severity: "warning",
+      key: "DIDIT_API_KEY",
+      message:
+        "A webhook secret is set but no API key is. No claim can be opened, so nothing will " +
+        "ever arrive at the webhook.",
+      remedy: "Set DIDIT_API_KEY, or unset DIDIT_WEBHOOK_SECRET if identity checks are not wanted.",
+    });
+  }
+
   // --- Public origin -------------------------------------------------------
   // Certificates and credentials print a verification address. If it is wrong,
   // the recipient of a certified extract cannot check it, which is the entire

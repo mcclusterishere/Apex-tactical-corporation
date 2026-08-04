@@ -58,7 +58,15 @@ export type LedgerEventType =
   | "CURRENCY_SPENT"
   | "CURRENCY_REDEEMED"
   | "CURRENCY_FROZEN"
-  | "CURRENCY_ADJUSTED";
+  | "CURRENCY_ADJUSTED"
+  // Identity. The payload for these carries NO personal data — only the
+  // claim id, the verifier's session id, the status, and a digest. The chain
+  // is append-only, so anything written here is written forever; a name in a
+  // ledger payload is a name that can never be erased on request.
+  | "IDENTITY_CLAIM_OPENED"
+  | "IDENTITY_CLAIM_DECIDED"
+  | "IDENTITY_CLAIM_REVIEWED"
+  | "IDENTITY_CLAIM_LINKED";
 
 export function sha256Hex(input: string | Buffer): string {
   return createHash("sha256").update(input).digest("hex");

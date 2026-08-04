@@ -15,7 +15,7 @@
     "seed": "tsx prisma/seed.ts",
     "chain:verify": "tsx scripts/verify-chain.ts",
     "chain:anchor": "tsx scripts/anchor-chain.ts",
-    "test": "tsx tests/merkle.test.ts && tsx tests/canonical.test.ts && tsx tests/totp.test.ts && tsx tests/credentials.test.ts && tsx tests/preflight.test.ts && tsx tests/chain-exemption.test.ts && tsx tests/correspondence.test.ts",
+    "test": "tsx tests/merkle.test.ts && tsx tests/canonical.test.ts && tsx tests/totp.test.ts && tsx tests/credentials.test.ts && tsx tests/preflight.test.ts && tsx tests/chain-exemption.test.ts && tsx tests/correspondence.test.ts && tsx tests/identity.test.ts",
     "test:merkle": "tsx tests/merkle.test.ts",
     "log:checkpoint": "tsx scripts/checkpoint.ts",
     "start:railway": "prisma db push --skip-generate && tsx prisma/seed.ts && next start"

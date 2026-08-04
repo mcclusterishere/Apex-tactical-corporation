@@ -47,11 +47,12 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  sessions      Session[]
-  ledgerEntries LedgerEntry[]
-  auditEvents   AuditEvent[]
-  signingKeys   SigningKey[]
-  approvalVotes ApprovalVote[]
+  sessions        Session[]
+  ledgerEntries   LedgerEntry[]
+  auditEvents     AuditEvent[]
+  signingKeys     SigningKey[]
+  approvalVotes   ApprovalVote[]
+  identityReviews IdentityClaim[]
 
   @@index([role])
 }
@@ -134,12 +135,13 @@ model Record {
   voidedAt   DateTime?
   voidReason String?
 
-  attachments   Attachment[]
-  ledgerEntries LedgerEntry[]
-  deadlines     Deadline[]
-  holds         LegalHold[]
-  relationsFrom RecordRelation[] @relation("RelationFrom")
-  relationsTo   RecordRelation[] @relation("RelationTo")
+  attachments    Attachment[]
+  ledgerEntries  LedgerEntry[]
+  deadlines      Deadline[]
+  holds          LegalHold[]
+  relationsFrom  RecordRelation[] @relation("RelationFrom")
+  relationsTo    RecordRelation[] @relation("RelationTo")
+  identityClaims IdentityClaim[]
 
   @@index([registry, status])
   @@index([registry, recordedAt])
@@ -646,7 +648,6 @@ model ApprovalVote {
   @@unique([approvalId, userId])
 }
 
-
 // --- The Apex Mark: a fully-reserved, closed-loop internal unit of account ----
 //
 // This is the Kingdom's own money in the only sense that is lawful: a private
@@ -707,4 +708,75 @@ model CurrencyEntry {
   @@unique([accountId, seq])
   @@index([accountId])
   @@index([type])
+}
+
+/// An assertion by a person that they are who they say they are, tested against
+/// a government identity document by a third-party verifier (Didit).
+///
+/// WHAT IS DELIBERATELY ABSENT FROM THIS MODEL IS THE POINT OF IT. No identity
+/// document image, no portrait, no selfie, no biometric template, and no raw
+/// document number is ever stored here. Those exist only inside the verifier's
+/// own systems, behind their retention policy and their liability. The Kingdom
+/// keeps the ANSWER, not the evidence: that a named person presented a document
+/// of a stated type and country, and that a verifier attested to it.
+///
+/// This matters legally as well as ethically. Storing face geometry exposes an
+/// organisation to Illinois BIPA and its private right of action, to Texas CUBI
+/// and to Washington's biometric statute. Letting the vendor perform the face
+/// match and keeping only their verdict is what keeps this register out of that
+/// exposure, and it must stay that way.
+model IdentityClaim {
+  id String @id @default(cuid())
+
+  // What the claimant typed about themselves, before any verification. Kept
+  // separate from the verified fields on purpose: the gap between what a person
+  // asserts and what a document says is itself evidence.
+  claimedName  String
+  claimedEmail String?
+  // Free-text statement of who they say they are in relation to the Kingdom.
+  claimedBasis String?
+
+  // The verifier's session. A UUID, not personal data.
+  sessionId String  @unique
+  // Not Started | In Progress | Awaiting User | In Review | Approved |
+  // Declined | Resubmitted | Expired | Kyc Expired | Abandoned
+  status    String  @default("Not Started")
+  // The workflow the session was opened against, so a later reader knows which
+  // checks were actually run rather than assuming.
+  workflow  String?
+
+  // Populated ONLY on an approved decision, and only these fields.
+  verifiedGivenName  String?
+  verifiedFamilyName String?
+  // Document TYPE and issuing country only — never the number itself.
+  documentType       String?
+  documentCountry    String?
+  // SHA-256 over the normalised document number. Lets the Registrar detect the
+  // same document being used to claim two identities, without the register ever
+  // holding a document number it could leak.
+  documentDigest     String?
+  // Year only. A full date of birth is rarely needed to tell two people apart
+  // and is a stronger identifier to lose.
+  birthYear          Int?
+  verifiedAt         DateTime?
+
+  // The officer's disposition. Verification alone confers nothing: a machine
+  // saying "this passport is real and matches this face" is not the Kingdom
+  // saying "this person is a member". Only an officer does that.
+  reviewState  String    @default("PENDING") // PENDING | ACCEPTED | REFUSED
+  reviewedById String?
+  reviewedBy   User?     @relation(fields: [reviewedById], references: [id], onDelete: SetNull)
+  reviewedAt   DateTime?
+  reviewNote   String?
+
+  // Set when an accepted claim is attached to a person on the Roll of Citizens.
+  citizenRecordId String?
+  citizenRecord   Record? @relation(fields: [citizenRecordId], references: [id], onDelete: SetNull)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([reviewState])
+  @@index([documentDigest])
 }
