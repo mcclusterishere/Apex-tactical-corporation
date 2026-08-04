@@ -32,7 +32,9 @@ const citizens: RegistryDef = {
 
 **Privacy.** This register holds dates of birth, home addresses, family relationships, and in some cases the data of minors. It is classified MEMBERS; lineage and the personal data of minors belong at SEALED. None of it goes into a gazette, a website, a grant application, or a filing without the individual's specific written consent. Where a member is a minor, the consent on file is a guardian's, and it does not bind that person once they reach majority — the register raises that at eighteen.
 
-**Lineage.** Record what is documented and cite the document: the census roll, vital record, deed, or church register, with its repository and page. Never record belief as descent. If the Kingdom ever petitions for federal acknowledgment under 25 C.F.R. Part 83, criterion (e) turns on descent from a historical Indian tribe shown by genealogical evidence, and criteria (a) through (c) on identification as an American Indian entity, existence as a distinct community, and political influence over members on a substantially continuous basis since 1900. A file of sourced entries is the only version of this register that could ever support such a petition. An unsourced one forecloses it and, worse, becomes the exhibit an opponent uses.`,
+**Lineage.** Record what is documented and cite the document: the census roll, vital record, deed, or church register, with its repository and page. Never record belief as descent. Two fields here carry a member's parentage and the sources for it, and they exist to point at a person's file in the Register of Lineage and Descent, not to hold the research. Anything beyond the immediate line belongs there, where the search log, the nil returns, and the findings against interest are required fields.
+
+Be exact about what that work is for, because the wrong version of this sentence has done real damage to bodies in the Kingdom's position. **The Kingdom will not be acknowledged as an Indian tribe under 25 C.F.R. Part 83, and no entry in this register is made toward that.** Section 83.4(a) bars an entity formed in recent times unless it merely incorporated an existing politically autonomous community, and §§ 83.11(a) to (c) are measured from 1900; a body chartered in 2025 has no answer to either, and no amount of sourcing supplies a century that did not happen. What documented descent does open is a route belonging to the individual and not to the institution — enrolment under a tribe's own law, Freedmen citizenship where a treaty right exists, a lineal descendant's claim under NAGPRA. A file of sourced entries is what those routes ask for; an unsourced one forecloses them and, worse, becomes the exhibit an opponent uses. The position is set out at \`docs/18-DESCENT-RECOGNITION-AND-CITIZENSHIP.md\`.`,
   defaultClassification: "MEMBERS",
   defaultStatus: "APPLICANT",
   restrictedTo: ["SOVEREIGN", "REGISTRAR", "CLERK"],
@@ -107,7 +109,7 @@ const citizens: RegistryDef = {
       type: "textarea",
       section: "Origin and lineage",
       classification: "SEALED",
-      help: "Citations to the actual records: census schedules, vital records, deeds, church registers, probate files. Attach copies to the Evidence Vault. Under 25 C.F.R. Part 83 the descent criterion is met by genealogical evidence, not by assertion.",
+      help: "Citations to the actual records: census schedules, vital records, deeds, church registers, probate files. Attach copies to the Evidence Vault. Where a line is being worked in earnest, open it in the Register of Lineage and Descent and cite the record number here rather than restating the research; that register requires the negative findings and the resolved conflicts, and a descent statement quoted out of this field without them is a claim rather than a proof.",
     },
 
     {
