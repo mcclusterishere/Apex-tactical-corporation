@@ -98,7 +98,7 @@ it refuses on anything less than a fully valid, freshly signed request:
 - With **no webhook secret configured it fails closed** — 503, not "accept
   anything".
 
-Twenty-two of the fifty-one tests in `tests/identity.test.ts` exist to prove
+Twenty-two of the fifty-four tests in `tests/identity.test.ts` exist to prove
 those refusals, including tampered bodies, wrong secrets, truncated signatures,
 and both edges of the replay window.
 
@@ -123,7 +123,18 @@ pointing at `https://<your-domain>/api/didit/webhook`, then set the secret it
 gives you as `DIDIT_WEBHOOK_SECRET`. Until that is done the endpoint correctly
 refuses every request and no verification result will ever land.
 
-## 7. What is not built
+## 7. One sharp edge in the verifier's API
+
+Creating a session with a `vendor_data` value that already has an **unfinished**
+session returns *that session* rather than a new one. A constant value would
+therefore hand the second claimant the first claimant's session — two people
+verifying into one record.
+
+`newVendorReference()` gives every claim its own random reference, and the tests
+assert 500 consecutive draws are unique. The value is deliberately opaque: the
+verifier is a third party and is told nothing about who the claimant is.
+
+## 8. What is not built
 
 - **No automatic enrolment.** Accepting a claim can attach it to a Roll of
   Citizens record, but does not create one. Admission remains a deliberate act.

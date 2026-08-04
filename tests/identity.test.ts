@@ -17,6 +17,7 @@ import {
   isApproved,
   isTerminal,
   CLAIM_STATUSES,
+  newVendorReference,
 } from "../src/lib/identity";
 
 let passed = 0;
@@ -187,6 +188,19 @@ check(
   "an implausible birth year is dropped",
   distil({ status: "Approved", id_verifications: [{ date_of_birth: "1543-01-01" }] }).birthYear ===
     null,
+);
+
+// --- Vendor reference ------------------------------------------------------
+// The verifier returns an EXISTING session when an unfinished one shares the
+// same vendor_data. A constant value would therefore hand claimant B claimant
+// A's session. These guard the fix.
+
+const refs = new Set(Array.from({ length: 500 }, () => newVendorReference()));
+check("every vendor reference is unique across 500 draws", refs.size === 500);
+check("a vendor reference is prefixed and opaque", /^apex-claim-[0-9a-f-]{36}$/.test(newVendorReference()));
+check(
+  "a vendor reference carries no personal data",
+  !/mae|brinkley|@/i.test(newVendorReference()),
 );
 
 console.log(`identity: ${passed} passed, ${failed} failed`);

@@ -31,7 +31,7 @@
  * genuine and matches this face" is not the Kingdom saying "this person is one
  * of ours". Every verified claim lands in a queue for an officer, who decides.
  */
-import { createHash, createHmac, timingSafeEqual } from "node:crypto";
+import { createHash, createHmac, randomUUID, timingSafeEqual } from "node:crypto";
 import { prisma } from "./db";
 import { appendToChainTx } from "./chain";
 import type { CanonicalValue } from "./canonical";
@@ -106,6 +106,22 @@ export function nameDigest(name: string): string {
   return createHash("sha256").update(normalised, "utf8").digest("hex");
 }
 
+/**
+ * A fresh, opaque reference for one claim.
+ *
+ * This exists because of a sharp edge in the verifier's API: creating a session
+ * with a `vendor_data` value that already has an UNFINISHED session returns THAT
+ * SESSION instead of a new one. A constant value would therefore hand the second
+ * claimant the first claimant's session — two people verifying into one record.
+ *
+ * So every claim gets its own random reference. It is deliberately opaque: the
+ * verifier is a third party and has no business being told the claimant's name,
+ * their email, or anything else the Kingdom knows about them.
+ */
+export function newVendorReference(): string {
+  return `apex-claim-${randomUUID()}`;
+}
+
 export interface OpenClaimInput {
   claimedName: string;
   claimedEmail?: string | null;
@@ -142,10 +158,10 @@ export async function openClaim(input: OpenClaimInput) {
       headers: { "x-api-key": apiKey(), "Content-Type": "application/json" },
       body: JSON.stringify({
         workflow_id: workflowId,
-        // Deliberately NOT the person's name or email. The verifier is told only
-        // an opaque purpose tag; it does not need to know who the Kingdom thinks
-        // this is, and telling it would leak the claim into a third party.
-        vendor_data: "apex-identity-claim",
+        // Unique per claim, and opaque. See newVendorReference: a shared value
+        // would make the verifier hand a second claimant the first one's
+        // session, and the verifier has no business knowing who this is.
+        vendor_data: newVendorReference(),
         callback,
       }),
     });
