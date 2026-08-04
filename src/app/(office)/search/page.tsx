@@ -5,6 +5,7 @@ import { getPrincipal } from "@/lib/auth";
 import { visibleClassifications, filterSearchLeaks } from "@/lib/queries";
 import { getRegistry, REGISTRIES } from "@/registries";
 import { PageHeader, Panel, StatusBadge, ClassificationBadge, EmptyState } from "@/components/ui";
+import { IconSearch } from "@/components/Icons";
 import { formatDateShort, oneParam } from "@/lib/format";
 
 export const metadata: Metadata = { title: "Search the registers" };
@@ -47,33 +48,37 @@ export default async function SearchPage({
     <>
       <PageHeader
         overline="Across every register"
-        title="Search"
-        lede="Searches record numbers, titles, and every recorded value. Results are limited to material within your clearance."
+        title="Search the records"
+        lede="Type anything — a person's name, a record number, a place, an agency. It looks through every recorded value, and only ever shows you what you're cleared to see."
       />
 
-      <form className="mb-6 flex flex-wrap items-end gap-2" action="/search">
-        <div className="min-w-0 flex-1">
-          <label htmlFor="q" className="overline mb-1 block">
-            Search
-          </label>
-          <input
-            id="q"
-            name="q"
-            defaultValue={query}
-            autoFocus
-            placeholder="A name, a number, a mark, a parcel, an agency"
-            className="surface w-full rounded-sm border border-[var(--rule-strong)] px-2.5 py-2 text-sm outline-none focus:border-ink-500"
-          />
-        </div>
-        <div>
-          <label htmlFor="registry" className="overline mb-1 block">
-            Register
-          </label>
+      <form className="mb-7" action="/search">
+        <div className="flex flex-col gap-2.5 sm:flex-row sm:items-stretch">
+          <div className="relative min-w-0 flex-1">
+            <span
+              aria-hidden
+              className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-muted)]"
+            >
+              <IconSearch size="1.35em" />
+            </span>
+            <label htmlFor="q" className="sr-only">
+              Search the records
+            </label>
+            <input
+              id="q"
+              name="q"
+              defaultValue={query}
+              autoFocus
+              placeholder="A name, a number, a place…"
+              className="surface w-full rounded-lg border border-[var(--rule-strong)] py-3.5 pl-12 pr-3 text-[17px] outline-none transition-colors focus:border-[var(--link)]"
+            />
+          </div>
           <select
             id="registry"
             name="registry"
+            aria-label="Limit to one register"
             defaultValue={registryFilter ?? ""}
-            className="surface rounded-sm border border-[var(--rule-strong)] px-2.5 py-2 text-sm outline-none focus:border-ink-500"
+            className="surface rounded-lg border border-[var(--rule-strong)] px-3 py-3.5 text-[15px] outline-none focus:border-[var(--link)] sm:w-56"
           >
             <option value="">All registers</option>
             {REGISTRIES.map((entry) => (
@@ -82,13 +87,13 @@ export default async function SearchPage({
               </option>
             ))}
           </select>
+          <button
+            type="submit"
+            className="inline-flex items-center justify-center gap-2 rounded-lg border border-[var(--accent)] bg-[var(--accent)] px-6 py-3.5 text-[15px] font-medium text-[var(--page-raised)] transition-opacity hover:opacity-90"
+          >
+            <IconSearch size="1.1em" /> Search
+          </button>
         </div>
-        <button
-          type="submit"
-          className="rounded-sm border border-ink-800 bg-ink-800 px-4 py-2 text-sm font-medium text-ink-50 hover:bg-ink-700 dark:border-ink-100 dark:bg-ink-100 dark:text-ink-900"
-        >
-          Search
-        </button>
       </form>
 
       {query.length === 0 ? (
