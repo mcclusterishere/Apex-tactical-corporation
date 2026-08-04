@@ -14,6 +14,7 @@ import offices from "@/registries/offices";
 import vitalRecords from "@/registries/vital-records";
 import ordinations from "@/registries/ordinations";
 import households from "@/registries/households";
+import lineage from "@/registries/lineage";
 import benefits from "@/registries/benefits";
 
 // Identity & Credentials
@@ -77,6 +78,7 @@ export const REGISTRIES: readonly RegistryDef[] = [
   vitalRecords,
   ordinations,
   households,
+  lineage,
   benefits,
 
   credentialsIssued,
