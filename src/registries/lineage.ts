@@ -421,6 +421,15 @@ Conflicts are the same discipline. The fourth element of the Standard is *resolu
       help: "Anything discovered that weakens or complicates the claim, recorded whether or not anyone asks: a rejected application, an ancestor recorded as white throughout, a roll the family is plainly absent from, a competing candidate of the same name, a line that runs out. Required, and required with a dated nil answer where there is nothing to record, so that an empty field can never mean the question was not asked. Material against interest is the strongest signal of good faith a compiled genealogy can send, and it is the reason the confirmations elsewhere in the file get believed.",
     },
     {
+      key: "adverseRecordWeight",
+      label: "What each adverse record actually decided",
+      type: "textarea",
+      section: "Conflicts",
+      placeholder:
+        "Guion Miller 30303 (REJECT) — decided eligibility to share in the Eastern Cherokee fund on descent from the 1835 Henderson, 1848 Mullay, or 1851 Siler/Chapman rolls. Did not adjudicate ancestry. ~2/3 of some 90,000 claimants refused on the same ground.\n1950 census, Weldon — enumerator instruction required persons of mixed Indian and Negro blood to be returned as Negro unless Indian blood predominated and the person was accepted in the community as Indian. Records the rule, not the descent.",
+      help: "For every entry in the field above, the finding that record actually made — the question it was answering, the rule it was applying, and the limit of what it decided. This is not spin and it is not optional advocacy: a Guion Miller rejection adjudicated entitlement to a fund under three named earlier rolls, a race field records what a registrar was instructed to write, and a census line records an enumerator instruction. Stating that precisely is the difference between a file that concedes too much and a file that overclaims, and both lose. The authority for each reframing, with citations, is at `docs/23-THE-RECORD-WAS-MADE-TO-LIE.md` § 7; use its language, and do not extend it beyond what that document supports. Where an adverse record genuinely does decide the question, say so — the credibility of every other entry in this field depends on it.",
+    },
+    {
       key: "downstreamImpact",
       label: "Records affected if this conclusion falls",
       type: "textarea",
