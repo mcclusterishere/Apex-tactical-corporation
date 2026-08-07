@@ -101,6 +101,7 @@ function Nav({ principal }: { principal: Principal }) {
         <NavSection label="Lands &amp; Lettings">
           <NavLink href="/zomes" exact>Zomes &amp; lettings</NavLink>
           <NavLink href="/bookings">Bookings</NavLink>
+          <NavLink href="/stays">Apex Stays</NavLink>
         </NavSection>
       ) : null}
 

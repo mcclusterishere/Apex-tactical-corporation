@@ -74,7 +74,15 @@ export type LedgerEventType =
   | "ZOME_RETIRED"
   | "BOOKING_CONFIRMED"
   | "BOOKING_CANCELLED"
-  | "BOOKING_COMPLETED";
+  | "BOOKING_COMPLETED"
+  // Apex Stays. Contribution credit denominated in NIGHTS only — never dollars,
+  // never convertible to the Mark, never redeemable for money. The payloads
+  // carry nights, principal ids, and task ids; no monetary field exists.
+  | "APEX_TASK_POSTED"
+  | "APEX_TASK_VERIFIED"
+  | "STAY_EARNED"
+  | "STAY_GIFTED"
+  | "STAY_SPENT";
 
 export function sha256Hex(input: string | Buffer): string {
   return createHash("sha256").update(input).digest("hex");

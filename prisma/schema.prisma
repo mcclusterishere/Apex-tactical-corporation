@@ -872,3 +872,63 @@ model ZomeBlock {
 
   @@index([zomeId, checkIn, checkOut])
 }
+
+// --------------------------------------------------------------------------
+// Apex Stays — contribution credit for the family's properties.
+//
+// The unit is the NIGHT, and the display unit is the Apex Stay (two nights —
+// an afternoon check-in, the full day between, a midday check-out: two nights,
+// a day and a half). There is deliberately NO monetary field on either model.
+// Stays are earned by work, gifted between members, and spent on nights at
+// family properties. They are never bought, never redeemed for money, and
+// never converted to the Apex Mark — those functions do not exist, on purpose.
+// See docs/24-APEX-STAYS.md for the lines and why they hold.
+// --------------------------------------------------------------------------
+
+model ApexTask {
+  id    String @id @default(cuid())
+  title String
+  // What done looks like, concretely, so verification is a check not a debate.
+  detail String?
+  // Where the work is — a zome, or any property/business in the family
+  // directory, named in words ("2243 Haverford Dr — clear gutters").
+  propertyLabel String
+  zomeId        String?
+
+  // Reward in whole nights. 2 nights = 1 Apex Stay.
+  rewardNights Int
+
+  // OPEN | CLAIMED | DONE | VERIFIED | CANCELLED
+  status String @default("OPEN")
+
+  postedById  String
+  claimedById String?
+  // Two-person rule: the verifier may not be the person who did the work.
+  verifiedById String?
+
+  createdAt   DateTime  @default(now())
+  claimedAt   DateTime?
+  doneAt      DateTime?
+  verifiedAt  DateTime?
+  note        String?
+
+  @@index([status, createdAt])
+}
+
+model StayEntry {
+  id String @id @default(cuid())
+  // The member whose balance this entry moves.
+  userId String
+  // EARN (task verified) | GIFT_OUT | GIFT_IN | SPEND | ADJUST
+  kind String
+  // Always positive; the kind carries the sign. Whole nights only.
+  nights Int
+  // The other member on a gift, so both sides of the pair point at each other.
+  counterpartyId String?
+  taskId         String?
+  bookingId      String?
+  memo           String?
+  createdAt      DateTime @default(now())
+
+  @@index([userId, createdAt])
+}
