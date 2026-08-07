@@ -6,6 +6,8 @@ import { assertPasswordChanged, AccessError } from "@/lib/access";
 import { can } from "@/lib/authz";
 import {
   postTask,
+  proposeTask,
+  approveTask,
   claimTask,
   reportTaskDone,
   verifyTask,
@@ -58,6 +60,25 @@ export async function postTaskAction(_prev: FormState, formData: FormData): Prom
       rewardNights: nights,
     });
   }, true);
+}
+
+/** Any member may propose a goal; it mints nothing until a Keeper approves. */
+export async function proposeTaskAction(_prev: FormState, formData: FormData): Promise<FormState> {
+  return guarded(async (principal) => {
+    const nights = Math.trunc(Number(formData.get("rewardNights")));
+    if (!Number.isFinite(nights)) throw new StayError("Set the proposed reward in whole nights.");
+    await proposeTask(principal, {
+      title: String(formData.get("title") ?? ""),
+      detail: String(formData.get("detail") ?? "") || null,
+      propertyLabel: String(formData.get("propertyLabel") ?? ""),
+      rewardNights: nights,
+    });
+  });
+}
+
+/** Keeper-only: approving a proposal is what makes the reward real. */
+export async function approveTaskAction(taskId: string, _prev: FormState): Promise<FormState> {
+  return guarded((principal) => approveTask(principal, taskId).then(() => undefined), true);
 }
 
 export async function claimTaskAction(taskId: string, _prev: FormState): Promise<FormState> {

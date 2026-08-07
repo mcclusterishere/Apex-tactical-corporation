@@ -4,6 +4,8 @@ import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import {
   postTaskAction,
+  proposeTaskAction,
+  approveTaskAction,
   claimTaskAction,
   markDoneAction,
   verifyTaskAction,
@@ -72,6 +74,37 @@ export function NewTaskForm() {
   );
 }
 
+/** The younger generation's door: propose a goal; a Keeper makes it real. */
+export function ProposeTaskForm() {
+  const [state, action] = useActionState<FormState, FormData>(proposeTaskAction, { ok: false });
+  return (
+    <form action={action} className="space-y-3">
+      <label className="block">
+        <span className="mb-1 block text-[13px] font-medium">Goal</span>
+        <input name="title" required className={INPUT} placeholder="Clear the gutters at Grandma's" />
+      </label>
+      <label className="block">
+        <span className="mb-1 block text-[13px] font-medium">Property or business</span>
+        <input name="propertyLabel" required className={INPUT} placeholder="205 Ashe St, Weldon" />
+      </label>
+      <label className="block">
+        <span className="mb-1 block text-[13px] font-medium">What done looks like</span>
+        <textarea name="detail" rows={2} className={INPUT} placeholder="Both gutters clear, photos sent" />
+      </label>
+      <label className="block">
+        <span className="mb-1 block text-[13px] font-medium">Proposed reward (nights — 2 = 1 Stay)</span>
+        <input name="rewardNights" required inputMode="numeric" className={INPUT} placeholder="1" />
+      </label>
+      <p className="muted text-xs">
+        Your proposal goes to the Keepers. Nothing is minted until one of them approves it — and
+        they can never approve their own.
+      </p>
+      <Result state={state} />
+      <Submit label="Propose it" />
+    </form>
+  );
+}
+
 export function GiftForm({ members }: { members: { id: string; displayName: string }[] }) {
   const [state, action] = useActionState<FormState, FormData>(giftAction, { ok: false });
   return (
@@ -116,6 +149,10 @@ export function TaskActions({
   mine: boolean;
   steward: boolean;
 }) {
+  const [approveState, approve] = useActionState<FormState, FormData>(
+    (prev: FormState) => approveTaskAction(taskId, prev),
+    { ok: false },
+  );
   const [claimState, claim] = useActionState<FormState, FormData>(
     (prev: FormState) => claimTaskAction(taskId, prev),
     { ok: false },
@@ -135,6 +172,11 @@ export function TaskActions({
 
   return (
     <div className="flex flex-wrap items-center gap-2">
+      {status === "PROPOSED" && steward ? (
+        <form action={approve}>
+          <Submit label="Approve — make it real" quiet />
+        </form>
+      ) : null}
       {status === "OPEN" ? (
         <form action={claim}>
           <Submit label="Claim it" quiet />
@@ -156,6 +198,7 @@ export function TaskActions({
           <Submit label="Cancel" quiet />
         </form>
       ) : null}
+      <Result state={approveState} />
       <Result state={claimState} />
       <Result state={doneState} />
       <Result state={verifyState} />

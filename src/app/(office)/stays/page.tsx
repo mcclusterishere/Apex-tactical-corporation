@@ -5,7 +5,7 @@ import { getPrincipal, isAuthenticated } from "@/lib/auth";
 import { can } from "@/lib/authz";
 import { balanceOf, ledgerOf, openTasks, formatStays, NIGHTS_PER_STAY } from "@/lib/stays";
 import { PageHeader, Panel, Stat, EmptyState, Caution } from "@/components/ui";
-import { NewTaskForm, GiftForm, TaskActions } from "@/components/StayForms";
+import { NewTaskForm, ProposeTaskForm, GiftForm, TaskActions } from "@/components/StayForms";
 import { formatDateShort } from "@/lib/format";
 
 export const metadata: Metadata = { title: "Apex Stays" };
@@ -94,11 +94,13 @@ export default async function StaysPage() {
                       {task.detail ? <> — {task.detail}</> : null}
                     </p>
                     <p className="muted mt-0.5 text-xs">
-                      {task.status === "OPEN"
-                        ? "Open to claim"
-                        : task.status === "CLAIMED"
-                          ? `Claimed by ${nameOf.get(task.claimedById ?? "") ?? (task.claimedById === principal.id ? "you" : "a member")}`
-                          : `Done — awaiting verification`}
+                      {task.status === "PROPOSED"
+                        ? `Proposed by ${task.postedById === principal.id ? "you" : (nameOf.get(task.postedById) ?? "a member")} — awaiting a Keeper's approval`
+                        : task.status === "OPEN"
+                          ? "Open to claim"
+                          : task.status === "CLAIMED"
+                            ? `Claimed by ${nameOf.get(task.claimedById ?? "") ?? (task.claimedById === principal.id ? "you" : "a member")}`
+                            : `Done — awaiting verification`}
                     </p>
                     <div className="mt-2">
                       <TaskActions
@@ -121,7 +123,14 @@ export default async function StaysPage() {
             >
               <NewTaskForm />
             </Panel>
-          ) : null}
+          ) : (
+            <Panel
+              title="Propose a goal"
+              description="See something the family's places need? Propose it. A Keeper approves it, and then it's real — youth propose, elders sanction."
+            >
+              <ProposeTaskForm />
+            </Panel>
+          )}
         </div>
 
         <div className="min-w-0">

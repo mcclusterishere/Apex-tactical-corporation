@@ -98,5 +98,21 @@ check("empty ledger balances to zero", balanceFromEntries([]) === 0);
 // The unit constant itself is nights, not a monetary figure.
 check("the Stay is defined in nights, an integer", Number.isInteger(NIGHTS_PER_STAY));
 
+// --- The generational loop --------------------------------------------------
+//
+// Proposals exist as a status: any member proposes, only a Keeper's approval
+// makes the reward real, and both gates are two-person. The status list is the
+// contract for that flow.
+check(
+  "PROPOSED precedes OPEN in the task lifecycle",
+  stays.TASK_STATUSES[0] === "PROPOSED" && stays.TASK_STATUSES[1] === "OPEN",
+);
+check(
+  "the lifecycle ends in VERIFIED or CANCELLED",
+  stays.TASK_STATUSES.includes("VERIFIED") && stays.TASK_STATUSES.includes("CANCELLED"),
+);
+check("proposeTask and approveTask both exist",
+  typeof stays.proposeTask === "function" && typeof stays.approveTask === "function");
+
 console.log(`stays: ${passed} passed, ${failed} failed`);
 if (failed > 0) process.exit(1);

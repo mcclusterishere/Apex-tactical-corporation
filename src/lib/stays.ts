@@ -99,7 +99,7 @@ export async function balanceOf(userId: string): Promise<number> {
 
 // ---------------------------------------------------------------- tasks
 
-const TASK_STATUSES = ["OPEN", "CLAIMED", "DONE", "VERIFIED", "CANCELLED"] as const;
+const TASK_STATUSES = ["PROPOSED", "OPEN", "CLAIMED", "DONE", "VERIFIED", "CANCELLED"] as const;
 
 export interface PostTaskInput {
   title: string;
@@ -141,6 +141,70 @@ export async function postTask(principal: Principal, input: PostTaskInput) {
       } satisfies CanonicalValue,
     });
     return task;
+  });
+}
+
+/**
+ * Propose a task — the younger generation's door. Any member may propose a
+ * goal for the family ("clear grandma's gutters", "paint the porch"), but a
+ * proposal mints nothing: the reward only becomes real when a Keeper approves
+ * it. Youth propose; elders sanction; a second person still verifies the work.
+ * Three generations in one loop, and no one mints for themselves.
+ */
+export async function proposeTask(principal: Principal, input: PostTaskInput) {
+  const title = input.title?.trim();
+  const propertyLabel = input.propertyLabel?.trim();
+  if (!title) throw new StayError("A proposal needs a title.");
+  if (!propertyLabel) throw new StayError("Name the property or business the work is for.");
+  assertNights(input.rewardNights, "The proposed reward");
+
+  return prisma.apexTask.create({
+    data: {
+      title,
+      detail: input.detail?.trim() || null,
+      propertyLabel,
+      zomeId: input.zomeId || null,
+      rewardNights: input.rewardNights,
+      status: "PROPOSED",
+      postedById: principal.id,
+    },
+  });
+}
+
+/**
+ * A Keeper approves a proposal, which is the moment the reward becomes real —
+ * so this, not the proposal, is what the chain records as the posting. A
+ * Keeper may not approve their own proposal; the mint gate needs two people
+ * exactly like the verification gate does.
+ */
+export async function approveTask(principal: Principal, taskId: string) {
+  return prisma.$transaction(async (tx) => {
+    const task = await tx.apexTask.findUnique({ where: { id: taskId } });
+    if (!task) throw new StayError("No such task.");
+    if (task.status !== "PROPOSED") throw new StayError("Only a proposed task can be approved.");
+    if (task.postedById === principal.id) {
+      throw new StayError("You cannot approve your own proposal. Two people, always.");
+    }
+
+    const updated = await tx.apexTask.update({
+      where: { id: taskId },
+      data: { status: "OPEN" },
+    });
+
+    await appendToChainTx(tx, {
+      eventType: "APEX_TASK_POSTED",
+      actorId: principal.id,
+      actorLabel: `${principal.displayName} (${principal.role})`,
+      payload: {
+        taskId: task.id,
+        title: task.title,
+        propertyLabel: task.propertyLabel,
+        rewardNights: task.rewardNights,
+        proposedById: task.postedById,
+      } satisfies CanonicalValue,
+    });
+
+    return updated;
   });
 }
 
@@ -353,7 +417,7 @@ export async function ledgerOf(userId: string, take = 50) {
 
 export async function openTasks(take = 100) {
   return prisma.apexTask.findMany({
-    where: { status: { in: ["OPEN", "CLAIMED", "DONE"] } },
+    where: { status: { in: ["PROPOSED", "OPEN", "CLAIMED", "DONE"] } },
     orderBy: { createdAt: "desc" },
     take,
   });
