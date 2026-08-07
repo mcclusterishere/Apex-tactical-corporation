@@ -3,8 +3,9 @@ import { notFound } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { getPrincipal } from "@/lib/auth";
 import { can } from "@/lib/authz";
+import { isAuthenticated } from "@/lib/auth";
 import { PageHeader, Panel, Field, EmptyState } from "@/components/ui";
-import { BookForm } from "@/components/BookingForms";
+import { BookForm, FamilyStayForm } from "@/components/BookingForms";
 import { calendar } from "@/lib/bookings";
 import { formatMoney, formatDate } from "@/lib/format";
 
@@ -93,8 +94,17 @@ export default async function ZomeDetailPage({ params }: { params: Promise<{ id:
         )}
       </Panel>
 
+      {isAuthenticated(principal) && zome.status !== "RETIRED" ? (
+        <Panel
+          title="Family stay"
+          description="Family stays here by spending Stays earned on the task board — 2 nights = 1 Stay. No Stays, no stay: the house is kept by the people who keep it."
+        >
+          <FamilyStayForm zomeId={zome.id} />
+        </Panel>
+      ) : null}
+
       {manage && zome.status !== "RETIRED" ? (
-        <Panel title="Take a booking">
+        <Panel title="Take a booking" description="Officer booking — outside guests, money channels.">
           <BookForm zomeId={zome.id} />
         </Panel>
       ) : null}

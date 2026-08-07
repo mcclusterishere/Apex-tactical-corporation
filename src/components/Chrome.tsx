@@ -99,6 +99,7 @@ function Nav({ principal }: { principal: Principal }) {
 
       {isAuthenticated(principal) ? (
         <NavSection label="Lands &amp; Lettings">
+          <NavLink href="/family">The family plan</NavLink>
           <NavLink href="/zomes" exact>Zomes &amp; lettings</NavLink>
           <NavLink href="/bookings">Bookings</NavLink>
           <NavLink href="/stays">Apex Stays</NavLink>

@@ -289,6 +289,47 @@ export async function giftStays(
 }
 
 /**
+ * Spend Stays inside a caller-supplied transaction, so a booking and its
+ * payment in Stays commit or fail as one. This is what makes "no Stays, no
+ * stay" airtight: the family booking that cannot pay never comes into being.
+ */
+export async function spendStaysTx(
+  tx: Tx,
+  principal: Principal,
+  nights: number,
+  memo: string,
+  bookingId?: string,
+) {
+  assertNights(nights);
+  const cleanMemo = memo?.trim();
+  if (!cleanMemo) throw new StayError("Say what the Stays are being spent on.");
+
+  const balance = await balanceInTx(tx, principal.id);
+  if (balance < nights) {
+    throw new StayError(
+      `You hold ${formatStays(balance)} and this stay costs ${formatStays(nights)}. Earn or be gifted the difference first — the house is kept by the people who keep it.`,
+    );
+  }
+
+  await tx.stayEntry.create({
+    data: {
+      userId: principal.id,
+      kind: "SPEND",
+      nights,
+      bookingId: bookingId || null,
+      memo: cleanMemo,
+    },
+  });
+
+  await appendToChainTx(tx, {
+    eventType: "STAY_SPENT",
+    actorId: principal.id,
+    actorLabel: `${principal.displayName} (${principal.role})`,
+    payload: { nights, bookingId: bookingId ?? null } satisfies CanonicalValue,
+  });
+}
+
+/**
  * Spend Stays on nights at a family property. The balance re-check lives in
  * the same transaction as the write — the same race discipline the booking
  * engine uses for double-booking.
@@ -299,35 +340,7 @@ export async function spendStays(
   memo: string,
   bookingId?: string,
 ) {
-  assertNights(nights);
-  const cleanMemo = memo?.trim();
-  if (!cleanMemo) throw new StayError("Say what the Stays are being spent on.");
-
-  return prisma.$transaction(async (tx) => {
-    const balance = await balanceInTx(tx, principal.id);
-    if (balance < nights) {
-      throw new StayError(
-        `You hold ${formatStays(balance)} and tried to spend ${formatStays(nights)}.`,
-      );
-    }
-
-    await tx.stayEntry.create({
-      data: {
-        userId: principal.id,
-        kind: "SPEND",
-        nights,
-        bookingId: bookingId || null,
-        memo: cleanMemo,
-      },
-    });
-
-    await appendToChainTx(tx, {
-      eventType: "STAY_SPENT",
-      actorId: principal.id,
-      actorLabel: `${principal.displayName} (${principal.role})`,
-      payload: { nights, bookingId: bookingId ?? null } satisfies CanonicalValue,
-    });
-  });
+  return prisma.$transaction((tx) => spendStaysTx(tx, principal, nights, memo, bookingId));
 }
 
 export async function ledgerOf(userId: string, take = 50) {

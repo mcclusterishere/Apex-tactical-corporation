@@ -21,6 +21,7 @@
  */
 import { prisma } from "./db";
 import { appendToChainTx } from "./chain";
+import { spendStaysTx } from "./stays";
 import type { CanonicalValue } from "./canonical";
 import type { Principal } from "./auth";
 
@@ -179,7 +180,13 @@ export interface CreateBookingInput {
   note?: string | null;
 }
 
-const CHANNELS = ["DIRECT", "AIRBNB", "OTHER"] as const;
+/**
+ * FAMILY is the anti-squat channel: a family member stays by SPENDING Stays,
+ * one per two nights, earned by working on the family's properties. The spend
+ * and the booking commit in one transaction — no balance, no booking. Family
+ * never pays money for family property; family pays contribution.
+ */
+const CHANNELS = ["DIRECT", "AIRBNB", "FAMILY", "OTHER"] as const;
 
 /**
  * Confirm a booking.
@@ -220,9 +227,12 @@ export async function createBooking(principal: Principal, input: CreateBookingIn
       throw new BookingError("Those nights are blocked off (maintenance or owner use).");
     }
 
+    // A family stay costs Stays, not money: the money side of the quote is
+    // zero, and the Stays are spent below in this same transaction.
+    const family = channel === "FAMILY";
     const priced = quote({
-      nightlyCents: input.nightlyCentsOverride ?? zome.nightlyCents,
-      cleaningCents: input.cleaningCentsOverride ?? zome.cleaningCents,
+      nightlyCents: family ? 0 : (input.nightlyCentsOverride ?? zome.nightlyCents),
+      cleaningCents: family ? 0 : (input.cleaningCentsOverride ?? zome.cleaningCents),
       nights,
     });
 
@@ -242,6 +252,19 @@ export async function createBooking(principal: Principal, input: CreateBookingIn
         note: input.note?.trim() || null,
       },
     });
+
+    // The anti-squat rule, enforced where it cannot be argued with: the
+    // family booking pays its nights in Stays inside this transaction, or the
+    // whole transaction — booking included — never happens.
+    if (family) {
+      await spendStaysTx(
+        tx,
+        principal,
+        nights,
+        `Family stay at ${zome.name}, ${input.checkIn} to ${input.checkOut}`,
+        booking.id,
+      );
+    }
 
     await appendToChainTx(tx, {
       eventType: "BOOKING_CONFIRMED",

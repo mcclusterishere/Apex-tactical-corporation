@@ -2,7 +2,7 @@
 
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
-import { createZomeAction, bookAction } from "@/app/actions/bookings";
+import { createZomeAction, bookAction, bookFamilyStayAction } from "@/app/actions/bookings";
 import type { FormState } from "@/app/actions/records";
 
 const INPUT =
@@ -65,6 +65,61 @@ export function NewZomeForm() {
       </label>
       <Result state={state} />
       <Submit label="Create zome" />
+    </form>
+  );
+}
+
+/**
+ * The family's own booking form — mobile-first: two big date fields and one
+ * big thumb-sized button. The price is Stays, and the engine enforces it.
+ */
+export function FamilyStayForm({ zomeId }: { zomeId: string }) {
+  const bound = bookFamilyStayAction.bind(null, zomeId);
+  const [state, action] = useActionState<FormState, FormData>(bound, { ok: false });
+  const v = state.values ?? {};
+  return (
+    <form action={action} className="space-y-4">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <label className="block">
+          <span className="mb-1 block text-[15px] font-medium">Check-in</span>
+          <input
+            name="checkIn"
+            type="date"
+            required
+            className="surface w-full rounded-lg border border-[var(--rule-strong)] px-3 py-3 text-[16px] outline-none focus:border-[var(--link)]"
+            defaultValue={String(v.checkIn ?? "")}
+          />
+        </label>
+        <label className="block">
+          <span className="mb-1 block text-[15px] font-medium">Check-out</span>
+          <input
+            name="checkOut"
+            type="date"
+            required
+            className="surface w-full rounded-lg border border-[var(--rule-strong)] px-3 py-3 text-[16px] outline-none focus:border-[var(--link)]"
+            defaultValue={String(v.checkOut ?? "")}
+          />
+        </label>
+      </div>
+      <label className="block">
+        <span className="mb-1 block text-[15px] font-medium">Note (optional)</span>
+        <input
+          name="note"
+          className="surface w-full rounded-lg border border-[var(--rule-strong)] px-3 py-3 text-[16px] outline-none focus:border-[var(--link)]"
+          placeholder="Who's coming, anything to know"
+        />
+      </label>
+      <p className="muted text-[13px]">
+        Your nights are paid in <strong>Stays</strong> — 2 nights = 1 Stay, earned on the task board
+        or gifted by family. If your balance is short, the booking will tell you.
+      </p>
+      <Result state={state} />
+      <button
+        type="submit"
+        className="w-full rounded-lg border border-ink-800 bg-ink-800 px-4 py-3.5 text-[16px] font-semibold text-ink-50 hover:bg-ink-700 disabled:opacity-60 dark:border-ink-100 dark:bg-ink-100 dark:text-ink-900"
+      >
+        Stay here — pay with Stays
+      </button>
     </form>
   );
 }

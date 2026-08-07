@@ -110,6 +110,51 @@ export async function bookAction(zomeId: string, _prev: FormState, formData: For
   return { ok: true, message: "Booked. The nights are held." };
 }
 
+/**
+ * A family member books their own stay, paying in Stays. No stewardship power
+ * required — the gate is the balance itself: no Stays, no stay. That is the
+ * whole anti-squat rule, and it is enforced inside the booking transaction.
+ */
+export async function bookFamilyStayAction(
+  zomeId: string,
+  _prev: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  const principal = await getPrincipal();
+  try {
+    assertMfa(principal);
+    assertPasswordChanged(principal);
+  } catch (e) {
+    return { ok: false, message: e instanceof Error ? e.message : "Refused." };
+  }
+
+  try {
+    await createBooking(principal, {
+      zomeId,
+      guestName: principal.displayName,
+      guestContact: null,
+      channel: "FAMILY",
+      checkIn: String(formData.get("checkIn") ?? ""),
+      checkOut: String(formData.get("checkOut") ?? ""),
+      note: String(formData.get("note") ?? "") || null,
+    });
+  } catch (e) {
+    return {
+      ok: false,
+      message: e instanceof Error ? e.message : "The stay could not be booked.",
+      values: {
+        checkIn: String(formData.get("checkIn") ?? ""),
+        checkOut: String(formData.get("checkOut") ?? ""),
+      },
+    };
+  }
+
+  revalidatePath(`/zomes/${zomeId}`);
+  revalidatePath("/bookings");
+  revalidatePath("/stays");
+  return { ok: true, message: "Booked — your Stays paid for the nights. Enjoy the place you keep." };
+}
+
 export async function cancelBookingAction(
   bookingId: string,
   _prev: FormState,
