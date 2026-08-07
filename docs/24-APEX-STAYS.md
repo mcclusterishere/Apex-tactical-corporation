@@ -59,6 +59,19 @@ a *night*, a unit of hospitality. The Treasury may keep a maintenance reserve
 from property income (a budgeting decision, on its own books, in dollars); that
 reserve funds upkeep — it does not "back" Stays, and no Stay is a claim on it.
 
+**Some chores are bills — and that is how money supports the chest without
+buying anything.** A family member whose contribution is financial rather than
+physical earns exactly like everyone else: a Keeper posts the family's real need
+as a task ("cover the spring tax bill — parcel 1200458"), the member pays it,
+shows the receipt, and a second person verifies. The reward is set by the
+Keepers **case by case, for needs the family actually has.** What must never
+exist is a **standing rate** — no "$50 = 1 night," in the software or in the
+family's habits. A standing rate is a price list; a price list is nights for
+sale; and nights for sale is both the currency problem returning and the death
+of the covenant, because a chest anyone can swipe into is a house nobody has to
+keep. Gifts to the chest expecting nothing back are honoured separately, in the
+Contributions register, as what they are.
+
 ## 4. The honest limits
 
 - **Family and members only.** The loop stays closed. Outsiders do not earn,
