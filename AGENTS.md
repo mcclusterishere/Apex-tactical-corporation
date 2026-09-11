@@ -1,36 +1,27 @@
 # MCCLUSTER CONTROL PLANE — READ THIS FIRST
 
-This repository (`mcclusterishere/Apex-tactical-corporation`) is a **internal** satellite of the McCluster control plane.
-Default branch: `claude/apex-tactical-ledger-nxef56`.
+This repository (`mcclusterishere/Apex-tactical-corporation`) is a McCluster satellite.
 
-# McCluster satellite — read this before you touch anything
-
-This repository is a **satellite** of the McCluster control plane.
-
-Canonical law lives in the control repo. If this file and that file disagree, the control repo wins.
+Canonical law lives in `mcclusterishere/mccluster/AGENTS.md`. If this file and the control repo disagree, the control repo wins.
 
 - Control repo: https://github.com/mcclusterishere/mccluster
-- Agent law: https://github.com/mcclusterishere/mccluster/blob/main/AGENTS.md
-- Ecosystem map: https://github.com/mcclusterishere/mccluster/blob/main/docs/control-plane/ECOSYSTEM.md
-- Cloudflare project: `mccluster` (public edge `matthew.mccluster.org` / `mccluster.org`)
-- Worker: `mccluster-core` (`api.mccluster.org`)
-- Data: Supabase `zmnhbrjyhxzhkxmhkexs`
+- Cloudflare Worker: `mccluster`
+- API: `https://api.mccluster.org`
+- Data plane: Supabase `zmnhbrjyhxzhkxmhkexs`
 
-## What you are allowed to do here
+**There is no Worker named `mccluster-core`. Do not create one.**
 
-- Product UI, brand, and local features for THIS satellite.
-- Call McCluster APIs / Supabase tables that already exist.
-- Submit social posts into the McCluster social layer (never as a second source of truth).
+## Allowed here
 
-## What you must not do
+- Apex product UI, brand, local presentation, and client-side product behavior.
+- Calls to the canonical McCluster API and shared data plane.
+- Local fixtures/tests that do not become a second production source of truth.
 
-- Create a new auth, database, admin, billing, or social scheduler.
-- Auto-push GitHub Actions onto a feature branch (`git push` from CI onto an open PR).
-- Rewrite `index.html` or a shipping page unless the owner named that file.
-- "Rebuild the backend" inside this repo. The backend is McCluster.
+## Not allowed here
 
-## If you are ChatGPT, Claude, Codex, Cursor, Gemini, or Copilot
+- A separate production auth stack, database, admin system, billing system, CRM, social scheduler, or server backend.
+- Railway/Prisma/SQLite as an independent production data plane.
+- A second Cloudflare Worker or a `mccluster-core` service.
+- CI that deploys this repository as a standalone backend.
 
-You keep failing this ecosystem by treating every repo as greenfield. It is not. McCluster is the plane. Read `CLAUDE.md` next. Then work.
-
-Local product notes, if any, belong below this block. Do not delete this block.
+Historical backend code may remain temporarily for migration/reference, but its deployment path must stay disabled until that logic is ported into the canonical McCluster control plane.
