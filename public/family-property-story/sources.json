@@ -1,0 +1,118 @@
+{
+  "as_of": "2026-11-07",
+  "scope": "Selected public official references; not title certification.",
+  "records": [
+    {
+      "id": "1959",
+      "title": "1959 acquisition",
+      "reference": "Halifax · Book 644, page 72",
+      "url": "https://cotthosting.com/NCHALIFAXEXTERNAL/LandRecords/protected/v4/SrchBookPage.aspx",
+      "limits": "A recorded deed to Jimmie and Mae Beulah Brinkley. The later trust instrument refers back to this acquisition. An adjacent page in a download can concern a different deed."
+    },
+    {
+      "id": "1978",
+      "title": "The trust instrument",
+      "reference": "Halifax · Book 997, pages 151–153",
+      "url": "https://cotthosting.com/NCHALIFAXEXTERNAL/LandRecords/protected/v4/SrchBookPage.aspx",
+      "limits": "Mae reserves a life estate; Charles is trustee. The instrument names Molly B. Ford and directs equal rental or sale proceeds among five children. Present title and succession are not established by this historical document alone."
+    },
+    {
+      "id": "1983",
+      "title": "Hardy sale and proceeds",
+      "reference": "Halifax · Books 1217/141 and 1217/308",
+      "url": "https://cotthosting.com/NCHALIFAXEXTERNAL/LandRecords/protected/v4/SrchBookPage.aspx",
+      "limits": "The separate Lot 5 judicial-sale chain includes an order allocating net proceeds. An allocation is not a receipt and does not establish current rights to the land."
+    },
+    {
+      "id": "1996",
+      "title": "Separate individual acquisition",
+      "reference": "Halifax · Book 1682, page 411",
+      "url": "https://cotthosting.com/NCHALIFAXEXTERNAL/LandRecords/protected/v4/SrchBookPage.aspx",
+      "limits": "The 1996 foreclosure acquisition corresponds to current Ash Street parcel 1201601, not the trust parcel or the Maple Street parcel."
+    },
+    {
+      "id": "2006",
+      "title": "Maple Street transfer",
+      "reference": "Halifax · Book 2136, page 201",
+      "url": "https://cotthosting.com/NCHALIFAXEXTERNAL/LandRecords/protected/v4/SrchBookPage.aspx",
+      "limits": "A separate transfer to Charles E. Brinkley, identifying 12-01412. The county display instead cites 2135/201; the discrepancy should remain visible."
+    },
+    {
+      "id": "2000",
+      "title": "The half-acre parcel",
+      "reference": "Halifax · Books 1837/642 and 2073/67; PL6/57-G",
+      "url": "https://cotthosting.com/NCHALIFAXEXTERNAL/LandRecords/protected/v4/SrchBookPage.aspx",
+      "limits": "The deed and plat establish an earlier step in the Williams Road chain. A spelling variation within this chain does not establish identity with a person in another trust."
+    },
+    {
+      "id": "2018",
+      "title": "Partial Lot K conveyance",
+      "reference": "Halifax · Book 2552, page 713; plat 2018/4",
+      "url": "https://cotthosting.com/NCHALIFAXEXTERNAL/LandRecords/protected/v4/SrchBookPage.aspx",
+      "limits": "A 0.59-acre portion was conveyed out. A plat also depicts a planned combination; a plan is not proof that every depicted conveyance occurred."
+    },
+    {
+      "id": "2020",
+      "title": "Later combined description",
+      "reference": "Halifax · Book 2623, page 509",
+      "url": "https://cotthosting.com/NCHALIFAXEXTERNAL/LandRecords/protected/v4/SrchBookPage.aspx",
+      "limits": "The later deed repeats the full Lot K description. Compare it with the prior partial conveyance and survey before concluding the exact extent transferred."
+    },
+    {
+      "id": "2022",
+      "title": "Porter recombination",
+      "reference": "Halifax · Plat 2022/97",
+      "url": "https://cotthosting.com/NCHALIFAXEXTERNAL/LandRecords/protected/v4/SrchBookPage.aspx",
+      "limits": "The recorded map depicts 4.47 acres total, divided into 2.32 and 2.15. Stale assessment figures should not be added as though they were separate surveyed areas."
+    },
+    {
+      "id": "2026",
+      "title": "Later Lot 7 transfer",
+      "reference": "Halifax · Book 2834, pages 391–393",
+      "url": "https://cotthosting.com/NCHALIFAXEXTERNAL/LandRecords/protected/v4/SrchBookPage.aspx",
+      "limits": "The complete recorded transfer is stronger evidence of that transaction than a stale assessment heading. It is still not a full subsequent-title search."
+    },
+    {
+      "id": "north1990",
+      "title": "Northampton acquisition",
+      "reference": "Northampton · Book 667, pages 199–202",
+      "url": "https://www.northamptonrod.org/DocumentViewPDF.asp?DocumentType=Deed&Instrument=06670199",
+      "limits": "One acquisition instrument covers two separate subdivision lots. It does not establish the grantees’ relationship to people in another county’s records."
+    },
+    {
+      "id": "north2014",
+      "title": "Both lots conveyed",
+      "reference": "Northampton · Book 988, pages 589–592",
+      "url": "https://www.northamptonrod.org/DocumentViewPDF.asp?DocumentType=Deed&Instrument=09880589",
+      "limits": "The transfer covers Lots 34 and 35. Its map reference needs comparison with the actual subdivision plat; a discrepancy alone does not establish invalidity."
+    },
+    {
+      "id": "north2025",
+      "title": "Lot 35 conveyed separately",
+      "reference": "Northampton · Book 1120, pages 897–898",
+      "url": "https://www.northamptonrod.org/DocumentViewPDF.asp?DocumentType=Deed&Instrument=11200897",
+      "limits": "This later instrument concerns Lot 35, not both adjacent lots."
+    },
+    {
+      "id": "northplat",
+      "title": "Subdivision map",
+      "reference": "Northampton · Plat 24/77",
+      "url": "https://www.northamptonrod.org/",
+      "limits": "The subdivision distinguishes Lot 34 from Lot 35. The 2014 instrument’s 25/77 reference must be reconciled, not silently replaced."
+    },
+    {
+      "id": "hardymap",
+      "title": "Historical Hardy division",
+      "reference": "Halifax · Plat Book 5, page 55",
+      "url": "https://cotthosting.com/NCHALIFAXEXTERNAL/LandRecords/protected/v4/SrchBookPage.aspx",
+      "limits": "A historic division map describes lots; it does not prove current ownership, retained title or genealogical relationships."
+    },
+    {
+      "id": "hardycomb",
+      "title": "Later Hardy combination",
+      "reference": "Halifax · Book 1899, page 123",
+      "url": "https://cotthosting.com/NCHALIFAXEXTERNAL/LandRecords/protected/v4/SrchBookPage.aspx",
+      "limits": "The combination record groups historic components within a current parcel. It says it is not itself a conveyance. Components must not be double-counted."
+    }
+  ]
+}
