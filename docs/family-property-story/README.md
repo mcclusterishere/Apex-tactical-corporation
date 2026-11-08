@@ -16,10 +16,10 @@ Run from the repository root:
 
     python tests/family-property-story.test.py
 
-Python's standard library and Node are sufficient. The test verifies the exact public-file allowlist, official external-link hosts, local fragments, record/parcel counts, absence of document embedding and automatic external resources, mobile-first CSS constraints and 26 simulated interaction assertions.
+Python's standard library and Node are sufficient. The test verifies the exact public-file allowlist, official external-link hosts, local fragments, record/parcel counts, absence of document embedding and automatic external resources, mobile-first CSS constraints and 28 simulated interaction assertions.
 
-Browser layout and real-browser accessibility are separate checks. The 390-pixel rendered overflow measurement remains pending; it is not replaced by the CSS contract check. Existing application tests and typecheck remain governed by the repository's normal CI.
+Real-browser responsive review was completed on 8 November 2026 in Chromium at 1180px, 834px and 390px CSS viewport widths. All six chapters had zero horizontal overflow. See [the QA report](QA-2026-11-08.md) for measured results, two corrected defects and coverage limits. Native Safari/touch and print rendering remain unverified. Existing application tests and typecheck remain governed by the repository's normal CI.
 
 ## Review status
 
-Local static/privacy and simulated interaction checks passed. The source is for review; it has not been merged or deployed. The public page is intentionally a narrower account than a detailed legal or family evidence packet. Original instruments and qualified legal review control.
+Local static/privacy, simulated interaction and scoped real-browser responsive checks passed. The source is for review; it has not been merged or deployed. The public page is intentionally a narrower account than a detailed legal or family evidence packet. Original instruments and qualified legal review control.

@@ -42,6 +42,8 @@ assert not re.search(r'@media\s*\([^)]*max-width',css),'Must be mobile first'
 assert not re.search(r'(?<![,\w])1fr\b',css),'Grid fractions must be minmax(0,1fr)'
 assert 'user-scalable=no' not in html and 'maximum-scale=1' not in html
 assert 'font-size:max(16px,1rem)' in css
+assert '.toolbar{display:flex;flex-wrap:wrap;' in css, 'Toolbar must wrap before squeezing buttons'
+assert '.toolbar button{flex-shrink:0;white-space:nowrap}' in css, 'Toolbar labels must remain whole'
 for p in SITE.iterdir():
  text=p.read_text()
  assert not any(s in text for s in ['/workspace/','mail.google.com','drive.google.com','data:image','file://','sediment://','@gmail.com'])

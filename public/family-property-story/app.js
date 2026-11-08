@@ -33,7 +33,7 @@
     function apply() {
       const q = input ? input.value.trim().toLocaleLowerCase() : '';
       let shown = 0;
-      cards.forEach(c => {c.hidden = !((category === 'all' || c.dataset[attribute] === category) && c.textContent.toLocaleLowerCase().includes(q)); if (!c.hidden) shown++;});
+      cards.forEach(c => {c.hidden = !((category === 'all' || c.dataset[attribute] === category) && (c.textContent + " " + c.id).toLocaleLowerCase().includes(q)); if (!c.hidden) shown++;});
       count.textContent = `${shown} of ${cards.length} ${name === 'source' ? 'record groups' : name === 'parcel' ? 'investigated parcels' : 'moments'} shown`;
       empty.hidden = shown > 0;
     }
